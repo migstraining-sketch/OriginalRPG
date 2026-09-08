@@ -1,0 +1,15 @@
+{
+  "projectType": "original-rpg",
+  "continuityAuthority": "this-repository",
+  "currentDesignFrontier": "opening-complete-through-cooking-unlock",
+  "openingTargetMinutes": {
+    "standard": "27-30",
+    "healthyRange": "23-35"
+  },
+  "lockedCharacters": ["Garrick", "Marlow", "Sylvie"],
+  "lockedOpeningSystems": ["Potion Making opening", "Hunting MVP", "Cooking MVP", "Day One room rental hook"],
+  "lockedStarterContracts": ["Mud in the Moonrice", "Three Missing by Morning", "When the Wheel Stopped"],
+  "futureButNotYetDesigned": ["Rest Quality", "Smithing", "Taming", "full Potion Making progression", "full Hunting progression", "full Cooking progression", "larger antagonist storyline"],
+  "nextTask": "Design the first 1-2 hours after Cooking unlock and test the early gameplay loop before adding more systems.",
+  "importantCorrection": "This is an original RPG. AdventureQuest, BattleOn and other referenced games/media are inspiration only and are not canon."
+}
