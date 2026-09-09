@@ -1,272 +1,103 @@
 # Dialogue & Player Agency
 
 ## Status / authority
-
-This document is the continuity home for the **Dialogue & Player Agency** sub-chat.
-
-It governs dialogue quality, conversational logic, player-expression opportunities, and conversation state. Exact prose marked **PROPOSED** is not canon until Central Brain approves it. Locked character/story/system facts remain authoritative in their existing documents.
+This document is the continuity home for the **Dialogue & Player Agency** sub-chat. Exact prose marked **PROPOSED** is not canon until Central Brain approves it. Locked character/story/system facts remain authoritative in their existing documents.
 
 ## Ownership / scope
+Owns playable NPC dialogue, player responses, pacing/sequencing, conversational state, branching/convergence, interruption/resumption, acceptance/refusal, optional questions, player attitude/expression, NPC reactions to player behavior, and deciding when a choice is justified.
 
-This sub-chat owns:
-- playable NPC dialogue
-- player response options
-- conversation pacing and sequencing
-- conversational state
-- branching, convergence, interruption, and resumption
-- meaningful acceptance/refusal
-- questions and optional information
-- player attitude/expression
-- NPC reactions to player behavior
-- preventing NPCs from assuming player intentions
-- character-voice consistency inside playable conversations
-- deciding whether a moment needs a dialogue choice or ordinary Continue input
+Does **not** independently change quest chronology, combat, Hunting/Cooking/Potion mechanics, Inn layout, character canon, or major story canon. Flag upstream contradictions for Central Brain.
 
-It does **not** independently change:
-- quest chronology
-- combat rules
-- Hunting, Cooking, or Potion Making mechanics
-- Inn layout
-- character canon
-- major story canon
-
-If dialogue exposes a contradiction in one of those authorities, flag it for Central Brain rather than repairing upstream canon silently.
-
----
-
-# Core dialogue doctrine
+# Core doctrine
 
 ## Continue is not a roleplaying choice
+When the player has nothing meaningful to decide or express, normal confirm advances the conversation. Do not manufacture `Listen / Continue / Okay / Leave` choices unless they represent real decisions.
 
-When the player has nothing meaningful to decide or express, normal confirm input advances the conversation.
-
-Do not manufacture choices such as:
-- Listen
-- Continue
-- Okay
-- Leave
-- Look
-
-unless that action is a genuine decision in the specific context.
-
-A player response earns a choice slot only if it passes all three tests:
-
-1. **Natural response:** does this naturally respond to what was just said?
-2. **Knowledge/state validity:** could the player actually know, feel, ask, or decide this now?
-3. **Expressive/state value:** does it meaningfully express attitude, request information, make a decision, or alter conversational/state direction enough to justify a choice?
-
-If not, use Continue or environmental control instead.
+Every response must pass:
+1. Does it naturally respond to what was just said?
+2. Could the player actually know, feel, ask, or decide this now?
+3. Does it meaningfully express attitude, request information, make a decision, or alter conversational/state direction?
 
 ## Player-intent rule
+**NPCs may not advance the player's commitment state before the player does.** Distinguish being present, hearing an offer, showing interest, agreeing to hear details, and accepting a job.
 
-**NPCs may not advance the player's commitment state before the player does.**
+NPCs may propose, infer cautiously, challenge, tempt, ask, or react. They may not decide that the player wants the job, agrees to help, trusts someone, believes something, intends to enter somewhere, is heroic, or knows unseen information.
 
-NPCs may propose, infer cautiously, challenge, tempt, ask, or react. They may not decide that the player:
-- wants a job
-- agrees to help
-- trusts someone
-- is interested
-- believes a claim
-- intends to enter somewhere
-- is heroic/altruistic
-- knows information not yet learned
+## Information order
+A line may rely only on information already established for its listener. Before each beat track what Garrick knows, Marlow knows, the player knows, what the player expressed, what was offered, and what was accepted/refused.
 
-The conversation must distinguish **being present**, **hearing an offer**, **showing interest**, **agreeing to hear details**, and **accepting a job**.
+Setup precedes payoff. **"Might've found you another pair of legs"** must land only after the player understands Marlow needs something collected, cannot leave, and the watch has not supplied help.
 
-## Information-order rule
+## Questions and attitude
+Questions are knowledge-gated. Optional questions may deepen character/world knowledge without becoming mandatory exposition gates. Sympathy, skepticism, curiosity, mercenary interest, humor, or rudeness do not automatically change quest commitment. Asking **"What does it pay?"** or **"What do you need?"** is not acceptance.
 
-A line may rely only on information already established for its listener.
+## Acceptance/refusal
+For Marlow's opening job, acceptance occurs only when the player explicitly agrees to gather the ingredients after learning the job. Going downstairs means **agreeing to hear/see the problem**, not agreeing to solve it.
 
-Before each beat, ask:
-- What does Garrick know?
-- What does Marlow know?
-- What does the player know?
-- What has the player actually expressed?
-- What has been offered?
-- What has been accepted/refused?
-- What questions are now logically available?
+Refusal is real. Marlow does not beg and Garrick does not shame. Reconsideration remains possible while the established time window remains open; existing troll-death/Marlow-departure canon remains unchanged.
 
-Setup must precede payoff. In particular, Garrick's **"Might've found you another pair of legs"** only makes sense after the player understands that Marlow needs something collected, cannot currently leave, and the watch has not supplied help.
-
-## Questions are knowledge-gated
-
-A question should appear because the preceding conversation created it. Do not offer a question about a fact the player has not encountered or a conclusion they could not reasonably draw.
-
-Optional questions can deepen character/world knowledge without becoming mandatory exposition gates.
-
-## Attitude is not commitment
-
-A player may be sympathetic, skeptical, curious, mercenary, amused, or rude without that automatically accepting/refusing a quest.
-
-Likewise, asking **"What does it pay?"** is not acceptance. Asking **"What do you need?"** is interest, not commitment.
-
-## Acceptance must be explicit when stakes matter
-
-For Marlow's opening job, acceptance occurs only when the player explicitly agrees to gather the ingredients after learning what the job is.
-
-Going downstairs means **agreeing to hear/see the problem**, not agreeing to solve it.
-
-## Refusal must be real
-
-If the player refuses Marlow, Marlow does not beg and Garrick does not shame them. The player can reconsider while the established time window remains open. If they do not, the existing troll-death/Marlow-departure consequence remains authoritative.
-
-## Interruption and resumption
-
-Conversation state must survive ordinary interruption.
-
-On resume:
-- do not replay already completed introductions
-- do not re-explain information the player already learned unless they ask for a reminder
-- preserve whether the player showed interest, asked about pay, agreed only to hear Marlow out, accepted, or refused
-- preserve contextual first-contact discoveries such as rooms, board, merchandise, basement ownership, or Marlow's identity
-
-NPCs should resume from the last coherent conversational state, not from a generic root node.
-
----
+## Interruption/resumption
+Do not replay completed introductions or re-explain learned information unless asked. Preserve work interest, payment questions, willingness merely to hear Marlow out, acceptance/refusal, and first-contact discoveries. Resume from the last coherent conversational state, not a generic root.
 
 # Character voice guardrails
 
 ## Garrick
-
-Gruff, practical, observant, dryly funny, casually intimidating, protective beneath the surface.
-
-He:
-- speaks economically
-- notices behavior rather than narrating mechanics
-- can needle Marlow because their familiarity is established through behavior
-- does not gush over the player
-- does not call the player capable before evidence exists
-- can offer an opportunity without endorsing the stranger
-- should not become a tutorial narrator listing inn features
-
-Dry humor works best when it emerges from the situation. Do not turn every Garrick line into a punchline.
+Gruff, practical, observant, dryly funny, casually intimidating, protective beneath the surface. Speaks economically. Notices behavior instead of narrating mechanics. Can needle Marlow because of established familiarity. Does not gush over the player or call them capable before evidence exists. Can offer opportunity without endorsing a stranger. Not a tutorial narrator. Humor should emerge from situations rather than saturate every line.
 
 ## Marlow
-
-Gentle, slightly awkward, curious, creature-focused, experienced, competent.
-
-He:
-- is careful about creatures and evidence
-- can be socially hesitant without being incompetent
-- does not casually expose a vulnerable patient to a stranger without a reason
-- does not treat the player as an expedition partner before they agree to anything
-- does not beg when refused
-- can answer practical questions, including payment, without taking offense
-- becomes visibly more authoritative in his laboratory through behavior, knowledge, and environment
-
-His broken sample is an unfortunate accident under pressure, not proof that he is a bumbling scientist.
+Gentle, slightly awkward, curious, creature-focused, experienced, competent. Careful about creatures/evidence. Social hesitation is not incompetence. Does not expose a vulnerable patient casually, call the player an expedition partner before agreement, or beg when refused. Practical questions including payment do not offend him. His laboratory should recontextualize him as experienced and serious.
 
 ## Garrick + Marlow
-
-Their old, brotherly relationship should be inferred through shorthand, timing, annoyance, trust, and practical care.
-
-Avoid exposition such as "we're like brothers." Garrick knowing what Marlow's understatement means, Marlow tolerating Bottle-Brain, and Garrick quietly pushing him toward a solution communicate more.
-
----
+Brotherly history is subtext expressed through shorthand, timing, annoyance, trust, and practical care. Never explain that they are "like brothers" early.
 
 # Known Unity dialogue problems
+1. After **"[NAME]. Right."**, current `InnConversation` offers **"Thanks."** It has no conversational cause.
+2. **"Might've found you another pair of legs"** currently arrives before the player knows what needs collecting or why Marlow cannot go.
+3. **"If you're actually considering this..."** currently invents player interest.
+4. Several mandatory one-option responses merely advance text, including current uses of **"Where?"**, **"Mine?"**, **"That's a troll."**, **"You jumped in after a troll?"**, **"He doesn't look the right colour."**, **"And you stay here with him."**, and the final briefing recap. Optional versions may be valid; mandatory Continue-buttons are not.
+5. First-lab dialogue is currently a nearly linear question ladder rather than a conversation with genuine information choices.
+6. `MarlowOpening.Say` falls back to **Step away** when no choice exists. Presentation should eventually support ordinary Continue independently from roleplaying choices.
+7. Current `InnConversation` refusal uses the same `depart` staging as acceptance, risking Marlow leading the player downstairs after refusal. Implementation must separate refusal from willingness to hear him out.
 
-Current prototype review confirms several dialogue-state defects.
+These observations do **not** authorize Unity changes yet.
 
-1. After **"[NAME]. Right."**, the current `InnConversation` offers **"Thanks."** This fails the natural-response test. Garrick has done nothing that calls for gratitude.
-2. The prototype reaches **"Might've found you another pair of legs"** immediately after the town-watch exchange, before the player knows what Marlow needs collected or why Marlow cannot leave. The intended joke therefore arrives before its setup.
-3. Marlow currently says **"If you're actually considering this..."** before the player has necessarily expressed interest. This advances player intent without permission.
-4. The prototype contains several interaction choices whose only function is advancing text, including lines such as **"Where?"**, **"Mine?"**, **"That's a troll."**, **"You jumped in after a troll?"**, **"He doesn't look the right colour."**, **"And you stay here with him."**, and the final briefing recap. Some may be valid as optional expressions, but they should not be mandatory one-option Continue buttons.
-5. The first-lab sequence currently forces a nearly linear question ladder. The lab should first return control, then use a smaller number of genuine questions/reactions around the troll rather than requiring the player to speak every transition.
-6. `MarlowOpening.Say` falls back to a **Step away** choice when no authored choice exists. That UI convention conflicts with the doctrine when stepping away is not a meaningful decision. Dialogue presentation should eventually support ordinary Continue separately from roleplaying choices.
-7. The current refusal path in `InnConversation` calls the same departure staging used by acceptance, which risks Marlow physically leading the player downstairs after refusal. Implementation must eventually separate **refused** from **agreed to hear Marlow out**.
+# Conversation-state model
+Recommended conceptual state; exact code representation is downstream.
 
-These are implementation observations, not authorization to change Unity yet.
+Player knowledge may track: Garrick identity; Marlow identity; basement ownership; urgent patient; need for field ingredients; why Marlow cannot leave; watch backlog; patient being a troll; illness signs; ingredient list; payment if stated.
 
----
+Preserve existing first-contact discoveries separately: rooms, board/work, merchandise, basement attempt, immediate leave/return, theft/aggression.
 
-# Opening conversation state model
-
-Recommended conceptual state variables. Exact code representation is downstream.
-
-## Knowledge flags
-
-Player-facing knowledge:
-- `knowsGarrickName`
-- `knowsMarlowName`
-- `knowsBasementIsMarlowLab`
-- `knowsMarlowHasUrgentPatient`
-- `knowsMarlowNeedsFieldIngredients`
-- `knowsMarlowCannotLeavePatient`
-- `knowsWatchBacklogged`
-- `knowsPatientIsTroll`
-- `knowsTrollIllnessSigns`
-- `knowsIngredientList`
-- `knowsPayment` if payment has been stated
-
-Existing first-contact discoveries should remain separate:
-- rooms known
-- board/work known
-- merchandise known
-- basement tried
-- returned after immediately leaving
-- theft/aggression history
-
-## Player-expression / commitment flags
-
-- `workInterest`: unknown / expressed / declined generally
+Player commitment should distinguish:
+- `workInterest`: unknown / expressed
 - `marlowInterest`: unknown / willingToHear / refusedToHear
 - `marlowJob`: notOffered / offered / accepted / refused
 - `askedPayment`
-- optional attitude memories only where an NPC response later benefits from remembering them
 
 Do not collapse `willingToHear` and `accepted` into one boolean.
 
-## Access state
-
-- basement private before Marlow's invitation
-- invitation grants social access to follow Marlow down
-- accepting the woodland job is **not** required merely to enter the lab on this first invitation
-
----
+Basement is private before invitation. Invitation grants social access to follow Marlow down. Job acceptance is not required merely to enter on this first invitation.
 
 # Existing locked opening facts preserved
-
-The following are existing continuity and are **not being redesigned here**:
-
-- player gets control immediately in Garrick's Inn
-- reactive first-contact entrances converge naturally
-- Garrick learns the player's name
-- Marlow's last usable research sample breaks during/around the opening interaction
-- Marlow has a town-watch request that is backlogged behind urgent human problems
+- immediate control in Garrick's Inn and reactive first-contact entrances
+- Garrick learns player name
+- Marlow breaks the last usable research sample
+- town-watch request is backlogged behind urgent human problems
 - Garrick eventually says **"Might've found you another pair of legs."**
-- Marlow objects: **"You don't know them."** Garrick answers **"Nope."**
-- Marlow invites the player downstairs before Garrick's boot warning
-- control returns in the laboratory for environmental exploration
-- Marlow rescued a baby troll from drowning
-- **"He was drowning."** remains the preferred core explanation
-- troll should be green, has gone pale, stopped eating, and lost regeneration
-- Marlow refuses to leave it unattended while it deteriorates
-- required woodland ingredients are Bloodleaf, Silvermoss, and Mooncalf Milk
-- the player may genuinely refuse
-- refusal can eventually lead to troll death and Marlow's temporary departure under existing canon
-
----
+- Marlow: **"You don't know them."** Garrick: **"Nope."**
+- Marlow invites player downstairs before Garrick's warning
+- lab returns control for environmental exploration
+- baby troll was rescued from drowning; **"He was drowning."** remains preferred
+- troll should be green; is pale, not eating, and losing regeneration
+- Marlow will not leave it unattended
+- Bloodleaf, Silvermoss, Mooncalf Milk are required
+- genuine refusal and established downstream consequences remain
 
 # PROPOSED canonical playable dialogue/state specification
-
-**Status: PROPOSED FOR CENTRAL BRAIN REVIEW. Exact prose below is not canon yet.**
-
-This specification covers the normal route. Existing contextual first-contact entrances remain valid and should converge while remembering what the player already discovered.
+**PROPOSED FOR CENTRAL BRAIN REVIEW. Exact prose is not canon yet.** Normal route below; contextual first-contact entrances remain and converge while remembering discoveries.
 
 ## Beat 1 — Normal first contact
-
-### State before
-
-Garrick knows: an unknown traveler/new face has entered.
-
-Marlow knows: little or nothing about the player; he is on a break while worried about his patient.
-
-Player knows: only what they can observe in the inn.
-
-Player commitment: none.
-
-### Proposed dialogue
+**Before:** nobody has player commitment. Player knows only observable inn information.
 
 **Garrick:** "New face."
 
@@ -274,29 +105,16 @@ Continue.
 
 **Garrick:** "Garrick. I own the place. You got a name?"
 
-This is a genuine prompt requiring the player's configured name, not a roleplaying menu.
-
 **Player:** "[NAME]."
 
 **Garrick:** "[NAME]. Right."
 
-### Player response
+**No response menu.** If earlier behavior created business, Garrick responds to it. Otherwise allow a natural pause before Marlow's incident rather than listing inn features.
 
-**No response menu here.** Garrick's acknowledgment does not require thanks or another manufactured reply.
+**After:** Garrick/player know each other's names as applicable. No work interest inferred.
 
-If there is relevant first-contact business, Garrick responds to it. Otherwise the scene gets a small natural pause before the Marlow incident rather than forcing Garrick to list services.
-
-### State after
-
-Player knows Garrick's name/ownership. Garrick knows player's name. No work interest has been inferred.
-
----
-
-## Beat 2 — Marlow's accident establishes urgency, not yet the solution
-
+## Beat 2 — Accident establishes the problem before the solution
 **CRASH.**
-
-Garrick looks over.
 
 **Garrick:** "Bottle-Brain."
 
@@ -310,8 +128,6 @@ Garrick looks over.
 
 **Marlow:** "Yes."
 
-This small addition is important. It tells the player the broken sample concerns someone/something Garrick already knows about without prematurely revealing the troll.
-
 **Garrick:** "Can you make another?"
 
 **Marlow:** "If I had fresh material."
@@ -319,8 +135,6 @@ This small addition is important. It tells the player the broken sample concerns
 **Garrick:** "Then go get it."
 
 **Marlow:** "I can't leave him alone like this."
-
-Now the player understands the essential constraint: Marlow needs material from elsewhere and cannot leave his patient.
 
 Continue.
 
@@ -332,22 +146,10 @@ Continue.
 
 **Marlow:** "They have more urgent matters."
 
-### State after
+**After:** player understands urgent patient + fresh material needed + Marlow cannot leave + watch has not supplied help. The pair-of-legs joke now has setup.
 
-Player now knows:
-- Marlow has an urgent patient/problem
-- the broken sample was part of that problem
-- fresh material must be collected
-- Marlow cannot currently leave
-- the watch has not supplied help
-
-The logical runway for **another pair of legs** now exists.
-
----
-
-## Beat 3 — Garrick notices the available stranger
-
-Garrick looks at the player, then Marlow.
+## Beat 3 — Garrick notices the stranger
+Garrick looks at player, then Marlow.
 
 **Garrick:** "Might've found you another pair of legs."
 
@@ -355,74 +157,58 @@ Garrick looks at the player, then Marlow.
 
 **Garrick:** "Nope."
 
-If the player previously expressed interest in work:
+If work interest was previously expressed:
 
 **Garrick:** "But they're looking for work."
 
-If they did not:
+Otherwise:
 
-**Garrick:** "But they are standing right here."
+**Garrick:** "But they're standing right here."
 
-**Marlow:** "That is a very low bar for an expedition partner."
+**Marlow:** "That's a very low bar for an expedition partner."
 
 **Garrick:** "Good thing you're not taking them on an expedition."
 
-Garrick looks to Marlow rather than deciding for the player.
-
 **Garrick:** "You need something fetched. Ask 'em."
 
-This replaces the current sequence where Garrick and Marlow discuss the player at length before anyone actually asks what the player thinks.
-
-### Meaningful player-expression point
-
-Marlow addresses the player.
+Marlow now addresses the player rather than the NPCs continuing to decide around them.
 
 **Marlow:** "Would you be willing to hear me out?"
 
-Proposed responses:
-- **"What needs fetching?"** → expresses practical interest; sets `marlowInterest = willingToHear`
-- **"Does it pay?"** → expresses transactional interest; does **not** accept; Marlow gives/defers exact approved payment
-- **"What's wrong with your patient?"** → expresses concern/curiosity; Marlow says it is easier to show them and asks whether they will come downstairs
-- **"Not interested."** → genuine refusal to hear the offer; no basement lead
+Meaningful responses:
+- **"What needs fetching?"** → practical interest; willing to hear, not accepted
+- **"Does it pay?"** → transactional interest; payment may be stated; not accepted
+- **"What's wrong with your patient?"** → concern/curiosity; not accepted
+- **"Not interested."** → genuine refusal to hear offer
 
-If player asks what needs fetching:
+For practical interest:
 
 **Marlow:** "A few things from the woodland. I can explain what, but you should see why I can't go myself first."
 
-If player asks about the patient:
+For patient question:
 
 **Marlow:** "That's easier to show than explain. He's downstairs."
 
-If player asks about payment:
+For payment: use approved amount once finalized. Asking does not accept.
 
-Marlow states the approved amount when finalized. Asking about money must never count as acceptance.
-
-Then, for any non-refusal route:
+Then on non-refusal routes:
 
 **Marlow:** "If you're willing, come downstairs. You can see the situation before you decide anything."
 
-Proposed responses:
-- **"All right. Show me."** → `marlowInterest = willingToHear`; basement invitation granted
-- **"No."** → refusal to hear; remains upstairs
+Responses:
+- **"All right. Show me."** → `willingToHear`; invitation granted
+- **"No."** → refused to hear; remains upstairs
 
-This explicitly protects agency: following Marlow means **I will hear/see the proposal**, not **I accept the quest**.
-
----
-
-## Beat 4 — Basement invitation and Garrick warning
-
-Only after the player agrees to hear Marlow out does Marlow grant access.
-
+## Beat 4 — Invitation and warning
 **Marlow:** "My laboratory is downstairs."
 
-If basement was tried earlier, optional contextual response:
-- **"The locked room?"**
+If basement tried earlier, optional contextual response **"The locked room?"** then:
 
 **Marlow:** "Yes. Different circumstances now."
 
-If basement was not tried, no response menu is needed.
+Otherwise no menu is required.
 
-Marlow starts gathering the surviving material/notes.
+Marlow gathers surviving material/notes.
 
 **Garrick:** "Bottle-Brain."
 
@@ -434,6 +220,131 @@ Garrick looks at player.
 
 **Garrick:** "I'll hear you."
 
-This keeps Garrick protective without requiring the current forced **"Mine?"** joke. A stronger boot threat can remain an alternate if Central Brain prefers it, but it should not require a fake player question to land.
+This preserves Garrick's protective warning without requiring the current forced **"Mine?"** response. Central Brain may retain a stronger boot line if desired.
 
 Marlow unlocks the basement and physically leads. Player follows under normal control.
+
+## Beat 5 — First laboratory exploration
+**State:** player agreed only to hear Marlow out. No woodland job has been offered yet. Marlow knows the player is a stranger Garrick opportunistically suggested.
+
+On arrival, **return control**. Do not immediately start a dialogue tree.
+
+Marlow can give one spatial line without a menu:
+
+**Marlow:** "Mind the cases."
+
+Meaningful environmental inspections remain available: expedition gear, field notes/specimens, habitats, fermentation setup. They should establish competence through evidence.
+
+Optional Marlow conversation about the ale arrangement can remain discoverable through inspecting fermentation equipment. It is flavor, not a gate.
+
+After a short exploration window or if the player approaches the sick creature, the troll makes a weak sound. Marlow immediately crosses to it. This behavior draws attention without a quest marker.
+
+## Beat 6 — Sick troll reveal
+Marlow kneels beside the pale troll, checking it before speaking.
+
+**Marlow:** "Easy. I'm here."
+
+He notices the player nearby.
+
+**Marlow:** "This is why I can't leave."
+
+Pause/Continue.
+
+**Marlow:** "He should be green. He stopped eating first. Then the colour began to go. His regeneration's slowing too."
+
+Marlow indicates a scratch/wound that should have healed.
+
+Now genuine questions/reactions are available because the player has seen the patient and symptoms:
+- **"Why do you have a troll?"**
+- **"Do you know what's wrong with him?"**
+- **"Is he dangerous?"**
+- **"What were you trying to make?"**
+
+These are optional information branches. The player does not need to click all of them to progress.
+
+### Why do you have a troll?
+**Marlow:** "I found him during the floods, trapped under a bridge."
+
+Optional follow-up:
+- **"You rescued a troll?"**
+
+**Marlow:** "He was drowning."
+
+No further defense is needed.
+
+### Do you know what's wrong?
+**Marlow:** "Not exactly. I've been recording the changes. I think I can treat the symptoms and restore his regenerative response."
+
+### Is he dangerous?
+Marlow answers according to locked creature canon without pretending a sick wild creature is harmless. Exact risk wording is **UNRESOLVED** pending Central Brain if troll temperament has not been formally defined.
+
+### What were you trying to make?
+**Marlow:** "A treatment. The sample upstairs was part of it. I need fresh ingredients to finish the preparation."
+
+After one question or ordinary Continue, Marlow naturally reaches the offer setup.
+
+## Beat 7 — Why Marlow needs the player
+If the player has not already asked why Marlow cannot gather material:
+
+**Marlow:** "Normally I'd collect everything myself. I know the woodland. But his condition can change quickly, and I won't leave him unattended."
+
+If watch backlog was already heard upstairs, do not explain it again. If this route somehow skipped it, Marlow may explain the pending request here.
+
+Then:
+
+**Marlow:** "What I need is nearby: Bloodleaf, Silvermoss, and Mooncalf Milk."
+
+He gives the minimal practical description needed to make the decision intelligible, not the full tutorial briefing yet.
+
+**Marlow:** "If you bring them back, I can stay here and finish the treatment."
+
+Only now is the woodland job actually offered.
+
+## Beat 8 — Explicit woodland job decision
+**Marlow:** "Will you help?"
+
+Proposed responses:
+- **"I'll get what you need."** → ACCEPT
+- **"What does it pay?"** → information only; return to decision
+- **"Tell me what I'd be walking into."** → asks for woodland risk/context; return to decision
+- **"I can't do this."** → REFUSE
+
+If payment was already asked upstairs, do not offer the same question as though it is new. If exact payment was already stated, a mercenary attitude option could instead be **"And the payment's still [amount]?"** only if useful.
+
+### Accept
+Set `marlowJob = accepted` and only now set the actual quest/job accepted state.
+
+Marlow's response should be restrained:
+
+**Marlow:** "Thank you. Then I'll show you exactly what to look for."
+
+He provides the existing practical field briefing: Bloodleaf red veins/useful tips/leave stem rooted; Silvermoss on damp shaded stone/leave most; peaceful Mooncalf approach; Mossbacks normally docile if given space. Garrick weapon reminder can remain.
+
+After briefing, **no mandatory recap response** such as "Bloodleaf, Silvermoss, milk. I'll be back." Normal Continue returns control. The objective may now record the accepted task.
+
+### Refuse
+Set `marlowJob = refused`.
+
+**Marlow:** "I understand. Thank you for hearing me out."
+
+Return control. No forced lead, no guilt line, no quest acceptance. Reconsideration remains available while canon permits.
+
+## Beat 9 — Reconsideration
+If player later speaks to Marlow before consequence resolution:
+
+**Marlow:** "Have you reconsidered?"
+
+Responses:
+- **"Tell me what you need again."** → reminder, not acceptance
+- **"I'll help."** → acceptance, then briefing
+- **"No."** → close naturally
+
+Do not replay troll reveal or pretend the prior refusal never occurred.
+
+# Branch/convergence rules
+
+## First-contact convergence
+Kitchen, rooms, basement, board, merchandise, Marlow-first, idle, leave/return, and non-terminal theft branches may converge into the shared accident, but preserve discovered facts and attitudes. Do not re-ask questions already answered.
+
+## Work-interest branch
+If
