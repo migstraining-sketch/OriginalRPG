@@ -15,7 +15,7 @@ namespace WoodlandSpine
             float scale=Mathf.Min(Screen.width/1280f,Screen.height/800f);GUI.matrix=Matrix4x4.Scale(new Vector3(scale,scale,1));
             GUILayout.BeginArea(new Rect(Screen.width/scale/2-240,160,480,400),GUI.skin.box);
             GUILayout.Space(20);GUILayout.Label("WOODLAND SPINE — ORIGINAL RPG PROTOTYPE",new GUIStyle(GUI.skin.label){fontSize=18,fontStyle=FontStyle.Bold});
-            GUILayout.Space(20);GUILayout.Label("Your name");traveller=GUILayout.TextField(traveller,24,GUILayout.Height(32));
+            GUILayout.Space(20);GUILayout.Label("Choose your travel coat.");
             GUILayout.Space(12);GUILayout.Label("Travel coat color");color=GUILayout.SelectionGrid(color,new[]{"Blue","Ochre","Green"},3,GUILayout.Height(36));
             GUILayout.Space(20);GUILayout.Label("30 HP • Padded Travel Coat, Armor 1");
             GUILayout.Space(20);if(GUILayout.Button("Enter Garrick's Inn",GUILayout.Height(42)))Enter();
@@ -23,4 +23,5 @@ namespace WoodlandSpine
         }
     }
 }
+
 

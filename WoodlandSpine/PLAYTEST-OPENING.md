@@ -1,14 +1,14 @@
 # Current opening playtest
 
-Start a fresh Play session in Assets/Scenes/Opening.unity (or launch the Windows player). Name your character and enter the inn.
+Start a fresh Play session in Assets/Scenes/Opening.unity (or launch the Windows player). Choose your coat and enter the inn. Type and confirm your name when Garrick asks for it.
 
 ## First priority: does the scene now feel right?
 
 1. Talk to Garrick with E. Read your replies as things the character actually says. Continue advances the exchanges between NPCs; it is not a player response named Listen.
-2. Follow the sample accident, pair-of-legs exchange, Marlow's invitation, then Garrick's warning. Agree to hear Marlow out.
+2. After Garrick acknowledges your name, Continue returns control. The crash happens after a brief pause. Follow the problem setup, choose whether to hear Marlow out, then accept the downstairs invitation if you want to see the situation. This does not accept the woodland job.
 3. Watch Marlow collect the remains and walk to the door beside his former table. Walk behind him down the actual west-side stairs. The lab camera cuts away the floor overhead.
 4. Look around. Inspect fermentation notes for the optional ale/home exchange. Inspect habitats or jars and try opening them to hear the protective reactions.
-5. After a short period of free exploration, a weak sound draws Marlow to the troll. Approach him or the troll and press E. Follow the rescue, illness and research conversation. The help decision comes at the end.
+5. After a short period of free exploration, a weak sound draws Marlow to the troll. Approach him or the troll and press E. Talking to Marlow first leads to the troll. Ask any optional questions you want, then ask what he needs. Only “I'll get them.” at “Will you help me?” accepts the job.
 6. Try refusing once. Walk away and speak to him again to reconsider. Accept the ingredient trip. Walk up the same staircase.
 
 A second fresh run beginning by trying the laboratory door should give the contextual “room you wouldn't let me into” exchange at the later invitation. A fresh run inspecting the board should allow looking before Garrick reacts to taking a posting.
@@ -30,3 +30,4 @@ A second fresh run beginning by trying the laboratory door should give the conte
 Which player line does not sound like something you would say? Where does a conversation jump ahead of what you know? Can you see Marlow and the troll when the scene needs them? Does the decision feel earned? Does any door, prompt, camera transition or battlefield trap you?
 
 This remains a blockout. Do not judge final models or lighting yet. Actual reading/exploration time, not the scripted test duration, determines whether the target opening length is working.
+

@@ -1,11 +1,17 @@
 using System;
 namespace WoodlandSpine
 {
+    public enum MarlowInterest { Unknown, WillingToHear, RefusedToHear }
+    public enum MarlowJob { NotOffered, Offered, Accepted, Refused }
     public enum FirstApproach { None, Garrick, Kitchen, Rooms, Basement, Board, Merchandise, TakeMerchandise, Marlow, Idle }
     public enum IntroBeat { NotStarted, Reaction, Name, Welcome, Sample, WatchRequest, WatchReply, PairOfLegs, Stranger, Nope, Invitation, Warning, Finished }
     [Serializable]
     public sealed class ReactiveIntroState
     {
+        public bool playerNameKnown,paymentAsked,paymentKnown,woodlandKnown,ingredientsKnown,symptomsKnown,rescueKnown,cannotLeaveKnown,watchKnown,kitchenKnown;
+        public MarlowInterest marlowInterest;
+        public MarlowJob marlowJob;
+        public string labCheckpoint;
         public FirstApproach first;
         public IntroBeat beat;
         public bool roomsKnown, boardKnown, merchandiseKnown, theftWarned;
@@ -38,3 +44,4 @@ namespace WoodlandSpine
         public void Accept(){offerRefused=false;}
     }
 }
+

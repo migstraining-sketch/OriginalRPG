@@ -25,6 +25,9 @@ namespace WoodlandSpine
         public string notice="";
         public float noticeUntil;
         public string playerName="Traveller";
+        public bool enteringName;public string nameDraft="";System.Action afterName;
+        public void RequestName(System.Action next){enteringName=true;afterName=next;}
+        public void SubmitPlayerName(string value){if(!enteringName||string.IsNullOrWhiteSpace(value))return;playerName=value.Trim();if(playerName.Length>24)playerName=playerName.Substring(0,24);opening.state.intro.playerNameKnown=true;opening.state.metGarrick=true;enteringName=false;afterName?.Invoke();}
         public Color coatColor=new Color(.35f,.53f,.7f);
         float retreatUntil;
         int checkpointHP, checkpointBandages, checkpointPotions;
@@ -61,6 +64,7 @@ namespace WoodlandSpine
             if(player==null)return;
             intro.Tick(Time.deltaTime);
             firstLab.Tick(Time.deltaTime);full.Tick(Time.deltaTime);
+            if(mode==GameMode.Dialogue&&enteringName&&Input.GetKeyDown(KeyCode.Return)){SubmitPlayerName(nameDraft);return;}
             if(mode==GameMode.Dialogue&&dialogue.continueAction!=null&&(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.Return))){dialogue.continueAction();return;}
             if(Input.GetKeyDown(KeyCode.Escape)||Input.GetMouseButtonDown(1))
             {
@@ -109,7 +113,7 @@ namespace WoodlandSpine
         }
         public void Talk(string speaker,string text,params DialogueChoice[] choices){dialogue=new DialogueSession(speaker,text,choices);mode=GameMode.Dialogue;showInventory=false;}
         public void Exchange(string speaker,string text,System.Action next){Talk(speaker,text);dialogue.continueAction=next;}
-        public void CloseDialogue(){dialogue=null;mode=GameMode.Exploration;}
+        public void CloseDialogue(){enteringName=false;dialogue=null;mode=GameMode.Exploration;}
         DialogueChoice Done(string title="Leave conversation")=>new DialogueChoice(title,CloseDialogue);
         public void Interact(string key)
         {
@@ -183,6 +187,8 @@ namespace WoodlandSpine
         public void UseHealthPotion(){if(hp<rules.playerHP&&inventory.healthPotions>0){hp=Mathf.Min(rules.playerHP,hp+12);inventory.healthPotions--;}}
     }
 }
+
+
 
 
 

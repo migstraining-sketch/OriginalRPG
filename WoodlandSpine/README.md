@@ -4,11 +4,11 @@ Open this project in Unity **6000.5.6f1**, open **Assets/Scenes/Opening.unity**,
 
 For the standalone version, run **Builds/Windows/WoodlandSpine.exe**. Keep the entire Windows folder together, including the Data directory and DLLs.
 
-The latest Garrick/Marlow dialogue correction follows **Docs/OPENING-DIALOGUE-AUTHORITY.md**. See **Validation/DIALOGUE-CORRECTION.md** for its exact changes and limits. Read **PLAYTEST-OPENING.md** for the current route. The older INTRO and MARLOW guides/results describe superseded passes.
+The current opening follows **docs/DIALOGUE_PLAYER_AGENCY.md** in the repository. See **Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md** for the implemented state and dialogue changes, and **PLAYTEST-OPENING.md** for the route. Earlier supplied scripts and validation reports are retained as historical sources.
 
 ## Current implementation
 
-- Character name and coat colour, immediate control inside the inn, contextual introductions and unrestricted initial departure.
+- Coat colour, name entry when Garrick asks, immediate control inside the inn, contextual introductions and unrestricted initial departure.
 - Spoken player responses separated from NPC exchanges. Marlow's invitation precedes Garrick's warning. Marlow collects the sample remains and walks to unlock the laboratory.
 - A real staircase descends six metres into the lab beneath the inn. Walking down or back up changes camera cutaway; the player is not teleported. Marlow permanently relocates downstairs.
 - Free lab exploration; optional ale exchange; protective reactions to opening jars/enclosures; a quiet placeholder creature sound draws Marlow to the troll. Rescue, illness, research, inability to leave and watch backlog precede the ingredient briefing and genuine accept/refuse decision.
@@ -61,5 +61,11 @@ See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the comparison with the 
 ## Approved combat refinement
 
 Key 5 selects Lunge (Sword), Drive (Spear), or Quick Shot (Bow). Click the enemy or press Enter to confirm; Esc/right-click cancels. The first woodland creature now telegraphs a committed Pounce. See [COMBAT-REFINEMENT.md](Docs/COMBAT-REFINEMENT.md) for exact rules, terrain treatment, targeting fixes and validation.
+
+
+
+## Revised opening dialogue
+
+The current conversation follows [DIALOGUE-AGENCY-IMPLEMENTATION.md](Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md) and the repository's DIALOGUE_PLAYER_AGENCY authority. Enter your name when Garrick asks, not during coat selection. Hearing Marlow out and accepting his woodland job are separate choices. The older supplied dialogue and playtest guides describe superseded passes.
 
 

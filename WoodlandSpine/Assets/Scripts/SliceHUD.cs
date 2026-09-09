@@ -38,6 +38,11 @@ namespace WoodlandSpine
                 GUILayout.BeginArea(new Rect(width*.15f,height-panel-15,width*.7f,panel),GUI.skin.box);
                 dialogueScroll=GUILayout.BeginScrollView(dialogueScroll);
                 GUILayout.Label(game.dialogue.speaker,title);GUILayout.Label(game.dialogue.text,body);GUILayout.Space(12);
+                if(game.enteringName)
+                {
+                    GUI.SetNextControlName("Player name");game.nameDraft=GUILayout.TextField(game.nameDraft,24,GUILayout.Height(34));
+                    if(Button("Confirm name",!string.IsNullOrWhiteSpace(game.nameDraft)))game.SubmitPlayerName(game.nameDraft);
+                }
                 var choices=game.dialogue.choices.ToArray();
                 foreach(var choice in choices)if(choice.visible==null||choice.visible())if(Button(choice.label)){choice.choose();break;}
                 if(game.dialogue!=null&&game.dialogue.continueAction!=null)if(Button("Continue  [Space]"))game.dialogue.continueAction();
@@ -169,6 +174,7 @@ namespace WoodlandSpine
         }
     }
 }
+
 
 
 

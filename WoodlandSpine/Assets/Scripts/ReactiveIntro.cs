@@ -6,14 +6,15 @@ namespace WoodlandSpine
         public SliceGame game;
         public bool sitting;
         public float idleDelay=70;
-        float idleTime,labTime;
+        float idleTime,labTime,crashTime;
+        public float crashDelay=2.5f;
         Vector3 previousPosition;
         bool wasOutside;
         public InnConversation conversation;
         public OpeningState State=>game.opening.state;
         public ReactiveIntroState Story=>State.intro;
         public bool LabReady=>labTime>=4;
-        public void Initialize(SliceGame value){game=value;previousPosition=game.player.transform.position;idleTime=labTime=0;wasOutside=sitting=false;conversation=new InnConversation(game);}
+        public void Initialize(SliceGame value){game=value;previousPosition=game.player.transform.position;idleTime=labTime=crashTime=0;wasOutside=sitting=false;conversation=new InnConversation(game);}
         DialogueChoice C(string text,System.Action action)=>new DialogueChoice(text,action);
         void Observation(string speaker,string text)=>game.Exchange(speaker,text,game.CloseDialogue);
         void Bark(string text){game.notice=text;game.noticeUntil=Time.time+8;}
@@ -27,6 +28,7 @@ namespace WoodlandSpine
             if(key=="basement"&&!State.invitedDownstairs)
             {
                 Story.basementTried=true;Story.basementAttempts++;
+                if(Story.marlowInterest==MarlowInterest.RefusedToHear){Observation("Marlow","That's my laboratory. It's private.");return true;}
                 if(Story.basementAttempts==1&&Story.beat==IntroBeat.NotStarted)
                     Observation("Marlow","Um... excuse me.\n\nThat's my laboratory.\n\nYou're trying to enter it.");
                 else Begin(FirstApproach.Basement);
@@ -34,12 +36,14 @@ namespace WoodlandSpine
             }
             if(key=="kitchen"||key=="upstairs")
             {
+                if(key=="kitchen")Story.kitchenKnown=true;
                 if(Story.beat!=IntroBeat.Finished)Begin(key=="kitchen"?FirstApproach.Kitchen:FirstApproach.Rooms);
                 else Observation("Garrick",key=="kitchen"?"Look from this side.":"Rooms aren't free.");
                 return true;
             }
             if(key=="board"&&!State.huntingBoardUnlocked){Begin(FirstApproach.Board);return true;}
             if(key=="garrick"&&Story.beat!=IntroBeat.Finished){Begin(Story.idleAcknowledged&&Story.beat==IntroBeat.NotStarted?FirstApproach.Idle:FirstApproach.Garrick);return true;}
+            if(key=="marlow"&&Story.marlowInterest==MarlowInterest.RefusedToHear){conversation.Show("reconsider");return true;}
             if(key=="marlow")
             {
                 if(Story.beat!=IntroBeat.Finished)Begin(FirstApproach.Marlow);
@@ -67,6 +71,7 @@ namespace WoodlandSpine
         {
             if(game.opening.inLab){if(game.mode==GameMode.Exploration&&!game.showInventory)labTime+=delta;return;}
             Vector3 p=game.player.transform.position;bool outside=p.z>7;
+            if(Story.node=="await_crash"&&!outside&&game.mode==GameMode.Exploration&&!game.showInventory){crashTime+=delta;if(crashTime>=crashDelay&&!Story.sampleBroken){Story.sampleBroken=true;game.world.DropSample();}if(crashTime>=crashDelay+.8f){Stand();conversation.Show("sample");}}
             if(outside&&!wasOutside)
             {
                 if(!State.metGarrick)Story.leftBeforeIntroduction=true;
@@ -86,3 +91,7 @@ namespace WoodlandSpine
         }
     }
 }
+
+
+
+

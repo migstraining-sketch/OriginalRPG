@@ -1,12 +1,12 @@
 # Current validation status
 
-Latest pass: approved combat refinement against main baec2e2.
+Latest pass: approved dialogue/player-agency spine at main 9b86105.
 
 - Unity 6000.5.6f1 Windows build: PASS.
-- Editor checks: **4,453**, including **2,460** refinement cases covering Bow axes/off-axis radii and LOS, elevated-model and ground picking at four camera angles/two encounter elevations, near-border conversion, Signature geometry/damage/terrain/action budgets, Pounce commitment, and Mossback collision after Drive.
-- Built-player camera/control checks: **781**. Signature selection, cancellation, confirmation and repeat-confirmation protection; three screen sizes and restoration of exploration framing.
-- Full-frame 1100x510 screenshot visually reviewed: Signature controls and range, disabled out-of-range confirmation, Pounce marker, and cropped battlefield are visible.
-- Full built-player opening regression: **286 checks passed** on the final combat build, including all three weapons against woodland wildlife and Mossback, plus the retained lab, potion, contracts, shop and kitchen routes.
+- Editor checks: **4,463**, including **130** dialogue-authority assertions for locked setup order, name entry, work-interest gates, payment independence, hearing refusal, invitation/warning order, contextual basement knowledge, lab questions, job refusal/reconsideration and final acceptance.
+- Full built-player opening: **PASS, 290 checks** (opening-runtime-result.txt). Covers physical traversal, the new hearing/refusal flow, Marlow-first reveal, actual job commitment and retained combat/shop/profession routes.
+- Prior camera/control checks: 781; combat behavior was unchanged by this dialogue pass.
+- Hidden-window dialogue screenshots were blank, so no visual acceptance is claimed. The unusable images are excluded from delivery. Human name-entry UI, dialogue pacing and staging acceptance remain required.
 
-See Docs/COMBAT-REFINEMENT.md for changes, tuning values, Lunge's documented terrain interpretation, enemy design template and remaining limitations. The previous continuity audit's non-combat gaps remain. Automated tests and screenshot checks do not establish combat fun, dialogue acceptance or a complete human mouse playthrough.
+See Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md and PLAYTEST-OPENING.md. Old DIALOGUE-CORRECTION.md and the supplied historical dialogue are retained as earlier evidence, not the current authority. No new payment amount or final voice approval is claimed.
 

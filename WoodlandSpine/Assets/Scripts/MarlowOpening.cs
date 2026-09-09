@@ -25,7 +25,7 @@ namespace WoodlandSpine
         public void Initialize(SliceGame game){this.game=game;props=new OpeningWorld(game.world);}
         DialogueChoice Choice(string label,System.Action action)=>new DialogueChoice(label,action);
         DialogueChoice Leave()=>Choice("Step away",game.CloseDialogue);
-        void Say(string who,string text,params DialogueChoice[] choices)=>game.Talk(who,text,choices.Length==0?new[]{Leave()}:choices);
+        void Say(string who,string text,params DialogueChoice[] choices){if(choices.Length==0)game.Exchange(who,text,game.CloseDialogue);else game.Talk(who,text,choices);}
         public bool Interact(string key)
         {
             if(game.intro!=null&&game.intro.Handle(key))return true;
@@ -189,3 +189,4 @@ namespace WoodlandSpine
         }
     }
 }
+

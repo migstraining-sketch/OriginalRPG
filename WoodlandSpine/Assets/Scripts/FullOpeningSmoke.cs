@@ -13,22 +13,22 @@ namespace WoodlandSpine
         void OnDestroy(){Application.logMessageReceived-=Log;}
         void Log(string message,string trace,LogType type){if(type==LogType.Exception){Debug.LogError("OPENING_SMOKE_FAILURE: "+message);Application.Quit(1);}}
         void Check(bool condition,string label){if(!condition)throw new Exception(label);checks++;Debug.Log("OPENING CHECK "+label);}
-        void First(){Check(game.dialogue!=null,"dialogue exists");if(game.dialogue.continueAction!=null)game.dialogue.continueAction();else{var choice=game.dialogue.choices.Find(c=>c.visible==null||c.visible());Check(choice!=null,"response available");choice.choose();}}
+        void First(){Check(game.dialogue!=null,"dialogue exists");if(game.enteringName)game.SubmitPlayerName("Migs");else if(game.dialogue.continueAction!=null)game.dialogue.continueAction();else{var choice=game.dialogue.choices.Find(c=>c.visible==null||c.visible());Check(choice!=null,"response available");choice.choose();}}
         void Choose(string text){var c=game.dialogue.choices.Find(x=>x.label==text);Check(c!=null,"choice: "+text);c.choose();}
         IEnumerator Start()
         {
-            yield return null;game.enabled=false;game.player.enabled=false;
+            yield return null;game.enabled=false;game.player.enabled=false;Screen.SetResolution(1280,800,false);yield return new WaitForSeconds(.7f);
             folder=Path.GetFullPath(Path.Combine(Application.dataPath,"../../..","Validation"));
             Check(game.Objective==""&&game.mode==GameMode.Exploration,"arrival is free control");
             game.Interact("seat");game.intro.Tick(game.intro.idleDelay+.1f);Check(game.intro.sitting&&game.mode==GameMode.Exploration&&game.dialogue==null,"idle bark permits continued sitting");game.intro.Stand();
             game.opening.state=new OpeningState();game.intro.Initialize(game);game.notice="";game.noticeUntil=0;
             game.Interact("basement");Check(game.dialogue.text.Contains("You're trying to enter it.")&&game.intro.Story.beat==IntroBeat.NotStarted,"first basement attempt is Marlow's objection only");game.CloseDialogue();
-            game.Interact("basement");Check(game.dialogue.text.Contains("I see 'em, Bottle-Brain."),"repeated basement attempt brings Garrick in");game.CloseDialogue();
+            game.Interact("basement");Check(game.dialogue.text=="Garrick?","repeated basement attempt brings Garrick in");game.CloseDialogue();
             game.opening.state=new OpeningState();game.intro.Initialize(game);
             yield return Walk(new Vector3(0,.1f,5.5f));yield return Walk(new Vector3(-3,.1f,5.5f));Check(Vector3.Distance(game.player.transform.position,game.world.interactions.Find(x=>x.key=="board").transform.position)<2.4f,"contract board remains physically accessible beside stairwell");
             game.Interact("board");Check(game.intro.Story.beat==IntroBeat.NotStarted,"looking at board does not trigger intervention");game.CloseDialogue();
             yield return Walk(new Vector3(0,.1f,5.5f));yield return Walk(new Vector3(0,.1f,-3));
-            game.Interact("garrick");int safety=0;while(game.intro.Story.beat!=IntroBeat.Finished&&safety++<100)First();
+            bool refusedHearing=false;game.Interact("garrick");int safety=0;while(game.intro.Story.beat!=IntroBeat.Finished&&safety++<100){if(game.dialogue==null){Check(game.intro.Story.node=="await_crash"&&game.mode==GameMode.Exploration,"name returns control before crash");game.intro.Tick(game.intro.crashDelay+.1f);}else if(game.intro.Story.node=="hear"&&!refusedHearing){Choose("No.");First();Check(!game.firstLab.leading&&!game.opening.state.invitedDownstairs,"refusing hearing leaves Marlow upstairs");game.Interact("marlow");Choose("Sure.");refusedHearing=true;}else {if(game.enteringName){yield return null;yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"Dialogue-name-entry.png"));yield return new WaitForSeconds(.2f);}First();}}
             Check(game.firstLab.leading,"Marlow physically leads to basement");
             yield return new WaitForSeconds(13);
             yield return Walk(new Vector3(0,.1f,-5));yield return Walk(new Vector3(-7,.1f,-5));yield return Walk(new Vector3(-7,.1f,-3.6f));
@@ -38,8 +38,8 @@ namespace WoodlandSpine
             game.Interact("lab_ale");for(int i=0;i<5;i++)First();game.CloseDialogue();
             game.firstLab.Tick(13);yield return new WaitForSeconds(1.5f);Check(game.firstLab.drewAttention&&game.mode==GameMode.Exploration,"troll draws attention without taking control");
             Capture("Opening-connected-lab.png");
-            game.Interact("troll");safety=0;while(game.firstLab.beat!=LabBeat.Decision&&safety++<25)First();
-            Check(!game.opening.state.questAccepted,"help decision follows rescue illness and research");Choose("I can't do this.");game.CloseDialogue();game.Interact("lab_marlow");Choose("I'll bring them back.");game.CloseDialogue();
+            game.Interact("lab_marlow");Check(game.dialogue.text=="Come here. I'll show you.","Marlow first guides intended reveal");First();First();First();yield return null;yield return new WaitForEndOfFrame();ScreenCapture.CaptureScreenshot(Path.Combine(folder,"Dialogue-lab-questions.png"));yield return new WaitForSeconds(.2f);Choose("What do you need?");while(game.firstLab.beat!=LabBeat.Decision)First();
+            Check(!game.opening.state.questAccepted,"help decision follows rescue illness and research");Choose("No.");game.CloseDialogue();game.Interact("lab_marlow");Choose("I'll get them.");game.CloseDialogue();
             Check(game.opening.state.questAccepted,"can reconsider after refusal");
             yield return Walk(new Vector3(-4.5f,-5.9f,5.2f));yield return Walk(new Vector3(-7,-5.9f,5.2f));yield return Walk(new Vector3(-7,.1f,-3.6f));yield return Walk(new Vector3(-7,.1f,-5));yield return Walk(new Vector3(0,.1f,-5));
             Check(!game.opening.inLab,"physical ascent returns to inn");
@@ -131,5 +131,9 @@ namespace WoodlandSpine
         }
     }
 }
+
+
+
+
 
 
