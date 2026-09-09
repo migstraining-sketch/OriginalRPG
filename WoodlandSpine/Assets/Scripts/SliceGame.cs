@@ -92,16 +92,15 @@ namespace WoodlandSpine
                 if(Input.GetKeyDown(KeyCode.M))Select(CombatChoice.Move);
                 if(Input.GetKeyDown(KeyCode.Alpha2))Select(CombatChoice.Defend);
                 if(Input.GetKeyDown(KeyCode.Alpha3))Select(CombatChoice.Item);
+                if(Input.GetKeyDown(KeyCode.Alpha5))Select(CombatChoice.Signature);
                 if(Input.GetKeyDown(KeyCode.Alpha4))Select(CombatChoice.Dash);
                 if(Input.GetKeyDown(KeyCode.Return))ConfirmSelection();
                 if(Input.GetKeyDown(KeyCode.Space))EndTurn();
                 if(Input.GetMouseButtonDown(0)&&CombatViewport.Pixels(Screen.width,Screen.height).Contains(Input.mousePosition))
                 {
-                    Ray ray=view.ScreenPointToRay(Input.mousePosition);var plane=new Plane(Vector3.up,Vector3.zero);
-                    if(plane.Raycast(ray,out float distance))
+                    if(CombatTargeting.Pick(view,site.grid,site.actor,combat.enemyCell,Input.mousePosition,out Hex h))
                     {
-                        Hex h=site.grid.At(ray.GetPoint(distance));
-                        if(selection.choice==CombatChoice.Attack){if(h.Equals(combat.enemyCell)){if(!combat.Attack())combat.log="Target is outside your weapon geometry or your action is spent.";else selection.Cancel();}}
+                        if(selection.choice==CombatChoice.Attack||selection.choice==CombatChoice.Signature){if(h.Equals(combat.enemyCell)){ConfirmSelection();return;}}
                         else if(selection.choice==CombatChoice.Move){if(!combat.Move(h))combat.log="Choose a blue reachable hex. Mud costs 2; units and trees block movement.";}
                         Refresh();CheckResult();
                     }
@@ -138,9 +137,15 @@ namespace WoodlandSpine
         {
             site=encounter;checkpoint=player.transform.position;checkpointHP=hp;checkpointBandages=inventory.bandages;checkpointPotions=inventory.healthPotions;checkpointEnemy=foe??site.start;
             Hex start=site.grid.NearestOpen(player.transform.position,checkpointEnemy);
+            if(enemy.pounce&&!foe.HasValue)
+            {
+                float best=float.MaxValue;
+                foreach(Hex h in site.grid.cells)if(site.grid.Walkable(h)&&h.Distance(start)==3&&site.grid.LineOfSight(h,start))
+                {float score=(site.grid.World(h)-site.grid.World(checkpointEnemy)).sqrMagnitude;if(score<best){best=score;checkpointEnemy=h;}}
+            }
             combat=new CombatModel(site.grid,rules,inventory,enemy,start,checkpointEnemy,hp);mode=GameMode.Combat;selection.Cancel();showInventory=false;
             if(full!=null)full.progress.combatSeen=true;
-            notice=enemy.mossback?"Normally docile. This one pursues you. Use its locked charge lane and the trees.":"The nearby trail becomes the battlefield. Your exploration position sets your starting hex.";
+            notice=enemy.mossback?"Normally docile. This one pursues you. Its charge threatens the marked lane.":"The nearby trail becomes the battlefield. Your exploration position sets your starting hex.";
             Refresh();
         }
         public void Refresh()
@@ -148,14 +153,14 @@ namespace WoodlandSpine
             if(combat==null)return;
             player.Place(site.grid.World(combat.playerCell)+Vector3.up*.08f);
             site.actor.position=site.grid.World(combat.enemyCell)+Vector3.up*(combat.enemy.mossback?.85f:.55f);
-            hp=combat.playerHP;world.ShowGrid(site,combat,selection.choice==CombatChoice.Attack,selection.choice==CombatChoice.Move);
+            hp=combat.playerHP;world.ShowGrid(site,combat,selection.choice==CombatChoice.Attack,selection.choice==CombatChoice.Move,selection.choice==CombatChoice.Signature);
         }
         public void Select(CombatChoice choice){if(mode==GameMode.Combat&&combat.phase==Phase.Player){selection.Select(choice);Refresh();}}
         public void CancelSelection(){selection.Cancel();showInventory=false;if(mode==GameMode.Combat)Refresh();}
         public void ConfirmSelection()
         {
             if(mode!=GameMode.Combat||combat.phase!=Phase.Player)return;
-            bool committed=selection.choice==CombatChoice.Attack?combat.Attack():selection.choice==CombatChoice.Dash?combat.Dash():selection.choice==CombatChoice.Defend&&combat.Defend();
+            bool committed=selection.choice==CombatChoice.Signature?combat.Signature():selection.choice==CombatChoice.Attack?combat.Attack():selection.choice==CombatChoice.Dash?combat.Dash():selection.choice==CombatChoice.Defend&&combat.Defend();
             if(committed)selection.Cancel();Refresh();CheckResult();
         }
         public void UseCombatItem(bool potion=false){if(combat.Item(potion))selection.Cancel();Refresh();}
@@ -178,5 +183,6 @@ namespace WoodlandSpine
         public void UseHealthPotion(){if(hp<rules.playerHP&&inventory.healthPotions>0){hp=Mathf.Min(rules.playerHP,hp+12);inventory.healthPotions--;}}
     }
 }
+
 
 

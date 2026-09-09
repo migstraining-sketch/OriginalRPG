@@ -22,7 +22,7 @@ The latest Garrick/Marlow dialogue correction follows **Docs/OPENING-DIALOGUE-AU
 
 - WASD / arrows: move. E: nearby interaction. I: inventory and equipment.
 - Dialogue: click an actual player reply. Space/Enter or Continue advances an NPC exchange. Esc leaves the conversation; narrative milestones remain recorded.
-- Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash. Click a highlighted hex to move or the enemy to attack. After selecting Attack, you can also click Attack [enemy] or press Enter. Confirm Dash/Defend with Enter. Space ends the turn. Esc/right-click cancels an uncommitted selection.
+- Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash, 5 weapon Signature. Click a highlighted hex to move or the enemy to attack. After selecting Attack, you can also click Attack [enemy] or press Enter. Confirm Dash/Defend with Enter. Space ends the turn. Esc/right-click cancels an uncommitted selection.
 - Brewing/Cooking: use the displayed controls. Stepping away preserves that preparation.
 - Inventory lists coins, ingredient counts and edible provisions. Select a provision to use it for cooking or contribution.
 
@@ -56,4 +56,10 @@ Next smallest step: play the revised invitation and first lab visit and adjust o
 ## Continuity review
 
 See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the comparison with the other design chats. Combat is aligned; full Cooking, Hunting observation/tracking and final narrative acceptance remain incomplete. Buying gear stores it without auto-equipping; open inventory to equip it. Body armor can be changed outside combat.
+
+
+## Approved combat refinement
+
+Key 5 selects Lunge (Sword), Drive (Spear), or Quick Shot (Bow). Click the enemy or press Enter to confirm; Esc/right-click cancels. The first woodland creature now telegraphs a committed Pounce. See [COMBAT-REFINEMENT.md](Docs/COMBAT-REFINEMENT.md) for exact rules, terrain treatment, targeting fixes and validation.
+
 

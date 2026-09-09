@@ -40,14 +40,15 @@ namespace WoodlandSpine.Editor
             ReactiveIntroValidation.Run();
             FullOpeningValidation.Run();
             InnDialogueValidation.Run();
-            CombatViewportValidation.Run();
+            CombatViewportValidation.Run();CombatRefinementValidation.Run(rules);
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/Scenes/Opening.unity"},locationPathName="Builds/Windows/WoodlandSpine.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.Development});
             if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)throw new Exception("Player build failed: "+report.summary.result);
             Debug.Log("SLICE_BUILD_SUCCESS");
         }
         static WeaponData Weapon(string title,int damage,int min,int max,WeaponGeometry geometry)
-        {var w=ScriptableObject.CreateInstance<WeaponData>();w.title=title;w.damage=damage;w.minRange=min;w.maxRange=max;w.geometry=geometry;AssetDatabase.CreateAsset(w,"Assets/Resources/"+title.Replace(" ","")+".asset");return w;}
+        {var w=ScriptableObject.CreateInstance<WeaponData>();w.title=title;w.damage=damage;w.minRange=min;w.maxRange=max;w.geometry=geometry;w.signatureDamage=geometry==WeaponGeometry.Ranged?3:4;AssetDatabase.CreateAsset(w,"Assets/Resources/"+title.Replace(" ","")+".asset");return w;}
         static EnemyData Enemy(string title,int hp,int armor,int damage,bool mossback)
-        {var e=ScriptableObject.CreateInstance<EnemyData>();e.title=title;e.hp=hp;e.armor=armor;e.damage=damage;e.mossback=mossback;AssetDatabase.CreateAsset(e,"Assets/Resources/"+title.Replace(" ","")+".asset");return e;}
+        {var e=ScriptableObject.CreateInstance<EnemyData>();e.title=title;e.hp=hp;e.armor=armor;e.damage=damage;e.mossback=mossback;e.pounce=!mossback;AssetDatabase.CreateAsset(e,"Assets/Resources/"+title.Replace(" ","")+".asset");return e;}
     }
 }
+

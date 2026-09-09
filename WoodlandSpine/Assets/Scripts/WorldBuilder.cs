@@ -144,7 +144,7 @@ namespace WoodlandSpine
             }
             return site;
         }
-        public void ShowGrid(EncounterSite site,CombatModel combat,bool attacking,bool moving=true)
+        public void ShowGrid(EncounterSite site,CombatModel combat,bool attacking,bool moving=true,bool signature=false)
         {
             Dictionary<Hex,int> reach=combat.grid.Reach(combat.playerCell,combat.movement,combat.enemyCell,out _);
             foreach(var pair in site.tiles)
@@ -152,11 +152,12 @@ namespace WoodlandSpine
                 Hex h=pair.Key;Color color=new Color(.23f,.32f,.28f);
                 if(combat.grid.difficult.Contains(h))color=new Color(.48f,.36f,.19f);
                 if(combat.grid.blocked.Contains(h))color=new Color(.16f,.18f,.17f);
-                else if(attacking&&combat.primary&&combat.grid.CanAttack(combat.inventory.weapon,combat.playerCell,h))color=new Color(.65f,.31f,.3f);
+                else if((attacking||signature)&&combat.CanTarget(h,signature))color=new Color(.65f,.31f,.3f);
                 else if(moving&&combat.phase==Phase.Player&&reach.ContainsKey(h))color=new Color(.23f,.52f,.61f);
                 if(combat.lane.Contains(h))color=new Color(.96f,.62f,.13f);
-                if(h.Equals(combat.enemyCell))color=new Color(.75f,.24f,.21f);
+                if(h.Equals(combat.enemyCell))color=(attacking||signature)&&combat.CanTarget(h,signature)?new Color(.9f,.25f,.2f):new Color(.55f,.43f,.36f);
                 if(h.Equals(combat.playerCell))color=new Color(.6f,.83f,.77f);
+                if(combat.pouncing&&h.Equals(combat.pounceTarget))color=new Color(1f,.65f,.1f);
                 pair.Value.sharedMaterial=Material(color);pair.Value.enabled=true;
             }
         }
@@ -174,3 +175,4 @@ namespace WoodlandSpine
         }
     }
 }
+

@@ -1,6 +1,6 @@
 namespace WoodlandSpine
 {
-    public enum CombatChoice { None, Move, Attack, Item, Dash, Defend }
+    public enum CombatChoice { None, Move, Attack, Item, Dash, Defend, Signature }
     // Selection contains no battle state; cancelling cannot refund a committed action.
     public sealed class CombatSelection
     {
@@ -9,3 +9,4 @@ namespace WoodlandSpine
         public void Cancel(){choice=CombatChoice.None;}
     }
 }
+

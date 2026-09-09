@@ -73,7 +73,7 @@ namespace WoodlandSpine
         }
         public bool CanAttack(WeaponData weapon, Hex a, Hex b)
         {
-            if(weapon==null) return false;
+            if(weapon==null||!Walkable(a)||!Walkable(b)) return false;
             int n=a.Distance(b);
             return n>=weapon.minRange&&n<=weapon.maxRange&&
                 (weapon.geometry!=WeaponGeometry.Straight||a.StraightTo(b))&&LineOfSight(a,b);
@@ -87,3 +87,4 @@ namespace WoodlandSpine
         }
     }
 }
+

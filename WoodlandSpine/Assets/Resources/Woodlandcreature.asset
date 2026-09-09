@@ -19,3 +19,6 @@ MonoBehaviour:
   damage: 4
   chargeDamage: 10
   mossback: 0
+  pounce: 1
+  pounceRange: 3
+

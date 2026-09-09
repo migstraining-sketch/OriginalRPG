@@ -89,6 +89,7 @@ namespace WoodlandSpine
                 GUILayout.BeginHorizontal();
                 if(Button("Move [M]",turn))game.Select(CombatChoice.Move);
                 if(Button("Attack [1]",turn&&c.primary))game.Select(CombatChoice.Attack);
+                if(Button(c.inventory.weapon.SignatureName+" [5]",turn&&c.primary))game.Select(CombatChoice.Signature);
                 if(Button("Defend [2]",turn&&c.primary))game.Select(CombatChoice.Defend);
                 if(Button("Item [3]",turn&&c.primary))game.Select(CombatChoice.Item);
                 if(Button("Dash [4]",turn&&c.primary))game.Select(CombatChoice.Dash);
@@ -103,9 +104,11 @@ namespace WoodlandSpine
                 }
                 if(game.selection.choice==CombatChoice.Dash||game.selection.choice==CombatChoice.Defend)
                     if(Button($"Confirm {game.selection.choice} [Enter] — spends Primary Action",turn&&c.primary))game.ConfirmSelection();
+                if(game.selection.choice==CombatChoice.Signature)
+                    if(Button($"{c.inventory.weapon.SignatureName} {c.enemy.title} [Enter] • {CombatModel.Damage(c.inventory.weapon.signatureDamage,c.enemy.armor)} damage",c.CanTarget(c.enemyCell,true)))game.ConfirmSelection();
                 if(game.selection.choice==CombatChoice.Attack)
-                    if(Button($"Attack {c.enemy.title} [Enter]",turn&&c.primary&&c.grid.CanAttack(c.inventory.weapon,c.playerCell,c.enemyCell)))game.ConfirmSelection();
-                GUILayout.Label(game.selection.choice==CombatChoice.Attack?$"Click enemy in red range • damage {CombatModel.Damage(game.inventory.weapon.damage,c.enemy.armor)}":game.selection.choice==CombatChoice.Move?"Click blue hex • brown costs 2 • amber charge lane":"Choose an action, then confirm it when ready.",small);
+                    if(Button($"Attack {c.enemy.title} [Enter]",c.CanTarget(c.enemyCell)))game.ConfirmSelection();
+                GUILayout.Label(game.selection.choice==CombatChoice.Signature?c.inventory.weapon.SignatureHint:game.selection.choice==CombatChoice.Attack?$"Click enemy in red range • damage {CombatModel.Damage(game.inventory.weapon.damage,c.enemy.armor)}":game.selection.choice==CombatChoice.Move?"Click blue hex • brown costs 2 • amber charge lane":"Choose an action, then confirm it when ready.",small);
                 GUILayout.Label("Esc / right-click: cancel selection • committed movement and actions stay spent",small);
             }
             else {GUILayout.Label(Time.time<game.noticeUntil||game.nearby==null?game.notice:"[E] "+game.nearby.caption,body);GUILayout.Label("WASD move   •   E interact   •   I inventory",small);}
@@ -166,6 +169,9 @@ namespace WoodlandSpine
         }
     }
 }
+
+
+
 
 
 

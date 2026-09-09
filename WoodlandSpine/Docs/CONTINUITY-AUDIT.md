@@ -41,3 +41,8 @@ This is a source/state audit with regression tests, not narrative approval or a 
 
 Resolve/approve the default Garrick-to-first-lab dialogue against the supplied script, then implement and playtest its wording and staging only. After that, a dedicated Cooking mechanics pass and Hunting observation pass are needed; the current technical skeleton should not be presented as full design compliance.
 
+
+## Follow-up: 2026-09-09
+
+Main baec2e2 reconciles the frontier conflicts listed above and makes the approved combat refinement the current priority. See COMBAT-REFINEMENT.md for the new implementation. The earlier audit remains historical evidence; its non-combat implementation gaps still apply.
+

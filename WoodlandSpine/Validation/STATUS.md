@@ -1,11 +1,12 @@
 # Current validation status
 
-Latest pass: continuity audit against main fc69ea8 and read-only review of the Opening Questline branch.
+Latest pass: approved combat refinement against main baec2e2.
 
-- Unity 6000.5.6f1 Windows build: PASS (1,992 editor assertions).
-- Full built-player opening regression: **287 assertions**, including real shop purchase callbacks, no auto-equipping or duplicate coat charges, and all five Sylvie ingredient introductions without unreported resolution inference.
-- That runtime pass precedes the final text-only correction to Garrick's departure line and inventory scrolling; the final Unity build includes both.
-- Prior focused camera regression: 772 assertions across three screen sizes, with the wide Game-view screenshot visually reviewed. Camera code was unchanged by this pass.
+- Unity 6000.5.6f1 Windows build: PASS.
+- Editor checks: **4,453**, including **2,460** refinement cases covering Bow axes/off-axis radii and LOS, elevated-model and ground picking at four camera angles/two encounter elevations, near-border conversion, Signature geometry/damage/terrain/action budgets, Pounce commitment, and Mossback collision after Drive.
+- Built-player camera/control checks: **781**. Signature selection, cancellation, confirmation and repeat-confirmation protection; three screen sizes and restoration of exploration framing.
+- Full-frame 1100x510 screenshot visually reviewed: Signature controls and range, disabled out-of-range confirmation, Pounce marker, and cropped battlefield are visible.
+- Full built-player opening regression: **286 checks passed** on the final combat build, including all three weapons against woodland wildlife and Mossback, plus the retained lab, potion, contracts, shop and kitchen routes.
 
-Read Docs/CONTINUITY-AUDIT.md for matches, concrete remaining implementation gaps and unresolved authority conflicts. No claim of full Cooking/Hunting compliance or narrative acceptance is made. Automated tests do not replace a human mouse/dialogue/pacing playthrough.
+See Docs/COMBAT-REFINEMENT.md for changes, tuning values, Lunge's documented terrain interpretation, enemy design template and remaining limitations. The previous continuity audit's non-combat gaps remain. Automated tests and screenshot checks do not establish combat fun, dialogue acceptance or a complete human mouse playthrough.
 

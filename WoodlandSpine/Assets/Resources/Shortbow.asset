@@ -17,3 +17,5 @@ MonoBehaviour:
   minRange: 2
   maxRange: 4
   geometry: 2
+  signatureDamage: 3
+

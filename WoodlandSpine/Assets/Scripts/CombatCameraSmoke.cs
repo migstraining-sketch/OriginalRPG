@@ -26,9 +26,17 @@ namespace WoodlandSpine
                     Check(safe.Contains(game.view.WorldToScreenPoint(game.combat.grid.World(h)+Vector3.up*height)),"actor clipped by combat HUD");
                 foreach(float x in new[]{-34f,34f})
                     Check(!safe.Contains(game.view.WorldToScreenPoint(game.combat.grid.origin+Vector3.right*x)),"neighboring site is in camera");
-                game.Select(CombatChoice.Attack);
+                game.Select(CombatChoice.Signature);yield return null;yield return new WaitForEndOfFrame();
                 ScreenCapture.CaptureScreenshot(Path.Combine(folder,$"Combat-framing-{screen.x}x{screen.y}.png"));
                 yield return new WaitForSeconds(.25f);
+            }
+            foreach(var weapon in game.rules.weapons)
+            {
+                game.inventory.Receive(weapon);game.mode=GameMode.Combat;game.combat.inventory=game.inventory;
+                game.combat.BeginPlayer();game.combat.playerCell=new Hex(0,0);game.combat.enemyCell=weapon.geometry==WeaponGeometry.Ranged?new Hex(0,1):new Hex(0,2);game.combat.enemyHP=10;
+                game.Select(CombatChoice.Signature);game.CancelSelection();Check(game.combat.primary&&game.combat.enemyHP==10,"cancel signature preserves action");
+                game.Select(CombatChoice.Signature);game.ConfirmSelection();Check(game.combat.enemyHP==10-weapon.signatureDamage&&!game.combat.primary,"signature UI confirmation commits once");
+                int hp=game.combat.enemyHP;game.ConfirmSelection();Check(game.combat.enemyHP==hp,"repeat confirmation cannot double signature");
             }
             game.mode=GameMode.Exploration;yield return null;yield return new WaitForEndOfFrame();
             Check(game.view.rect==new Rect(0,0,1,1),"exploration did not restore full viewport");
@@ -37,3 +45,5 @@ namespace WoodlandSpine
         }
     }
 }
+
+
