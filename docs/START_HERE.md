@@ -31,4 +31,16 @@ The opening is designed through:
 
 **Character Creation → Garrick's Inn → Marlow's opening quest → Potion Making → first Hunting contract → Hunting → Sylvie → Cooking unlock.**
 
-The next major design task is to plan the **first 1–2 hours after the opening/tutorial phase** without expanding every profession into a full late-game system yet.
+A playable Unity prototype exists, but implementation does not promote itself to canon.
+
+The current priority is to **implement and playtest the approved MVP combat-refinement package** in `docs/CORE_SYSTEMS_PROGRESSION.md`, especially:
+
+- Sword Lunge, Spear Drive, and Bow Quick Shot
+- the Bow targeting/LOS bug
+- the first woodland creature's committed Pounce
+- Mossback obstacle/lane baiting
+- combat clarity and cancel/back behavior
+
+The canonical Garrick/Marlow opening dialogue still requires authored refinement and remains an active opening task.
+
+**Do not move on to designing the first 1–2 hours after Cooking unlock yet.** Finish refining and validating the opening's combat/dialogue experience first.
