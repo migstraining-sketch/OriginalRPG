@@ -8,13 +8,14 @@ This repository is the continuity authority for the original RPG project.
 2. `docs/CENTRAL_BRAIN_HANDOFF.md`
 3. `docs/PROJECT_STATE.json`
 4. `docs/DESIGN_PILLARS.md`
-5. `docs/CORE_SYSTEMS_PROGRESSION.md`
-6. `docs/CHARACTERS.md`
-7. `docs/OPENING_FLOW.md`
-8. `docs/CONTRACTS.md`
-9. `docs/SYSTEMS_HUNTING.md`
-10. `docs/SYSTEMS_COOKING.md`
-11. `docs/UNRESOLVED.md`
+5. `docs/DESIGN_GUARDRAILS.md`
+6. `docs/CORE_SYSTEMS_PROGRESSION.md`
+7. `docs/CHARACTERS.md`
+8. `docs/OPENING_FLOW.md`
+9. `docs/CONTRACTS.md`
+10. `docs/SYSTEMS_HUNTING.md`
+11. `docs/SYSTEMS_COOKING.md`
+12. `docs/UNRESOLVED.md`
 
 ## Working rule
 
