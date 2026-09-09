@@ -26,36 +26,41 @@ Target standard-path timing: about **27–30 minutes**, with healthy variance of
 
 ## IMPORTANT CURRENT DEVELOPMENT FRONTIER — READ BEFORE DOING NEW DESIGN
 
-A playable Unity prototype now exists and runs. It proves that the project can support the basic technical skeleton, including exploration/interactions, inventory/equipment, connected encounter spaces, and the tactical hex-combat foundation.
+A playable Unity prototype exists and proves the basic technical skeleton: exploration/interactions, inventory/equipment, connected encounter spaces, and tactical hex combat.
 
-**The currently implemented opening is NOT canonical yet.**
+Implementation still does **not** promote itself to canon. The repository remains the continuity authority.
 
-A recent implementation pass attempted to move the prototype toward the designed Garrick/Marlow opening. The structure is getting closer, but the latest playtest found a major problem: **the dialogue itself does not feel like our game or our characters yet.**
+The latest playtests exposed two active opening problems:
 
-Specific problems observed:
+1. **Combat did not yet justify the hex grid strongly enough.** The first woodland battle could collapse into walking adjacent and repeating Attack, while Bow targeting was inconsistent.
+2. **Opening dialogue still needs authored refinement.** Garrick/Marlow structure is closer, but dialogue choices and the first laboratory conversation must continue to follow the meaningful-choice rule rather than generic `Listen / Leave` interaction.
 
-- Garrick/Marlow dialogue is not the intended authored dialogue.
-- Player dialogue choices feel artificial and wrong.
-- The implementation frequently offers choices equivalent to **Listen / Leave** rather than meaningful player responses.
-- The Marlow/player conversation in the laboratory is substantially wrong in dialogue, pacing, options, and overall feel.
-- Garrick is **not** incorrectly present in the laboratory. The lab scene is player + Marlow as intended. The problem is the conversation itself.
-- The technical/structural implementation should therefore not be mistaken for approved narrative content.
+Central Brain has now approved the Core Systems MVP combat-refinement package in `CORE_SYSTEMS_PROGRESSION.md`.
 
-### Immediate rule
+### Immediate implementation/playtest priority
 
-**Do NOT send Work another broad implementation pass yet.**
+Implement and validate:
 
-**Do NOT proceed deeper into implementing the woodland quest merely because the prototype can support it.**
+- exactly one opening Signature technique per starter weapon
+- **Sword Lunge**
+- **Spear Drive**
+- **Bow Quick Shot** at range 1 only, 3 Damage before Armor
+- Bow basic Attack remaining 5 Damage at range 2–4 with LOS and no adjacent basic attack
+- no universal Shove for MVP
+- first woodland creature using a readable committed **Pounce**
+- Mossback arena deliberately supporting Charge-lane/obstacle baiting
+- selected-but-uncommitted combat actions having cancel/back behavior
+- Bow targeting legality being determined by hex range + LOS, not camera angle/click direction
 
-The next task is to author the canonical playable dialogue for the opening ourselves, then give implementation a much more exact script/state specification instead of asking it to improvise from character summaries.
+The Bow targeting inconsistency is a **priority Unity bug** because tactical UI/highlights/target acceptance must agree with the rules.
 
-### Immediate next design sequence
+### Active narrative task
 
-Write/refine the actual playable dialogue for:
+Continue authoring/refining the canonical playable dialogue for:
 
 **player enters Garrick's Inn → reactive first contact with Garrick → Marlow/Bottle-Brain incident → Garrick volunteers the newcomer → Marlow invites player downstairs → laboratory exploration → sick troll reveal → Marlow conversation → woodland job offer**
 
-Begin with the normal/default route where the player voluntarily approaches Garrick, then build the contextual alternate entrances around that canonical conversation.
+Begin with the normal/default route where the player voluntarily approaches Garrick, then build contextual alternate entrances around that canonical conversation.
 
 ### Dialogue-system principle to use going forward
 
@@ -75,6 +80,10 @@ Dialogue choices should appear when the player has an actual:
 Not every spoken line needs a branching choice. Choices should earn their place.
 
 Examples around the sick troll might eventually include genuine questions/reactions such as what happened to it, whether it is dangerous, why Marlow keeps it beneath an inn, or whether the player is willing to help. Exact canonical wording is still to be authored and should not be invented by implementation before Central Brain approves it.
+
+### Deferred frontier
+
+**Do not design the first 1–2 hours after Cooking unlock yet.** Finish refining and validating the opening's combat/dialogue experience first.
 
 ## Reactive first-contact structure
 
@@ -256,14 +265,15 @@ Locked/current MVP principles:
 - Base player Movement: **3 hexes**.
 - One **Primary Action** per player turn.
 - Movement may be split before and after the Primary Action.
-- Opening actions: Attack, Defend, Item, Dash, plus contextual environmental interactions.
+- Opening actions: Attack, Defend, Item, Dash, one equipped-weapon Signature technique, plus contextual environmental interactions.
+- No universal Shove for MVP.
 - No universal opportunity attacks.
 - No universal facing/flanking system for MVP.
 - Alternating Player Phase → Enemy Phase.
 - Important enemy actions use readable intent/telegraphs.
 - Terrain begins with Open, Difficult, and Blocking; difficult terrain costs 2 Movement.
 - Starting exploration position influences starting tactical position.
-- Weapon identity should begin with geometry/range rather than only damage.
+- Weapon identity begins with geometry/range rather than only damage.
 - Normal valid attacks do **not** use a generic random miss chance.
 - Fixed damage for the prototype.
 - Damage formula: **max(1, Attack Damage - Armor)**.
@@ -272,7 +282,30 @@ Locked/current MVP principles:
 - Starter Sword prototype: **6 Damage**.
 - Mossback prototype identity: telegraphed straight-line Charge that can collide with obstacles and create an opening.
 
+Locked opening Signature techniques:
+
+- **Sword Lunge:** target exactly 2 straight hexes away; move into the intervening valid hex and strike for prototype 4 Damage before Armor.
+- **Spear Drive:** reduced-damage straight-line thrust at range 1–2 for prototype 4 Damage before Armor, then push 1 hex directly away if the destination is valid/open.
+- **Bow Quick Shot:** range 1 only, 3 Damage before Armor, LOS required, no automatic reposition. Bow basic Attack remains 5 Damage at range 2–4 with LOS.
+
+The first ordinary woodland creature should use a readable committed **Pounce** so the player immediately learns that enemy intent marks dangerous space and movement changes the outcome.
+
+The Mossback battlefield should contain deliberate Blocking objects and dangerous charge lanes so baiting/redirecting Charge is intentional rather than lucky alignment.
+
+Core combat doctrine:
+
+- prefer behavioral weaknesses over arbitrary tooltip weaknesses where practical
+- telegraph danger clearly without automatically telegraphing the solution
+- support multiple valid encounter answers rather than scripted command sequences
+- use **teach → mastery → remix** for enemy evolution
+- expand combat vocabulary horizontally before relying on stat inflation
+- prefer permanent learned weapon techniques for future progression, with exact acquisition still unresolved
+
 A concrete UX issue found during playtest: selected combat actions need a **cancel/back** before commitment. Right-click and/or Escape should cancel a selected but uncommitted action without spending the turn. This is not an undo system; committed/resolved actions remain committed.
+
+Bow targeting legality must be based on combat hex coordinates, range, and LOS rather than camera angle or click vector. The current angle/distance inconsistency is a priority Unity defect.
+
+See `CORE_SYSTEMS_PROGRESSION.md` for the detailed combat authority and enemy-design template.
 
 ## Equipment/loadout — locked MVP direction
 
@@ -304,10 +337,8 @@ Do not start serious Blender production merely because Unity is running. Use pla
 
 ## Next recommended task
 
-**Do not plan the first 1–2 hours yet.** That was the previous frontier and is now superseded by playtest feedback.
+**Do not plan the first 1–2 hours yet.**
 
-The immediate next task is:
+The immediate next task is to **implement and playtest the approved MVP combat-refinement package**, fix the Bow targeting defect, and validate that the first woodland fight and Mossback encounter now justify the grid.
 
-### Author the canonical opening dialogue and player-response structure
-
-Start with the default Garrick approach and carry it through the Bottle-Brain incident and Marlow invitation. Then design the contextual first-contact variants. After that, author the first Marlow laboratory conversation through the sick troll reveal and woodland job offer.
+In parallel/after that validation, continue authoring the canonical Garrick/Marlow opening dialogue and laboratory conversation rather than allowing implementation to improvise character writing.
