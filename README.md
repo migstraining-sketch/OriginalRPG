@@ -7,3 +7,11 @@ Design continuity repository for an original fantasy RPG inspired by the charm, 
 This is an **original game**. AdventureQuest, BattleOn, RuneScape, World of Warcraft, Supernatural, One Piece, Fantastic Beasts, and other referenced works are inspirations/research only. Their characters, locations, chronology, names, lore, and proprietary content are **not canon** for this project.
 
 Start with [`docs/START_HERE.md`](docs/START_HERE.md).
+
+## Playable Unity prototype
+
+The complete placeholder implementation is in [`WoodlandSpine/`](WoodlandSpine/README.md). Add that folder in Unity Hub using Unity **6000.5.6f1**, open `Assets/Scenes/Opening.unity`, then press Play. An empty Untitled scene will not run the game.
+
+See the [opening playtest guide](WoodlandSpine/PLAYTEST-OPENING.md) and [implementation handoff](WoodlandSpine/Docs/IMPLEMENTATION-HANDOFF.md). Source, scene, tunable assets, project settings and build tools are included. Unity generates its caches locally; Windows builds are generated with `WoodlandSpine/Tools/Build-Prototype.ps1` and are not stored in Git.
+
+The design documents above remain the continuity authority. Prototype defaults and unfinished behavior do not promote themselves to locked canon.

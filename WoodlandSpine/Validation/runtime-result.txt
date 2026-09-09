@@ -1,0 +1,1 @@
+PASS: Unity runtime opening, lab, gathering (both milk routes), all weapon encounters, selection cancellation, physical inn exit/return, debrief, supervised brewing/resume, troll recovery, board unlock.

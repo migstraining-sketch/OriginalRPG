@@ -1,0 +1,5 @@
+# Local tools and generated output
+.vs/
+.idea/
+*.user
+*.zip

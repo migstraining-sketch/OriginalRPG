@@ -1,0 +1,15 @@
+ADDED Assets/Scripts/InnConversation.cs and Unity metadata
+ADDED Assets/Editor/InnDialogueValidation.cs and Unity metadata
+ADDED Docs/OPENING-DIALOGUE-AUTHORITY.md (verbatim user script)
+ADDED Validation/DIALOGUE-CORRECTION.md
+CHANGED Assets/Scripts/ReactiveIntro.cs
+CHANGED Assets/Scripts/ReactiveIntroState.cs
+CHANGED Assets/Scripts/FullOpening.cs
+CHANGED Assets/Scripts/SliceGame.cs
+CHANGED Assets/Scripts/SliceHUD.cs
+CHANGED Assets/Scripts/SampleDrop.cs
+CHANGED Assets/Scripts/FullOpeningSmoke.cs
+CHANGED Assets/Editor/PrototypeBuild.cs
+CHANGED README.md
+CHANGED Validation/STATUS.md
+REFRESHED Builds/Windows and ../WoodlandSpine-Source.zip

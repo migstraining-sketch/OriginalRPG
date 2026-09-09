@@ -1,0 +1,10 @@
+RULE_VALIDATION_PASSED: 169 assertions
+OPENING_VALIDATION_PASSED: 33 assertions
+REACTIVE_INTRO_VALIDATION_PASSED: 34 assertions
+ENCOUNTER PASS: Simple Sword vs Woodland creature; 3 turns; 25 HP remaining
+ENCOUNTER PASS: Simple Sword vs Mossback; 10 turns; 16 HP remaining
+ENCOUNTER PASS: Hunting Spear vs Woodland creature; 3 turns; 25 HP remaining
+ENCOUNTER PASS: Hunting Spear vs Mossback; 8 turns; 17 HP remaining
+ENCOUNTER PASS: Shortbow vs Woodland creature; 2 turns; 27 HP remaining
+ENCOUNTER PASS: Shortbow vs Mossback; 9 turns; 15 HP remaining
+LOGIC_HARNESS_SUCCESS (math stand-ins; this check alone does not validate Unity runtime)

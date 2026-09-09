@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266a061c176e6d8d2fe2fdad9a94d1a7, type: 3}
+  m_Name: SliceRules
+  m_EditorClassIdentifier: 
+  playerHP: 30
+  movement: 3
+  dash: 3
+  bandageHeal: 8
+  startingBandages: 2
+  weapons:
+  - {fileID: 11400000, guid: 28924e00b9c649f18ba16901a04235a9, type: 2}
+  - {fileID: 11400000, guid: 5421d4357258f7c17966182bca9eed37, type: 2}
+  - {fileID: 11400000, guid: faeb3abbcda19b5433aac5ccbec9caff, type: 2}
+  coat: {fileID: 11400000, guid: 8cf992ab5d8bf38f67358245584858fe, type: 2}
+  wildlife: {fileID: 11400000, guid: e33cd48d588589748eacef1fb63fdfd4, type: 2}
+  mossback: {fileID: 11400000, guid: 23fc52dcdd14bdc5c5942405f54908a4, type: 2}
+  placeholderShader: {fileID: 4800000, guid: 5eda93e678c21e26b0ac661d83bc8425, type: 3}
