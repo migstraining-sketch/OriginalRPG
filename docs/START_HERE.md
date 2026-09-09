@@ -10,10 +10,12 @@ This repository is the continuity authority for the original RPG project.
 4. `docs/DESIGN_PILLARS.md`
 5. `docs/CHARACTERS.md`
 6. `docs/OPENING_FLOW.md`
-7. `docs/CONTRACTS.md`
-8. `docs/SYSTEMS_HUNTING.md`
-9. `docs/SYSTEMS_COOKING.md`
-10. `docs/UNRESOLVED.md`
+7. `docs/OPENING_QUESTLINE_ROLE.md`
+8. `docs/CONTRACTS.md`
+9. `docs/SYSTEMS_POTION_MAKING.md`
+10. `docs/SYSTEMS_HUNTING.md`
+11. `docs/SYSTEMS_COOKING.md`
+12. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -25,8 +27,10 @@ This is an **original RPG**, not an AdventureQuest/BattleOn reconstruction and n
 
 ## Current design frontier
 
-The opening is designed through:
+The opening is structurally designed through:
 
 **Character Creation → Garrick's Inn → Marlow's opening quest → Potion Making → first Hunting contract → Hunting → Sylvie → Cooking unlock.**
 
-The next major design task is to plan the **first 1–2 hours after the opening/tutorial phase** without expanding every profession into a full late-game system yet.
+The immediate authored-design frontier is the **canonical playable Garrick/Marlow opening dialogue and state flow**, beginning with the normal/default route and then adapting the alternate reactive first-contact entrances around it. Implementation should not improvise narrative dialogue from character summaries.
+
+The broader post-opening task remains planning the **first 1–2 hours after the opening/tutorial phase**, but that should follow the current opening-dialogue refinement rather than replacing it.
