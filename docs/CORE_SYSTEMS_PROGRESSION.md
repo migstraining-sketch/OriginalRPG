@@ -328,6 +328,119 @@ Before implementation, Central Brain should explicitly approve/reject:
 7. Mossback arena requirement for deliberate obstacle/lane baiting rather than relying on incidental alignment.
 8. Permanent learned weapon techniques as the preferred future combat-progression direction.
 
+### Additional combat doctrine from external design review — PROPOSED, NOT LOCKED
+
+A recent combat-design review reinforced several principles that map cleanly onto this RPG's turn-based hex system. These are recommendations for Central Brain review, not new canon.
+
+#### Agency should come from positional verbs
+
+The grid only earns its existence if the player can look at a battlefield and form more than one sensible plan. The goal is not a large ability count; it is a small set of verbs that interact strongly with position, enemy behavior, and terrain.
+
+For the opening, the proposed signatures should therefore be judged primarily by whether they create distinct decisions:
+- **Sword:** enter/exit danger flexibly
+- **Spear:** control where the enemy stands
+- **Bow:** preserve and exploit a preferred firing envelope
+
+A weapon that only changes numerical range without changing the player's turn planning has not developed a strong enough tactical identity.
+
+#### Prefer behavioral weaknesses over tooltip weaknesses
+
+Opening enemies should usually be exploitable because of **how they behave**, not because a tooltip says they take +20% from a damage type.
+
+Examples:
+- a Pounce commits to a marked landing location
+- Mossback commits to a charge lane and cannot freely redirect
+- a future Nightquill may require a clean glide lane from a perch
+- a future Brookmaw may be strongest in water and less mobile when forced onto dry ground
+
+The player should often discover these relationships through cause and effect. Mechanical weaknesses should feel like knowledge about the creature rather than arbitrary spreadsheet tags.
+
+#### Telegraph danger clearly; do not automatically telegraph the solution
+
+Important enemy intent should be readable enough for informed decisions, but the game should avoid tutorializing the answer.
+
+Good:
+- **Mossback is preparing to charge through these hexes.**
+
+Too explicit:
+- **Move behind the tree so Mossback crashes and becomes Staggered.**
+
+The player deserves clear information about the threat. Discovering how to exploit that information is part of the play.
+
+#### Encounters should allow multiple valid answers
+
+The first woodland Pounce should not become a one-solution tutorial puzzle. Depending on weapon and position, a player might:
+- leave the committed landing hex and punish the miss
+- Defend and absorb the attack intentionally
+- use Sword Lunge after the landing creates range 2
+- maintain Spear reach around the landing hex
+- reposition a Bow user to preserve 2–4 range
+- use Blocking terrain to alter the creature's route where the layout allows it
+
+There may be a strongest answer in a particular state, but the encounter should not collapse into a scripted command sequence.
+
+#### Progression should evolve the combat vocabulary horizontally before inflating it vertically
+
+A strong long-term combat upgrade should often make the player think:
+
+**"I can do something now that I could not do before."**
+
+Prefer new geometry, timing, reactions, setup options, or movement interactions over filler upgrades such as +2% damage.
+
+Possible later examples, still deferred:
+- Sword learns a movement-counter or reposition technique
+- Spear learns **Set Spear** to threaten an approach lane
+- Bow learns a movement-control or pinning technique
+
+These are examples of direction only, not approved abilities.
+
+The long-term goal is for old enemies to feel easier because the player has gained knowledge, techniques, and tactical competence, not because every old creature silently level-scales to preserve the same time-to-kill forever.
+
+#### Teach a behavior, allow mastery, then remix it
+
+Enemy evolution should weaponize player familiarity without making prior learning worthless.
+
+Example structure:
+- early enemy teaches committed Pounce
+- later enemy uses a related leap but can redirect slightly after takeoff
+- Mossback teaches heavy straight-line Charge
+- a later charger might smash light cover instead of staggering against it
+
+The player recognizes the family resemblance but must update the answer.
+
+#### Combat clarity is a system requirement
+
+Because the model uses predictable hits, fixed prototype damage, telegraphed intent, and grid legality, visual/input feedback must agree with the underlying rules.
+
+The camera, highlights, LOS display, selected action, and target acceptance should never create conflicting interpretations of what the game believes is legal. The existing Bow targeting report is therefore not a cosmetic annoyance; it directly undermines tactical trust and should be treated as a priority implementation defect once Central Brain approves the redesign specification.
+
+#### Recommended enemy-design template for future Core Systems work
+
+When defining an opening enemy, document at minimum:
+
+- **Behavior:** what positional pattern it tries to execute
+- **Tell:** what the player can read before the important action resolves
+- **Exploitable Rule:** the discoverable limitation/weakness in that behavior
+- **Later Remix Potential:** one way future content could challenge mastery without discarding the original lesson
+
+Example:
+
+**Mossback**
+- Behavior: straight-line Charge
+- Tell: lowers head + charge lane appears
+- Exploitable Rule: cannot redirect once committed; large Blocking terrain stops it
+- Later Remix Potential: tougher charger can break light cover but still cannot freely turn mid-charge
+
+This template should guide encounter design without turning every creature into a giant bespoke subsystem.
+
+#### Summary doctrine for Central Brain review
+
+Recommended guiding sentence:
+
+> **Give the player a small number of meaningful verbs, give enemies readable but exploitable behavior, let terrain and geometry change the answer, teach through cause and effect, and make progression expand what the player can do rather than merely inflate numbers.**
+
+If approved, this should guide future combat refinements without forcing all individual weapon signatures or enemy abilities to become permanent canon automatically.
+
 ## Dedicated opening-system authorities
 
 ### Hunting
