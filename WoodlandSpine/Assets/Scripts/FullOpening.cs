@@ -63,7 +63,7 @@ namespace WoodlandSpine
                 if(progress.huntingLearned&&!progress.kitchenAccess)
                 {Say("Garrick",progress.food.Contains("Eggs")?"Not bad. Those eggs for eating, or are you starting a flock?":"Not bad. And you've still got half the beast hanging off you.",C("I was going to find something to do with them.",()=>{progress.kitchenAccess=true;Say("Garrick","Take it through to her. I'd call her out, but I've survived this long by remembering one thing.\n\nMy inn. Her kitchen.");}));return true;}
                 if(S.trollTreated&&!S.huntingBoardUnlocked)return false;
-                Say("Garrick",progress.marlowGone?"Marlow left. The little one didn't make it.":progress.defeatedGarrick?"You've proved you can handle yourself. Next time, use your words.":"What do you need?",
+                Say("Garrick",progress.marlowGone?"Marlow left.":progress.defeatedGarrick?"You've proved you can handle yourself. Next time, use your words.":"What do you need?",
                     C(S.questAccepted&&game.inventory.weapon==null?"Something to take into the woods.":"Let me see your equipment.",S.questAccepted&&game.inventory.weapon==null?game.Loan:Shop),
                     C("About a room...",Rooms),C("What work is available?",Board),Back());return true;
             }
@@ -133,8 +133,8 @@ namespace WoodlandSpine
         void Shop()
         {
             Say("Garrick","Basic steel. Nothing fancy. You've got "+progress.coins+" coins.",C("Weapons — 12 coins",()=>{
-                var options=new System.Collections.Generic.List<DialogueChoice>();foreach(var w in game.rules.weapons){var item=w;options.Add(C(item.Description+" • 12 coins",()=>{if(game.inventory.weapons.Contains(item)){Say("Garrick","You've already got that one.");return;}if(progress.coins<12){Say("Garrick","Twelve coins. Come back when you have them.");return;}progress.coins-=12;game.inventory.Receive(item);Say("Garrick","There. Keep the edge clean.");}));}Say("Garrick", "Pick the one that suits the distance you want to keep.",options.ToArray());}),
-                C("Reinforced coat — Armor 2, 16 coins",()=>{if(progress.coins<16||game.inventory.Armor>=2){Say("Garrick","You need sixteen coins and a reason to replace what you're wearing.");return;}progress.coins-=16;var coat=ScriptableObject.CreateInstance<BodyData>();coat.title="Reinforced Travel Coat";coat.armor=2;game.inventory.body=coat;Say("Garrick","Should take a knock better.");}),C("Take a blade without paying.",Steal),Back());
+                var options=new System.Collections.Generic.List<DialogueChoice>();foreach(var w in game.rules.weapons){var item=w;options.Add(C(item.Description+" • 12 coins",()=>{if(game.inventory.weapons.Contains(item)){Say("Garrick","You've already got that one.");return;}if(progress.coins<12){Say("Garrick","Twelve coins. Come back when you have them.");return;}progress.coins-=12;game.inventory.Store(item);Say("Garrick","There. Keep the edge clean.");}));}Say("Garrick", "Pick the one that suits the distance you want to keep.",options.ToArray());}),
+                C("Reinforced coat — Armor 2, 16 coins",()=>{if(progress.coins<16||game.inventory.bodies.Exists(x=>x.title=="Reinforced Travel Coat")){Say("Garrick","You need sixteen coins and a reason to replace what you're wearing.");return;}progress.coins-=16;var coat=ScriptableObject.CreateInstance<BodyData>();coat.title="Reinforced Travel Coat";coat.armor=2;game.inventory.Store(coat);Say("Garrick","Should take a knock better.");}),C("Take a blade without paying.",Steal),Back());
         }
         void Steal(){game.intro.conversation.Show("take");}
         public void BeginTheftFight(){finishBoutWithoutIntroduction=S.invitedDownstairs&&game.firstLab.leading||game.firstLab.arrived;progress.criminal=true;progress.crimeWarned=true;Challenge();}
@@ -153,7 +153,7 @@ namespace WoodlandSpine
         void Sylvie()
         {
             if(!progress.kitchenAccess)return;
-            if(!progress.demonstrated){Say("Sylvie","Out.",C("Garrick sent me. I brought "+progress.food+".",()=>Say("Sylvie",progress.food.Contains("Eggs")?"Duskhen eggs. Uncracked, too. Set them here. I'll show you what they're good for.":progress.food.Contains("Preserved")?"Preserved cut. Needs soaking before it sees a pan. Put it here.":progress.food.Contains("Shed")?"Shed tail. Clean enough. Trim the outer edge first. Here.":"Fresh cut. Still firm. Put it here before you warm it with your hands.",C("Watch her prepare it.",()=>BeginCooking(false)))));return;}
+            if(!progress.demonstrated){Say("Sylvie","Out.",C("Garrick sent me.",()=>Say("Sylvie",SylvieIngredients.Describe(progress.food),C("Show me.",()=>BeginCooking(false)))));return;}
             if(!progress.cookingLearned){Say("Sylvie","Bring enough to cook with. And enough that I'm not teaching you at everyone else's expense.",C("All right. I'd like to learn.",()=>{progress.cookingLearned=true;Say("Sylvie","Don't look so pleased. You haven't cooked anything yet.\n\nCooking learned. You can practise here when you have ingredients and something for the pantry.",C("I'd like to try now.",()=>BeginCooking(true)),C("I'll come back with supplies.",game.CloseDialogue));}),C("You feed people who can't pay?",()=>Say("Sylvie","They're hungry, aren't they?",C("Fair enough. Teach me.",()=>{progress.cookingLearned=true;Say("Sylvie","Then bring enough to cook with, and something for them.");}))),Back());return;}
             Say("Sylvie","Pan's here. Ingredients aren't going to prepare themselves.",C("I'd like to practise.",()=>BeginCooking(true)),C("I've got something for the pantry.",Pantry),Back());
         }
@@ -197,3 +197,4 @@ namespace WoodlandSpine
         }
     }
 }
+

@@ -36,7 +36,7 @@ namespace WoodlandSpine
         {
             if(rules==null)rules=Resources.Load<SliceData>("SliceRules");
             world=new WorldBuilder{shader=rules.placeholderShader};world.Build();hp=rules.playerHP;
-            inventory=new Inventory{body=rules.coat,bandages=rules.startingBandages};
+            inventory=new Inventory{body=rules.coat,bandages=rules.startingBandages};inventory.Store(rules.coat);
             var actor=new GameObject("Player");actor.AddComponent<CharacterController>();player=actor.AddComponent<Explorer>();player.Initialize(this);
             var visual=world.Shape("Player coat",new Vector3(0,.9f,0),new Vector3(.65f,.9f,.65f),coatColor,PrimitiveType.Capsule,false);
             visual.transform.SetParent(actor.transform,false);visual.transform.localPosition=new Vector3(0,.9f,0);
@@ -178,4 +178,5 @@ namespace WoodlandSpine
         public void UseHealthPotion(){if(hp<rules.playerHP&&inventory.healthPotions>0){hp=Mathf.Min(rules.playerHP,hp+12);inventory.healthPotions--;}}
     }
 }
+
 

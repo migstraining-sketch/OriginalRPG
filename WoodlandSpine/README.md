@@ -52,3 +52,8 @@ Next smallest step: play the revised invitation and first lab visit and adjust o
 
 
 
+
+## Continuity review
+
+See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the comparison with the other design chats. Combat is aligned; full Cooking, Hunting observation/tracking and final narrative acceptance remain incomplete. Buying gear stores it without auto-equipping; open inventory to equip it. Body armor can be changed outside combat.
+

@@ -6,7 +6,7 @@ namespace WoodlandSpine
     {
         public SliceGame game;
         GUIStyle body,title,small,button;
-        Vector2 dialogueScroll;
+        Vector2 dialogueScroll,inventoryScroll;
         DialogueSession lastDialogue;
         void Init()
         {
@@ -51,7 +51,14 @@ namespace WoodlandSpine
             if(game.showInventory)
             {
                 GUILayout.BeginArea(new Rect(width/2-260,160,520,height-185),GUI.skin.box);
+                inventoryScroll=GUILayout.BeginScrollView(inventoryScroll);
                 GUILayout.Label("Equipment & inventory",title);GUILayout.Label($"Body: {game.inventory.body.title} • Armor {game.inventory.Armor}",body);
+                foreach(var coat in game.inventory.bodies)
+                {
+                    bool equipped=coat==game.inventory.body;
+                    if(Button((equipped?"Wearing: ":"Wear: ")+coat.title+" • Armor "+coat.armor,!equipped&&game.mode!=GameMode.Combat))game.inventory.body=coat;
+                }
+                if(game.mode==GameMode.Combat)GUILayout.Label("Change body armor outside combat.",small);
                 var p=game.full.progress;
                 GUILayout.Label($"Coins {p.coins}"+(p.wellFed?" • Well Fed":""),body);
                 foreach(var food in p.provisions)if(food.Value>0)if(Button(food.Key+" ×"+food.Value+(p.food==food.Key?" • selected":""),p.food!=food.Key))p.food=food.Key;
@@ -71,7 +78,7 @@ namespace WoodlandSpine
                 {if(game.mode==GameMode.Combat)game.UseCombatItem();else game.UseBandage();}
                 if(Button($"Health Potion ×{game.inventory.healthPotions} • heal 12",game.inventory.healthPotions>0&&game.hp<game.rules.playerHP&&(game.mode!=GameMode.Combat||game.combat.primary&&game.combat.phase==Phase.Player)))
                 {if(game.mode==GameMode.Combat)game.UseCombatItem(true);else game.UseHealthPotion();}
-                if(Button("Close"))game.showInventory=false;GUILayout.EndArea();return;
+                if(Button("Close"))game.showInventory=false;GUILayout.EndScrollView();GUILayout.EndArea();return;
             }
             bool battle=game.mode==GameMode.Combat;
             GUILayout.BeginArea(new Rect(16,height-(battle?205:76),width-32,battle?190:61),GUI.skin.box);
@@ -159,4 +166,6 @@ namespace WoodlandSpine
         }
     }
 }
+
+
 

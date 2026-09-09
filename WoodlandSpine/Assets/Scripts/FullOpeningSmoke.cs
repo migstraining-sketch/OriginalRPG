@@ -75,6 +75,23 @@ namespace WoodlandSpine
             game.player.Place(new Vector3(0,.1f,15));
             for(int i=0;i<3;i++){Vector3 client=game.full.props.origins[i]+new Vector3(-6,.1f,-11);yield return Walk(new Vector3(client.x,.1f,15));yield return Walk(client);yield return Walk(new Vector3(client.x,.1f,15));yield return Walk(new Vector3(0,.1f,15));}
             Check(game.full.progress.hunts[0].rewarded&&game.full.progress.hunts[1].rewarded,"earlier contract states survive visiting other sites");
+            // Exercise the actual shop callbacks: buying must not equip or discard gear.
+            var carried=game.inventory;game.inventory=new Inventory{body=game.rules.coat};game.inventory.Store(game.rules.coat);
+            game.inventory.Receive(game.rules.weapons[0]);game.full.progress.coins=50;
+            game.Interact("merchandise");Choose("Weapons — 12 coins");Choose(game.rules.weapons[1].Description+" • 12 coins");
+            Check(game.inventory.weapon==game.rules.weapons[0]&&game.inventory.weapons.Contains(game.rules.weapons[1])&&game.full.progress.coins==38,"bought weapon carried without replacing equipped weapon");
+            game.CloseDialogue();game.Interact("merchandise");Choose("Reinforced coat — Armor 2, 16 coins");
+            Check(game.inventory.body==game.rules.coat&&game.inventory.bodies.Count==2&&game.inventory.Armor==1&&game.full.progress.coins==22,"bought coat preserves worn armor and stores both garments");
+            game.CloseDialogue();game.Interact("merchandise");Choose("Reinforced coat — Armor 2, 16 coins");
+            Check(game.full.progress.coins==22&&game.inventory.bodies.Count==2,"duplicate coat purchase does not charge coins");
+            game.CloseDialogue();game.inventory=carried;
+            foreach(string food in new[]{"Fresh Reedback Haunch","Preserved Reedback Cut","Fresh Duskhen Eggs","Fresh Brookmaw Tail","Naturally Shed Brookmaw Tail"})
+            {
+                game.full.progress.demonstrated=false;game.full.progress.food=food;game.Interact("sylvie");Choose("Garrick sent me.");
+                string species=food.Contains("Reedback")?"Reedback":food.Contains("Eggs")?"Duskhen":"Brookmaw";
+                Check(game.dialogue.text.Contains(species),"Sylvie identifies exact species for "+food);
+                Check(!game.dialogue.text.Contains("Killed")&&!game.dialogue.text.Contains("Blocked"),"Sylvie does not infer an unreported resolution");game.CloseDialogue();
+            }
             File.WriteAllText(Path.Combine(folder,"opening-runtime-result.txt"),"PASS: "+checks+" assertions. Actual stair traversal, farm routes and NPC relocation, dialogue order and refusal/reconsideration, all weapon woodland fights, first brew, all three contracts (one lethal, two nonlethal), kitchen, cooking, and room rental. Scripted callbacks; not human dialogue/pacing acceptance.\n");
             Debug.Log("FULL_OPENING_RUNTIME_SUCCESS: "+checks);Application.Quit(0);
         }
@@ -114,4 +131,5 @@ namespace WoodlandSpine
         }
     }
 }
+
 
