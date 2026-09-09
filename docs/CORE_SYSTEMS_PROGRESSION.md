@@ -37,6 +37,34 @@ Locked/high-level direction:
 - Systems should be understandable without requiring a wiki open constantly.
 - Long-term replayability should come from interconnected systems and durable progression rather than an endless gear treadmill.
 
+### Intrinsic-fun test — locked Core Systems doctrine
+
+Progression and rewards should **reinforce enjoyable activities, not compensate for boring ones**.
+
+When evaluating a core activity, temporarily imagine its XP, currency, and reward numbers are hidden and ask:
+
+> **Would performing this once still be interesting?**
+
+If the answer is no, increasing rewards is not the preferred fix. Improve the activity itself first where practical.
+
+This does not mean rewards are unimportant. Rewards should strengthen motivation around an activity whose moment-to-moment decisions, discovery, execution, or consequences already have value.
+
+### Systemic-discovery principle — locked Core Systems doctrine
+
+Prefer a few **understandable, consistent interacting rules** over bespoke scripted answers.
+
+Players should be allowed to combine systems and discover valid solutions for themselves where practical. Do not immediately tutorialize every useful interaction the systems permit.
+
+In combat this can eventually include combinations among:
+- displacement
+- enemy telegraphs
+- terrain
+- line of sight
+- creature behavior
+- contextual environmental interactions
+
+This principle does **not** authorize a universal physics sandbox or uncontrolled MVP scope. Start with a few strong rules, test whether their interactions are fun, and expand only when playtesting earns more complexity.
+
 ## Locked MVP tactical-combat direction
 
 Central Brain has accepted the current opening prototype direction:
@@ -110,9 +138,9 @@ Other locked/current rules:
 
 The exact narrative source of the player's first weapon remains unresolved and belongs with opening/economy decisions rather than being silently dictated by the equipment system.
 
-## MVP combat refinement package — PROPOSED, NOT LOCKED
+## MVP combat refinement package — LOCKED / CURRENT MVP DIRECTION
 
-Latest Unity playtesting exposed that the grid currently exists without demanding enough positional thought in the first battle. The following package is the Core Systems subchat's recommended smallest refinement. Central Brain must approve it before implementation.
+Central Brain approved the opening combat-refinement package with one Bow revision. Do not redesign these rules casually during implementation; implementation discoveries should be reported back to Core Systems/Central Brain.
 
 ### Design target
 
@@ -125,67 +153,70 @@ Primary Actions remain:
 - Defend
 - Item
 - Dash
-- one weapon-specific Signature technique when available
+- one weapon-specific Signature technique
 - contextual environment interaction when authored
 
-Do **not** add a universal Shove for the opening prototype. Displacement is more valuable as a weapon/enemy identity and contextual-environment tool than as a button every character automatically owns.
+There is **no universal Shove** for MVP. Displacement is more valuable as a weapon/enemy identity and contextual-environment tool than as a button every character automatically owns.
 
-### Proposed starter weapon signatures
+### Locked starter weapon signatures
 
-The signatures are alternate tactical actions, not separate cooldown/resource systems. Each spends the normal Primary Action and should normally trade raw damage or positional safety for geometry.
+Each starter weapon receives exactly one opening Signature technique. Signatures spend the normal Primary Action and do not introduce a separate cooldown/resource system.
 
 #### Sword — Lunge
 
-**Proposal:** target an enemy exactly 2 hexes away in a straight hex direction. Move 1 hex toward it into the intervening open hex, then strike for reduced damage (prototype target: **4** before Armor).
+Target an enemy exactly **2 hexes away in a straight hex direction**. Move 1 hex toward it into the intervening open hex, then strike for reduced damage; prototype target is **4 Damage before Armor**.
 
 Purpose:
-- sword users can affect a fight from two hexes away without becoming true ranged fighters
-- converts position into offense by committing the player closer to danger
-- creates a meaningful choice between spending ordinary Movement first for a full 6-damage Attack or using Lunge to preserve Movement for post-attack repositioning
+- lets Sword affect a fight from two hexes away without becoming a true ranged weapon
+- converts position into offense while committing the player closer to danger
+- creates a choice between spending ordinary Movement first for a full 6-damage Attack or using Lunge to preserve more Movement for post-attack repositioning
 - keeps Sword the flexible/mobile baseline rather than merely "range 1"
 
 Restrictions:
 - intervening hex must be walkable/unoccupied
 - destination must leave the target adjacent
 - straight hex direction only
-- no jumping through Blocking/Difficult terrain for free; movement into Difficult terrain should consume/obey normal movement logic if retained after implementation testing
+- Lunge does not jump through Blocking terrain or erase terrain costs
+
+Exact implementation treatment of entering Difficult terrain should preserve the normal movement rules rather than granting free traversal.
 
 #### Spear — Drive
 
-**Proposal:** attack a target 1–2 hexes away in a straight line for reduced damage (prototype target: **4**) and push it **1 hex directly away** if the destination is open.
+Attack a target **1–2 hexes away in a straight line** for reduced damage; prototype target is **4 Damage before Armor**, then push it **1 hex directly away** if the destination is open.
 
 Purpose:
 - makes Spear about controlling spacing rather than merely having Sword+1 range
-- can push enemies out of adjacency, toward/away from terrain, off ideal approach routes, or out of a chokepoint
-- creates a tradeoff between full 6-damage basic thrust and lower-damage battlefield control
+- can push enemies out of adjacency, toward/away from terrain, off ideal approach routes, or out of chokepoints
+- creates a tradeoff between the full 6-damage basic thrust and lower-damage battlefield control
 
 Restrictions:
 - straight-line target geometry remains mandatory
-- push fails harmlessly if destination is Blocking/outside grid/occupied; damage still applies
-- no collision bonus or hazard damage is required for MVP unless a specific environment later earns it
+- push fails harmlessly if the destination is Blocking, outside the grid, or occupied; damage still applies
+- no universal collision bonus or hazard damage is part of MVP
 
 #### Bow — Quick Shot
 
-**Proposal:** Bow basic Attack remains **5 damage, range 2–4, LOS, no adjacent basic attack**. Quick Shot is an emergency close-range technique at **range 1–2** for reduced damage (prototype target: **3**) with LOS.
+Bow basic Attack remains:
+- **5 Damage before Armor**
+- **range 2–4**
+- LOS required
+- cannot basic-attack adjacent targets
 
-Purpose:
-- preserves Bow's preferred 2–4 range while preventing adjacency from becoming a dead UI state
-- the Bow user can choose a weak shot while pressured, or spend Movement/Dash/Switch Weapon to restore favorable distance
-- keeps true ranged identity because full damage and widest targeting still require spacing
+Quick Shot is the Bow's emergency pressured-state Signature:
+- **range 1 only**
+- **3 Damage before Armor**
+- LOS required
+- spends the Primary Action
+- no automatic movement or reposition
 
-This is intentionally less powerful than granting a free retreat or normal-damage adjacent shot. The positional problem should remain real.
+Spatial identity:
+- **range 1:** pressured emergency fallback
+- **range 2–4:** preferred firing envelope
+- **range 5+:** reposition required
 
-### Why no universal Shove yet
+Quick Shot deliberately does not solve the Bow's spacing problem while dealing full damage. **Disengaging Shot is not part of the opening MVP.**
 
-A universal Shove is a viable future addition but is not recommended for the first prototype because:
-- it increases every character's universal action vocabulary
-- it makes Spear displacement less distinctive
-- it risks turning many encounters into "walk adjacent and push" instead of weapon-specific geometry
-- authored environment interactions can still provide occasional universal positional tricks without creating another permanent button
-
-Revisit only if playtesting shows Sword/Bow users lack enough ways to interact with battlefield geometry.
-
-### Proposed clean Bow validity rule
+### Clean Bow validity rule — locked design authority
 
 Bow validity must be determined entirely in combat/hex coordinates, never by camera angle or screen-space click direction.
 
@@ -198,99 +229,179 @@ A Bow basic attack is valid if and only if:
 
 No requirement exists for attacker/target to share a straight hex axis. Bow should attack any valid hex within radius 2–4 with clear LOS.
 
-Quick Shot, if approved, uses the same rule except allowed distance is **1–2** and damage is reduced.
+Quick Shot uses the same legality principles except its distance must be **exactly 1** and it deals 3 Damage before Armor.
 
-The current code-level `HexGrid.CanAttack` already expresses range + geometry + LOS independently of camera angle. Reported angle-specific failures should therefore be treated as implementation/input/target-selection defects unless further testing finds a reproducible grid-coordinate rule violation.
+The current code-level `HexGrid.CanAttack` already expresses range + geometry + LOS independently of camera angle. Reported angle-specific failures are therefore a priority implementation/input/target-selection bug unless testing uncovers a separate reproducible grid-coordinate defect.
 
 ### Reusable MVP enemy positional behaviors
 
-Do not make every creature unique through a bespoke subsystem. Opening enemies should be assembled from a small behavioral vocabulary:
+Opening enemies should be assembled from a small reusable behavioral vocabulary rather than every creature receiving a bespoke subsystem:
 
 1. **Pursue** — route toward an attack position. Baseline behavior, not sufficient by itself for most encounters.
 2. **Committed Lunge/Pounce** — telegraph a destination/target hex, then leap/move to that locked location on the enemy phase. If the player leaves, the creature still commits and can lose tempo.
-3. **Charge/Rush** — telegraphed straight-line lane with collision/blocking implications. Mossback remains the flagship opening version.
+3. **Charge/Rush** — telegraphed straight-line lane with collision/blocking implications. Mossback is the flagship opening version.
 4. **Skirmish/Retreat** — ranged/mobile enemy attempts to restore preferred distance when pressured instead of standing adjacent and trading attacks.
 5. **Area/Line Threat** — telegraph a small line, cone-like hex cluster, or local zone that makes standing still costly.
-6. **Seek Favored Terrain** — creature tries to reach a terrain type that improves its movement/positioning, e.g. future Brookmaw-water behavior.
+6. **Seek Favored Terrain** — creature tries to reach a terrain type that improves its positioning, e.g. future Brookmaw-water behavior.
 
-Not all six need implementation in the first woodland slice. For MVP opening proof, **Pursue + Pounce**, **Charge**, and eventually **Skirmish** are enough to demonstrate the vocabulary.
+Not all six need implementation in the first woodland slice. For the opening proof, **Pursue + Pounce** and **Charge** are required; Skirmish/other verbs can enter when an encounter needs them.
 
-### Proposed first woodland battle redesign
+### First woodland battle — locked direction
 
-The first ordinary woodland fight should remain short, roughly the existing **10 HP / 0 Armor** durability target, but the enemy should not simply approach and Swipe every phase.
+The first ordinary woodland fight should remain short, roughly the existing **10 HP / 0 Armor** durability target, but it must not simply approach and Swipe every phase.
 
-Recommended concept:
-- small natural clearing with one Blocking object (tree/rock/log) and a small patch of Difficult brush/mud
+Current encounter direction:
+- small natural clearing with one Blocking object such as a tree/rock/log and a small patch of Difficult brush/mud
 - creature begins about 3 hexes away rather than already adjacent
-- its first distinctive behavior is a readable **Pounce**
-- Pounce locks onto the player's current hex (or a clearly marked adjacent landing/attack hex) one phase before resolving
-- if the player remains, Pounce deals the creature's normal/heavier damage and ends in close pressure
-- if the player steps off the marked hex, the creature still commits to the marked landing hex and ends its action there, giving the player a clean positional opening
+- its distinctive behavior is a readable **committed Pounce**
+- Pounce locks onto the player's current hex, or a clearly marked landing/attack hex, one phase before resolving
+- if the player remains, Pounce hits and ends in close pressure
+- if the player leaves the marked hex, the creature still commits to the marked landing hex and ends its action there, creating a positional opening
 
-This is not intended as a puzzle with one correct answer. Different weapons solve it differently:
-- Sword can step aside, then use full Attack or Lunge depending on new spacing
-- Spear can keep the landing hex at reach 2 or use Drive to restore spacing
-- Bow can relocate to maintain 2–4 range and punish the committed landing; if caught, Quick Shot is a weak fallback
+The encounter is **not** a one-answer tutorial puzzle. Different valid answers may include:
+- move away and punish the committed landing
+- Defend and intentionally absorb the attack
+- Sword Lunge when the new spacing supports it
+- maintain Spear reach or use Drive to restore spacing
+- reposition Bow to preserve its 2–4 firing envelope; use Quick Shot only if caught adjacent
+- exploit Blocking terrain when the layout naturally allows it
 
-The encounter should naturally teach **"enemy intent marks space; moving changes what happens"** before Mossback escalates that idea into a lethal charge lane.
+The lesson is:
 
-### Mossback refinement
+> **Enemy intent marks dangerous space; movement changes what happens.**
 
-Keep the established straight-line telegraphed Charge.
+### Mossback refinement — locked direction
 
-Battlefield requirements for the next prototype pass:
-- at least **two meaningful Blocking objects/routes**, not one decorative tree placed far from the action
+Preserve the established straight-line telegraphed Charge.
+
+The battlefield must deliberately support the mechanic rather than relying on accidental alignment:
+- at least **two meaningful Blocking objects/routes**
 - at least one open lane where Charge is genuinely dangerous
-- obstacles positioned so the player can deliberately move across a lane and bait a collision rather than waiting for lucky alignment
-- enough open cells around obstacles that all three weapon geometries remain usable
+- obstacles positioned so the player can deliberately bait a collision by moving across/around a lane
+- enough open cells around obstacles that all three starter weapon geometries remain usable
 - Difficult terrain may shape routes but should not become the main gimmick
 
-With proposed signatures:
-- Sword Lunge can punish from 2 away while preserving movement needed to leave a future charge lane
-- Spear Drive can alter spacing before a charge setup without canceling Mossback's identity
-- Bow can exploit long sightlines but must keep moving when Mossback closes
+The goal is for baiting and redirecting Charge to feel intentional and satisfying.
 
-Do **not** let player displacement trivially cancel a locked Charge merely by pushing Mossback one hex after telegraph unless implementation testing deliberately proves that interaction is fun. The Charge should remain a commitment the player reads and exploits, not a state deleted by one cheap control action.
+Do **not** let player displacement trivially cancel a locked Charge simply by pushing Mossback one hex after telegraph unless later playtesting explicitly earns that interaction. The Charge should remain a meaningful commitment to read and exploit.
 
-### Terrain/environment recommendation
+### Terrain/environment — locked opening direction
 
-Keep the locked universal terrain categories:
+Keep the universal terrain categories:
 - Open
 - Difficult
 - Blocking
 
-Do not add a universal Hazard terrain category solely to make the first fight interesting. The grid can already become tactical through movement cost, routing, LOS, pounce/charge telegraphs, and Spear displacement.
+Do not add a universal Hazard category solely to rescue the first encounter. Movement cost, routing, LOS, Pounce/Charge telegraphs, and Spear displacement should already create tactical value.
 
-For opening MVP, environmental interaction should remain **authored/contextual**, not a universal physics system. Examples worth testing later include dropping/kicking a loose object or opening/closing a route, but no such interaction is required for the first woodland proof if the enemy behavior itself creates positional decisions.
+Environmental interactions remain **authored/contextual**, not a universal physics system.
 
-Blocking terrain should do double duty where sensible:
+Blocking terrain should do multiple jobs where sensible:
 - block movement
 - break Bow/ranged LOS
 - interrupt Mossback Charge
 - create chokepoints/routes
 
-### Combat progression direction — proposal only
+### Combat progression direction — locked principle, unresolved implementation
 
-Additional combat depth should preferably arrive as **permanent learned techniques** rather than a flood of replacement abilities.
+The preferred long-term direction is **permanent learned weapon techniques** rather than a flood of temporary/replacement abilities.
 
-Early direction worth testing later:
-- each weapon family begins with Basic Attack plus one clear signature technique
-- later progression can permanently unlock a small number of additional weapon techniques through use, trainers, discoveries, quests/contracts, or meaningful milestones
-- techniques should add new geometry/timing/positioning options before simply becoming stronger versions of existing attacks
-- avoid early cooldown bars, rotating proc systems, and disposable borrowed-power combat kits
+Locked direction:
+- each opening weapon begins with Basic Attack plus one Signature technique
+- later combat growth should add meaningful geometry, timing, setup, movement, control, or other new tactical verbs before relying on numerical inflation
+- horizontal tactical progression is preferred before vertical stat inflation
+- avoid filler progression such as tiny +2% damage nodes where a meaningful new capability would better serve the system
 
-Do not build weapon mastery trees, ability-slot limits, respec systems, or final unlock schedules yet.
+Still unresolved:
+- exactly how techniques are learned
+- whether use, trainers, discoveries, quests/contracts, milestones, or a hybrid grants them
+- weapon mastery structure
+- ability-slot limits
+- respec rules
+- final unlock pacing
 
-### Alternatives worth considering
+### Enemy-evolution doctrine — locked
 
-These are not the recommended first prototype but remain viable tests if the package above underperforms:
-- Sword signature as a **mobile slash** that attacks adjacent then grants/forces a 1-hex reposition instead of Lunge
-- Spear signature as **Brace/Set Spear**, preparing a lane attack against the next enemy entering reach, instead of Drive
-- Bow signature as a **Disengaging Shot** that attacks at reduced damage and moves the player 1 hex, instead of Quick Shot
-- universal Shove as a fifth core action if weapon-specific displacement proves too restrictive
-- a first-enemy short line/cone telegraph instead of Pounce
+Use **teach → mastery → remix**.
 
-### Deferred combat ideas
+Teach an understandable behavior, let the player become competent against it, then later challenge that familiarity without making the original learning worthless.
+
+Examples of direction, not locked future enemies:
+- early enemy teaches committed Pounce; later related enemy may redirect slightly after takeoff
+- Mossback teaches heavy straight-line Charge; later charger may break light cover while retaining a readable commitment
+
+Old enemies should often become easier because the player has gained knowledge, techniques, and tactical competence, not because every old creature silently scales to preserve identical difficulty forever.
+
+### Behavioral weaknesses — locked doctrine
+
+Prefer weaknesses arising from **how enemies behave** over arbitrary tooltip-only weaknesses where practical.
+
+Examples:
+- Pounce commits to a landing location
+- Mossback commits to a charge lane
+- future Nightquill behavior may depend on a clean glide lane
+- future Brookmaw behavior may favor water
+
+The player should often discover these relationships through cause and effect.
+
+### Telegraph danger, not the solution — locked doctrine
+
+Important enemy intent must be clear enough for informed decisions, but the game should not automatically tutorialize the answer.
+
+Good:
+- **Mossback is preparing to charge through these hexes.**
+
+Too explicit:
+- **Move behind the tree so Mossback crashes and becomes Staggered.**
+
+Threat information should be clear. Discovering how to exploit that information is part of play.
+
+### Multiple valid answers — locked doctrine
+
+Combat encounters should generally avoid collapsing into scripted command sequences. A state may have a strongest response, but the systems should support multiple understandable valid answers where practical.
+
+This is especially important for tutorial encounters: teach rules and consequences, not one memorized solution.
+
+### Combat clarity — locked doctrine
+
+Because the MVP uses predictable hits, fixed prototype damage, telegraphed intent, and grid legality, visual/input feedback must agree with the underlying rules.
+
+The camera, highlights, LOS display, selected action, and target acceptance should never create conflicting interpretations of what is legal.
+
+The Bow targeting inconsistency directly undermines tactical trust and is therefore a **priority Unity bug** before/alongside implementation of the approved refinement package.
+
+### Enemy-design template — locked Core Systems tool
+
+When defining an opening enemy, document at minimum:
+- **Behavior:** what positional pattern it tries to execute
+- **Tell:** what the player can read before the important action resolves
+- **Exploitable Rule:** the discoverable limitation/weakness in that behavior
+- **Later Remix Potential:** one way future content could challenge mastery without discarding the original lesson
+
+Example:
+
+**Mossback**
+- Behavior: straight-line Charge
+- Tell: lowers head + charge lane appears
+- Exploitable Rule: cannot redirect once committed; large Blocking terrain stops it
+- Later Remix Potential: tougher charger could break light cover but still cannot freely turn mid-charge
+
+This template guides encounter design without requiring every creature to become a giant bespoke subsystem.
+
+### Locked combat doctrine summary
+
+> **Give the player a small number of meaningful verbs, give enemies readable but exploitable behavior, let terrain and geometry change the answer, teach through cause and effect, and make progression expand what the player can do rather than merely inflate numbers.**
+
+## Alternatives worth considering — NOT MVP LOCKS
+
+These remain possible future tests if playtesting shows a locked signature or rule underperforms:
+- Sword mobile slash that attacks adjacent then grants/forces a 1-hex reposition
+- Spear **Brace/Set Spear** preparing a lane attack against an approaching enemy
+- Bow **Disengaging Shot** as a later technique, not an opening Signature
+- universal Shove only if future testing shows the universal kit truly needs it
+- first-enemy short line/cone telegraph only if committed Pounce fails in playtest
+
+## Deferred combat ideas
 
 Do not add for this refinement pass:
 - large ability bars
@@ -307,139 +418,17 @@ Do not add for this refinement pass:
 - ammo economy
 - crit/accuracy layers
 
-### Unity bugs / implementation issues
+## Unity bugs / implementation issues
 
-Known/reported for review before implementation specification:
-- **Bow targeting appears angle/distance dependent in play despite design intending any radius-2–4 hex with clear LOS.** Treat as a bug. Combat validity must be based on grid coordinates, not camera angle/click vector.
+Known/reported for the later implementation specification:
+- **Bow targeting appears angle/distance dependent in play despite design intending any radius-2–4 hex with clear LOS. Treat as a priority bug.** Combat validity must be based on grid coordinates, not camera angle/click vector.
 - Validate screen click → world point → `HexGrid.At` target conversion near hex borders and at different camera angles.
 - Validate that highlighted Bow-valid cells and actual `CanAttack` acceptance use the same source of truth. A cell must never render as attackable and then reject the attack unless state changed.
-- Existing automated checks cover Bow minimum/maximum range and LOS in at least some axial cases, but should be expanded to **all hex directions and off-axis radius-2/3/4 targets**, especially cases that reproduce the playtest bug.
-- Selected-but-uncommitted combat actions already need a cancel/back path per prior playtest notes; any new Signature targeting should inherit the same cancel behavior.
+- Expand automated Bow checks to **all hex directions and off-axis radius-2/3/4 targets**, especially cases reproducing the playtest bug.
+- Add/verify Quick Shot legality tests for exactly range 1, 3 Damage before Armor, LOS, and no reposition.
+- Selected-but-uncommitted combat actions need the previously identified cancel/back path; new Signature targeting inherits that rule.
 
-### Questions requiring Central Brain approval
-
-Before implementation, Central Brain should explicitly approve/reject:
-1. Whether each starter weapon receives exactly **one Signature technique** in the opening.
-2. Sword **Lunge**: range-2 straight commit + reduced damage.
-3. Spear **Drive**: reduced-damage thrust + 1-hex push.
-4. Bow **Quick Shot**: reduced-damage range-1–2 fallback while normal Bow remains 2–4.
-5. No universal Shove for MVP.
-6. First woodland creature receiving a telegraphed committed **Pounce** so movement matters immediately.
-7. Mossback arena requirement for deliberate obstacle/lane baiting rather than relying on incidental alignment.
-8. Permanent learned weapon techniques as the preferred future combat-progression direction.
-
-### Additional combat doctrine from external design review — PROPOSED, NOT LOCKED
-
-A recent combat-design review reinforced several principles that map cleanly onto this RPG's turn-based hex system. These are recommendations for Central Brain review, not new canon.
-
-#### Agency should come from positional verbs
-
-The grid only earns its existence if the player can look at a battlefield and form more than one sensible plan. The goal is not a large ability count; it is a small set of verbs that interact strongly with position, enemy behavior, and terrain.
-
-For the opening, the proposed signatures should therefore be judged primarily by whether they create distinct decisions:
-- **Sword:** enter/exit danger flexibly
-- **Spear:** control where the enemy stands
-- **Bow:** preserve and exploit a preferred firing envelope
-
-A weapon that only changes numerical range without changing the player's turn planning has not developed a strong enough tactical identity.
-
-#### Prefer behavioral weaknesses over tooltip weaknesses
-
-Opening enemies should usually be exploitable because of **how they behave**, not because a tooltip says they take +20% from a damage type.
-
-Examples:
-- a Pounce commits to a marked landing location
-- Mossback commits to a charge lane and cannot freely redirect
-- a future Nightquill may require a clean glide lane from a perch
-- a future Brookmaw may be strongest in water and less mobile when forced onto dry ground
-
-The player should often discover these relationships through cause and effect. Mechanical weaknesses should feel like knowledge about the creature rather than arbitrary spreadsheet tags.
-
-#### Telegraph danger clearly; do not automatically telegraph the solution
-
-Important enemy intent should be readable enough for informed decisions, but the game should avoid tutorializing the answer.
-
-Good:
-- **Mossback is preparing to charge through these hexes.**
-
-Too explicit:
-- **Move behind the tree so Mossback crashes and becomes Staggered.**
-
-The player deserves clear information about the threat. Discovering how to exploit that information is part of the play.
-
-#### Encounters should allow multiple valid answers
-
-The first woodland Pounce should not become a one-solution tutorial puzzle. Depending on weapon and position, a player might:
-- leave the committed landing hex and punish the miss
-- Defend and absorb the attack intentionally
-- use Sword Lunge after the landing creates range 2
-- maintain Spear reach around the landing hex
-- reposition a Bow user to preserve 2–4 range
-- use Blocking terrain to alter the creature's route where the layout allows it
-
-There may be a strongest answer in a particular state, but the encounter should not collapse into a scripted command sequence.
-
-#### Progression should evolve the combat vocabulary horizontally before inflating it vertically
-
-A strong long-term combat upgrade should often make the player think:
-
-**"I can do something now that I could not do before."**
-
-Prefer new geometry, timing, reactions, setup options, or movement interactions over filler upgrades such as +2% damage.
-
-Possible later examples, still deferred:
-- Sword learns a movement-counter or reposition technique
-- Spear learns **Set Spear** to threaten an approach lane
-- Bow learns a movement-control or pinning technique
-
-These are examples of direction only, not approved abilities.
-
-The long-term goal is for old enemies to feel easier because the player has gained knowledge, techniques, and tactical competence, not because every old creature silently level-scales to preserve the same time-to-kill forever.
-
-#### Teach a behavior, allow mastery, then remix it
-
-Enemy evolution should weaponize player familiarity without making prior learning worthless.
-
-Example structure:
-- early enemy teaches committed Pounce
-- later enemy uses a related leap but can redirect slightly after takeoff
-- Mossback teaches heavy straight-line Charge
-- a later charger might smash light cover instead of staggering against it
-
-The player recognizes the family resemblance but must update the answer.
-
-#### Combat clarity is a system requirement
-
-Because the model uses predictable hits, fixed prototype damage, telegraphed intent, and grid legality, visual/input feedback must agree with the underlying rules.
-
-The camera, highlights, LOS display, selected action, and target acceptance should never create conflicting interpretations of what the game believes is legal. The existing Bow targeting report is therefore not a cosmetic annoyance; it directly undermines tactical trust and should be treated as a priority implementation defect once Central Brain approves the redesign specification.
-
-#### Recommended enemy-design template for future Core Systems work
-
-When defining an opening enemy, document at minimum:
-
-- **Behavior:** what positional pattern it tries to execute
-- **Tell:** what the player can read before the important action resolves
-- **Exploitable Rule:** the discoverable limitation/weakness in that behavior
-- **Later Remix Potential:** one way future content could challenge mastery without discarding the original lesson
-
-Example:
-
-**Mossback**
-- Behavior: straight-line Charge
-- Tell: lowers head + charge lane appears
-- Exploitable Rule: cannot redirect once committed; large Blocking terrain stops it
-- Later Remix Potential: tougher charger can break light cover but still cannot freely turn mid-charge
-
-This template should guide encounter design without turning every creature into a giant bespoke subsystem.
-
-#### Summary doctrine for Central Brain review
-
-Recommended guiding sentence:
-
-> **Give the player a small number of meaningful verbs, give enemies readable but exploitable behavior, let terrain and geometry change the answer, teach through cause and effect, and make progression expand what the player can do rather than merely inflate numbers.**
-
-If approved, this should guide future combat refinements without forcing all individual weapon signatures or enemy abilities to become permanent canon automatically.
+**Do not implement this package in Unity until Central Brain sends the implementation specification.**
 
 ## Dedicated opening-system authorities
 
