@@ -53,6 +53,7 @@ namespace WoodlandSpine
             full=gameObject.AddComponent<FullOpening>();full.Initialize(this);
             gameObject.AddComponent<SliceHUD>().game=this;
             var smokeArgs=System.Environment.GetCommandLineArgs();
+            if(System.Array.IndexOf(smokeArgs,"--combat-camera-smoke")>=0)gameObject.AddComponent<CombatCameraSmoke>().game=this;
             if(System.Array.IndexOf(smokeArgs,"--opening-smoke")>=0||System.Array.IndexOf(smokeArgs,"--slice-smoke")>=0||System.Array.IndexOf(smokeArgs,"--intro-smoke")>=0)gameObject.AddComponent<FullOpeningSmoke>().game=this;
         }
         void Update()
@@ -177,3 +178,4 @@ namespace WoodlandSpine
         public void UseHealthPotion(){if(hp<rules.playerHP&&inventory.healthPotions>0){hp=Mathf.Min(rules.playerHP,hp+12);inventory.healthPotions--;}}
     }
 }
+

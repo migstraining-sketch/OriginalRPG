@@ -35,7 +35,7 @@ namespace WoodlandSpine
             bool battle=game.mode==GameMode.Combat;
             if(battle)
             {
-                var rect=CombatViewport.Pixels(Screen.width,Screen.height);game.view.pixelRect=rect;
+                var rect=CombatViewport.Pixels(Screen.width,Screen.height);game.view.pixelRect=rect;game.view.aspect=rect.width/rect.height;
                 transform.position=game.site.grid.origin+new Vector3(0,22,-14);
                 transform.rotation=Quaternion.LookRotation(game.site.grid.origin-transform.position);
                 if(framedGrid!=game.site.grid||framedWidth!=Screen.width||framedHeight!=Screen.height)
@@ -43,7 +43,7 @@ namespace WoodlandSpine
                 game.view.orthographicSize=framedSize;
                 game.view.cullingMask=~(1<<9);return;
             }
-            game.view.rect=new Rect(0,0,1,1);
+            game.view.rect=new Rect(0,0,1,1);game.view.ResetAspect();
             Vector3 target=battle?game.site.grid.origin:game.player.transform.position+Vector3.up*.5f;
             if(!battle&&!game.opening.inLab&&game.player.transform.position.z<7)target+=Vector3.forward*1.5f;
             if(game.mode==GameMode.Dialogue&&game.intro!=null&&game.intro.Story.beat>=IntroBeat.Sample&&game.intro.Story.beat<=IntroBeat.Warning)target=new Vector3(-4,.5f,-3);
@@ -56,3 +56,4 @@ namespace WoodlandSpine
         }
     }
 }
+

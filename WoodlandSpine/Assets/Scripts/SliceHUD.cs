@@ -22,9 +22,9 @@ namespace WoodlandSpine
             if(game.full.boardVisible){DrawBoard(width,height);return;}
             if(game.mode==GameMode.Combat||!string.IsNullOrEmpty(game.Objective)||game.showInventory)
             {
-            GUILayout.BeginArea(new Rect(16,12,width-32,140),GUI.skin.box);
+            GUILayout.BeginArea(new Rect(16,12,width-32,game.mode==GameMode.Combat?80:140),GUI.skin.box);
             GUILayout.Label($"{game.playerName}   •   HP {game.hp}/{game.rules.playerHP}   •   Armor {game.inventory.Armor}   •   {game.inventory.weapon?.title??"Unarmed"}",title);
-            GUILayout.Label(game.Objective,body);
+            if(game.mode!=GameMode.Combat)GUILayout.Label(game.Objective,body);
             if(game.mode==GameMode.Combat)GUILayout.Label($"{game.combat.phase} Phase   |   Movement {game.combat.movement}   |   Primary Action: {(game.combat.primary?"ready":"spent")}   |   {game.combat.enemy.title} {game.combat.enemyHP} HP",body);
             else GUILayout.Label("WASD move   •   E interact   •   I inventory   •   Esc close",small);
             GUILayout.EndArea();
@@ -159,3 +159,4 @@ namespace WoodlandSpine
         }
     }
 }
+

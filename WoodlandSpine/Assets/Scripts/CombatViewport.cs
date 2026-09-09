@@ -6,7 +6,11 @@ namespace WoodlandSpine
         public static Rect Pixels(float width,float height)
         {
             float scale=Mathf.Min(width/1280f,height/800f);
-            return new Rect(16*scale,217*scale,width-32*scale,height-381*scale);
+            // The editor Game view can be extremely wide and short. Do not let
+            // its aspect ratio reveal disconnected prototype sites beside combat.
+            float viewHeight=height-321*scale;
+            float viewWidth=Mathf.Min(width-32*scale,viewHeight*1.8f);
+            return new Rect((width-viewWidth)*.5f,217*scale,viewWidth,viewHeight);
         }
         public static float Size(HexGrid grid,Quaternion rotation,float aspect)
         {
@@ -20,3 +24,4 @@ namespace WoodlandSpine
         }
     }
 }
+

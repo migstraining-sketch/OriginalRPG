@@ -1,0 +1,1 @@
+PASS: 772 actual-camera checks across three screen sizes; full-frame HUD screenshots captured; exploration viewport restored. Automated coverage, not a human mouse playtest.

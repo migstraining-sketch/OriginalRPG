@@ -17,3 +17,5 @@ The camera previously rendered enemies behind the action panel while world input
 The 45-minute illness timer, room price and small coin rewards are tuning assumptions. No save/load exists. Kitchen and room doors use same-scene transfers; the lab uses real stairs. Crime/guards, room rest, final art, voiced dialogue and later progression are incomplete. Existing historical validation notes describe earlier passes; STATUS.md identifies the current pass. Automated callback tests do not establish that the dialogue feels right or replace manual mouse/pacing acceptance.
 
 Next smallest step: a human playthrough of the supplied Garrick/Marlow branches and first lab visit, plus edge-of-battlefield mouse targeting, before custom Blender assets.
+
+The follow-up wide/short Game-view fix caps combat viewport aspect at 1.8 and compacts the combat header. This prevents adjacent prototype sites from appearing at the sides. Validation/STATUS.md records the focused camera regression and reviewed screenshot.
