@@ -1,15 +1,18 @@
 {
   "projectType": "original-rpg",
   "continuityAuthority": "this-repository",
-  "currentDesignFrontier": "opening-complete-through-cooking-unlock",
+  "currentDesignFrontier": "opening-combat-refinement-approved-pending-unity-playtest",
   "openingTargetMinutes": {
     "standard": "27-30",
     "healthyRange": "23-35"
   },
   "lockedCharacters": ["Garrick", "Marlow", "Sylvie"],
-  "lockedOpeningSystems": ["Potion Making opening", "Hunting MVP", "Cooking MVP", "Day One room rental hook"],
+  "lockedOpeningSystems": ["Potion Making opening", "Hunting MVP", "Cooking MVP", "Day One room rental hook", "MVP tactical combat refinement"],
   "lockedStarterContracts": ["Mud in the Moonrice", "Three Missing by Morning", "When the Wheel Stopped"],
+  "lockedStarterCombatSignatures": ["Sword Lunge", "Spear Drive", "Bow Quick Shot"],
+  "priorityImplementationIssues": ["Bow targeting/LOS inconsistency", "selected-action cancel/back", "first woodland committed Pounce", "Mossback obstacle/lane baiting"],
+  "activeDesignTasks": ["implement and playtest approved combat refinement", "refine canonical Garrick/Marlow opening dialogue"],
+  "deferredNextPhase": "Design the first 1-2 hours after Cooking unlock only after the opening combat/dialogue experience is validated.",
   "futureButNotYetDesigned": ["Rest Quality", "Smithing", "Taming", "full Potion Making progression", "full Hunting progression", "full Cooking progression", "larger antagonist storyline"],
-  "nextTask": "Design the first 1-2 hours after Cooking unlock and test the early gameplay loop before adding more systems.",
   "importantCorrection": "This is an original RPG. AdventureQuest, BattleOn and other referenced games/media are inspiration only and are not canon."
 }
