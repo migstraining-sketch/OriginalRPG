@@ -106,50 +106,60 @@ The behavioral shift itself should communicate relationship progression.
 
 ---
 
-# Proposed starter-Hunt potential companions
+# Starter-Hunt potential companions
 
-Detailed contract integration is owned by `HUNTING_PARTNERS.md`. These entries record the proposed character identities so character continuity and contract continuity stay aligned. They are **not yet locked until Central Brain approves this pass**.
+Detailed contract integration is owned by `HUNTING_PARTNERS.md`.
 
-## Ilyra Fen
+## Character-first guardrail — LOCKED
+
+**The starter partners' weapons are tactical identities, not their personalities.**
+
+Do not reduce Ily to “Spear companion,” Sable to “Bow companion,” or Nessa to “Sword companion.” Their profession, relationships, motives, worldview, habits, obligations, interests, flaws, and later character development must remain capable of carrying them outside combat.
+
+## Ilyra Fen — LOCKED / CURRENT
 
 **Usual name:** Ily  
-**Opening role:** local irrigation hand / ditch-mender at Reedwater Paddies; temporary partner for **Mud in the Moonrice**  
-**Potential party role:** Spear user centered on reach, spacing, and lane control
+**Opening role:** seasonal irrigation hand / ditch-mender at Reedwater Paddies; local partner for **Mud in the Moonrice**  
+**Party/combat identity:** Spear user centered on reach, spacing, and lane control
 
 **Core personality:** Dry, practical, alert, mildly competitive about physical work, impatient with sloppy solutions but not with genuine uncertainty. She judges a solution by whether it actually fixes the recurring problem rather than by moral category.
 
-**Why she is there:** Toma asked her to repair the repeatedly damaged bund/irrigation edge. She already knows the field hardware and water-control work but does not know the Reedback is after mudgrubs.
+**Why she is there:** Toma asked her to repair the repeatedly damaged bund/irrigation edge. She knows the field hardware and water-control work but does not initially know the Reedback is after mudgrubs.
 
 **Character hook:** Ily takes seasonal lowland work rather than being permanently tied to Reedwater, making later travel/recruitment plausible if mutual respect develops.
 
 **Route attitude:** Cull is legitimate if needed; Manage interests her because it resembles good field work, not because she considers it morally superior.
 
+The full Mud + Ily specification in `HUNTING_PARTNERS.md` is **approved and locked for the coordinated Unity pass**.
+
 ---
 
-## Sable Venn
+## Sable Venn — CHARACTER-LEVEL DIRECTION LOCKED
 
 **Opening role:** Mara Venn's adult niece, courier, and temporary homestead hand for **Three Missing by Morning**  
-**Potential party role:** Bow user centered on range, LOS, and maintaining a preferred firing envelope
+**Party/combat identity:** Bow user centered on range and line of sight
 
-**Core personality:** Quick-witted, restless, observant about people, lightly irreverent under pressure. She dislikes letting an unseen threat choose the terms of an encounter.
+**Core personality:** Quick-witted, restless, observant, lightly irreverent under pressure. She dislikes letting an unseen threat choose the terms of an encounter.
 
-**Why she is there:** Mara asked her back to the homestead after repeated Duskhen losses. Sable has watched the ground approaches and found little, but does not initially understand the Nightquill's elevated glide route.
+**Why she is there:** Mara has asked her back to help around the homestead after repeated Duskhen losses. Her courier work already takes her along regional roads, making future recruitment plausible without requiring her to abandon a fixed livelihood overnight.
 
-**Character hook:** Her courier work already takes her along regional roads, so future adventuring is plausible without requiring her to abandon a fixed livelihood overnight.
+**Route attitude:** Cull and Manage remain practical alternatives rather than morality tests.
 
-**Route attitude:** Cull is acceptable protection of livestock; Manage appeals to her because shutting down the predator's route means she has finally outmaneuvered it, not because it is the morally correct answer.
+**Scope:** identity/personality/profession/relationship/weapon direction are locked. Detailed `Three Missing by Morning` integration remains deferred to that contract's implementation pass.
 
 ---
 
-## Nessa Vale
+## Nessa Vale — CHARACTER-LEVEL DIRECTION LOCKED
 
 **Opening role:** Oren Vale's younger sister and working mill hand / repairer for **When the Wheel Stopped**  
-**Potential party role:** Sword user centered on flexible close-range movement and Lunge
+**Party/combat identity:** Sword user centered on flexible close movement + Lunge
 
 **Core personality:** Steady, wry, stubborn, mechanically curious. She tends to mentally disassemble a broken system while everyone else is still complaining about it and dislikes repairs that treat symptoms instead of causes.
 
-**Why she is there:** The stopped wheel is directly disrupting her work. She knows the mill hardware, debris history, and old side-channel controls, but does not initially know that Brookmaws built a nursery in the channel.
+**Why she is there:** The stopped wheel directly disrupts her work and home. Her connection to the mill remains real.
 
-**Character hook:** Recruitment is a more meaningful personal choice for Nessa because the mill is genuinely her home/work. Restoring it creates breathing room rather than automatically severing that tie.
+**Character hook:** Future recruitment should feel like a meaningful personal choice rather than Nessa abandoning her life because a quest ended.
 
-**Route attitude:** Cull is acceptable if relocation fails or danger demands it; Manage satisfies her because restoring the side-channel solves the mechanical and ecological cause together, not because it earns moral approval.
+**Route attitude:** Cull and Manage remain practical alternatives rather than morality tests.
+
+**Scope:** identity/personality/profession/relationship/weapon direction are locked. Detailed `When the Wheel Stopped` integration remains deferred to that contract's implementation pass.
