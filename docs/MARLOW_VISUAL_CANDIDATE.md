@@ -1,167 +1,355 @@
-# Marlow Visual Candidate
+# Marlow Approved Visual Reference and Modeling Brief
 
 ## Status / authority
 
-**CANDIDATE CHARACTER REFERENCE — CENTRAL BRAIN REFINEMENT REVIEW PENDING.**
+**APPROVED CHARACTER REFERENCE: MARLOW.**
 
-This document records the current preferred Marlow character-image direction and the focused refinement brief approved by Central Brain. It supplements `CHARACTER_VISUAL_DEVELOPMENT.md` and does not alter personality, story, dialogue, gameplay, Unity, or Blender authority.
+Central Brain approved the latest refined Marlow character sheet on 2026-09-10.
 
-The current refined Marlow sheet from the Character Visual Development subchat is now the **primary Marlow candidate direction**. It is not yet an approved character reference and must not be treated as final modeling authority.
+This document supersedes the earlier Marlow candidate/refinement state in this file and any older Marlow exploratory/candidate wording elsewhere in visual-development documentation where the statuses conflict.
 
-Do not return to broad A/B/C exploration.
+No further exploratory or refinement image pass is required unless the project owner later requests a visual change.
 
-## Candidate reference record
+This document governs Marlow's approved visual identity and modeling-reference preparation only. It does not rewrite personality, dialogue, story role, gameplay, Unity, or broader system canon.
+
+**Production gate:** Marlow may now move into Blender/modeling-reference preparation, but final Blender modeling is **not authorized by this document alone**. Central Brain or the project owner must separately authorize production.
+
+No Unity changes are authorized.
+
+## Approved reference record
 
 **Reference class:** character reference  
 **Character:** Marlow  
-**Reference:** current refined Marlow candidate sheet generated in Character Visual Development  
-**Status:** **CANDIDATE CHARACTER REFERENCE**  
-**Purpose:** preferred overall Marlow appearance direction pending one focused refinement pass
+**Reference:** latest refined Marlow sheet generated in Character Visual Development  
+**Status:** **APPROVED CHARACTER REFERENCE**  
+**Purpose:** primary appearance continuity and modeling-preparation reference
 
-### What the current candidate establishes
+Marlow's visual read remains:
 
-Preserve as the preferred Marlow direction:
+**field naturalist / researcher / caretaker first, fantasy archetype second.**
 
-- soft, intelligent anime facial language
-- approachable, observant expression
-- tousled medium-brown hair direction
-- glasses
-- slim, field-capable build
-- narrow layered silhouette
-- olive / earth naturalist palette family
-- practical field outer layer
-- cross-body satchel
+## Locked visual identity
+
+Preserve:
+
+- medium tousled dark-brown hair
+- understated glasses
+- soft, intelligent stylized-anime facial direction
+- slim-to-average field-capable build
+- apparent age within the approved early-30s to early-40s range, visually toward the younger end
+- narrow, asymmetrical field-naturalist silhouette
+- olive / forest outer layer
+- muted earth / leather / neutral material family
+- practical layered woodland clothing
+- cross-body field satchel
 - notebook / sketchbook
-- field flask and treatment/specimen language
-- woodland-capable boots
-- gentle creature-care and observation body language
-- field naturalist / treatment-minded researcher first, fantasy archetype second
+- field flask
+- compact specimen / treatment kit
+- sturdy field boots
+- restrained botanical detail
+- gentle, attentive creature-care and observation body language
 
-The candidate should continue to communicate Marlow as gentle, intelligent, observant, slightly awkward, deeply curious, and highly competent without translating those traits into fragility, comedy, formality, or wizard shorthand.
+Approved expression direction includes:
 
-### What the current candidate does not establish yet
+- neutral attentive expression
+- soft smile
+- thoughtful observation
+- subtle, human awkwardness
 
-Still subject to refinement and Central Brain approval:
+Awkwardness must remain understated and never become comic incompetence, childishness, or slapstick.
 
-- exact final accessory layout
-- final number and placement of visible vials/tools
-- ornament distribution
-- final coat construction
-- exact glasses geometry
-- exact eye color
-- exact final hair shape
-- final facial proportions
-- exact maturity treatment
-- exact boot construction
-- final 3D-ready costume details
-- final Blender modeling brief
+## Equipment hierarchy
 
-## Focused refinement brief
+Preserve this readability hierarchy:
 
-### 1. Reduce equipment noise
+**Marlow → primary satchel / notebook → flask / treatment cues → minor details**
 
-Simplify toward:
+Visible equipment should communicate intelligent preparation, not RPG inventory clutter.
 
-**one primary satchel + notebook + field flask + one compact treatment/specimen cluster**
+Primary readable equipment:
 
-Additional small tools and containers should plausibly live inside the satchel rather than hanging externally.
+1. cross-body field satchel
+2. notebook / sketchbook
+3. field flask
+4. one compact treatment / specimen cluster
 
-At normal gameplay distance, prioritize:
+Additional tools, vials, containers, cloth, gloves, or small remedies may plausibly live inside the satchel rather than hanging from the silhouette.
 
-1. Marlow himself
-2. satchel / notebook
-3. one or two readable research-treatment cues
+Do not reintroduce large numbers of dangling:
 
-Tiny vials, tools, buckles, and attachments may collapse into grouped texture/detail language for eventual 3D production.
+- vials
+- bottles
+- straps
+- pouches
+- charms
+- generic adventurer attachments
 
-### 2. Reduce costume ornament
+## Outerwear and functional movement
 
-Retain only restrained botanical/naturalist motif language where it strengthens identity.
+The approved olive outer layer is **practical weathered field clothing**, not a ceremonial cloak or fantasy robe.
 
-Profession should primarily communicate through:
+Its construction may retain a distinctive silhouette, but it must remain believable for:
+
+- hiking through woodland
+- crouching and kneeling
+- climbing over ordinary terrain
+- collecting plants and specimens
+- handling fragile glassware
+- treating injured creatures
+- writing or sketching in the field
+- working at Marlow's cellar laboratory bench
+
+The garment should not restrict arm motion, obscure his hands during treatment work, or create excessive trailing geometry.
+
+## Ornament rule
+
+Botanical/naturalist motif is approved only as restrained secondary detail.
+
+Profession should primarily read through:
 
 - clothing function
-- equipment
-- believable wear
-- behavior
+- material wear
+- satchel and notebook
+- treatment/specimen equipment
+- behavior around plants and creatures
 
-Avoid repeated decorative botanical trim across the whole costume.
+Do not cover the outer layer with repeated decorative botanical embroidery.
 
-### 3. Slightly mature the face
+## Creature-focused body language
 
-The candidate currently reads somewhat younger than the intended **early-30s to early-40s** range.
+Marlow should look comfortable around living creatures rather than staged as a conventional fantasy caster.
 
-Mature him subtly while preserving gentle attractiveness and approachable anime facial language.
+Approved behavior language includes:
 
-Useful cues may include:
+- kneeling beside wildlife without threatening it
+- extending a careful hand rather than looming over an animal
+- examining an injury closely
+- taking notes or sketching behavior
+- observing quietly before acting
+- handling treatment ingredients with precision
 
-- slightly more mature facial structure
-- restrained field/lab fatigue
-- subtle texture
-- faint stubble only if it improves the read
+Animals are interaction subjects, not permanent costume accessories.
 
-Do not turn him into a hardened older adventurer.
+---
 
-### 4. Practical outerwear and footwear
+# Modeling-reference brief
 
-Preserve the strong olive outer silhouette, but make the garment read primarily as **weathered field clothing**, not a fantasy cloak.
+## 1. Proportion targets
 
-Reduce armor/adventurer language in the boots.
+Use the approved range as the modeling envelope:
 
-The final outfit should plausibly support:
+- height: approximately **175-183 cm / 5'9"-6'0"**
+- build: slim-to-average, field-capable rather than frail
+- apparent age: early 30s to early 40s, visually toward the younger end
 
-- crouching
-- climbing
-- hiking through woodland
-- collecting plants/specimens
-- kneeling beside injured wildlife
-- handling treatment ingredients and fragile glassware
+Proportion direction:
 
-## Creature-focused language
+- relatively narrow shoulders compared with Garrick
+- lean torso with enough physical substance to support real outdoor work
+- natural-length limbs suited to crouching, kneeling, climbing and reaching
+- hands should remain readable enough for specimen handling, writing, potion work and creature care
+- avoid exaggerated heroic chest/shoulder proportions
+- avoid adolescent anime-protagonist proportions
 
-Preserve the current candidate's comfort around wildlife.
+The final model should feel physically capable without visually advertising combat strength.
 
-Useful small interaction poses include:
+## 2. Silhouette-critical shapes
 
-- observing a creature without threatening it
-- kneeling beside an injured animal
-- taking notes/sketching behavior
-- carefully handling a specimen or treatment
+Must survive the jump from key art into 3D:
 
-Animals are situational interaction subjects, not permanent costume accessories.
+- narrow overall body mass
+- tousled medium hair silhouette
+- glasses breaking the facial silhouette subtly
+- olive field outer layer forming the dominant clothing mass
+- asymmetry created by the cross-body satchel
+- readable field boots
+- notebook or satchel access pose when contextually visible
 
-## Style authority
+At gameplay distance, Marlow should remain distinguishable from ordinary Inn patrons before tiny prop details are visible.
 
-Refinement must remain inside the locked project visual family:
+Do not let secondary straps or small tools fragment the silhouette.
+
+## 3. Essential clothing layers
+
+Model the outfit as a small number of clear, readable layers:
+
+1. practical inner shirt
+2. restrained mid-layer / vest or equivalent structure where needed
+3. olive / forest field outer layer
+4. durable field trousers
+5. practical field boots
+6. cross-body satchel strap and satchel
+
+The outer layer should be designed for deformation and animation rather than copied as a rigid illustration shell.
+
+Sleeve construction must support:
+
+- rolled / pushed-up working state if retained
+- wrist and hand freedom
+- kneeling and treatment poses
+
+Avoid unnecessary loose panels that add simulation cost without helping identity.
+
+## 4. Essential props
+
+Must-keep prop family:
+
+- **primary field satchel**
+- **notebook / sketchbook**
+- **field flask**
+- **one compact specimen / treatment kit**
+
+The treatment kit may resolve into one compact pouch/case with only one or two readable external cues rather than individual hanging bottles.
+
+Optional contextual props may include:
+
+- gloves for appropriate specimen/treatment handling
+- cloth wrap
+- one specimen jar
+- one small plant sample
+- writing instrument
+
+These are context props, not permanent silhouette requirements.
+
+## 5. Face features that must survive 3D translation
+
+Preserve the approved facial identity rather than drifting toward generic realism.
+
+Must retain:
+
+- soft intelligent anime-inspired facial construction
+- approachable eye shape
+- youthful-mature balance appropriate to early 30s / younger-end range
+- gentle neutral mouth line
+- ability to read thoughtful without looking sad or timid
+- ability to show a small warm smile without becoming boyish
+- understated glasses integrated into the face rather than dominating it
+
+3D translation should avoid:
+
+- hyper-real skin detail
+- deeply rugged facial planes
+- exaggerated age lines
+- overly large youthful anime eyes
+- sharp heroic jaw treatment that turns him into a generic protagonist
+
+Use subtle maturity cues through facial planes, under-eye treatment and restrained texture rather than heavy stubble or weather-beaten realism.
+
+## 6. Hair features that must survive 3D translation
+
+The hair is a major identity cue.
+
+Preserve:
+
+- medium length
+- dark-brown family
+- tousled, wind-touched naturalist read
+- designed anime-inspired clumps / masses rather than strand-by-strand realism
+- soft asymmetry around the forehead and temples
+- enough shape variation to remain recognizable in silhouette
+
+Hair should look slightly imperfectly controlled, not neglected or comedic.
+
+For modeling, prioritize a few strong sculpted masses and readable secondary locks over dense individual strands.
+
+## 7. Materials and palette
+
+Primary family:
+
+- olive / forest cloth
+- muted cream / neutral inner layers
+- brown worn leather
+- dark neutral trousers
+- restrained metal / glass accents
+
+Material goal:
 
 **stylized dark-fantasy anime key art translated into 3D**
 
-Avoid:
+Use rich but controlled material separation. Cloth, leather, glass and metal should read distinctly without chasing photoreal micro-surface detail.
 
-- photorealism
-- western gritty realism
-- generic anime-protagonist styling
-- wizard robes
-- armor-led design
-- spotless apothecary uniform
-- neon/glowing alchemist coding
-- over-accessorized RPG inventory clutter
+Wear should be selective:
 
-## Refinement deliverable
+- lower hems
+- elbows
+- satchel contact points
+- boot edges
+- frequently handled leather
 
-Produce **one focused refinement sheet** based on the current candidate.
+Marlow should look used and prepared, not filthy.
 
-Include:
+## 8. Safe simplifications for 3D
 
-- full-body primary view
-- front / side / back turnaround or equivalent
-- clear face close-up
-- field satchel
-- notebook
-- simplified treatment/specimen kit
-- one small field interaction pose focused on observation or creature care
+Safe to simplify or combine:
 
-This refinement remains a **candidate** until Central Brain reviews it.
+- individual decorative markings
+- tiny botanical motifs
+- microscopic stitching
+- minor buckles
+- small straps that do not change silhouette
+- tiny pouches
+- separate vial loops
+- exact illustration-level prop placement
+- minor material-value differences
 
-No final Blender modeling begins from this document.  
-No Unity changes are authorized.
+Several small containers may collapse into one treatment-kit texture/material group.
+
+Decorative trim may be reduced further if it competes with field practicality or animation readability.
+
+The approved reference does **not** require exact reproduction of every buckle, stitch, pouch or tiny marking.
+
+## 9. Do not simplify away
+
+Do not lose:
+
+- Marlow's face identity
+- glasses
+- tousled dark-brown hair shape
+- slim field-capable proportions
+- olive outerwear mass
+- satchel asymmetry
+- notebook language
+- field flask / treatment cue
+- practical boots
+- gentle observer/caretaker body language
+
+These are the visual spine of the character.
+
+## 10. Gameplay-distance readability
+
+From normal gameplay camera distance, priority order is:
+
+1. narrow olive field-naturalist silhouette
+2. dark tousled hair + understated glasses / face impression at closer gameplay distances
+3. cross-body satchel asymmetry
+4. notebook when actively used
+5. one flask / treatment cue
+
+Tiny tools and vials should disappear gracefully rather than turning into visual static.
+
+The player should recognize Marlow by **body shape + olive field layer + satchel + hair/face language**, not by reading ten accessories.
+
+## 11. Animation / rigging considerations for later production
+
+Prepare the eventual model so it can support:
+
+- relaxed standing
+- seated Inn/lab posture
+- crouching
+- kneeling beside creatures
+- reaching into satchel
+- opening / writing in notebook
+- handling a flask or small specimen
+- careful two-handed treatment work
+
+Keep satchel placement clear of major elbow and hip arcs as much as practical.
+
+Outerwear should deform cleanly in crouched and kneeling poses without requiring elaborate cloth simulation for ordinary gameplay.
+
+## Production status
+
+**Visual exploration:** complete unless later reopened by the project owner.  
+**Character reference:** **APPROVED.**  
+**Modeling-reference preparation:** **AUTHORIZED.**  
+**Final Blender modeling:** **NOT YET AUTHORIZED.**  
+**Unity changes:** **NOT AUTHORIZED.**
