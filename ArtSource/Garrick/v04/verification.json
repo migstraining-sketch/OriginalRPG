@@ -1,0 +1,27 @@
+{
+  "blender": "5.2.1 LTS",
+  "base_version": "v03",
+  "head_vertices": 4368,
+  "hair_strands": 26640,
+  "beard_strands": 8100,
+  "render_source": "actual Cycles scene",
+  "rigged": false,
+  "unity_installed": false,
+  "native_reopen": "passed",
+  "packed_images": [
+    {
+      "name": "Garrick-Reference.png",
+      "packed": true
+    },
+    {
+      "name": "Garrick_Face_Albedo.png",
+      "packed": true
+    },
+    {
+      "name": "Opening-Cast-Lineup.png",
+      "packed": true
+    }
+  ],
+  "old_strip_objects_absent": true,
+  "visual_acceptance": "not established"
+}
