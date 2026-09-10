@@ -6,6 +6,8 @@ The pacing rule is that the opening never actively teaches more than **one new m
 
 Regional travel authority for this opening lives in `TRAVEL_WORLD_MAP_MVP.md`.
 
+Mooncalf Milk reagent-impossibility/failure authority lives in `OPENING_MOONCALF_MILK_FAILURE.md`.
+
 Playable dialogue/state authority lives in `DIALOGUE_PLAYER_AGENCY.md`. This document preserves chronology and system handoffs rather than duplicating detailed dialogue.
 
 ## 0:00–1:30 — Character Creation → Arrival
@@ -158,7 +160,7 @@ The player leaves Garrick's Inn for meaningful regional travel.
 
 Flow:
 
-**Garrick's Inn → Regional Map → Woodland → Woodland trailhead**
+**Garrick's Inn front door → Regional Map → Woodland → Woodland trailhead**
 
 The map is an actual visual regional map, not a vertical destination list.
 
@@ -229,9 +231,25 @@ Aggression has physical resource consequences:
 
 No morality meter or GOOD/EVIL warning is needed. The world state is the consequence.
 
-If the player destroys their current path to the required milk, the game should rely on world-consistent recovery/alternate sourcing rules rather than pretending the milk was obtained anyway. Exact fallback content is not designed in this opening document and should be flagged if implementation requires it.
+#### Reagent-impossibility branch
 
-## 14:00–16:00 — Mossback Miniboss
+Do **not** treat combat, hostility, or temporary herd flight as automatic quest failure.
+
+If a viable nursing Mooncow survives and remains present or recoverably returns, the Mooncalf Milk objective remains possible.
+
+Only when world state establishes that the required serving can no longer be obtained from the currently available viable source does the failure branch trigger. Examples include the viable nursing Mooncow being killed before collection or the viable herd becoming permanently unrecoverable.
+
+At that moment:
+- remove **Obtain Mooncalf Milk** as an active objective immediately;
+- replace the player's current intention with the semantic equivalent of **Return to Marlow**;
+- record the real situation in Journal/player knowledge rather than pretending collection remains possible;
+- do not spawn or reveal a backup bottle, replacement herd, hidden merchant, or alternate quest-safe source.
+
+The authoritative branch rules and acceptance tests live in `OPENING_MOONCALF_MILK_FAILURE.md`.
+
+The player may return immediately. They are not required to continue deeper into the successful-route Woodland sequence once the treatment has become genuinely impossible.
+
+## 14:00–16:00 — Mossback Miniboss — successful/continuing reagent route
 
 Marlow has established that Mossbacks are normally docile if given space, without pre-solving the encounter.
 
@@ -243,19 +261,19 @@ After the fight, the behavior remains unexplained.
 
 The Mossback teaches a stronger behavioral combat interaction through its telegraphed Charge and use of obstacles/lanes, consistent with Core Systems authority.
 
+If the Mooncalf Milk source was already made genuinely impossible and the player has been redirected to Marlow, this beat is not required before returning.
+
 ## 16:00–18:00 — Return Travel → Marlow
 
 The player does not teleport straight from the Woodland to Marlow's lab.
 
 They leave through the Woodland's regional-travel boundary and return via:
 
-**Woodland → Regional Map → Garrick's Inn**
+**Woodland → Regional Map → Garrick's Inn front entrance → Marlow's lab**
 
 The map opens with Woodland marked as the current location. Garrick's Inn remains known/selectable. A short route/travel transition communicates the return journey.
 
-On arrival, the player physically re-enters/returns through the Inn and goes back to Marlow in the lab.
-
-### Correct emotional priority on return
+### Successful return
 
 Marlow's immediate priority is the sick troll, not the player's field observations.
 
@@ -273,7 +291,21 @@ Track conceptually as separate state:
 
 Never automatically synchronize these states.
 
-## 18:00–20:00 — First Potion Making / Treatment
+### Reagent-impossible return
+
+If the player returns after genuinely losing access to Mooncalf Milk, Marlow does not know the cause in advance merely because the world state changed.
+
+The conversation instead establishes that the required reagent is unavailable and the treatment cannot be completed.
+
+Once Marlow understands that:
+- close/remove the impossible treatment objective;
+- do not proceed into the Potion Making unlock sequence;
+- do not let Mossback discussion interrupt the immediate failure beat;
+- allow the opening to continue toward Garrick once the failure conversation resolves.
+
+Exact dialogue belongs to `DIALOGUE_PLAYER_AGENCY.md`. Full state/acceptance rules live in `OPENING_MOONCALF_MILK_FAILURE.md`.
+
+## 18:00–20:00 — First Potion Making / Treatment — successful route only
 
 Under Marlow's supervision, player physically performs:
 
@@ -313,7 +345,9 @@ If the player never reports the incident, Marlow does not know it happened and n
 
 No main-story quest or explicit antagonist reveal appears here.
 
-## 20:00–21:00 — Garrick Recognizes the Player
+## 20:00–21:00 — Garrick Opens the Next Step
+
+### Successful Marlow route
 
 Player returns/emerges to Garrick.
 
@@ -323,13 +357,32 @@ He now has evidence the player can navigate the woods, handle combat, return ali
 
 The contract board opens.
 
-If the player previously defeated Garrick, treat this as already sequence-broken rather than a new unlock.
+### Marlow treatment-failure route
+
+After the reagent-impossibility conversation resolves enough that Garrick understands Marlow's immediate job is over/failed, the contract board also becomes available.
+
+This is an explicit alternate opening-progression path.
+
+The player does **not** need to:
+- defeat Garrick;
+- obtain a replacement reagent;
+- complete Potion Making;
+- wait for a hidden illness/departure timer;
+- reload.
+
+Locked convergence:
+
+**Marlow treatment failure → Garrick's board opens → choose one starter Hunting contract → existing contract/travel rules continue normally**
+
+Potion Making remains locked on this failure route.
+
+If the player previously defeated Garrick, treat board access as already sequence-broken rather than a new unlock.
 
 ## Room Rental Hook — PROTECTED
 
 Room rental is available Day One but not mandatory.
 
-Cheapest room costs roughly **5–10 coins beyond starting wealth**. Marlow's reward moves the player closer. Exploration may make it affordable already; if so, let them rent it.
+Cheapest room costs roughly **5–10 coins beyond starting wealth**. Marlow's reward moves a successful-route player closer. Exploration may make it affordable already; if so, let them rent it.
 
 No Rest Quality tutorial yet.
 
@@ -356,13 +409,15 @@ The board can establish that these local place names/problems exist, but the spe
 - Accept **Three Missing by Morning** → Venn Homestead becomes known/selectable.
 - Accept **When the Wheel Stopped** → Vale Watermill becomes known/selectable.
 
+Marlow treatment failure by itself reveals none of these destinations.
+
 Do not automatically reveal all three destination markers merely because all three postings are visible.
 
 ## 22:00–27:00ish — Travel → First Hunting Contract
 
 After accepting one contract, the player leaves the Inn through the same regional-travel grammar:
 
-**Garrick's Inn → Regional Map → accepted contract destination**
+**Garrick's Inn front door → Regional Map → accepted contract destination**
 
 Possible destinations:
 - Reedwater Paddies
@@ -385,7 +440,7 @@ Completing any one formally unlocks **Hunting** after the wildlife problem is ac
 
 After resolving the contract, the player leaves that destination through its regional-travel boundary:
 
-**Contract destination → Regional Map → Garrick's Inn**
+**Contract destination → Regional Map → Garrick's Inn front entrance**
 
 The player returns with outcome and edible material.
 
@@ -477,6 +532,9 @@ It must:
 - preserve stable relative positions
 - clearly mark the player's current location
 - show only destinations the player plausibly knows
+- use Garrick's Inn **front door** as the opening MVP regional-travel exit
+- return the player through/at Garrick's Inn front entrance
+- keep the back door local to Inn/property future use rather than making it a second map portal
 - allow cancel/back before committing travel
 - use a short route/travel transition after selection
 - place arrivals at sensible local entrances
@@ -498,15 +556,17 @@ See `TRAVEL_WORLD_MAP_MVP.md`.
 
 ## Mandatory vs optional
 
-Mandatory for standard route:
+Mandatory for standard successful route:
 - functional Garrick engagement unless leaving/sequence-breaking
 - Regional Map travel to/from the Woodland once Marlow's job is accepted
 - obtaining Bloodleaf, Silvermoss, and valid Mooncalf Milk in a suitable container
-- Mossback fight on Marlow route
+- Mossback fight on the continuing successful Marlow route
 - first Health Potion craft if completing Marlow route
 - one starter Hunting contract to reach Hunting/Sylvie opening
 - Regional Map travel to/from the accepted Hunting destination
 - Sylvie demonstration and pantry agreement to unlock Cooking
+
+Failure-route requirements differ as defined in `OPENING_MOONCALF_MILK_FAILURE.md`: once Mooncalf Milk is genuinely impossible, the player returns to Marlow, the treatment closes, Potion Making does not unlock, and Garrick's board becomes available without a hidden timer or Garrick fight.
 
 Optional:
 - explore every inn area
@@ -523,25 +583,27 @@ Optional:
 - Player steals/provokes Garrick: warnings/escalation/combat branch.
 - Player somehow defeats Garrick: Hunting-board access can occur early.
 - Player reaches Hunting before Marlow: allowed; possible order becomes Hunting → Sylvie/Cooking → Marlow/Potion Making later.
-- Player refuses Marlow: allowed; troll remains on real clock.
-- Troll dies if ignored too long; Marlow leaves for a significant period.
-- Player attacks the Mooncalf/herd: allowed; protective adults defend, and violence can jeopardize the renewable Mooncalf Milk source.
+- Player refuses Marlow: allowed; longer Marlow/troll consequences advance through authored state rather than requiring an invisible real-time countdown.
+- Player attacks the Mooncalf/herd: allowed; protective adults defend. If the viable nursing source remains recoverable, the quest remains possible.
+- Player genuinely destroys the viable Mooncalf Milk source before collection: impossible collection objective clears immediately → Return to Marlow → treatment closes as failed → Potion Making remains locked → Garrick's board becomes available → Hunting progression can continue normally.
 - Non-lethal Hunting resolutions fully supported.
 
 Sequence breaks do not bypass regional geography. If the player gains early access to a contract, accepting that contract reveals its destination and travel still uses the Regional Map.
 
 ## Opening endpoint
 
-At the end, player potentially has:
+At the end of the successful standard route, player potentially has:
 - Potion Making
 - Hunting
 - Cooking
 
-And clear physical homes for each:
+On the Mooncalf Milk failure route, Potion Making remains legitimately unavailable while Hunting/Cooking progression can continue through Garrick's board.
+
+Clear physical homes remain:
 - Marlow's lab
 - Garrick's board / wilderness
 - Sylvie's kitchen
 
-The Regional Map now provides a stable geographical relationship between the Inn and the destinations the player has actually discovered.
+The Regional Map provides a stable geographical relationship between the Inn and the destinations the player has actually discovered.
 
-Two starter contracts remain, Garrick sells gear, a room waits upstairs, Health Potion ingredients can be gathered again, the living Mooncalf herd can remain a renewable source of Mooncalf Milk if preserved, Sylvie can supervise Cooking, outside world is open, and the unexplained Mossback behavior quietly remains in the background.
+Two starter contracts remain, Garrick sells gear, a room waits upstairs, Health Potion ingredients can be gathered again on the successful route, the living Mooncalf herd can remain a renewable source of Mooncalf Milk if preserved, Sylvie can supervise Cooking once reached through Hunting, outside world is open, and the unexplained Mossback behavior quietly remains in the background when encountered/reported.
