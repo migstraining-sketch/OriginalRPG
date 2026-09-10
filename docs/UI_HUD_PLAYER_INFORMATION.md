@@ -2,170 +2,67 @@
 
 ## Status / authority
 
-This document is the proposed continuity home for **UI / HUD / Player Information**. Central Brain remains final design authority. Until Central Brain approves the recommendations below, treat them as implementation-ready proposals rather than locked mechanics.
+Proposed continuity home for **UI / HUD / Player Information**. Central Brain remains final authority. These are implementation-ready recommendations until approved. Do not modify Unity from this document alone; the coordinated pass owns implementation.
 
-This document owns presentation and information architecture: how the player sees moment-to-moment state, opens deeper player systems, reads combat legality, navigates panels, and returns to play. It does **not** redesign combat, Hunting, Cooking, Potion Making, dialogue content, regional travel rules, inventory capacity, or progression.
+This document owns presentation and information architecture, not combat mechanics, Hunting/Cooking/Potion rules, dialogue content, travel rules, inventory capacity, or progression.
 
-**Do not modify Unity from this document alone.** Central Brain is coordinating a larger implementation pass.
+## Existing authority preserved
 
-## Repository authority this proposal preserves
+The UI must keep the **world first and interface second**, teach one mental model at a time, use consistent navigation, avoid clue counters/solution arrows, keep one general non-punitive inventory, expose only real equipment slots, preserve the combat grid as the tactical surface, support lightweight Hunt Notes, keep dialogue grounded in the scene, treat the Regional Map as a larger visual travel interface, keep storage physically tied to the rented room, and reveal systems progressively.
 
-Current upstream rules require the UI to:
+RuneScape is useful here for **predictable homes for important systems**, not its art, chat box, permanent screen allocation, exact tabs, or proportions.
 
-- keep the **world first and interface second**;
-- teach one mental model at a time and avoid menu/tutorial avalanches;
-- use consistent UI language and predictable close/back behavior;
-- avoid replacing Hunting with detective vision, counters, or solution arrows;
-- keep one general inventory for equipment, materials, ingredients, potions, and adventure items, with sensible stacking and no restrictive opening carrying capacity;
-- expose only the opening equipment slots actually supported: **Weapon** and **Body Armor**;
-- communicate compressed combat values clearly, including current HP, Armor, weapon geometry, Primary Action state, enemy intent, range, and LOS;
-- preserve the combat grid as the main tactical reading surface;
-- support lightweight Hunt Notes that remember observations/inferences without solving the hunt;
-- preserve dialogue momentum and avoid giant overlays/FAQ-menu behavior;
-- treat the Regional Map as a real visual travel interface, not a destination-list tab;
-- keep room storage physically tied to the rented room and avoid making the backpack artificially unpleasant;
-- reveal systems progressively when the player actually gains a reason to use them.
+# Current Unity behavior / audit
 
-The useful RuneScape reference is therefore **predictable homes for important player systems**, not its art, chat box, permanent screen allocation, exact tab count, or proportions.
+`SliceHUD` is functional `OnGUI` scaffolding. It currently combines a wide top information/objective box, text-only HP, Armor and weapon text, one long `Equipment & inventory` scroll panel, a nearly full-width bottom combat panel, a growing/scrolling dialogue overlay, interaction prompts, and separate board/Brewing/Cooking screens.
 
-# Current Unity UI audit
+Current input includes `I` inventory, `E` interact, combat `M` and `1`–`5`, Enter/Space, mouse grid targeting, and Esc/right-click cancellation. `SliceGame` currently lets Esc close dialogue outright.
 
-The current prototype is functional scaffolding, not a coherent final shell.
+### Problems found
 
-## What exists now
+1. HP is embedded as `HP current/max` text rather than a glanceable meter.
+2. The wide top strip mixes immediate state, equipment and objectives.
+3. Inventory, equipment, provisions, quest reagents and profession unlock notices share one scrolling panel.
+4. There is no stable deeper-system navigation shell.
+5. Combat buttons consume too much width and will scale poorly as techniques grow.
+6. Disabled actions do not consistently explain **why** they are unavailable.
+7. Generic range copy cannot fully communicate Bow radius + LOS or signature geometry.
+8. Dialogue can become a large scrolling overlay that obscures the physical scene.
+9. Esc needs a deliberate contract so `back` never accidentally becomes a meaningful roleplaying choice.
+10. Current Marlow objective checkmarks are useful debug feedback but should not become the universal quest/Hunting grammar.
+11. Storage transfer and Regional Map presentation do not yet exist in the current shell.
+12. The monolithic `SliceHUD` should be separated by presentation responsibility during the coordinated pass, regardless of final Unity UI technology.
+13. Bow visual/input legality must be repaired so highlights, hover feedback and accepted clicks agree with combat-coordinate rules.
 
-`SliceHUD` uses Unity immediate-mode `OnGUI` and scales a 1280×800 reference layout. It currently combines most presentation responsibilities in one script:
-
-- a top information box showing player name, text-only `HP current/max`, Armor, equipped weapon, objective, and combat phase/resource text;
-- a large centered **Equipment & inventory** panel opened with `I`;
-- a bottom combat box containing enemy intent, combat log, action buttons, selection hints, and cancel instructions;
-- a centered/lower dialogue box that dynamically grows and can become scrollable;
-- separate large interfaces for the contract board, brewing, and Cooking;
-- exploration interaction prompts at the bottom.
-
-Input currently supports:
-
-- `I` inventory;
-- `E` interact;
-- combat `M`, `1`–`5`, Enter and Space shortcuts;
-- Esc/right-click cancellation in combat;
-- Esc closing dialogue and other modes;
-- mouse selection on the combat grid.
-
-## Current implementation problems relevant to the coordinated pass
-
-1. **HP is text, not glanceable state.** `HP 30/30` is embedded in a sentence with name, Armor, and weapon.
-2. **The top strip is overloaded.** Objective text and combat state occupy a broad box across most of the screen rather than a compact persistent HUD.
-3. **Inventory and equipment are fused into one long scrolling list.** Provisions, unlock notices, quest reagents, armor, weapons, healing items, coins, and profession state share one panel.
-4. **System state leaks into inventory.** `Hunting learned`, `Cooking learned`, Potion Making unlock text, and opening reagent progress are presented as inventory information.
-5. **There is no stable player-system navigation shell.** `I` opens one bespoke panel; other deeper information has no predictable home.
-6. **Combat actions consume nearly the full bottom width.** This works as debug scaffolding but competes with the grid and will scale poorly as learned techniques grow.
-7. **Disabled combat actions mostly communicate state through disabled buttons.** The player needs a nearby reason when an action is invalid because of range, LOS, adjacency, spent Primary Action, blocked Lunge destination, etc.
-8. **Combat targeting copy is partly implementation-specific and brittle.** For example, generic `red range` wording cannot by itself communicate Bow's radius + LOS legality or signature-specific geometry.
-9. **Dialogue can grow into a large scrolling overlay.** That reinforces the menu-dimension feeling that current dialogue revisions are trying to remove.
-10. **Esc currently closes dialogue outright.** That may be appropriate for leaving an interruptible conversation, but the presentation/input contract needs to distinguish `back/cancel current UI layer` from a consequential `leave conversation` action so Esc never produces a surprising roleplaying decision.
-11. **Objective presentation can become checklist-like.** Current Marlow objective text includes ingredient checkmarks. This is useful prototype feedback but should not become the universal quest/Hunting language.
-12. **The prototype has no room-storage transfer UI or Regional Map shell yet.** Both need to fit the same navigation/state rules without becoming tabs inside the compact player panel.
-13. **Current `OnGUI` architecture is monolithic.** The coordinated pass should separate HUD state, player-system panels, combat presentation, dialogue presentation, storage transfer, and map presentation even if final Unity UI technology is decided downstream.
-14. **Bow targeting trust is already a priority upstream bug.** UI highlights, hover feedback, and accepted clicks must all agree with the combat-coordinate legality rule.
-
-# Recommended MVP information architecture
+# Recommended MVP architecture
 
 ## Core doctrine
 
-**Persistent HUD shows information needed for immediate decisions. A compact, predictable player-system strip opens deeper information. Large contextual interfaces appear only when the activity genuinely needs the space.**
+**Persistent HUD shows information needed for immediate decisions. A compact predictable player-system strip opens deeper information. Large contextual interfaces appear only when the activity genuinely needs the space.**
 
-This is a refinement, not a rejection, of Central Brain's proposed doctrine.
+Use three layers:
 
-Three presentation layers:
+1. **Persistent HUD** — glanceable moment-to-moment state.
+2. **Player panel** — compact expandable/collapsible Inventory, Equipment, Character, Techniques and Journal.
+3. **Context interfaces** — combat expansion, dialogue, room storage, contract board, Cooking/Potion interactions and Regional Map.
 
-1. **Persistent HUD** — glanceable state that remains useful while moving/fighting.
-2. **Player panel** — compact expandable/collapsible panel for Inventory, Equipment, Character, Techniques, and Journal/Hunt Notes.
-3. **Context interfaces** — combat action expansion, dialogue, physical storage transfer, Cooking/Potion interactions, contract board, and Regional Map.
+The player must always know which layer owns input.
 
-The player should always know which layer currently owns input.
+## 1–4. Persistent HUD, HP, future MP, ammo
 
-# 1. Persistent exploration HUD
+Keep the exploration HUD edge-anchored and compact. Show HP meter + current/max number, a hidden-until-needed secondary-resource slot, nearby interaction prompt, one compact current-objective reminder when useful, and a small player-system tab/button strip.
 
-Keep the exploration HUD small and anchored to screen edges, leaving the center and most of the world unobstructed.
+Do not permanently show Armor as a second bar, weapon prose, material totals, empty MP, irrelevant ammo, profession notices, clue counters, or an unearned minimap.
 
-Recommended MVP persistent elements:
+Use a visual HP bar plus precise text such as `24 / 30`; depletion must be readable beyond color alone. Armor remains a compact mitigation value. Reserve layout capability for MP but render nothing until meaningful MP mechanics exist.
 
-- **HP meter** with current/max numbers;
-- contextual secondary resource slot, hidden unless a real system uses it;
-- small interaction prompt when a nearby object/NPC is actionable;
-- compact current-objective reminder only when there is useful active direction;
-- compact player-system tab/button strip.
+When an equipped weapon actually consumes ammunition, show a compact contextual readout such as `[arrow] 17`. Hide it for non-ammo weapons and before ammo exists. Low/empty states need more than color.
 
-Do **not** permanently show:
+The objective reminder states intention, not checklist progress: `Travel to the Woodland`, `Return to Marlow`, or `Investigate the damage at Reedwater Paddies`. Detailed memory belongs in Journal.
 
-- Armor as a giant meter;
-- equipped weapon description;
-- all currencies/material counts;
-- empty MP;
-- ammo for a weapon/system that does not use ammo;
-- profession unlock notices;
-- clue counters;
-- a minimap merely because other RPGs have one.
+## 5. Player-system navigation
 
-Armor and equipped weapon can be visible in Character/Equipment and may surface contextually in combat. The character model should also communicate equipped gear when art supports it.
-
-## Objective reminder
-
-Use one short current intention, not a quest checklist wall. Examples of appropriate granularity:
-
-- `Travel to the Woodland.`
-- `Marlow needs Bloodleaf, Silvermoss, and Mooncalf Milk.`
-- `Return to Marlow.`
-- `Investigate the damage at Reedwater Paddies.`
-
-The detailed remembered evidence belongs in Journal/Hunt Notes.
-
-Allow the reminder to collapse/hide without erasing the underlying journal entry.
-
-# 2. HP presentation
-
-Use a persistent visual HP bar plus optional numeric text such as **24 / 30**.
-
-Requirements:
-
-- readable at a glance without parsing a sentence;
-- depletion represented by bar length/fill, not color alone;
-- current/max numbers available by default for tactical precision;
-- damage/healing feedback should briefly animate/change the meter without blocking control;
-- same visual language in exploration and combat so entering combat does not require relearning health presentation.
-
-Do not make Armor a second health bar. Armor is a mitigation property and should read as a compact value/icon where relevant.
-
-# 3. Future MP accommodation
-
-Reserve a **secondary-resource slot** adjacent to/below HP in the HUD layout, but do not render it until the player has a meaningful MP-using capability.
-
-When magic becomes real, MP can occupy that slot with the same broad visual grammar as HP while remaining visually distinguishable by label/icon/shape as well as color.
-
-Do not invent MP amount, regeneration, spell costs, or magic unlock rules here.
-
-# 4. Contextual ammunition / combat resources
-
-Use a small contextual resource readout near the HP/resource cluster or weapon/action area when the equipped weapon actually consumes that resource.
-
-Example form:
-
-`[arrow icon] 17`
-
-Rules:
-
-- hidden when the equipped weapon does not use ammunition;
-- hidden before ammunition mechanically exists;
-- count updates immediately when consumed/recovered;
-- low/empty state uses icon/state/text treatment, not color alone;
-- weapon-specific future resources may use the same contextual slot if they meet the same moment-to-moment relevance test.
-
-Do not reserve permanent blank HUD real estate for hypothetical future resources.
-
-# 5. Player-system tab/navigation structure
-
-Recommended compact tab set once all relevant opening systems exist:
+Recommended mature opening tab set:
 
 - **Inventory**
 - **Equipment**
@@ -173,203 +70,140 @@ Recommended compact tab set once all relevant opening systems exist:
 - **Techniques**
 - **Journal**
 
-`Journal` is preferred over a permanent `Quest` or `Hunting` tab because it can house objectives, remembered conversations/locations where later needed, and Hunt Notes without making every system demand its own top-level button. Within a hunt, the relevant entry can contain an **Observations / Inference / Trail** structure.
+`Journal` is preferred over separate permanent Quest and Hunting tabs. Hunt Notes live inside relevant entries. Tabs appear when meaningful rather than presenting locked silhouettes. `I` should open Inventory; `J` is a strong Journal candidate; Character may use `C` after conflict audit. Clicking the active tab closes it. Esc closes the current player panel and returns to play.
 
-Progressive rule: tabs that have no meaningful content or player capability should not appear as rows of locked silhouettes. The strip grows as the player's actual information needs grow.
+## 6. Inventory
 
-Recommended shortcuts for approval/testing:
+Inventory answers **what am I carrying, how many, and what can I do with it?** Use one general inventory with readable item icon/name, stack counts, selected-item details and contextual actions. Broad filters such as All / Equipment / Consumables / Materials / Key & Misc are enough if item volume earns them.
 
-- `I` → Inventory;
-- `C` → Character (or another conflict-free key after Unity input audit);
-- `J` → Journal;
-- a single Techniques shortcut is optional for MVP because techniques are also reachable from the tab strip;
-- clicking the same active tab closes the panel;
-- Esc closes the current player panel and returns to gameplay.
+Do not add restrictive weight/capacity to make storage useful. Quest reagents remain normal items; Journal explains why they matter.
 
-Exact key bindings should be rebindable later; MVP needs consistency first.
+## 7. Equipment
 
-# 6. Inventory
+Equipment answers **what am I using, and what changes if I equip this?** MVP exposes only **Weapon** and **Body Armor**. A character silhouette is optional, but no empty MMO paper doll.
 
-Inventory should answer: **What am I carrying, how many, and what can I use/manage?**
+Weapon details expose decision-relevant damage, range/geometry, Signature technique and LOS/adjacency restrictions. Body Armor exposes Armor and only future properties that actually matter. Comparisons emphasize meaningful changes, not stat soup.
 
-Recommended structure:
+## 8. Character / Stats
 
-- clear item grid/list with readable icons + names/tooltips;
-- sensible category filtering rather than separate inventories;
-- stack counts on stackable materials/ingredients;
-- coins/currency in a stable compact location;
-- selected-item detail area for description and valid contextual actions;
-- equipped items marked clearly but not duplicated into a separate fake inventory.
+Keep a small decision-facing summary: name, HP, Armor, equipped weapon summary, and Movement where useful. Show profession/progression state only when it has meaningful inspectable information.
 
-Useful MVP categories may be broad: **All / Equipment / Consumables / Materials / Key & Misc.** Do not over-categorize before item volume earns it.
+Do not invent Strength/Dexterity/Intelligence or dozens of derived numbers to fill space. Test every exposed statistic with: **what decision changes because the player can see this?**
 
-Do not add restrictive weight/carry limits to justify storage. Storage is valuable for organization, stockpiling, and home-base preparation.
+## 9. Techniques
 
-Opening quest reagents are normal items. The journal/objective can explain why they matter; inventory should not become the quest tracker.
+Use **Techniques** as the home for learned weapon techniques unless Central Brain later adopts broader terminology. Each learned technique shows weapon association, concise behavior, range/geometry, damage/effect, Primary Action or other real cost, and special restrictions.
 
-# 7. Equipment
+Show learned techniques, not future locked silhouettes. Technique acquisition/loadout rules remain upstream-unresolved.
 
-Equipment should answer: **What am I using, and what changes if I equip this?**
+## 10. Journal / Hunt Notes
 
-For MVP, show only supported functional slots:
+Journal exists to **remember, not solve**. An active entry can contain motive/objective, location/client/source, discovered observations, supported player-character **Inference**, and last useful trail information.
 
-- Weapon
-- Body Armor
+For Hunting, never turn this into `2/3 CLUES FOUND`, an inference progress bar, automatic creature identification, a giant next-track arrow, or Good/Evil route labels.
 
-A compact equipment panel can show the character/model silhouette if useful, but do not build an MMO paper doll full of empty Head/Hands/Boots/Rings slots.
-
-For a selected weapon show decision-relevant information:
-
-- damage;
-- basic attack range/geometry;
-- signature technique name and concise effect;
-- LOS/adjacency restrictions where relevant.
-
-For body armor show Armor value and any future meaningful property only when such properties exist.
-
-Comparison should emphasize changed meaningful values, not a wall of derived statistics.
-
-# 8. Character / Stats
-
-Character should expose a **small decision-facing summary**, not a spreadsheet.
-
-Recommended MVP contents:
-
-- name;
-- max/current HP;
-- Armor from current equipment;
-- equipped weapon summary;
-- current movement allowance where useful to teach the combat model;
-- unlocked progression/profession identities only if they have meaningful player-facing state to inspect.
-
-Do not invent Strength/Dexterity/Intelligence or dozens of derived ratings merely to fill the page. If a future statistic affects choices, add it when the mechanic exists and explain its effect in plain language.
-
-A useful rule for every exposed number: **What decision can the player make differently because they can see this?** If there is no good answer, keep it out of the primary Character panel.
-
-# 9. Abilities / learned weapon techniques
-
-Use **Techniques** as the player-facing home for learned weapon techniques unless Central Brain later chooses a broader ability vocabulary.
-
-For each learned technique show:
-
-- associated weapon/type;
-- concise behavior;
-- range/target geometry;
-- damage/effect;
-- Primary Action cost or other real cost/restriction;
-- clear special conditions.
-
-Opening example information should make Sword Lunge, Spear Drive, and Bow Quick Shot understandable without requiring combat trial-and-error to learn their legality.
-
-Do not fill the panel with unknown locked silhouettes. Show what the player has learned.
-
-Long-term slot/loadout rules remain unresolved upstream and are not decided here.
-
-# 10. Journal / Quest / Hunt Notes
-
-The Journal should help the player **remember**, not solve.
-
-Recommended hierarchy:
-
-**Active thread / contract**
-
-- short objective/motive;
-- location/client/source where useful;
-- discovered observations in the order or grouping that best preserves meaning;
-- player-character **Inference** only after the game state supports it;
-- last useful trail information where tracking resilience requires memory;
-- resolved threads retained in a quieter completed/history area when continuity needs them.
-
-For Hunting, avoid:
-
-- `2/3 CLUES FOUND`;
-- progress bars toward an inference;
-- automatically naming the creature before evidence supports it;
-- giant map arrows to the next track;
-- labeling actions as Good/Evil or Lethal/Non-lethal solutions.
-
-Good Hunt Notes example:
+Example:
 
 **Reedwater Paddies**
-
 - Deep broad tracks in the damaged rows.
-- Rice crushed, but little of it eaten.
+- Rice crushed, but little eaten.
 - Mudgrubs exposed beneath disturbed stalks.
 
 **Inference:** Something is digging through the crop for the grubs beneath it.
 
-If the player wanders off a tracking chain, a note such as `The last clear sign led toward the wet eastern margin` is appropriate memory support. `GO HERE →` is not.
+For tracking resilience, `The last clear sign led toward the wet eastern margin` is appropriate memory support. `GO HERE →` is not.
 
-# 11. Combat action presentation
+## 11. Combat actions
 
-When combat starts, keep the persistent HP/resource HUD but let the lower edge **expand into a combat command tray** rather than replacing the whole screen.
+Combat keeps the persistent HP/resource HUD and expands the lower edge into a compact **combat command tray**. Preserve the upstream action set: Move, Attack, equipped Signature, Defend, Item, Dash, contextual authored interaction when present, End Turn, and Flee only when legal.
 
-MVP command set remains upstream-authoritative:
+Selecting an action expands a small detail/hint region. The Signature button uses the actual technique name. Keyboard hints remain visible but secondary. Do not build a ten-slot MMO hotbar for an opening character with one Signature.
 
-- Move
-- Attack
-- weapon Signature
-- Defend
-- Item
-- Dash
-- contextual authored interaction when present
-- End Turn
-- Flee only when actually legal
+## 12. Combat targeting / range / LOS / intent
 
-Recommended presentation:
+The UI must give one trustworthy answer to **can I do this, where, and why?**
 
-- one compact horizontal/curved tray or clustered command row near the bottom;
-- selected action expands a small detail/hint region rather than opening a giant new panel;
-- signature button uses the actual equipped technique name/icon where practical;
-- keyboard hints remain visible but secondary;
-- grid remains the dominant central visual.
+- valid target/reachable hexes: clear positive state;
+- hovered target/hex: stronger focus;
+- enemy threatened/telegraphed space: visually distinct from player-valid space;
+- invalid hover: concise first relevant blocker;
+- important states use shape/border/pattern/icon as well as color.
 
-Do not design a ten-slot MMO hotbar for an opening character with one Signature technique.
+Useful blockers include `Too close for Bow basic attack`, `Out of range`, `Line of sight blocked`, `Primary Action already spent`, and `Lunge path is blocked`.
 
-# 12. Combat targeting / range / LOS feedback
+Because damage is deterministic, hover/targeting may show expected damage when useful. Enemy intent should live primarily on/near the enemy and threatened grid space, with concise tray reinforcement. Telegraph danger, not the solution.
 
-Combat UI must create one trustworthy answer to **Can I do this, where, and why?**
+## 13. Dialogue presentation
 
-For the selected action:
+Keep characters visually present. Prefer a lower-third/lower-side panel rather than a large centered modal when composition allows. Show speaker + readable text; ordinary Continue is visually different from meaningful player responses. Choices appear only when authored dialogue actually has choices.
 
-- valid target/reachable hexes receive a clear positive state;
-- threatened/telegraphed enemy space remains visually distinct from player-valid target space;
-- hovered hex/target gets a stronger focus state;
-- invalid hover gives a concise reason when useful;
-- do not rely on red/green/blue alone: use border/pattern/icon/shape changes as secondary cues.
+Avoid scrolling for normal dialogue. If text routinely needs scrolling, fix layout/copy rather than normalizing scroll boxes.
 
-Example invalid reasons:
+Esc/back must not silently choose refusal, rudeness, acceptance or another consequential response. If leaving a conversation is allowed, it should be explicit/predictable; dialogue authority owns whether leaving is valid at a given state.
 
-- `Too close for Bow basic attack.`
-- `Out of range.`
-- `Line of sight blocked.`
-- `Primary Action already spent.`
-- `Lunge path is blocked.`
-- `No open hex to push into.` for the push component, while preserving that Spear Drive damage may still be legal under upstream rules.
+## 14. Room-storage transfer
 
-The UI should explain the **first relevant blocker**, not dump a rules engine trace.
+The physical chest opens a two-pane interface:
 
-### Predictive information
+**Carried Inventory ↔ Room Storage**
 
-Because combat uses fixed damage and predictable Armor math, hovering/targeting may show expected damage where it improves decisions. Do not hide deterministic information merely to manufacture uncertainty.
+Use the same item language as Inventory, support direct transfer and sensible stack/quantity handling, and let Esc close back to the room. No global-bank access, needless confirmations, or transfer tax. Storage is valuable through organization and stockpiling, not a crippled backpack.
 
-### Enemy intent
+## 15. Regional Map
 
-Intent belongs near the enemy and/or threatened grid space first, with a compact textual reinforcement in the combat tray.
+Regional Map is **not** a right-side player tab. It is a larger contextual travel interface entered through a physical Leave/Travel boundary. Preserve stable geography, known destinations, current-location treatment, route presentation and cancel-before-commit behavior from `TRAVEL_WORLD_MAP_MVP.md`.
 
-Examples:
+The player-system shell must not become a magical travel button that bypasses physical travel boundaries.
 
-- marked Pounce landing hex + enemy tell;
-- marked Mossback Charge lane + concise `Preparing to charge` reinforcement.
+## 16. Mouse + keyboard / input ownership
 
-Telegraph danger, not the solution. Never write `Move behind the tree to stagger Mossback.`
+Use a consistent input-state stack:
 
-# 13. Dialogue presentation
+- Exploration: WASD + E; player tabs available.
+- Player panel: UI owns input; movement suppressed; Esc closes panel.
+- Dialogue: dialogue owns input; Continue key advances ordinary Continue only; Esc follows approved leave/back behavior.
+- Combat: shortcuts select; mouse targets grid; Enter confirms where appropriate; Esc/right-click cancels the **current uncommitted selection first**.
+- Storage/Map/context interface: interface owns input; Esc backs out one layer when cancellation is legal.
 
-Dialogue should feel anchored to characters standing in the world.
+Committed movement/actions remain spent. Back never rewinds game state.
 
-Recommended MVP direction:
+## 17. Progressive unlocks
 
-- lower-third or lower-side dialogue panel rather than a large centered modal whenever scene composition allows;
-- speaker name + readable text with generous line length limits;
-- ordinary Continue
+The shell grows with actual capability: no MP before magic, no ammo before ammo, no giant empty Hunting dashboard, no future-technique silhouettes. When a system becomes relevant, reveal its home with a modest one-time cue rather than a tutorial avalanche.
+
+## 18. Screen-space philosophy
+
+Adopt RuneScape's **predictability**, reject its permanently large viewport tax. Persistent HUD/tab strip stay small. Deeper panels expand only when opened. Combat expands contextually. Dialogue preserves the scene. Regional Map/storage/crafting may use more space because the player deliberately entered those activities.
+
+## Accessibility/readability baseline
+
+Support UI scale, readable text, comfortable hit targets, strong hover/selected/disabled distinctions, non-color-only state cues, and consistent focus/back behavior. Do not require tiny pixel-perfect clicking.
+
+# Central Brain approvals required before Unity pass
+
+1. Three-layer architecture: Persistent HUD + Player Panel + Context Interfaces.
+2. Tab set: Inventory / Equipment / Character / Techniques / Journal.
+3. **Journal** as combined quest-memory/Hunt Notes home rather than permanent Hunting-only tab.
+4. HP bar + number and hidden-until-real MP slot.
+5. Contextual ammo/resource slot.
+6. Compact bottom combat tray.
+7. Invalid-target reason feedback and deterministic damage-preview direction.
+8. Lower-third/lower-side dialogue direction and rule that Esc cannot silently make a consequential dialogue choice.
+9. Two-pane physical room-storage transfer UI.
+10. Progressive reveal rather than locked silhouettes/empty gauges.
+11. Whether compact objective reminder is visible by default, player-collapsible, or both.
+12. Final default shortcuts after conflict/accessibility audit; `I` and `J` are recommended anchors.
+
+# Must resolve before coordinated implementation
+
+- Fix/verify Bow targeting so code legality, grid highlight, hover explanation and click acceptance are identical.
+- Define a shared UI input/focus/back state contract before adding Map, storage and new panels.
+- Keep gameplay state separate from presentation so Journal/HUD reads state without becoming quest logic.
+- Split monolithic `SliceHUD` responsibility; do not let debug `OnGUI` become permanent architecture by inertia.
+- Ensure dialogue exposes ordinary Continue separately from authored choices.
+- Ensure Hunting exposes observations/inferences/trail memory as data the Journal can present without inventing checklist progression.
+- Ensure storage uses the same inventory item model and the chest's physical interaction remains the access gate.
+
+# Explicitly unresolved / deferred
+
+This document does not decide magic mechanics, ammo economy, technique acquisition/loadouts, final stat system, controller UI, full accessibility suite, minimap, endgame map hierarchy, crafting recipe library, inventory capacity beyond the existing non-punitive guardrail, or visual art style/iconography.
