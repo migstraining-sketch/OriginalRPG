@@ -6,6 +6,8 @@ The pacing rule is that the opening never actively teaches more than **one new m
 
 Regional travel authority for this opening lives in `TRAVEL_WORLD_MAP_MVP.md`.
 
+Playable dialogue/state authority lives in `DIALOGUE_PLAYER_AGENCY.md`. This document preserves chronology and system handoffs rather than duplicating detailed dialogue.
+
 ## 0:00–1:30 — Character Creation → Arrival
 
 Character creation ends and the player loads directly into Garrick's common room.
@@ -121,9 +123,32 @@ Objective can be recorded simply as **Help Marlow prepare a treatment** with com
 
 Marlow explains that the needed material can be found in the Woodland without giving a step-by-step walkthrough. Once the player explicitly accepts the woodland job, **Woodland becomes known/selectable on the Regional Map**.
 
-Marlow may give enough practical direction/context to justify that knowledge, while the actual map preserves the physical relationship between the Inn and Woodland.
+Marlow communicates only what the player plausibly needs before departure:
+- Bloodleaf is required.
+- Silvermoss is required.
+- Mooncalf Milk is required.
+- Mooncalf Milk comes from a nursing Mooncow in a Mooncalf herd/family group.
+- Marlow provides/lends a clean portable **field flask** suitable for collecting the required serving of milk.
+
+He does **not** explain every behavioral trigger for approaching the herd peacefully. Dialogue establishes motive, stakes, and objective; it does not pre-solve the encounter.
 
 No Taming tutorial or skill unlock occurs.
+
+### Mooncalf terminology and reagent logic
+
+For opening/world consistency:
+- **Mooncalf** = juvenile
+- **Mooncow** = adult female
+- **Moonbull** = adult male
+
+The alchemical reagent traditionally called **Mooncalf Milk** is milk from a **lactating Mooncow while she is actively nursing a Mooncalf**. During calf-rearing, that milk contains unusually concentrated regenerative compounds associated with rapid juvenile growth/recovery. Those compounds fall dramatically after weaning.
+
+Therefore:
+- nursing Mooncow milk is a valid Health Potion reagent
+- ordinary/non-nursing Mooncow milk may be nutritious but is not the same alchemical reagent
+- the name **Mooncalf Milk** refers to the nursing/calf-rearing state, not to milk produced by the juvenile
+
+This internal rule does not need to be exposition-dumped during the opening.
 
 ## 9:00–14:00 — Travel → Woodland Expedition
 
@@ -156,24 +181,67 @@ Include a brief stretch of calm woodland movement before danger or ingredient in
 ### First combat
 Ordinary woodland wildlife provides likely first hostile encounter. Combat instruction appears only when combat begins and should be minimal/contextual.
 
+The first ordinary hostile creature should support the approved committed **Pounce** lesson through enemy intent and movement rather than a tutorial overlay.
+
 ### Bloodleaf
 Player recognizes it from Marlow's description and harvests useful portions without uprooting the whole plant.
+
+This teaches basic plant recognition/gathering through the world rather than a dedicated tutorial screen.
 
 ### Silvermoss
 Found by observing damp shaded stone rather than following a glowing trail.
 
-### Mooncalf Milk
-Player can follow Marlow's peaceful approach and gain cooperation. They may also frighten, attack, chase, or kill the Mooncalf if they insist. The quest continues if the ingredient is logically obtained. Marlow can react later.
+This teaches that environmental location/conditions matter to gathering.
+
+### Mooncalf herd / Mooncalf Milk
+
+The player encounters a small visible Mooncalf family/herd rather than one isolated quest-resource animal.
+
+Minimum MVP staging target:
+- **1 Mooncalf**
+- **2 protective adults** drawn from Mooncow/Moonbull roles
+
+Additional background herd members are optional if inexpensive and should not overpopulate the opening.
+
+The adults remain non-hostile while the player behaves appropriately. The player can observe the group, identify the nursing relationship, and work out a peaceful approach to the nursing Mooncow without the game announcing a Taming tutorial.
+
+The player uses the **field flask** Marlow supplied to collect the required Mooncalf Milk serving.
+
+**Liquids require an appropriate container.** For MVP, this is a simple inventory/world rule, not a detailed volume simulator. Future container capacity may use a simple servings model.
+
+The peaceful herd remains a **renewable local source** of Mooncalf Milk for future Potion Making, subject to later sensible replenishment rules. Exact timers/respawn/production simulation are deliberately deferred.
+
+#### Aggression / player freedom
+
+The player is not prevented from attacking the Mooncalf or herd.
+
+If the player attacks or seriously threatens/aggravates the Mooncalf, nearby adults defend it. The opening prototype may therefore transition into a group encounter involving approximately:
+- 1 Mooncalf
+- 2 protective adults
+
+This should be substantially more dangerous than peaceful collection, but it is not a fake unwinnable fight and uses no story invulnerability. Exact Mooncow/Moonbull stats and combat kits belong to Core Systems/Unity tuning.
+
+Aggression has physical resource consequences:
+- the required Health Potion reagent comes from a **living nursing Mooncow**
+- attacking/killing the herd can jeopardize or destroy access to that renewable local milk source
+- violence does **not** magically produce the same Mooncalf Milk outcome from a dead juvenile
+- other future creature materials may exist, but they are outside this opening's scope
+
+No morality meter or GOOD/EVIL warning is needed. The world state is the consequence.
+
+If the player destroys their current path to the required milk, the game should rely on world-consistent recovery/alternate sourcing rules rather than pretending the milk was obtained anyway. Exact fallback content is not designed in this opening document and should be flagged if implementation requires it.
 
 ## 14:00–16:00 — Mossback Miniboss
 
-Marlow has already established Mossbacks are normally docile if given space.
+Marlow has established that Mossbacks are normally docile if given space, without pre-solving the encounter.
 
 The player encounters one, gives it appropriate space, and it continues to pursue and attack.
 
 No corruption visuals, villain clue, Evil Shard, or dramatic explanation.
 
 After the fight, the behavior remains unexplained.
+
+The Mossback teaches a stronger behavioral combat interaction through its telegraphed Charge and use of obstacles/lanes, consistent with Core Systems authority.
 
 ## 16:00–18:00 — Return Travel → Marlow
 
@@ -187,15 +255,25 @@ The map opens with Woodland marked as the current location. Garrick's Inn remain
 
 On arrival, the player physically re-enters/returns through the Inn and goes back to Marlow in the lab.
 
-Marlow asks naturalist questions: was the Mossback cornered, injured, defending young, provoked?
+### Correct emotional priority on return
 
-When ordinary explanations fail:
+Marlow's immediate priority is the sick troll, not the player's field observations.
 
-> **Marlow:** "That's strange."
+Correct chronology:
 
-He intends to investigate. No main-story quest appears.
+**player returns → Marlow realizes the ingredients were obtained → relief/hope → Potion Making/treatment → troll stabilizes → immediate crisis eases**
 
-## 18:00–20:00 — First Potion Making
+Do **not** have Marlow immediately launch into Mossback/naturalist questioning on return.
+
+Detailed return dialogue and player-report options are governed by `DIALOGUE_PLAYER_AGENCY.md`.
+
+Track conceptually as separate state:
+- `mossbackEncountered` = player/world history
+- `marlowKnowsMossbackIncident` = whether the player actually told Marlow
+
+Never automatically synchronize these states.
+
+## 18:00–20:00 — First Potion Making / Treatment
 
 Under Marlow's supervision, player physically performs:
 
@@ -218,6 +296,22 @@ Player receives remaining Health Potion.
 No giant recipe catalogue appears.
 
 Marlow explains future lab use requires useful contributions rather than a flat generic crafting fee.
+
+### Optional Mossback report after stabilization
+
+Only after the troll's immediate crisis has eased may the Mossback incident enter conversation.
+
+If the player chooses to report what happened, set/reflect `marlowKnowsMossbackIncident = true` and Marlow may ask naturalist questions such as whether the Mossback was cornered, injured, defending young, or provoked.
+
+If ordinary explanations fail, his conclusion remains restrained:
+
+> **Marlow:** "That's strange."
+
+He may note that the behavior is worth investigating.
+
+If the player never reports the incident, Marlow does not know it happened and no Mossback discussion occurs.
+
+No main-story quest or explicit antagonist reveal appears here.
 
 ## 20:00–21:00 — Garrick Recognizes the Player
 
@@ -407,6 +501,7 @@ See `TRAVEL_WORLD_MAP_MVP.md`.
 Mandatory for standard route:
 - functional Garrick engagement unless leaving/sequence-breaking
 - Regional Map travel to/from the Woodland once Marlow's job is accepted
+- obtaining Bloodleaf, Silvermoss, and valid Mooncalf Milk in a suitable container
 - Mossback fight on Marlow route
 - first Health Potion craft if completing Marlow route
 - one starter Hunting contract to reach Hunting/Sylvie opening
@@ -416,7 +511,8 @@ Mandatory for standard route:
 Optional:
 - explore every inn area
 - rent room immediately
-- peaceful Mooncalf interaction
+- peacefully approach the Mooncalf herd specifically; peaceful collection is the intended renewable-resource route, but player freedom is preserved
+- report the Mossback incident to Marlow
 - kill Hunting target
 - complete all three starter contracts
 - first personal Cooking attempt
@@ -429,7 +525,7 @@ Optional:
 - Player reaches Hunting before Marlow: allowed; possible order becomes Hunting → Sylvie/Cooking → Marlow/Potion Making later.
 - Player refuses Marlow: allowed; troll remains on real clock.
 - Troll dies if ignored too long; Marlow leaves for a significant period.
-- Player kills Mooncalf: allowed if ingredient obtained logically; Marlow can react.
+- Player attacks the Mooncalf/herd: allowed; protective adults defend, and violence can jeopardize the renewable Mooncalf Milk source.
 - Non-lethal Hunting resolutions fully supported.
 
 Sequence breaks do not bypass regional geography. If the player gains early access to a contract, accepting that contract reveals its destination and travel still uses the Regional Map.
@@ -448,4 +544,4 @@ And clear physical homes for each:
 
 The Regional Map now provides a stable geographical relationship between the Inn and the destinations the player has actually discovered.
 
-Two starter contracts remain, Garrick sells gear, a room waits upstairs, Health Potion ingredients can be gathered again, Sylvie can supervise Cooking, outside world is open, and the unexplained Mossback behavior quietly remains in the background.
+Two starter contracts remain, Garrick sells gear, a room waits upstairs, Health Potion ingredients can be gathered again, the living Mooncalf herd can remain a renewable source of Mooncalf Milk if preserved, Sylvie can supervise Cooking, outside world is open, and the unexplained Mossback behavior quietly remains in the background.
