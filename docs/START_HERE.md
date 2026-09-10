@@ -29,7 +29,7 @@ Treat this repository as the source of truth for locked decisions. If a future c
 
 `docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design.
 
-`docs/UI_HUD_PLAYER_INFORMATION.md` is the proposed presentation/information-architecture authority for the coordinated UI pass. Central Brain approval is still required for the recommendations explicitly listed there before Unity implementation.
+`docs/UI_HUD_PLAYER_INFORMATION.md` is the Central Brain-approved presentation/information-architecture authority for the coordinated UI pass. Its information architecture and Esc/back doctrine are locked; exact screen composition remains Unity/playtest tuning.
 
 ## Project correction
 
@@ -51,7 +51,7 @@ Central Brain is assembling one coordinated opening implementation/playtest pass
 - Mooncalf herd/container/failure-path behavior
 - rented-room persistent storage
 - at least one fully playable starter Hunting contract
-- coherent HUD/player-information presentation after UI architecture approval
+- approved coherent HUD/player-information architecture
 
 Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
 
