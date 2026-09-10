@@ -2,15 +2,13 @@
 
 ## Status / authority
 
-**LOCKED / CURRENT MVP DIRECTION, with explicitly noted unresolved items.**
+**LOCKED / CURRENT MVP DIRECTION, with explicitly noted unresolved future systems.**
 
-Central Brain approved this package with one mechanical revision to activation scheduling plus additional locks around active-party selection, opening defeat policy, and starter-Hunt companion structure.
+This document defines how the existing tactical combat grows into **1–3 allied Combat Participants vs roughly 1–6 enemies**, with NPC allies optionally player-controlled, while preserving possible future human co-op compatibility.
 
-This document defines how the existing tactical combat grows into **1–3 allied combatants vs roughly 1–6 enemies**, with NPC allies optionally player-controlled, while preserving possible future human co-op compatibility.
+It does **not** design networking, PvP, raids, matchmaking, companion romance/approval, permanent death, revive systems, or advanced AI scripting.
 
-It does **not** design networking, PvP, raids, matchmaking, companion romance/approval, permanent death, or advanced AI scripting.
-
-**Do not modify Unity from this document alone.** Central Brain is still coordinating the next implementation pass.
+**Do not modify Unity from this document alone.** Central Brain owns the coordinated implementation pass.
 
 ## Core architectural direction
 
@@ -18,44 +16,50 @@ Preserve the existing per-unit grammar:
 
 **up to 3 Movement, splittable + one Primary Action per activation**.
 
-Attack, Signature, Defend, Item, Dash, and contextual interactions remain the core verbs. Group depth should come from bodies, lanes, ranges, LOS, terrain, targeting, and coordinated geometry rather than a larger hotbar.
+Attack, Signature, Defend, Item, Dash, and contextual interactions remain the core verbs. Group depth should come from bodies, lanes, ranges, LOS, terrain, targeting, readable intent, and coordinated geometry rather than a larger hotbar.
 
-Stop assuming **one Player object vs one Enemy object**. Model:
+Model:
 
 **Combatant + Side + Controller + activation state**.
 
-Each combatant owns its own HP, Armor, position, Movement, Primary Action state, Defend state, equipment/techniques, and Ready/Spent/Defeated state.
+Each Combatant owns its own identity/data, Side, controller type, HP, Armor, position, Movement, Primary Action state, Defend state, equipment/techniques, and Ready/Spent/Defeated state.
+
+Do not preserve a permanent one-player/one-enemy architecture.
 
 ---
 
 ## 1. Locked group-combat turn grammar
 
-Use **alternating unit activations inside a round**, with numerical advantage distributed rather than dumped into a large end-of-round enemy tail.
+Use **distributed unit activations inside rounds**. Numerical superiority remains meaningful, but excess enemy activations are distributed through the round rather than dumped into a large end-of-round tail.
 
-### Base rules
+### Round start
 
-1. Every living combatant begins the round **Ready**.
-2. Allies receive the first activation in a normal encounter unless an authored ambush/encounter rule says otherwise.
-3. Every combatant activates at most once per round unless a future explicit rule says otherwise.
-4. Activating a unit gives that unit its own **3 Movement + one Primary Action + split movement**.
-5. After activation, that combatant becomes **Spent** for the round.
-6. Defend remains unit-specific.
-7. At the end of the schedule, all surviving combatants refresh to Ready and the next round begins.
-8. No Speed/initiative stat is introduced for MVP.
+Build the round schedule from Combatants who are **Ready and present at the start of that round**.
 
-### Distributed numerical-advantage schedule
+Every scheduled Combatant may activate at most once that round unless a future explicit rule says otherwise.
 
-When **enemies outnumber allies**, divide the enemy activations as evenly as possible into one deterministic enemy bucket after each allied activation.
+Allies receive the first activation in a normal encounter unless an authored ambush or encounter rule says otherwise.
+
+Each activation gives that Combatant its own:
+- up to **3 Movement**;
+- one **Primary Action**;
+- split movement before/after the Primary Action where legal.
+
+After activation, that Combatant becomes **Spent** for the round.
+
+No Speed or initiative stat is introduced for MVP.
+
+### Distributed numerical-advantage scheduler
 
 Let:
-- `A` = number of Ready allied combatants at round start
-- `E` = number of Ready enemy combatants at round start
+- `A` = number of Ready allied Combatants at round start;
+- `E` = number of Ready enemy Combatants at round start.
 
 If `E > A`:
-- base enemy bucket size = `floor(E / A)`
-- remainder = `E mod A`
-- the first `remainder` buckets receive one additional enemy activation
-- schedule one allied activation, then that bucket of enemy activations, then the next allied activation, and so on
+- base enemy bucket = `floor(E / A)`;
+- remainder = `E mod A`;
+- the first `remainder` enemy buckets receive one additional activation;
+- schedule one allied activation, then that enemy bucket, repeating until the round schedule is complete.
 
 Examples:
 
@@ -71,67 +75,100 @@ Examples:
 
 `A → E → E → E → A → E → E`
 
-The bucket sizes differ by at most one, so excess enemy activations are distributed through the round rather than tail-loaded.
-
-If side sizes are equal, use ordinary alternation starting with Allies:
+If side sizes are equal, alternate normally beginning with Allies:
 
 `A → E → A → E ...`
 
-If allies outnumber enemies, use ordinary alternation while enemies remain, then allow the remaining allied activations. The passive-watching problem Central Brain is solving is specifically large enemy tails; an allied tail remains player-directed and preserves the benefit of allied numerical superiority.
+If allies outnumber enemies, alternate while enemies remain, then resolve the remaining allied activations. An allied tail is player-directed and preserves the advantage of superior allied numbers.
 
-### Why this rule
+At extreme disparity such as 1v6, consecutive enemy activations are mathematically unavoidable if every enemy acts once. Such encounters should be uncommon and ordinary AI activations must remain brisk.
 
-- deterministic and easy to explain/debug;
-- preserves numerical superiority;
-- produces Central Brain's desired 3-v-6 cadence exactly;
-- requires no Speed stat, initiative roll, or continuous turn gauge;
-- keeps committed enemy telegraphs predictable because each enemy still receives at most one activation in a known round schedule;
-- scales to the intended 1–3 allies vs 1–6 enemies without changing the unit action grammar.
+### Casualties / fleeing during a round — LOCKED
 
-At extreme disparity such as 1 ally vs 6 enemies, consecutive enemy activations are mathematically unavoidable if every enemy acts once and the player acts once. Such encounters should be uncommon and ordinary AI activations must remain brisk.
+The schedule is **not rebuilt during the round**.
 
-### Allied activation choice
+If a scheduled Combatant becomes **Defeated, flees, surrenders, or otherwise leaves the encounter** before its scheduled activation:
 
-When multiple directly controlled allied combatants are Ready, the player chooses **which Ready ally uses the next allied activation slot**.
+**skip that activation.**
 
-This preserves useful sequencing without initiative stats. Example: Spear can Drive first to open a lane, then Bow can exploit LOS on a later allied slot.
+Do not rebucket, reorder, or rebuild the remaining round.
 
-Independent-AI companions use the same allied slots and Ready/Spent rules. Exact arbitration when both Direct and Independent companions are Ready can be implementation-simple: a Directly controlled ally choice should not require a separate initiative subsystem.
+At the start of the next round, construct a fresh schedule normally from the Combatants who are then present and Ready.
+
+This prevents removing one Combatant from mysteriously changing everyone else's already-established activation order.
+
+### Allied activation slots and mixed controllers — LOCKED
+
+Allied activation slots belong to the **Side**, not to controller type.
+
+When an allied activation slot arrives and multiple allied Combatants are Ready, the player chooses **which Ready allied Combatant takes that slot**.
+
+Then:
+- if the chosen Combatant is **Direct**, the player controls its movement and action;
+- if the chosen Combatant is **Independent**, its AI immediately resolves that Combatant's activation.
+
+Direct and Independent companions do **not** receive separate initiative systems or separate activation tracks.
+
+This allows tactical sequencing without Speed stats: for example, choose an Independent Spear ally first so its AI can Drive a threat, then use a later allied slot for a Direct Bow user with newly opened LOS.
 
 ### Enemy activation order
 
 Enemy order inside each enemy bucket is chosen by deterministic/simple encounter AI.
 
 Requirements:
-- committed telegraphed actions remain reliable according to their creature rules;
 - ordinary enemies decide quickly;
-- AI should not spend visible time "thinking" between activations;
-- no hidden initiative stat is needed.
+- no visible AI deliberation pauses;
+- no hidden initiative stat;
+- equivalent tie-breaking should be deterministic/reproducible for testing;
+- committed telegraphs obey the commitment rule below.
 
-Exact tie-breaking among equivalent enemies can remain an implementation detail so long as it is deterministic/reproducible for testing.
+### Committed enemy telegraphs — LOCKED
+
+If an enemy has committed to a telegraphed action such as **Pounce, Rush, or Charge**, that commitment does **not silently change target, lane, destination, or scheduled ordering** because another unit acted first.
+
+Only a creature-specific rule that explicitly permits adaptation may alter a committed action.
+
+General/non-committed intent such as **Pursue** may remain reactive according to that creature's ordinary behavior.
+
+This preserves tactical trust: a committed telegraph is information the player can plan around.
 
 ---
 
-## 2. Direct control vs Independent AI
+## 2. Defend — locked duration rule
+
+Defend remains unit-specific and uses the existing damage model.
+
+**Defend begins immediately when used and lasts until the start of that Combatant's next activation.**
+
+At the start of that unit's next activation, Defend expires **before** it takes its new movement/action.
+
+Do not expire Defend at the global round boundary.
+
+This means Defend behaves consistently even when activation spacing changes because of uneven side sizes.
+
+---
+
+## 3. Direct control vs Independent AI
 
 Each active NPC companion has a persistent default control preference:
 
-- **Direct:** player chooses that companion's movement/action.
-- **Independent:** competent default AI controls it.
+- **Direct:** player chooses that companion's movement/action when selected for an allied activation slot.
+- **Independent:** competent default AI resolves that companion's activation when selected for an allied activation slot.
 
 Exact UI wording belongs to UI authority.
 
 Locked rules:
 - preference is stored per companion;
-- player can change it before combat / while arranging the active party;
+- player may change it before combat / while arranging the Active Party;
 - no free mid-combat control-mode switching in MVP;
-- no tactics scripting menu, aggression sliders, formations, or behavior editor.
+- no tactics scripting menu, aggression sliders, formations, or behavior editor;
+- both controller modes use the same Side activation schedule.
 
-MVP companion AI should understand its actual geometry: avoid obvious telegraphs where practical, seek valid attacks, preserve preferred range, use its Signature when positionally useful, avoid obviously blocking an ally when an equivalent route exists, and Defend when trapped under severe readable threat with no better response.
+MVP companion AI should understand its real geometry: seek valid attacks, preserve preferred range, avoid obvious telegraphs where practical, use its Signature when positionally useful, avoid blocking allies when an equivalent route exists, and Defend when trapped under severe readable threat with no better response.
 
 ---
 
-## 3. Party-state model
+## 4. Party-state model
 
 Use three distinct concepts.
 
@@ -145,300 +182,319 @@ Player character plus up to **2 selected companions** currently traveling/advent
 
 ### Combat Participants
 
-Characters physically present in the encounter and placed on the grid. Normally present Active Party members enter combat; local NPCs already at the scene may also participate without being recruited.
+Characters physically present in the encounter and placed on the grid. Normally present Active Party members enter combat. A local NPC already at the scene may also participate only if the allied participant cap permits it.
 
 A recruited NPC back at Garrick's Inn does not materialize into a fight at Reedwater Paddies.
 
-### Active-party selection before travel/encounters — locked
+### Active-party selection before travel/encounters — LOCKED
 
-Companions are selected **before travel/encounters**, not summoned when combat begins.
+Companions are selected **before travel/encounters**, not summoned when combat starts.
 
 Conceptual flow:
 
 **Recruited Roster → choose up to 2 Active Companions → travel together → physically present companions enter combat**
 
-The exact party-selection UI remains downstream. It may live in the player/party interface or be integrated into travel preparation, but combat itself does not pull absent roster members from an invisible menu.
+The exact party-selection UI remains downstream. It may live in the player/party interface or travel preparation, but combat itself cannot summon absent roster members.
+
+### Allied Combat Participant cap — LOCKED
+
+Ordinary MVP combat supports a maximum of:
+
+**3 allied Combat Participants total.**
+
+This total includes all allied units regardless of origin:
+- player character;
+- Active Party companions;
+- temporary/local NPC helpers.
+
+Therefore a full Active Party of **player + 2 companions** does **not** gain a fourth normal activation because a local helper is present.
+
+If a local NPC is present while the allied cap is already full, that NPC may still contribute through authored/contextual non-combat involvement, but does not become an additional normal Combat Participant.
+
+Larger allied encounters are deferred.
 
 ---
 
-## 4. Exploration representation
+## 5. Exploration representation
 
 Use **physical presence with loose-follow abstraction**.
 
 Active companions genuinely travel with the player. Regional-map travel carries the Active Party together and destination arrival places companions naturally nearby.
 
-During local exploration they follow loosely rather than forming a rigid follower train. In cramped interiors, narrow paths, or camera-sensitive spaces, presentation may abstract slightly: companions catch up after doorways, wait just outside tiny/private spaces, use nearby authored idle positions, or rejoin at the next meaningful local space.
+During local exploration they follow loosely rather than forming a rigid follower train. In cramped interiors, narrow paths, or camera-sensitive spaces, presentation may abstract slightly: companions can catch up after doorways, wait outside tiny/private spaces, use nearby authored idle positions, or rejoin at the next meaningful local space.
 
 The fiction remains that they are accompanying the player.
 
-When combat begins, physically present companions resolve to sensible nearby valid starting hexes based on their actual local positions. They are not summoned from a party menu.
+When combat begins, physically present eligible participants resolve to sensible nearby valid starting hexes based on their actual local positions. They are not summoned from a party menu.
 
 ---
 
-## 5. Encounter-size vocabulary and grid implications
+## 6. Encounter size and grid implications
 
 Useful authoring vocabulary:
-- **Duel / single threat:** focused 1-enemy encounter.
-- **Small skirmish:** roughly 1–2 allies vs 2–3 enemies.
-- **Party encounter:** roughly 2–3 allies vs 3–4 enemies.
-- **Large dangerous group:** up to the intended architectural target of roughly 3 allies vs 5–6 enemies.
+- **Duel / single threat:** focused 1-enemy encounter;
+- **Small skirmish:** roughly 1–2 allies vs 2–3 enemies;
+- **Party encounter:** roughly 2–3 allies vs 3–4 enemies;
+- **Large dangerous group:** up to roughly 3 allies vs 5–6 enemies.
 
 These are design labels, not UI tiers.
 
-The architecture supports roughly **1–3 allies vs 1–6 enemies**, but six enemies are not the default encounter size.
+The architecture supports roughly **1–3 allies vs 1–6 enemies**, but six enemies are not the default.
 
-Do not enlarge every grid globally. Larger encounters may use a modestly wider local grid, but still need meaningful density, legal starting separation, maneuver lanes, Blocking terrain, Bow sightlines/minimum range, and enough space to avoid spawning as a packed blob.
+Do not enlarge every grid globally. Larger encounters may use a modestly wider local grid, but still need meaningful density, legal starting separation, maneuver lanes, Blocking terrain, Bow sightlines/minimum range, and enough room to avoid spawning as a packed blob.
 
-One combatant occupies one hex. Units block movement through occupied hexes unless a future explicit rule says otherwise. No universal opportunity attacks or flanking are added merely because parties exist.
+One active Combatant occupies one hex. Units block movement through occupied hexes unless a future explicit rule says otherwise. No universal opportunity attacks or flanking are added merely because parties exist.
 
 ---
 
-## 6. Multi-enemy intent and readability
+## 7. Multi-enemy intent and readability
 
-Every important enemy commitment still needs readable intent, but six enemies cannot each cover the screen in giant labels.
+Every important enemy commitment needs readable intent, but six enemies cannot each own a giant text banner.
 
 ### On-grid
 
 Use compact visual intent language:
 - small intent icon over/near each enemy;
-- threatened hex/lane highlight only when relevant;
+- threatened hex/lane highlight only where relevant;
 - selected/hovered enemy gets the clearest full telegraph;
-- overlapping threatened hexes should combine visually rather than stacking opaque effects.
+- overlapping threat areas combine visually rather than stacking opaque effects.
 
-### Detail on focus
+### Focus detail
 
-Hover/select/focus an enemy to expose concise intent text such as:
-- Pounce → marked landing hex
-- Rush → marked lane
-- Attack → target/range if committed
-- Retreat / Seek Water → behavioral movement intent
+Hover/select/focus can expose concise intent such as:
+- Pounce → marked landing hex;
+- Rush → marked lane;
+- Attack → target/range if committed;
+- Retreat / Seek Water → behavioral movement intent.
 
 Do not require opening a separate menu to understand the battlefield.
 
-### Intent certainty
-
-A telegraphed committed action should remain reliable according to that enemy's rules. A general intent such as Pursue can be less exact.
+Committed intent must remain reliable under the commitment rule above. General Pursue-like intent can remain reactive.
 
 ### Enemy turn speed
 
-Ordinary AI activations should be brisk:
-- path/movement animation can be accelerated while remaining readable;
-- simple enemies should decide immediately;
-- do not pause several seconds between each enemy;
-- special telegraphed actions deserve more visual weight than ordinary reposition/attacks.
+Ordinary AI activations should be brisk. Simple units decide immediately; ordinary movement/attacks should not pause theatrically; special telegraphed actions receive more visual weight.
 
-The goal is to read **what happened and why** without watching a tiny wildlife committee deliberate for a minute.
+The player should understand **what happened and why** without watching a wildlife committee hold six consecutive meetings.
 
-UI authority must eventually support: current active unit, Ready/Spent state where needed, ally HP/status, enemy intent, target selection, Direct-vs-Independent companion distinction, and activation readability while keeping the grid primary.
+UI authority must support current active unit, Ready/Spent state where needed, ally HP/status, enemy intent, targeting, Direct-vs-Independent distinction, and activation readability while keeping the grid primary.
 
 ---
 
-## 7. Targeting and tactical group play
+## 8. Targeting and tactical group play
 
-All attacks/actions target specific combatants or hexes according to their geometry. Multi-enemy combat must not retain a hidden single `enemy` target assumption.
+All attacks/actions target specific Combatants or hexes according to their geometry. Multi-enemy combat must not retain a hidden single-enemy target assumption.
 
 Group combat should make existing rules more expressive:
-- allies can occupy lanes and force enemies to route around them;
-- Spear Drive can reposition one threat to protect a Bow user or open a route;
-- Sword Lunge can exploit a two-hex opening without consuming the whole approach;
-- Bow positioning depends on LOS and keeping enemies out of range-1 pressure;
-- Blocking terrain can split sightlines and movement routes;
-- enemies can pressure different allies instead of dogpiling the player by default;
-- focus fire is allowed but should emerge from target choice, not require a new Focus Fire command in MVP.
+- bodies shape routes and lanes;
+- allies can protect access to vulnerable ranged units through positioning;
+- Spear Drive can move a threat away from a Bow user or open a route;
+- Sword Lunge can exploit two-hex openings;
+- Bow depends on LOS and avoiding range-1 pressure;
+- Blocking terrain splits sightlines and creates bottlenecks;
+- enemies can pressure different allies instead of always dogpiling the player;
+- focus fire emerges from target choice rather than requiring a new command.
 
-Do not add universal attacks of opportunity or flanking solely because parties now exist.
+Do not add universal opportunity attacks or flanking solely because parties exist.
 
 ---
 
-## 8. Win, defeat, and downed-unit rules
+## 9. Win, defeat, and companion recovery
 
 ### Win
 
-For ordinary lethal combat, win when all hostile combat participants are **Defeated, fled, surrendered, or otherwise no longer contesting the encounter** according to authored behavior.
+For ordinary lethal combat, win when all hostile Combat Participants are **Defeated, fled, surrendered, or otherwise no longer contesting the encounter** according to authored behavior.
 
-This is broader than `enemyHP == 0` and supports wildlife fleeing/non-lethal encounter conclusions later.
+This is broader than `enemyHP == 0` and supports wildlife fleeing/non-lethal conclusions later.
 
-### Defeated combatants
+### Defeated Combatants
 
-A combatant at 0 HP becomes **Defeated** and no longer:
+At 0 HP, a Combatant becomes **Defeated** and no longer:
 - receives an activation;
 - contributes actions/intents;
 - blocks victory resolution as an active threat.
 
-Exact body/collision treatment can be implementation-specific for MVP so long as a defeated unit does not create a permanent pathing deadlock.
+If its scheduled activation has not yet occurred this round, that activation is skipped under the locked casualty rule.
 
-### Opening player-character defeat — locked
+Exact body/collision treatment can be implementation-specific for MVP so long as Defeated units do not create permanent pathing deadlocks.
+
+### Opening player-character defeat — LOCKED
 
 For MVP opening encounters:
 
 **Player character Defeated → battle lost.**
 
-However, this is an **encounter rule**, not a universal engine truth.
+This is an encounter rule, not a universal engine truth.
 
-The player character is architecturally a Combatant capable of entering Defeated state. Encounter rules determine whether that state ends battle. Do **not** hard-code combat termination directly to `playerHP <= 0` as a permanent system assumption.
+The player character is architecturally a Combatant capable of entering Defeated state. Encounter rules decide whether that state ends battle. Do **not** hard-code combat termination directly to `playerHP <= 0` as a permanent system assumption.
 
-This preserves future options such as surviving companions, human co-op partners, revival mechanics, or special encounter rules without redesigning combat ownership.
+### Defeated companion after victory — LOCKED MVP recovery rule
 
-### Companion defeat / death
+A companion Defeated during combat remains out for that encounter.
 
-Do **not** introduce permanent companion death for MVP.
+After the encounter ends in victory:
+- that companion recovers to a stable **1 HP**;
+- they **cannot participate in another combat until the party Rests**;
+- they may remain physically present and continue traveling narratively unless an authored scene says otherwise.
 
-A companion reduced to 0 HP is Defeated for the encounter. What recovery/injury state follows combat remains unresolved and should be designed later with Rest/health/narrative consequences.
+This is an MVP consequence, not the final injury/recovery system.
 
-No revive action is required for the first group-combat implementation.
+Do **not** add:
+- revive items;
+- injury tables;
+- permanent companion death;
+- bleed-out timers;
+- unconscious-body management.
+
+The exact later Rest/injury/revival model remains deferred.
 
 ---
 
-## 9. Future co-op architectural guardrails
+## 10. Future co-op architectural guardrails
 
-No networking is designed here. The tactical model should simply avoid assumptions that make future co-op unnecessarily painful.
+No networking is designed here. Future-proof only tactical ownership.
 
-### Combatant/controller ownership
-
-Each combatant should conceptually have:
-- combatant identity/data;
-- side/team;
-- current HP/Armor/movement/action state;
+Each Combatant should conceptually own:
+- identity/data;
+- Side/team;
+- HP/Armor;
+- Movement/Primary Action/activation state;
+- Defend state;
 - position;
+- equipment/techniques and legal actions;
 - controller ownership/type;
-- legal actions from equipment/techniques;
-- AI behavior only when its controller is AI.
+- AI behavior only when controller is AI.
 
-Controller can conceptually be:
-- local direct player input;
-- AI;
-- future external/human controller.
+Controller can conceptually be local direct input, AI, or a future external/human controller.
 
-Do not make weapon legality, damage, movement, intent, or turn rules depend on `this is the one Player object` where the same rule belongs to any combatant.
-
-### Avoid now
-
-- global singleton state such as one `playerCell` and one `enemyCell` as the permanent combat model;
-- one hard-coded `enemyHP` target;
-- UI actions that always mutate the player character instead of the currently controlled combatant;
+Avoid permanent architecture built around:
+- one `playerCell` and one `enemyCell`;
+- one hard-coded `enemyHP`;
+- UI actions that always mutate the player character rather than the selected/active Combatant;
 - enemy AI that can only target the player character;
-- battle end logic that assumes exactly one enemy exists;
-- companion logic that exists only as decorative helper damage outside the normal activation system.
+- battle-end logic that assumes one enemy;
+- companion logic implemented as decorative bonus damage outside normal activation rules;
+- engine-level assumption that player defeat always universally ends combat.
 
-This is architecture guidance, not a request to build online systems.
+This is architecture guidance, not networking design.
 
 ---
 
-## 10. Natural opening introduction
+## 11. Natural opening introduction
 
-### Mooncalf herd: first proof of multiple enemies
+### Mooncalf herd: first multi-enemy proof
 
-The Woodland already provides a natural pre-recruitment multi-enemy case if the player threatens/attacks the juvenile Mooncalf and protective adults respond.
-
-Use this as a **systemic consequence**, not a formal party tutorial.
+If the player attacks/threatens the juvenile Mooncalf, protective adults already have a world-consistent reason to defend it. This is the first **systemic proof that one encounter can contain multiple enemies**, not a formal party tutorial.
 
 Requirements:
-- several hostile adults can enter one encounter;
-- each has its own HP/position/activation/intent;
+- multiple adults can enter one encounter;
+- each has independent HP, position, activation, and intent;
 - player targets individual enemies normally;
-- the encounter remains readable even with overlapping threat information;
-- do not inflate Mooncalf-family durability just to turn the consequence into a boss fight.
+- win/loss handles several hostiles;
+- camera/grid remains readable;
+- do not inflate Mooncalf-family durability just to manufacture a boss encounter.
 
-### Starter Hunting contracts: potential companion introductions — locked direction
+### Starter Hunting contracts: potential companion introductions — LOCKED
 
 **Each of the three starter Hunting contracts should eventually contain its own local NPC character who can work alongside the player during that contract and potentially become recruitable afterward.**
 
-Because all three starter contracts are equal choices, whichever contract the player chooses first can organically introduce the player's first potential companion.
+Because all three starter contracts remain equal choices, whichever one the player chooses first can organically introduce the player's first potential companion. `Mud in the Moonrice` is not mandatory party onboarding.
 
-This explicitly avoids making `Mud in the Moonrice` secretly mandatory party onboarding.
-
-Contract-facing requirements for all three local NPCs:
-- physically present for believable local reasons;
+These local NPCs must:
+- be physically present for believable reasons;
 - contribute without solving the Hunt for the player;
 - support lethal and non-lethal routes where reasonable;
-- do not force combat merely to demonstrate party mechanics;
-- may demonstrate different combat styles/weapon geometry;
-- recruitment is earned through character/narrative logic, not automatically granted as a tutorial reward;
-- peaceful Hunt resolution can still involve meaningful physical cooperation such as investigating, manipulating the environment, watching the creature, maintaining a route, or helping confirm behavior.
+- not force combat merely to demonstrate party mechanics;
+- potentially demonstrate different combat styles/weapon geometry;
+- become recruitable through character/narrative logic rather than as an automatic tutorial reward;
+- remain characters first, not mechanically color-coded starter choices.
 
-These NPCs are **characters first**, not three mechanically color-coded starter choices. Exact identities, personalities, relationships, recruitment conditions, and kits belong in the upcoming Hunting/character design pass.
+Peaceful Hunt resolution can still involve meaningful cooperation such as investigation, environmental manipulation, watching the creature, maintaining a route, or confirming behavior.
 
-### Mud in the Moonrice specifically
+The allied participant cap still applies. A local helper does not become a fourth Combat Participant when the player already travels with two Active Companions.
 
-The approved contract remains fundamentally a Hunting problem about Reedback feeding behavior. Do not enlarge the Reedback into a boss or add arbitrary extra enemies merely because a local partner exists.
-
-A local NPC may assist during Cull, Manage, or both if the contract/character design makes that believable. If a 2-v-1 Reedback fight is tactically weak, that is not a reason to distort the ecology. The Hunt can introduce cooperation without forcing a group fight.
-
-### Other starter Hunts
-
-`Three Missing by Morning` and `When the Wheel Stopped` receive the same systemic opportunity: each has its own local potential partner. Hunting/character design should decide how those characters participate without stealing the player's investigation or turning every contract into the same companion tutorial wearing different scenery.
+Exact identities, personalities, recruitment conditions, and kits belong to Hunting/character authority.
 
 ---
 
-## 11. Specific follow-up requirements for Hunting / character design
+## 12. Hunting / character follow-up requirements
 
-Hunting and character design should now decide, for **each of the three starter contracts**:
+For each starter contract, Hunting/character design owns:
 - who the local potential partner is;
 - why they are physically present and personally invested;
-- what they can contribute without solving the clue/inference structure;
+- what they contribute without solving clue/inference structure;
 - whether they participate in Cull, Manage, or both;
-- what combat style/weapon geometry they can demonstrate, if combat occurs;
-- whether/when Direct vs Independent control is introduced to the player;
-- how they react to sequence breaks and unexpected player choices;
-- how recruitment becomes available afterward through believable character logic;
-- how recruitment remains optional and does not make one starter contract mechanically mandatory;
-- how they remain physically consistent through arrival, local exploration, resolution, and departure.
+- what combat style/weapon geometry they demonstrate if combat occurs;
+- whether/when Direct vs Independent control is introduced;
+- reactions to sequence breaks and unexpected choices;
+- believable optional recruitment logic;
+- physical continuity through arrival, exploration, resolution, and departure.
 
-Hunting must **not** rewrite approved clue/inference/tracking/redirection structures merely to make room for a companion tutorial.
+Hunting must not rewrite approved clue/inference/tracking/redirection structures merely to make room for a companion tutorial.
 
 ---
 
-## 12. UI requirements to carry forward
+## 13. Coordinated Unity implementation / testing priority
 
-Do not redesign UI authority here. Group combat requires the existing UI architecture to be able to represent:
-- clearly active combatant;
+Architecture should support roughly **1–3 allies vs 1–6 enemies**, but implementation should prove smaller cases first.
+
+Recommended test order:
+
+1. **1v1 regression** — existing single-combat behavior still works under generalized Combatant/Side/Controller architecture.
+2. **1v2 / Mooncalf-style** — multiple enemy HP/targeting/activation/intent/win-state.
+3. **2v1 with Ily/local partner** — allied selection, Direct/Independent control, participant placement, ally defeat handling.
+4. **2v2** — distributed side slots, targeting, mixed intents, casualty skipping.
+5. **3v3** — full ordinary allied cap, activation choice/readability.
+6. **3v5 / 3v6 stress test** — bucket distribution, compact intent, camera/grid density, AI pacing.
+
+This is a **testing recommendation**, not an authored encounter-progression rule.
+
+Required behavioral tests should include:
+- eliminating an enemy before its scheduled slot skips that slot but does not rebucket the current round;
+- fleeing/surrender/removal behaves the same way;
+- next-round schedule recalculates from currently present Ready Combatants;
+- committed Pounce/Rush/Charge keeps its target/lane/destination/order unless creature rules explicitly permit adaptation;
+- Defend persists across round boundaries when necessary and expires only at the start of that Combatant's next activation;
+- Direct and Independent allies share the same allied activation slots;
+- defeated companion returns at stable 1 HP after victory and is combat-ineligible until Rest;
+- ordinary allied Combat Participants never exceed 3;
+- full player + 2 companion party does not gain a fourth normal activation from a local helper.
+
+---
+
+## 14. UI requirements inherited by implementation
+
+Do not redesign UI authority here. Group combat requires the UI layer to support:
+- clearly identified currently active Combatant;
 - ally HP/status;
-- Ready/Spent state where needed;
-- compact enemy intent;
-- threatened hexes/lanes;
-- target selection among several enemies;
-- Direct vs Independent control distinction for companions;
-- enough activation-order information to understand the distributed round cadence without turning the HUD into a timeline spreadsheet.
+- Ready/Spent state when needed for activation choice;
+- compact per-enemy intent;
+- threatened hex/lane overlays;
+- selected/focused enemy detail;
+- targeting among multiple enemies;
+- Direct vs Independent companion distinction;
+- readable side activation progression without turning the screen into a giant initiative spreadsheet.
 
-Exact composition remains UI/playtest territory.
-
----
-
-## 13. Before Unity implementation
-
-The group-combat design direction is now sufficiently locked for implementation planning, but the coordinated Unity pass should not begin from this document alone.
-
-Before implementation, the specification should explicitly carry:
-- Combatant/Side/Controller/activation-state data model;
-- Ready/Spent/Defeated per combatant;
-- distributed enemy bucket scheduler;
-- per-unit movement/action state;
-- multi-target legality rather than one-enemy assumptions;
-- encounter-level loss rule for player Defeat;
-- active-party membership selected before travel/encounters;
-- physically present local NPC combatants independent of recruitment;
-- compact multi-enemy intent requirements;
-- no networking implementation.
-
-Exact local NPC identities are **not** required to refactor the combat architecture, but are required before implementing those characters into starter Hunting content.
+The grid remains the primary tactical surface.
 
 ---
 
-## Explicitly deferred / unresolved
+## Explicitly deferred
 
 Do not design/implement yet:
 - networking, matchmaking, servers, lobbies, online persistence;
 - PvP, raids, guilds, party finder;
-- more than 2 active companions / six-player parties;
+- more than 3 ordinary allied Combat Participants;
 - companion romance/approval systems;
 - permanent companion death;
-- revive/injury system;
-- companion gear progression;
+- general revive items or revival subsystem;
+- injury tables / bleed-out / unconscious-body management;
+- companion gear progression unless separately approved;
 - advanced companion tactics editor;
-- individual initiative/Speed stats;
+- individual Speed/initiative stats;
 - reaction/reserve-action economy;
 - universal opportunity attacks/flanking;
 - formation editor;
-- final recruited roster or companion identities;
-- exact technique acquisition/progression;
-- exact post-battle recovery rules for Defeated companions.
+- final recruit roster or final companion identities;
+- larger allied battle rules;
+- exact long-term post-defeat recovery model beyond the locked MVP 1-HP-until-Rest rule.
