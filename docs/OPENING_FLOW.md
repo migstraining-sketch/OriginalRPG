@@ -1,8 +1,10 @@
 # Opening Flow
 
-**Target:** roughly 20–30 minutes for a player following the intended path, with healthy variance around **23–35 minutes** based on exploration, dialogue reading, combat speed, and contract choice.
+**Target:** roughly 20–30 minutes for a player following the intended path, with healthy variance around **23–35 minutes** based on exploration, dialogue reading, combat speed, travel presentation, and contract choice.
 
 The pacing rule is that the opening never actively teaches more than **one new mental model at a time**.
+
+Regional travel authority for this opening lives in `TRAVEL_WORLD_MAP_MVP.md`.
 
 ## 0:00–1:30 — Character Creation → Arrival
 
@@ -17,7 +19,7 @@ Visible but unexplained promises:
 - kitchen door → private inn space
 - Marlow eating near basement door → another inhabitant
 - basement door → restricted/private area
-- front door → outside world
+- front door → outside / regional travel
 
 ## 1:30–4:00 — Reactive Garrick Introduction
 
@@ -48,7 +50,11 @@ The player may talk to Marlow. Garrick notices the new face already speaking wit
 Allowed. After a while Garrick can acknowledge them and invite interaction.
 
 ### Leaving
-Garrick gives one contextual remark. If the player continues, they actually leave. No invisible wall. The opening remains available when they return, and Garrick remembers that they walked straight back out.
+Garrick gives one contextual remark. If the player continues, they actually leave. No invisible wall.
+
+**Opening-geography update:** leaving the Inn does **not** deposit the player directly into the Woodland. Meaningful regional travel goes through the visual Regional Map.
+
+If the player leaves before learning any destination beyond Garrick's Inn, the map should not invent a fake exterior destination or secretly route them to the Woodland. They may cancel/return. A future immediate Inn grounds area remains compatible but is not required for this MVP.
 
 All ordinary branches converge into Garrick's conversation, adapting to what the player has already discovered.
 
@@ -113,13 +119,39 @@ Marlow needs:
 
 Objective can be recorded simply as **Help Marlow prepare a treatment** with components listed.
 
-Marlow shows/describes what Bloodleaf looks like, where Silvermoss grows, and how he would peacefully obtain Mooncalf Milk.
+Marlow explains that the needed material can be found in the Woodland without giving a step-by-step walkthrough. Once the player explicitly accepts the woodland job, **Woodland becomes known/selectable on the Regional Map**.
+
+Marlow may give enough practical direction/context to justify that knowledge, while the actual map preserves the physical relationship between the Inn and Woodland.
 
 No Taming tutorial or skill unlock occurs.
 
-## 9:00–14:00 — Woodland Expedition
+## 9:00–14:00 — Travel → Woodland Expedition
 
-Player physically leaves the inn and travels into nearby woodland. Include a brief stretch of calm travel before danger.
+The player leaves Garrick's Inn for meaningful regional travel.
+
+### Regional-map transition
+
+Flow:
+
+**Garrick's Inn → Regional Map → Woodland → Woodland trailhead**
+
+The map is an actual visual regional map, not a vertical destination list.
+
+At this point it should communicate:
+- Garrick's Inn as the player's home/current origin
+- Woodland as a newly known destination in a visibly different position
+- stable relative direction/distance
+- a simple route/path relationship where useful
+
+Selecting Woodland produces a brief route/travel presentation, then the player arrives at a sensible Woodland entrance/trailhead rather than beside the first objective.
+
+The travel beat should make the player feel **"I traveled to the woodland"**, not **"the Inn door loaded Scene B."**
+
+For the detailed MVP rules, see `TRAVEL_WORLD_MAP_MVP.md`.
+
+### Quiet arrival
+
+Include a brief stretch of calm woodland movement before danger or ingredient interaction. The Woodland should have enough local space to feel like a place after regional travel.
 
 ### First combat
 Ordinary woodland wildlife provides likely first hostile encounter. Combat instruction appears only when combat begins and should be minimal/contextual.
@@ -143,11 +175,19 @@ No corruption visuals, villain clue, Evil Shard, or dramatic explanation.
 
 After the fight, the behavior remains unexplained.
 
-## 16:00–18:00 — Return to Marlow
+## 16:00–18:00 — Return Travel → Marlow
 
-Player physically returns to the inn/lab.
+The player does not teleport straight from the Woodland to Marlow's lab.
 
-Marlow asks naturalist questions: was it cornered, injured, defending young, provoked?
+They leave through the Woodland's regional-travel boundary and return via:
+
+**Woodland → Regional Map → Garrick's Inn**
+
+The map opens with Woodland marked as the current location. Garrick's Inn remains known/selectable. A short route/travel transition communicates the return journey.
+
+On arrival, the player physically re-enters/returns through the Inn and goes back to Marlow in the lab.
+
+Marlow asks naturalist questions: was the Mossback cornered, injured, defending young, provoked?
 
 When ordinary explanations fail:
 
@@ -191,13 +231,15 @@ The contract board opens.
 
 If the player previously defeated Garrick, treat this as already sequence-broken rather than a new unlock.
 
-## Room Rental Hook
+## Room Rental Hook — PROTECTED
 
 Room rental is available Day One but not mandatory.
 
 Cheapest room costs roughly **5–10 coins beyond starting wealth**. Marlow's reward moves the player closer. Exploration may make it affordable already; if so, let them rent it.
 
 No Rest Quality tutorial yet.
+
+**Travel/map work must not redesign or disturb the current room-rental behavior.**
 
 ## 21:00–22:00 — First Hunting Board Choice
 
@@ -212,9 +254,32 @@ Each communicates client, location, problem, and reward, not the solution.
 
 Other two remain available after choosing one.
 
-## 22:00–27:00ish — First Hunting Contract
+### Contract destination discovery
 
-Each targets roughly 5–8 minutes on first play and uses the Hunting grammar:
+The board can establish that these local place names/problems exist, but the specific travel destination becomes known/selectable when the player **accepts that contract** and therefore receives enough practical information to go there.
+
+- Accept **Mud in the Moonrice** → Reedwater Paddies becomes known/selectable.
+- Accept **Three Missing by Morning** → Venn Homestead becomes known/selectable.
+- Accept **When the Wheel Stopped** → Vale Watermill becomes known/selectable.
+
+Do not automatically reveal all three destination markers merely because all three postings are visible.
+
+## 22:00–27:00ish — Travel → First Hunting Contract
+
+After accepting one contract, the player leaves the Inn through the same regional-travel grammar:
+
+**Garrick's Inn → Regional Map → accepted contract destination**
+
+Possible destinations:
+- Reedwater Paddies
+- Venn Homestead
+- Vale Watermill
+
+The selected location must occupy its own stable position on the regional map and must not require routing through the Woodland simply because that exterior scene already exists.
+
+Arrival places the player at a sensible local approach rather than directly on top of the first clue/objective.
+
+Each contract targets roughly 5–8 minutes on first play and uses the Hunting grammar:
 
 **Inspect → Interpret → Follow → Act → Harvest**
 
@@ -222,9 +287,13 @@ See `CONTRACTS.md` for full details.
 
 Completing any one formally unlocks **Hunting** after the wildlife problem is actually resolved, not merely after the first kill.
 
-## ~27:00–29:00 — Return to Garrick
+## ~27:00–29:00 — Return Travel → Garrick
 
-Player returns with outcome and edible material.
+After resolving the contract, the player leaves that destination through its regional-travel boundary:
+
+**Contract destination → Regional Map → Garrick's Inn**
+
+The player returns with outcome and edible material.
 
 Garrick acknowledges completed work without a graduation ceremony.
 
@@ -305,13 +374,43 @@ Sylvie may add:
 
 First supervised personal Cooking attempt is optional. The opening/tutorial phase is considered complete here.
 
+## Regional Map — opening MVP rules
+
+The map is the connective geographical layer for **meaningful destinations** during the opening.
+
+It must:
+- be an actual visual regional map rather than a destination list
+- preserve stable relative positions
+- clearly mark the player's current location
+- show only destinations the player plausibly knows
+- allow cancel/back before committing travel
+- use a short route/travel transition after selection
+- place arrivals at sensible local entrances
+- support Inn, Woodland, Reedwater Paddies, Venn Homestead, and Vale Watermill
+- remain compatible with future discovery sources beyond quests
+
+It must not introduce:
+- random encounters
+- survival meters
+- travel stamina
+- mounts
+- currencies
+- waypoint towers
+- giant map-marker carpets
+- exact travel-time simulation
+- full open-world architecture
+
+See `TRAVEL_WORLD_MAP_MVP.md`.
+
 ## Mandatory vs optional
 
 Mandatory for standard route:
 - functional Garrick engagement unless leaving/sequence-breaking
+- Regional Map travel to/from the Woodland once Marlow's job is accepted
 - Mossback fight on Marlow route
 - first Health Potion craft if completing Marlow route
 - one starter Hunting contract to reach Hunting/Sylvie opening
+- Regional Map travel to/from the accepted Hunting destination
 - Sylvie demonstration and pantry agreement to unlock Cooking
 
 Optional:
@@ -324,7 +423,7 @@ Optional:
 
 ## Major sequence breaks
 
-- Player immediately leaves: allowed.
+- Player immediately leaves: allowed. Regional Map should not secretly route them to Woodland before they know it.
 - Player steals/provokes Garrick: warnings/escalation/combat branch.
 - Player somehow defeats Garrick: Hunting-board access can occur early.
 - Player reaches Hunting before Marlow: allowed; possible order becomes Hunting → Sylvie/Cooking → Marlow/Potion Making later.
@@ -332,6 +431,8 @@ Optional:
 - Troll dies if ignored too long; Marlow leaves for a significant period.
 - Player kills Mooncalf: allowed if ingredient obtained logically; Marlow can react.
 - Non-lethal Hunting resolutions fully supported.
+
+Sequence breaks do not bypass regional geography. If the player gains early access to a contract, accepting that contract reveals its destination and travel still uses the Regional Map.
 
 ## Opening endpoint
 
@@ -344,5 +445,7 @@ And clear physical homes for each:
 - Marlow's lab
 - Garrick's board / wilderness
 - Sylvie's kitchen
+
+The Regional Map now provides a stable geographical relationship between the Inn and the destinations the player has actually discovered.
 
 Two starter contracts remain, Garrick sells gear, a room waits upstairs, Health Potion ingredients can be gathered again, Sylvie can supervise Cooking, outside world is open, and the unexplained Mossback behavior quietly remains in the background.
