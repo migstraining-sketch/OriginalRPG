@@ -103,3 +103,53 @@ First personal Cooking attempt is optional immediately afterward.
 - Trusted: potentially "Need the stove?"
 
 The behavioral shift itself should communicate relationship progression.
+
+---
+
+# Proposed starter-Hunt potential companions
+
+Detailed contract integration is owned by `HUNTING_PARTNERS.md`. These entries record the proposed character identities so character continuity and contract continuity stay aligned. They are **not yet locked until Central Brain approves this pass**.
+
+## Ilyra Fen
+
+**Usual name:** Ily  
+**Opening role:** local irrigation hand / ditch-mender at Reedwater Paddies; temporary partner for **Mud in the Moonrice**  
+**Potential party role:** Spear user centered on reach, spacing, and lane control
+
+**Core personality:** Dry, practical, alert, mildly competitive about physical work, impatient with sloppy solutions but not with genuine uncertainty. She judges a solution by whether it actually fixes the recurring problem rather than by moral category.
+
+**Why she is there:** Toma asked her to repair the repeatedly damaged bund/irrigation edge. She already knows the field hardware and water-control work but does not know the Reedback is after mudgrubs.
+
+**Character hook:** Ily takes seasonal lowland work rather than being permanently tied to Reedwater, making later travel/recruitment plausible if mutual respect develops.
+
+**Route attitude:** Cull is legitimate if needed; Manage interests her because it resembles good field work, not because she considers it morally superior.
+
+---
+
+## Sable Venn
+
+**Opening role:** Mara Venn's adult niece, courier, and temporary homestead hand for **Three Missing by Morning**  
+**Potential party role:** Bow user centered on range, LOS, and maintaining a preferred firing envelope
+
+**Core personality:** Quick-witted, restless, observant about people, lightly irreverent under pressure. She dislikes letting an unseen threat choose the terms of an encounter.
+
+**Why she is there:** Mara asked her back to the homestead after repeated Duskhen losses. Sable has watched the ground approaches and found little, but does not initially understand the Nightquill's elevated glide route.
+
+**Character hook:** Her courier work already takes her along regional roads, so future adventuring is plausible without requiring her to abandon a fixed livelihood overnight.
+
+**Route attitude:** Cull is acceptable protection of livestock; Manage appeals to her because shutting down the predator's route means she has finally outmaneuvered it, not because it is the morally correct answer.
+
+---
+
+## Nessa Vale
+
+**Opening role:** Oren Vale's younger sister and working mill hand / repairer for **When the Wheel Stopped**  
+**Potential party role:** Sword user centered on flexible close-range movement and Lunge
+
+**Core personality:** Steady, wry, stubborn, mechanically curious. She tends to mentally disassemble a broken system while everyone else is still complaining about it and dislikes repairs that treat symptoms instead of causes.
+
+**Why she is there:** The stopped wheel is directly disrupting her work. She knows the mill hardware, debris history, and old side-channel controls, but does not initially know that Brookmaws built a nursery in the channel.
+
+**Character hook:** Recruitment is a more meaningful personal choice for Nessa because the mill is genuinely her home/work. Restoring it creates breathing room rather than automatically severing that tie.
+
+**Route attitude:** Cull is acceptable if relocation fails or danger demands it; Manage satisfies her because restoring the side-channel solves the mechanical and ecological cause together, not because it earns moral approval.
