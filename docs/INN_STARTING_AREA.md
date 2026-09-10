@@ -468,6 +468,23 @@ Potions retain immediate/reactive uses such as healing. Food provides preparatio
 
 All five starter dish variants should provide mechanically equivalent introductory value so neither contract choice nor lethal/non-lethal resolution creates a hidden "bad tutorial reward."
 
+# Basic Rest at the hearth / common room — LOCKED MVP
+
+**Basic Rest is available for free through Garrick's Inn hearth/common-room rest point and does not require renting a room.**
+
+Basic Rest:
+- restores the player to full HP;
+- restores present companions to full HP;
+- clears the state preventing a previously Defeated companion from entering another combat;
+- costs nothing;
+- requires returning to Garrick's Inn.
+
+This is deliberately a minimal recovery interaction. Do **not** attach Rest Quality, fatigue, hunger, injury mechanics, paid recovery, buffs, time-management mechanics, or mandatory room rental to Basic Rest.
+
+A companion who ended an encounter Defeated reaches the locked post-encounter state defined in `GROUP_COMBAT_PARTY_MVP.md`: stable at 1 HP, physically/narratively present where appropriate, but unable to participate in another combat until Basic Rest clears that state.
+
+The hearth/common-room rest point exists so recovery is always available even before the player can afford a room.
+
 # Upstairs / room rental and personal storage
 
 Room rental is Day One content and remains optional.
@@ -482,8 +499,10 @@ Exact Rest Quality effects remain unresolved.
 
 Renting a room at Garrick's Inn gives the player, at minimum:
 
-- a bed / personal rest location
+- a bed / private personal rest location
 - access to the player's first **persistent personal storage chest/container**
+
+The room's bed does **not** gate ordinary HP or companion recovery; free Basic Rest already exists in the hearth/common room. The rented room remains mechanically valuable through privacy, persistent storage, home continuity, and potential future Rest Quality mechanics.
 
 The room is therefore mechanically useful even before Rest Quality is finalized. It becomes the player's first practical home-base location for keeping surplus equipment, reagents, containers, ingredients, Hunting materials, and miscellaneous adventure items between trips.
 
@@ -568,7 +587,7 @@ A believable chest in the rented room is enough for MVP.
 
 The following remain intentionally unresolved:
 
-- exact Rest Quality effects
+- exact Rest Quality effects beyond the separate free Basic Rest rule
 - whether room rental has a duration/expiry at all in MVP
 - if expiry exists, exact duration and renewal price/rules
 - whether a lapsed renter may retrieve stored items before renewing or must first restore room access
