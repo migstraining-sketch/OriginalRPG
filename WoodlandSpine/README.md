@@ -1,10 +1,12 @@
-# WoodlandSpine — complete opening blockout
+# WoodlandSpine — existing opening prototype
+
+**Status, 2026-09-10:** the newer coordinated design package is not implemented. Gameplay coding is on hold for the owner's review-first process. See the [current package review](../docs/reviews/2026-09-10-coordinated-package-review.md). The behavior below describes the earlier prototype, not compliance with every current design document.
 
 Open this project in Unity **6000.5.6f1**, open **Assets/Scenes/Opening.unity**, and press Play. Do not play an empty Untitled scene. The scene builds its placeholder world when Play starts.
 
 For the standalone version, run **Builds/Windows/WoodlandSpine.exe**. Keep the entire Windows folder together, including the Data directory and DLLs.
 
-The current opening follows **docs/DIALOGUE_PLAYER_AGENCY.md** in the repository. See **Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md** for the implemented state and dialogue changes, and **PLAYTEST-OPENING.md** for the route. Earlier supplied scripts and validation reports are retained as historical sources.
+The existing opening implements an earlier revision of **docs/DIALOGUE_PLAYER_AGENCY.md**. See **Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md** for that baseline and **PLAYTEST-OPENING.md** for the route. Newer lab/return dialogue revisions await implementation. Earlier supplied scripts and validation reports are historical sources.
 
 ## Current implementation
 
@@ -48,14 +50,14 @@ All geometry, gestures and sound are placeholders. No Blender assets, voiced dia
 
 Consequences and inventory persist across visits in the running session, not across quitting or stopping Play. Rooms can be rented and entered; sleeping/rest quality is deferred. Well Fed has no stat effect. No additional professions, recipe catalogue, later progression or explanation for Mossback behaviour was added. The 20–35 minute target is not yet established by human playtesting.
 
-Next smallest step: play the revised invitation and first lab visit and adjust only the wording, pause lengths and staging that still feel wrong before committing to custom assets.
+Next step: resolve the current Central Brain review recommendations before authorizing gameplay changes. Human pacing and staging acceptance are still required later.
 
 
 
 
 ## Continuity review
 
-See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the comparison with the other design chats. Combat is aligned; full Cooking, Hunting observation/tracking and final narrative acceptance remain incomplete. Buying gear stores it without auto-equipping; open inventory to equip it. Body armor can be changed outside combat.
+See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the historical comparison. The existing solo combat refinement is implemented; the newer group-combat package is not. Full Cooking, Hunting observation/tracking and narrative acceptance remain incomplete. Buying gear stores it without auto-equipping; open inventory to equip it. Body armor can be changed outside combat.
 
 
 ## Approved combat refinement
@@ -66,6 +68,6 @@ Key 5 selects Lunge (Sword), Drive (Spear), or Quick Shot (Bow). Click the enemy
 
 ## Revised opening dialogue
 
-The current conversation follows [DIALOGUE-AGENCY-IMPLEMENTATION.md](Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md) and the repository's DIALOGUE_PLAYER_AGENCY authority. Enter your name when Garrick asks, not during coat selection. Hearing Marlow out and accepting his woodland job are separate choices. The older supplied dialogue and playtest guides describe superseded passes.
+The baseline conversation is described in [DIALOGUE-AGENCY-IMPLEMENTATION.md](Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md). Enter your name when Garrick asks, not during coat selection. Hearing Marlow out and accepting his woodland job are separate choices. Follow the newer repository authority for future changes, not historical supplied scripts.
 
 

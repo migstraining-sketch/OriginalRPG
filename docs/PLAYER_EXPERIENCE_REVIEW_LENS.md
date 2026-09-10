@@ -59,4 +59,4 @@ Scores: 1–2 fundamentally obstructive or barely present; 3–4 major experienc
 
 For each implementation milestone, update an experience review: what improved, what got worse, the largest remaining friction, and the next smallest test. A high test count proves covered behavior, not enjoyment.
 
-Initial assessment: [Opening review, 2026-09-10](reviews/2026-09-10-opening-player-review.md).
+Current assessment: [Coordinated package review, 2026-09-10](reviews/2026-09-10-coordinated-package-review.md). The [initial opening review](reviews/2026-09-10-opening-player-review.md) is preserved as a historical snapshot; resolved objections there are not current defects.

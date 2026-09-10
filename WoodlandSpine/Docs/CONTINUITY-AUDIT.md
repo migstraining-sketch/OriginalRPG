@@ -1,5 +1,7 @@
 # Continuity audit — 2026-09-08
 
+**Historical audit:** the conflicts and next-step recommendations below describe that date, not current authority. Use [START_HERE](../../docs/START_HERE.md) and the [current review](../../docs/reviews/2026-09-10-coordinated-package-review.md). Retained for implementation-gap and source provenance.
+
 ## Authority and scope
 
 Compared Unity source with main at fc69ea8: Central Brain handoff, project state, design pillars, Core Systems, characters, opening flow, inn, contracts, Hunting, Cooking, Potion Making and unresolved design register. Also read docs/OPENING_QUESTLINE_ROLE.md on origin/design/opening-questline-role. That branch was reviewed as proposed continuity, not merged or promoted to main.

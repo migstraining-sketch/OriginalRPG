@@ -1,3 +1,5 @@
+> Historical assessment. The [coordinated package review](2026-09-10-coordinated-package-review.md) supersedes this as the current review. Several concerns below were subsequently resolved; do not treat them as current defects without checking the owning authority.
+
 # WoodlandSpine opening: player experience review
 
 Date: 2026-09-10. Lens: [Asmongold-informed review standard](../PLAYER_EXPERIENCE_REVIEW_LENS.md). All verdicts and scores here are the reviewer's judgments, not Asmongold's statements or ratings.

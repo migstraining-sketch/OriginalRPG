@@ -1,3 +1,7 @@
+# Historical result notice
+
+This report describes an earlier pass. The superseded PLAYTEST-MARLOW guide has been deleted; use [PLAYTEST-OPENING](../PLAYTEST-OPENING.md) for the existing prototype route. References to that earlier guide below are historical evidence, not current instructions.
+
 # Marlow opening validation — 2026-09-08
 
 **Actual Unity Editor import and Windows player build: PASS**, Unity 6000.5.6f1. The earlier license restriction was resolved by running the build with normal licensing-service access. No final C# compiler diagnostics or serialization warnings remained.

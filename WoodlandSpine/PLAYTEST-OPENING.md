@@ -1,3 +1,7 @@
+# Baseline guide notice — 2026-09-10
+
+This guide describes the existing prototype through gameplay commit `72d6411`, not the newer coordinated design package. Gameplay coding is currently on hold for review. New design acceptance requirements live in the repository authorities and [current review](../docs/reviews/2026-09-10-coordinated-package-review.md).
+
 # Current opening playtest
 
 Start a fresh Play session in Assets/Scenes/Opening.unity (or launch the Windows player). Choose your coat and enter the inn. Type and confirm your name when Garrick asks for it.
@@ -30,4 +34,3 @@ A second fresh run beginning by trying the laboratory door should give the conte
 Which player line does not sound like something you would say? Where does a conversation jump ahead of what you know? Can you see Marlow and the troll when the scene needs them? Does the decision feel earned? Does any door, prompt, camera transition or battlefield trap you?
 
 This remains a blockout. Do not judge final models or lighting yet. Actual reading/exploration time, not the scripted test duration, determines whether the target opening length is working.
-

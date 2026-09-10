@@ -1,4 +1,6 @@
-# Implementation handoff — 2026-09-08
+# Implementation handoff — baseline and pending design
+
+Status refreshed 2026-09-10. Latest gameplay commit: `72d6411`. **Gameplay changes are on hold for review.** New group combat, travel, milk failure, storage, Inn layout, partner and dialogue/UI revisions are design work awaiting implementation. See the [current review](../../docs/reviews/2026-09-10-coordinated-package-review.md).
 
 The repository's root docs remain the design authority. This folder imports the existing WoodlandSpine Unity prototype and its accumulated opening-flow implementation; it does not replace or rewrite those documents.
 
@@ -14,8 +16,8 @@ The camera previously rendered enemies behind the action panel while world input
 
 ## Provisional and incomplete
 
-The 45-minute illness timer, room price and small coin rewards are tuning assumptions. No save/load exists. Kitchen and room doors use same-scene transfers; the lab uses real stairs. Crime/guards, room rest, final art, voiced dialogue and later progression are incomplete. Existing historical validation notes describe earlier passes; STATUS.md identifies the current pass. Automated callback tests do not establish that the dialogue feels right or replace manual mouse/pacing acceptance.
+The existing 45-minute illness timer is superseded by the new authored-state direction and must be replaced in the authorized coordinated pass. Room price and small coin rewards remain prototype assumptions. No save/load exists; new persistent-storage design is not proof of disk persistence. Kitchen and room doors use same-scene transfers; the lab uses real stairs. Crime/guards, room rest, final art, voiced dialogue and later progression are incomplete. [Validation status](../Validation/STATUS.md) records the earlier build. Automated callback tests do not establish dialogue quality or replace manual mouse/pacing acceptance.
 
-Next smallest step: a human playthrough of the supplied Garrick/Marlow branches and first lab visit, plus edge-of-battlefield mouse targeting, before custom Blender assets.
+Next step: resolve the current review's design dependencies before authorizing code. Subsequent playtesting must include natural dialogue, group targeting and the real success/failure routes, not only scripted callbacks.
 
 The follow-up wide/short Game-view fix caps combat viewport aspect at 1.8 and compacts the combat header. This prevents adjacent prototype sites from appearing at the sides. Validation/STATUS.md records the focused camera regression and reviewed screenshot.

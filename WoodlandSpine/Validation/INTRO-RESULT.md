@@ -1,3 +1,7 @@
+# Historical result notice
+
+This report describes an earlier pass. The superseded PLAYTEST-INTRO guide has been deleted; use [PLAYTEST-OPENING](../PLAYTEST-OPENING.md) for the existing prototype route. References to that earlier guide below are historical evidence, not current instructions.
+
 # Reactive introduction validation — 2026-09-08
 
 ## Automated checks actually performed

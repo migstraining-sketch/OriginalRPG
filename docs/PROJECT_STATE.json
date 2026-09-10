@@ -1,18 +1,43 @@
 {
   "projectType": "original-rpg",
   "continuityAuthority": "this-repository",
-  "currentDesignFrontier": "opening-combat-refinement-approved-pending-unity-playtest",
+  "statusReviewedDate": "2026-09-10",
+  "reviewedGithubCommit": "c7a8773",
+  "currentDesignFrontier": "coordinated-opening-package-review-before-implementation",
+  "workflow": {
+    "reviewBeforeGameplayCoding": true,
+    "gameplayImplementationOnHold": true,
+    "nextAction": "Central Brain review; separately authorize implementation after material concerns are resolved",
+    "currentReview": "docs/reviews/2026-09-10-coordinated-package-review.md"
+  },
+  "implementation": {
+    "projectPath": "WoodlandSpine",
+    "latestGameplayCommit": "72d6411",
+    "coordinatedPackageImplemented": false,
+    "validationEvidence": "WoodlandSpine/Validation/STATUS.md",
+    "humanOpeningAcceptance": "not-established"
+  },
   "openingTargetMinutes": {
     "standard": "27-30",
-    "healthyRange": "23-35"
+    "healthyRange": "23-35",
+    "status": "historical design targets; expanded package not timed or validated"
   },
-  "lockedCharacters": ["Garrick", "Marlow", "Sylvie"],
-  "lockedOpeningSystems": ["Potion Making opening", "Hunting MVP", "Cooking MVP", "Day One room rental hook", "MVP tactical combat refinement"],
-  "lockedStarterContracts": ["Mud in the Moonrice", "Three Missing by Morning", "When the Wheel Stopped"],
-  "lockedStarterCombatSignatures": ["Sword Lunge", "Spear Drive", "Bow Quick Shot"],
-  "priorityImplementationIssues": ["Bow targeting/LOS inconsistency", "selected-action cancel/back", "first woodland committed Pounce", "Mossback obstacle/lane baiting"],
-  "activeDesignTasks": ["implement and playtest approved combat refinement", "refine canonical Garrick/Marlow opening dialogue"],
-  "deferredNextPhase": "Design the first 1-2 hours after Cooking unlock only after the opening combat/dialogue experience is validated.",
-  "futureButNotYetDesigned": ["Rest Quality", "Smithing", "Taming", "full Potion Making progression", "full Hunting progression", "full Cooking progression", "larger antagonist storyline"],
-  "importantCorrection": "This is an original RPG. AdventureQuest, BattleOn and other referenced games/media are inspiration only and are not canon."
+  "authorityIndex": "docs/START_HERE.md",
+  "pendingReviewDecisions": [
+    "Accessible MVP Rest action for defeated-companion combat eligibility",
+    "Dialogue suspend behavior versus explicit leaving and movement",
+    "Prototype delivery boundary for three equal starter contract choices"
+  ],
+  "lockedStarterContracts": [
+    "Mud in the Moonrice",
+    "Three Missing by Morning",
+    "When the Wheel Stopped"
+  ],
+  "partnerReadiness": {
+    "Ilyra Fen": "design ready for Mud in the Moonrice",
+    "Sable Venn": "character direction; later contract implementation",
+    "Nessa Vale": "character direction; later contract implementation"
+  },
+  "deferredNextPhase": "First 1-2 hours after Cooking unlock; final art and long-term progression",
+  "importantCorrection": "Original RPG; referenced media are inspiration only, not canon. Reviews are proposals; test results do not prove enjoyment."
 }

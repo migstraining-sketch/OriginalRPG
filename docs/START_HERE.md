@@ -18,14 +18,20 @@ This repository is the continuity authority for the original RPG project.
 12. `docs/WORLD_BIOMES_EXPLORATION.md`
 13. `docs/DIALOGUE_PLAYER_AGENCY.md`
 14. `docs/INN_STARTING_AREA.md`
-15. `docs/CONTRACTS.md`
-16. `docs/SYSTEMS_HUNTING.md`
-17. `docs/HUNTING_PARTNERS.md`
-18. `docs/SYSTEMS_COOKING.md`
-19. `docs/UI_HUD_PLAYER_INFORMATION.md`
-20. `docs/UNRESOLVED.md`
+15. `docs/INN_SPATIAL_BLOCKOUT.md`
+16. `docs/CONTRACTS.md`
+17. `docs/SYSTEMS_HUNTING.md`
+18. `docs/HUNTING_PARTNERS.md`
+19. `docs/SYSTEMS_POTION_MAKING.md`
+20. `docs/SYSTEMS_COOKING.md`
+21. `docs/UI_HUD_PLAYER_INFORMATION.md`
+22. `docs/UNRESOLVED.md`
 
 ## Working rule
+
+**Owner instruction, 2026-09-10: review first; gameplay coding is on hold.** Read the updated GitHub package, provide an honest review for Central Brain, and resolve material concerns before a separately authorized implementation pass. Locked design status alone is not permission to start coding. Documentation cleanup may remove clearly superseded instructions, but reviewer recommendations must remain proposals until accepted. Do not claim a guaranteed 10/10 experience from documents.
+
+Current review: [coordinated package assessment](reviews/2026-09-10-coordinated-package-review.md). Earlier reviews are dated evidence, not a current defect list.
 
 Treat this repository as the source of truth for locked decisions. If a future chat finds a contradiction, do not silently rewrite upstream canon. Flag it, propose a fix, and update the relevant continuity files after Central Brain approval.
 

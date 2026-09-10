@@ -4,9 +4,9 @@ These items are intentionally **not** finalized. Future chats should not invent 
 
 ## Immediate next frontier
 
-The current priority is to **implement and playtest the approved MVP combat-refinement package** while continuing authored refinement of the canonical Garrick/Marlow opening dialogue.
+The current priority is **reviewing the coordinated opening package before gameplay coding**, per the owner's 2026-09-10 instruction. See [current review](reviews/2026-09-10-coordinated-package-review.md). Existing signatures, Pounce and targeting/cancel fixes are in the earlier prototype; regression testing them is not the same as implementing the newer party/travel/UI package.
 
-Immediate combat validation includes:
+Required combat regressions when implementation is authorized include:
 - Sword Lunge
 - Spear Drive
 - Bow Quick Shot
@@ -26,6 +26,8 @@ Questions for that later phase still include:
 - Does the early game need another local destination or can the inn + nearby contract areas sustain the first hour or two?
 
 ## Rest Quality
+
+**Immediate dependency, not a request for a full Rest Quality system:** defeated companions recover to stable 1 HP after victory and cannot fight until Rest under `GROUP_COMBAT_PARTY_MVP.md`. Central Brain still needs to define the minimal accessible Rest action, its cost/location and restoration, and recovery after Flee. Do not assume the deferred system already provides this interaction or silently require a paid room.
 
 Concept exists but exact mechanics do not.
 
@@ -55,7 +57,7 @@ Unresolved:
 
 ## Potion Making
 
-Locked opening: Health Potion learned through Marlow.
+Locked successful opening: Health Potion learned through Marlow. The reagent-impossibility route does not unlock Potion Making; see `OPENING_MOONCALF_MILK_FAILURE.md`.
 
 Unresolved:
 - exact skill/XP curve
@@ -166,6 +168,8 @@ The larger final character-creation system is not yet frozen for this original v
 ## World / town
 
 Current release focus is Garrick's Inn and nearby local adventure areas.
+
+Opening regional travel, front-door access and knowledge gates are already defined in `TRAVEL_WORLD_MAP_MVP.md`. Inn population, footprint and circulation are defined in `INN_SPATIAL_BLOCKOUT.md`. These are not open design choices merely because final art and wider geography remain deferred.
 
 Unresolved:
 - town name

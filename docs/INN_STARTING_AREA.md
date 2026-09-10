@@ -22,7 +22,7 @@ Garrick's Inn is the player's first home base and should feel like a believable 
 Important spaces:
 - front entrance
 - Garrick's bar
-- Hunting/contract board behind/near Garrick's bar
+- Hunting/contract board beside Garrick's bar, approached from public floor space
 - common-room tables
 - Marlow's initial table near enough to participate in the opening scene
 - kitchen door
@@ -63,7 +63,7 @@ Allowed. Garrick may eventually acknowledge the new face without forcing control
 
 Garrick sells basic weapons, armor, drinks, and rooms, and acts as the informal conduit for local work.
 
-The contract board is physically mounted behind/near his bar so taking jobs naturally involves him.
+The contract board is beside his bar on the public side, so taking jobs naturally involves him without entering staff space. Population, dimensions, sightlines, merchandise placement, stairs and circulation are owned by [INN_SPATIAL_BLOCKOUT.md](INN_SPATIAL_BLOCKOUT.md).
 
 Garrick is not an official guildmaster. Locals trust that adventurers and capable travelers pass through his inn, so they leave problems with him.
 
@@ -572,7 +572,7 @@ The following remain intentionally unresolved:
 - whether room rental has a duration/expiry at all in MVP
 - if expiry exists, exact duration and renewal price/rules
 - whether a lapsed renter may retrieve stored items before renewing or must first restore room access
-- exact storage UI presentation/capacity, provided it does not create artificial opening friction
+- exact storage capacity and visual tuning, provided they do not create artificial opening friction; the two-pane interface and transfer/Back semantics are already locked in `UI_HUD_PLAYER_INFORMATION.md`
 - whether later inns or player-owned spaces eventually provide separate or linked storage
 
 Do not answer these silently during Unity implementation. Bring them back to Central Brain if implementation requires a decision.

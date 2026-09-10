@@ -1,5 +1,7 @@
 # Opening Garrick + Marlow Interaction
 
+**Historical supplied script, preserved as source evidence.** Current wording/agency authority is [DIALOGUE_PLAYER_AGENCY](../../docs/DIALOGUE_PLAYER_AGENCY.md); this earlier script must not override later approvals. The filename reflects its original role, not current precedence.
+
 ## 1. Player Appears in Garrick's Inn
 
 Character creation ends.

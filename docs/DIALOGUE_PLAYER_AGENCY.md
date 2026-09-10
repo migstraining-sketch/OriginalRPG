@@ -90,26 +90,20 @@ Resume from the last coherent conversational state rather than a generic root no
 
 **Together:** Brotherly history is subtext through shorthand, timing, annoyance, trust, and practical care. Do not explain that they are "like brothers."
 
-# Known Unity dialogue problems
-1. Current `InnConversation` assumes the configured player name before Garrick asks for it. Approved flow requires name entry at **"You got a name?"**
-2. After **"[NAME]. Right."**, current `InnConversation` offers **"Thanks."** It has no conversational cause.
-3. Current prototype chains Marlow's accident immediately after the name exchange. Approved pacing returns control first so the crash happens physically in the inn.
-4. **"Might've found you another pair of legs"** currently arrives before the player understands what needs collecting or why Marlow cannot go.
-5. **"If you're actually considering this..."** invents player interest.
-6. Several mandatory one-option responses merely advance text.
-7. First-lab dialogue is a nearly linear question ladder.
-8. Current troll reveal behaves like an FAQ menu with too many simultaneous questions and immediate root-menu bouncing.
-9. **"What happened to him?"** is ambiguous after the player notices the troll's paleness; it sounds like asking what caused the illness but currently receives the rescue story instead.
-10. The current/proposed **"Is he dangerous?"** answer is rejected by Central Brain and should not be forced into this scene.
-11. The player can encounter unrelated generic Marlow dialogue before discovering the troll. Approved behavior requires Marlow to guide the player to the reveal if spoken to first.
-12. Current woodland briefing over-explains ingredient locations/acquisition and risks pre-solving exploration.
-13. Current return objective over-signals **"observations"** rather than simply directing the player back to Marlow.
-14. Current return conversation badly prioritizes the Mossback before the troll crisis.
-15. Current implementation treats player encounter state as if Marlow automatically knows it. He should not know about the Mossback unless told.
-16. `MarlowOpening.Say` falls back to **Step away** when no choice exists. Presentation should support ordinary Continue independently from roleplaying choices.
-17. Current `InnConversation` refusal shares departure staging with acceptance, risking Marlow leading the player downstairs after refusal.
+# Implementation status and remaining dialogue revision
 
-These observations do **not** authorize Unity changes yet.
+Status cleanup, 2026-09-10: the earlier gameplay pass at `72d6411` addressed name entry at Garrick's question, the causeless Thanks reply, post-name free control before the crash, problem setup before the work handoff, separate interest/acceptance/refusal states, Marlow-first troll guidance and ordinary Continue. These remain regression requirements, not a list of unimplemented defects. See [implementation evidence](../WoodlandSpine/Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md). Human pacing/voice acceptance is still not established.
+
+The newer lab/return revisions remain pending:
+
+1. Replace the troll FAQ/root-menu bouncing with contextual questions and forward convergence.
+2. Distinguish illness questions from the rescue story; do not force the rejected **"Is he dangerous?"** answer.
+3. Reduce the woodland briefing's tendency to pre-solve ingredient discovery.
+4. Simplify the return objective and prioritize the sick troll/treatment over the Mossback discussion.
+5. Keep Marlow's knowledge separate from encounter/world flags; he learns the incident through player disclosure.
+6. Preserve the existing meaningful-choice/Continue distinctions while implementing the newer UI suspend/back rules.
+
+The detailed approved/proposed dialogue below remains authoritative according to its stated approval status. These observations do **not** authorize Unity changes.
 
 # Required conversation state
 Exact code representation is downstream, but implementation must distinguish at minimum:
