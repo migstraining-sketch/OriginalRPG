@@ -13,12 +13,13 @@ This repository is the continuity authority for the original RPG project.
 7. `docs/CHARACTERS.md`
 8. `docs/OPENING_FLOW.md`
 9. `docs/TRAVEL_WORLD_MAP_MVP.md`
-10. `docs/DIALOGUE_PLAYER_AGENCY.md`
-11. `docs/INN_STARTING_AREA.md`
-12. `docs/CONTRACTS.md`
-13. `docs/SYSTEMS_HUNTING.md`
-14. `docs/SYSTEMS_COOKING.md`
-15. `docs/UNRESOLVED.md`
+10. `docs/WORLD_BIOMES_EXPLORATION.md`
+11. `docs/DIALOGUE_PLAYER_AGENCY.md`
+12. `docs/INN_STARTING_AREA.md`
+13. `docs/CONTRACTS.md`
+14. `docs/SYSTEMS_HUNTING.md`
+15. `docs/SYSTEMS_COOKING.md`
+16. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -27,6 +28,8 @@ Treat this repository as the source of truth for locked decisions. If a future c
 `docs/DIALOGUE_PLAYER_AGENCY.md` is the continuity authority for playable dialogue logic, player-response quality, conversational state, branching/convergence, and player commitment/agency. Proposed exact prose in that document does not become canon until Central Brain approves it.
 
 `docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design.
+
+`docs/WORLD_BIOMES_EXPLORATION.md` is the continuity authority for biome identity, local ecology, environmental resource placement, exploration discoveries, renewable/finite natural-source philosophy, and the opening Woodland ecology package. Proposed Woodland additions in that document remain subject to Central Brain approval and do not authorize Unity changes on their own.
 
 ## Project correction
 
@@ -48,6 +51,7 @@ Central Brain is assembling one coordinated opening implementation/playtest pass
 - Mooncalf herd/container/failure-path behavior
 - rented-room persistent storage
 - at least one fully playable starter Hunting contract
+- approved Woodland biome/exploration ecology additions, if Central Brain accepts the proposed package
 
 Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
 
