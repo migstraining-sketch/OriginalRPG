@@ -1,6 +1,6 @@
 # Garrick — first Blender outfit and proportion study
 
-**Owner rejected the v01 preview on 2026-09-10.** The files below are preserved as an earlier study, not approved art. The owner then supplied the actual cast lineup and Garrick sheet. Continue with [v02](v02/README.md), which uses those references directly. Do not install v01 in Unity.
+**Owner rejected the v01 and v02 previews on 2026-09-10.** These files are preserved as earlier studies, not approved art. The latest attempt is the [v03 anatomical head study](v03/README.md), using a different underlying head mesh. It is also unfinished and awaiting visual judgment. Do not install these studies in Unity as accepted character art.
 
 Owner-requested Blender work, 2026-09-10. This is an **editable blockout**, not final character art or a replacement for the approved character sheet. It is not installed in Unity.
 

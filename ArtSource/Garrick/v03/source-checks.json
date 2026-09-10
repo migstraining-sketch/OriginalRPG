@@ -1,0 +1,82 @@
+{
+  "commit": "a8bc2d54ff0ac92e78ff71431b1023eda42bf482",
+  "files": [
+    {
+      "file": "base.obj",
+      "upstream_path": "makehuman/data/3dobjs/base.obj",
+      "git_blob_sha1": "d26635e9326e3cca30778fd7b9c00062b03cce09",
+      "sha256": "8e761e6624b8f54536409135d1636da63b32486a90d4897f84e121d144f6fb4c",
+      "verified_against_tree": true
+    },
+    {
+      "file": "caucasian-male-old.target",
+      "upstream_path": "makehuman/data/targets/macrodetails/caucasian-male-old.target",
+      "git_blob_sha1": "07b1f5526a3139dbd528efe07452d0a454106d0d",
+      "sha256": "b0d2b1d58cba0358af59833740e70229265f7da1c20a11240f4123b7192cfd6d",
+      "verified_against_tree": true
+    },
+    {
+      "file": "caucasian-male-young.target",
+      "upstream_path": "makehuman/data/targets/macrodetails/caucasian-male-young.target",
+      "git_blob_sha1": "c3b82f92c5ced85599199cd184b0faf3b3fc6881",
+      "sha256": "70e228ba7164737dae664454394536fc5935fa48d333c1a97d77e2dc6eacc5f5",
+      "verified_against_tree": true
+    },
+    {
+      "file": "chin-bones-incr.target",
+      "upstream_path": "makehuman/data/targets/chin/chin-bones-incr.target",
+      "git_blob_sha1": "c4be5381866fafba57b499e83ba5712da284b592",
+      "sha256": "245b7a9506a10d5828531922ab2ec6da0e813f71bd995dae48c9a4dfad171a49",
+      "verified_against_tree": true
+    },
+    {
+      "file": "chin-width-incr.target",
+      "upstream_path": "makehuman/data/targets/chin/chin-width-incr.target",
+      "git_blob_sha1": "ce13cc1c443cf705c5ef50ac6360a73801315fd7",
+      "sha256": "deef506bfe1883d9d4c38667332c9970785226566efbae4724fd3d60c02efcf4",
+      "verified_against_tree": true
+    },
+    {
+      "file": "head-age-incr.target",
+      "upstream_path": "makehuman/data/targets/head/head-age-incr.target",
+      "git_blob_sha1": "54440c85e23e77fa51bc0585e324806deac24e4f",
+      "sha256": "ff677345bd81e3f439bdf75496bbee620ca3c3f029955a546837afd283abf73a",
+      "verified_against_tree": true
+    },
+    {
+      "file": "head-square.target",
+      "upstream_path": "makehuman/data/targets/head/head-square.target",
+      "git_blob_sha1": "8d156ed42db13219844e01bf4ab3185d9205befa",
+      "sha256": "001d0d135d964daf4ad99ba46a0f77c5bc2378f04e53c2b5a20242ab19cbf265",
+      "verified_against_tree": true
+    },
+    {
+      "file": "LICENSE.ASSETS.md",
+      "upstream_path": "LICENSE.ASSETS.md",
+      "git_blob_sha1": "f3ede1fc3318f8d794e2cb51924186c62f02f71a",
+      "sha256": "f6089cba01cb570a24712b41ab8a586ccd3cc5ef53dc266ca50b95c288956d2c",
+      "verified_against_tree": true
+    },
+    {
+      "file": "LICENSE.md",
+      "upstream_path": "LICENSE.md",
+      "git_blob_sha1": "5d1a49d31ebdaa46b06c52eae2c005c678a63ffa",
+      "sha256": "edd99571ca62698f78c943fd4fffb159a413c315fa0d4819d3cec5cadaf8b4f1",
+      "verified_against_tree": true
+    },
+    {
+      "file": "low-poly.obj",
+      "upstream_path": "makehuman/data/eyes/low-poly/low-poly.obj",
+      "git_blob_sha1": "ec35d14bd580ed9ec80ac57d48a4f01377b5f899",
+      "sha256": "783fe1e6331162c876520b4c2bed7a8ca06354ca15497e8ebd68bb1b59f4d3de",
+      "verified_against_tree": true
+    },
+    {
+      "file": "universal-male-young-maxmuscle-averageweight.target",
+      "upstream_path": "makehuman/data/targets/macrodetails/universal-male-young-maxmuscle-averageweight.target",
+      "git_blob_sha1": "b7c039c7f463fe1f1721b9ab269c7248d9c4f2f7",
+      "sha256": "c171ff9cc95e96273beb3e3b1969a01988c2d4982ebc6fe04bf81cf72ee3b295",
+      "verified_against_tree": true
+    }
+  ]
+}
