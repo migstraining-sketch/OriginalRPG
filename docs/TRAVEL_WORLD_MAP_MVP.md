@@ -10,6 +10,25 @@ This is not a full overworld/endgame travel design. It exists to give the openin
 
 Do not modify Unity from this document alone. Central Brain is coordinating dialogue, combat, Hunting, and travel into one implementation pass.
 
+## Approved MVP direction
+
+Central Brain has approved the following opening travel package:
+- actual visual regional map rather than a destination list
+- stable relative geography
+- current-location indication
+- knowledge-gated destinations
+- Woodland becomes known through Marlow's accepted job
+- Hunting destinations become selectable when their respective contract is accepted
+- remote locations return through the same regional-map layer
+- short travel/route presentation
+- sensible local arrival points rather than spawning beside objectives
+- no Inn → Woodland backyard portal
+- no forcing unrelated destinations through the Woodland
+- architecture remains compatible with future non-quest discovery
+- room-rental behavior remains protected
+- qualitative visual distance for MVP rather than exact travel-minute labels
+- roughly 1–2 seconds of route/travel presentation as the current prototype target, subject to playtesting
+
 ## Problem being solved
 
 The Inn, Woodland, Reedwater Paddies, Venn Homestead, and Vale Watermill must not behave like rooms directly attached to one another.
@@ -65,7 +84,7 @@ Suggested opening-region composition:
 - **Venn Homestead:** rural homestead along another branch/edge of settled land
 - **Vale Watermill:** positioned on the visible river/watercourse, spatially distinct from both farms and Woodland
 
-This is a **proposal requiring Central Brain approval at implementation-art/layout level**. The important locked requirement is that the destinations occupy visibly distinct, stable positions and do not read as adjacent rooms.
+The exact marker positions/art remain implementation-art/layout decisions for Central Brain/Unity review. The continuity requirement is that destinations occupy visibly distinct, stable positions and do not read as adjacent rooms.
 
 ## Destination knowledge and discovery
 
@@ -78,7 +97,7 @@ Do not equate them.
 
 Opening discovery rules:
 - Garrick's Inn is known from the beginning because the player is there.
-- Woodland becomes known/selectable when Marlow gives the player enough information to travel there for his gathering job.
+- Woodland becomes known/selectable when the player accepts Marlow's gathering job and receives enough information to travel there.
 - Reedwater Paddies becomes known/selectable when the player accepts **Mud in the Moonrice**.
 - Venn Homestead becomes known/selectable when the player accepts **Three Missing by Morning**.
 - Vale Watermill becomes known/selectable when the player accepts **When the Wheel Stopped**.
@@ -139,7 +158,7 @@ Once a destination is selected and travel is committed, the arrival occurs after
 
 ## Communicating distance and geography
 
-For MVP, distance should be communicated **qualitatively rather than with exact travel minutes**.
+For MVP, distance is communicated **qualitatively rather than with exact travel minutes**.
 
 Use:
 - stable visual spacing between markers
@@ -149,22 +168,20 @@ Use:
 
 Avoid exact labels such as `12 minutes away` until the game has an authoritative time-of-day/travel-time system.
 
-This qualitative-distance approach is a **new proposal requiring Central Brain approval**.
-
 The map should make it immediately obvious that the Woodland is not Garrick's backyard and that the Paddies, Homestead, and Watermill occupy different parts of the region.
 
 ## Lightweight travel transition
 
 Selecting a destination should create a brief sense of movement without becoming a cutscene tax.
 
-Recommended MVP:
+Approved current prototype target:
 1. Player selects destination marker.
 2. Selected route/path subtly highlights or traces from current location toward destination.
 3. A small traveler/token marker moves partway or fully along the route, or the route draw itself implies progress.
 4. Very short fade/ambient transition.
 5. Destination loads with a brief arrival framing beat before full control.
 
-Target feel: **about one or two seconds of travel presentation plus ordinary loading**, not a long unskippable animation.
+Target feel: **roughly one or two seconds of travel presentation plus ordinary loading**, subject to playtesting.
 
 Possible ambient layer:
 - woodland route: birds/wind/leaf ambience
@@ -195,10 +212,13 @@ This preserves each destination's local geography and lets the adventure breathe
 After Marlow's woodland job is explicitly accepted:
 - Woodland becomes known/selectable.
 - Objective should communicate traveling to the Woodland, not imply the Inn door is the quest entrance.
+- Marlow provides/lends the clean field container needed for the Mooncalf Milk reagent before departure.
 - Leaving Garrick's Inn opens the Regional Map.
 - Player selects Woodland.
 - Brief route/travel presentation.
 - Player arrives at Woodland trailhead.
+
+The Woodland itself contains the ingredient encounters and combat beats described in `OPENING_FLOW.md`; the regional-map layer should not attempt to encode those local interactions.
 
 Return:
 - player reaches Woodland leave/travel boundary
@@ -207,6 +227,8 @@ Return:
 - travel transition
 - arrives back at the Inn
 - returns to Marlow physically in the lab
+
+On return, the map/travel layer does not trigger or assume any Mossback conversation. Marlow's immediate priority is the troll treatment; NPC knowledge of the Mossback remains governed by dialogue/player-agency state.
 
 ### Hunting contracts
 
@@ -238,6 +260,18 @@ For MVP, do not invent a fake destination merely to reward premature leaving.
 The map can simply communicate that the player does not yet know where they are going and allow them to return/back out. If Central Brain later wants a small freely-known nearby destination, that is a separate content decision.
 
 This is preferable to turning the Woodland into the default exterior simply because it exists technically.
+
+## Relationship to renewable Woodland resources
+
+The regional map must allow the Woodland to remain a meaningful revisitable destination after Marlow's opening quest.
+
+In particular, if the Mooncalf herd remains intact, it can continue to serve as a renewable source of the reagent traditionally called **Mooncalf Milk** when the player later returns with a suitable container.
+
+Travel does not special-case this resource. The principle is simply:
+
+**known Woodland → travel back through Regional Map → revisit living herd/resource site**
+
+Exact milk replenishment, herd simulation, container capacity, and Potion Making economy remain outside this travel MVP.
 
 ## Room-rental protection
 
@@ -294,21 +328,18 @@ Do not design/implement yet:
 - day/night travel simulation
 - precise travel-time economy
 - open-world discovery rules beyond keeping the architecture compatible
+- animal ecology/breeding systems
+- Mooncalf herd simulation
+- milk-production/replenishment timers
+- detailed fluid-volume simulation
 
-## Approval notes
+## Approval status
 
-Central Brain's direction already establishes:
-- use a regional world-map layer between meaningful opening locations
-- use an actual visual map rather than a destination list
-- knowledge-gated destination availability
-- route/travel presentation sufficient to imply travel occurred
-- no direct Inn → Woodland portal behavior
-- no forcing unrelated destinations through the Woodland
-- preserve room rental
+Central Brain has approved the core regional-map direction and the following former proposal details for MVP:
+1. qualitative visual distance rather than exact travel-minute labels
+2. accepting each starter contract as the opening trigger that makes its specific destination selectable
+3. no invented destination when a player leaves before knowing anywhere else; allow cancel/return
+4. roughly 1–2 seconds of route trace/token movement plus fade/ambient change as the current prototype target, subject to playtesting
+5. destination arrival at a sensible local entrance/trailhead rather than directly at the quest objective
 
-New details proposed here for Central Brain approval:
-1. Use qualitative visual distance rather than exact travel-minute labels for MVP.
-2. Accepting each starter contract is the MVP trigger that makes its specific destination selectable; reading the posting alone does not.
-3. If the player leaves before knowing any other destination, show no invented destination; allow cancel/return rather than secretly routing them to Woodland.
-4. Use roughly 1–2 seconds of route trace/token movement plus fade/ambient change as the default travel presentation target.
-5. Destination arrival begins at a sensible local entrance/trailhead rather than directly at the quest objective.
+No additional travel-system approval question is created by the Mooncalf herd revision. The herd/container/resource behavior is local Woodland/opening logic; travel only needs to preserve Woodland revisitation and not erase that world state.
