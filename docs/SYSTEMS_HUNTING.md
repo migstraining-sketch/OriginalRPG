@@ -220,15 +220,25 @@ For Mud in the Moonrice, the implementation target is:
 
 The threshold exists to prevent one missed clue from bricking the hunt. It should not be presented to the player as `2/3 clues found` unless later UI testing proves that necessary. Prefer Hunt Notes/observations that update naturally.
 
-## Knowledge-gated contextual actions
+## Systemic discovery and authored world interactions
 
-World-first does not mean every authored solution interaction should be active before the player-character understands it.
+Knowledge must not act as an invisible permission gate for a physically sensible authored world interaction.
 
-For the first hunt, the alternate wet feeding patch may physically exist from arrival, but its quest-solving interaction should become meaningful only after the player has enough evidence to connect disturbed mud, exposed mudgrubs, and Reedback feeding behavior.
+For Mud in the Moonrice, the alternate wet feeding patch exists from the beginning. If the world design supports loosening that patch or opening its small runnel/soft connection, the player may perform those actions whenever the current physical state makes them sensible, including before the formal mudgrub inference has fired.
 
-This is not an invisible morality gate. It represents the player-character knowing **why** loosening/exposing that patch could redirect the animal.
+Inference still has substantial value. It may:
+- update Hunt Notes;
+- produce sharper player-character observations;
+- contextualize what the wet-margin interactions might accomplish;
+- make subtle interaction assistance clearer;
+- support prediction that a newly exposed mudgrub site may draw the Reedback away from the crop;
+- support later reporting/dialogue where relevant.
 
-Do not label the interaction `Non-lethal solution` or `Spare Reedback`.
+But inference must not change the underlying laws of the authored world solely by toggling interaction availability.
+
+This does **not** create a universal Dig action for every muddy surface. The interactions remain authored where the environment physically supports them. The rule is simply: **knowledge can reveal purpose; it does not turn physics on.**
+
+Do not label the interactions `Non-lethal solution` or `Spare Reedback`.
 
 ## Tracking resilience
 
@@ -250,9 +260,20 @@ Therefore:
 - a player may encounter it early;
 - a player may attack immediately;
 - a player may observe it feeding before understanding every clue;
-- discovering its behavior directly can count as supporting evidence where the authored scene clearly communicates the same fact.
+- discovering its behavior directly can count as supporting evidence where the authored scene clearly communicates the same fact;
+- a player may prepare part or all of the alternate feeding area early through physically valid authored interactions.
 
 Do not silently teleport or despawn the Reedback merely to restore the intended clue order.
+
+## Early-preparation discovery path
+
+The following sequence is explicitly valid:
+
+**player prepares alternate feeding area early → later Reedback uses it → player/world recognizes durable behavioral redirection → Manage resolution completes**
+
+If this occurs, do not require the player to backtrack and click two clues merely to validate a solution they already discovered through world interaction and observation.
+
+The inference system can update retroactively or through the observed cause-and-effect where useful. For example, seeing the Reedback settle into the loosened mudgrub patch may itself justify a stronger observation about what it was seeking.
 
 ## Temporary displacement vs resolved behavior
 
@@ -321,6 +342,7 @@ The contract succeeds as a Hunting proof if the player can enjoyably:
 - form a cause-and-effect hypothesis;
 - follow a short trail without pixel hunting;
 - choose between a direct hunt and an environmentally grounded management solution;
+- discover a valid environmental interaction before fully understanding it and later connect cause to effect;
 - see the paddies/problem state meaningfully change;
 - manually deal with the result.
 
@@ -339,14 +361,18 @@ Already locked upstream:
 - completing a real starter contract unlocks Hunting;
 - Mud in the Moonrice premise and both ingredient outcomes.
 
-New implementation detail proposed for Central Brain/playtest approval:
+Central Brain has approved the implementation package with one revision: physically sensible authored world interactions must **not** be hard-gated by inference flags.
+
+Approved implementation details now include:
 - exact evidence threshold and explicit mudgrub-knowledge threshold;
 - state separation listed above;
 - early physical access to the Reedback regardless of investigation completion;
-- knowledge-gated contextual activation of the authored redirect interaction;
+- authored alternate feeding-patch/runnel interactions remaining physically available when sensible regardless of inference state;
+- knowledge affecting understanding, Hunt Notes, contextual description, prediction, and interaction surfacing rather than physical permission;
+- early preparation of the alternate feeding area as a valid systemic-discovery sequence break;
 - redirection success requiring observed stable feeding at the alternate patch rather than simple flee state.
 
-These recommendations deliberately avoid adding traps, bait inventories, procedural tracking, ecology simulation, or a new Hunting-only UI framework.
+These recommendations deliberately avoid adding traps, bait inventories, procedural tracking, ecology simulation, a generic Dig verb, or a new Hunting-only UI framework.
 
 ## Deferred
 
