@@ -23,7 +23,8 @@ This repository is the continuity authority for the original RPG project.
 17. `docs/HUNTING_PARTNERS.md`
 18. `docs/SYSTEMS_COOKING.md`
 19. `docs/UI_HUD_PLAYER_INFORMATION.md`
-20. `docs/UNRESOLVED.md`
+20. `docs/COORDINATED_OPENING_DEVELOPMENT_SLICE.md`
+21. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -43,36 +44,56 @@ Treat this repository as the source of truth for locked decisions. If a future c
 
 `docs/HUNTING_PARTNERS.md` is the locked authority for starter-Hunt local partner structure. Ilyra “Ily” Fen is implementation-ready for `Mud in the Moonrice`; Sable Venn and Nessa Vale are locked at character direction only until their contracts receive later implementation passes.
 
+`docs/COORDINATED_OPENING_DEVELOPMENT_SLICE.md` defines **development/playtest scope**, not canon. It preserves all three starter Hunts as equal canonical choices while limiting the upcoming coordinated development build to a fully playable **Mud in the Moonrice + Ilyra “Ily” Fen** Hunting route. The other two postings remain visible as development-unavailable scaffolding and do not reveal their destinations in this slice.
+
 ## Project correction
 
 This is an **original RPG**, not an AdventureQuest/BattleOn reconstruction and not an October 15, 2002 chronology project. AdventureQuest, BattleOn, RuneScape, World of Warcraft, and other referenced games are research/inspiration only.
 
 ## Current design frontier
 
-The opening is designed through:
+The canonical opening is designed through:
 
 **Character Creation → Garrick's Inn → Marlow's opening quest → Regional Map → Woodland → Potion Making on success OR Marlow treatment-failure branch → first Hunting contract → Regional Map → contract destination → Hunting → Sylvie → Cooking unlock.**
 
+All three starter Hunting contracts remain equal canonical choices:
+- `Mud in the Moonrice`
+- `Three Missing by Morning`
+- `When the Wheel Stopped`
+
+None is canonically mandatory.
+
+The next coordinated implementation/playtest target is narrower and should be described as the **Coordinated Opening Development Slice** or **Marlow / Woodland / Mud + Ily development slice**.
+
+Its fully playable Hunting target is:
+
+**Mud in the Moonrice + Ilyra “Ily” Fen**
+
+For this development/test build:
+- all three canonical postings remain visible on Garrick's board;
+- `Mud in the Moonrice` is selectable/playable and reveals Reedwater Paddies on acceptance;
+- `Three Missing by Morning` is visibly unavailable for the current playtest and is not selectable;
+- `When the Wheel Stopped` is visibly unavailable for the current playtest and is not selectable;
+- the unavailable state is development scaffolding only, with no invented in-world excuse;
+- unavailable postings do not reveal Venn Homestead or Vale Watermill.
+
+The development slice may also include approved dialogue revisions, combat refinements, group-combat/party architecture, regional-map/front-door travel, Mooncalf herd/container/failure behavior, rented-room storage, HUD/player-information work, and Woodland ecology additions as separately authorized.
+
 A playable Unity prototype exists, but implementation does not promote itself to canon.
 
-Central Brain is assembling one coordinated opening implementation/playtest pass covering:
-
-- approved dialogue revisions
-- approved MVP combat refinements
-- locked group-combat/party architecture
-- regional-map/travel layer with front-door travel grammar
-- Mooncalf herd/container/failure-path behavior
-- rented-room persistent storage
-- `Mud in the Moonrice` as the first fully playable starter Hunting contract
-- Ilyra “Ily” Fen local-partner integration
-- approved HUD/player-information architecture
-- approved Woodland biome/exploration ecology additions
-
-Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
+Do **not** modify Unity piecemeal from individual design documents before Central Brain authorizes the coordinated pass.
 
 The travel layer must preserve geography without manufacturing empty traversal: meaningful destinations use a visual regional map, only plausibly known locations become selectable, and short route/travel presentation communicates that travel occurred.
 
 Room-rental behavior is currently working well in playtest. Preserve that behavior while adding the approved persistent personal storage benefit from `INN_STARTING_AREA.md`.
+
+### Pacing clarification
+
+Older approximately **20–30 / 27–30 minute** opening estimates are historical pacing guidance only. They are **not a hard acceptance criterion** for the coordinated development slice.
+
+After implementation, measure a natural first playthrough. Do not cut meaningful exploration, dialogue choices, combat decisions, or world interaction merely to force the slice under an old stopwatch target, and do not deliberately pad it either.
+
+Before the project can later claim the full three-choice starter-Hunt opening is complete, `Three Missing by Morning` + Sable and `When the Wheel Stopped` + Nessa still need implementation-depth passes and all three first-contract choices need acceptance/playtest coverage.
 
 **Do not move on to designing the first 1–2 hours after Cooking unlock yet.** Finish refining and validating the opening experience first.
 
