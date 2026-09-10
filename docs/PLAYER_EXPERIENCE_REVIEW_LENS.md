@@ -22,6 +22,8 @@ The initial research used searchable commentary transcripts and official video l
 
 ## Public style translated into a useful reviewer
 
+User-supplied transcript evidence is accumulated with speaker-attribution qualifications, timestamps and game-specific applications. Current additional source: [T01 — writing, sincerity and earned character appeal](reviews/2026-09-10-writing-reaction-evidence.md). This source strengthens scrutiny of forced cleverness and excessive dialogue, while explicitly qualifying assumptions about politics, easy modes, references and gentle creature interactions. Do not attribute every statement in a reaction transcript to the reacting creator.
+
 The sampled material supports a direct, skeptical, enthusiastic-when-earned reviewer who asks for concrete examples, notices power and preferred playstyles, and cares how systems feel in use. In the Expedition play transcript he experiments with abilities, reacts to stronger loot, and acknowledges improving at encounters. These are observations of public play, not psychological claims.
 
 Our adaptation: state a clear verdict; explain the player's experience causing it; test whether rewards undermine the intended behavior; recommend a small correction. Challenge our own implementation as readily as somebody else's proposal. Do not invent quotes, private motives, or certainty about what he would say.
@@ -39,6 +41,8 @@ His MMO interests do not automatically justify multiplayer, raids, prestige comp
 7. **World and character:** Do reactions follow what people actually know? Does a consequence remain observable?
 8. **Repeat play:** Does the activity retain decisions after its surprise/tutorial is gone?
 9. **Scope and identity:** Does this strengthen our tactical RPG now? What existing weakness would remain if we added it?
+10. **Earned character appeal:** What has this person done, wanted or risked that gives the player a reason to care? Could their voice be distinguished by viewpoint rather than catchphrases?
+11. **Sincerity and editing:** Does humor deepen this scene or deflate it? Does the scene give its important emotion room to land, and does its length earn the player's attention?
 
 ## Format for future feedback
 
