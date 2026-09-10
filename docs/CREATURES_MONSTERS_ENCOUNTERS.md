@@ -2,7 +2,7 @@
 
 ## Status / authority
 
-**PROPOSED CREATURE / ENCOUNTER DESIGN PASS — AWAITING CENTRAL BRAIN APPROVAL.**
+**LOCKED / CURRENT CREATURE AND ENCOUNTER AUTHORITY FOR THE OPENING WOODLAND**, with clearly marked future/deferred items remaining uncommitted.
 
 Central Brain remains final design authority.
 
@@ -27,15 +27,15 @@ Upstream authorities remain:
 - `DESIGN_GUARDRAILS.md`
 - `COORDINATED_OPENING_DEVELOPMENT_SLICE.md`
 
-**Do not modify Unity or Blender from this document.**
+**Do not modify Unity or Blender from this document alone.** Central Brain must separately authorize implementation.
 
 ---
 
 # 1. Core encounter doctrine
 
-## Randomize ecology, not battles
+## Randomize ecology, not battles — LOCKED
 
-The recommended project-wide encounter principle is:
+Project-wide encounter principle:
 
 > **Randomize ecology, not battles.**
 
@@ -56,6 +56,8 @@ Creatures physically exist in exploration before combat. The player may see, hea
 
 This is intentionally lighter than a full ecosystem simulator. Small authored state machines, routes, habitat gates, and controlled variation are sufficient.
 
+The exact population-selection algorithm is an implementation detail, not creature canon.
+
 ---
 
 # 2. Creature taxonomy
@@ -70,46 +72,57 @@ Preserve the existing five ecology roles:
 
 These are behavior/ecology categories, not XP or difficulty tiers.
 
-## Mythical does not mean anomalous
+## Mythical does not mean anomalous — LOCKED
 
 A creature may have unusual anatomy, coloration, horns, fur structures, or other fantasy-world traits and still be completely ordinary native wildlife.
 
 A creature becomes anomalous when its nature, presence, or current behavior meaningfully violates what the world has established as normal for that creature or place.
 
-This distinction is important in the opening:
+The opening communicates this through play:
 
-**ordinary dangerous predator → peaceful/defensive Mooncalf herd → familiar creature behaving abnormally**
+**Gloam Lynx: fantasy wildlife can simply be dangerous.**
 
-The player should learn this contrast through play rather than a taxonomy tutorial.
+**Mooncalf herd: fantasy wildlife can be peaceful and become defensive when given reason.**
 
-### Mossback clarification
+**Opening Mossback: something familiar is behaving wrong.**
 
-The **Mossback species itself should not automatically be treated as an anomaly species.** Existing authority establishes that Mossbacks are normally docile if given space.
+Do not explain this philosophy through a taxonomy tutorial.
 
-The **opening Mossback individual/encounter is anomalous** because it continues unexplained pursuit and aggression after ordinary explanations should have ended the confrontation.
+### Mossback clarification — LOCKED
 
-No visible corruption marker is added.
+**Mossbacks are not inherently an anomalous species.**
+
+Marlow's knowledge establishes a normal behavioral baseline: Mossbacks are expected to be docile if given adequate space.
+
+The **opening Mossback individual is anomalous** because it continues aggressive pursuit when a normal Mossback would be expected to disengage if given space.
+
+Do not explain the cause yet. No visible corruption marker is added.
 
 ---
 
-# 3. First Woodland predator recommendation
+# 3. First Woodland predator: Gloam Lynx
 
-## Recommend approval: Gloam Lynx
+## APPROVED AND LOCKED
 
-**Recommendation:** keep the working name **Gloam Lynx** and approve it as the opening Woodland's first ordinary hostile predator.
+**Name:** Gloam Lynx
 
-The concept already solves several needs at once:
-- its large-cat anatomy naturally supports committed Pounce;
-- stalking behavior gives the first fight a physical narrative reason;
-- a solitary predator avoids turning the opening into an enemy pack tutorial;
-- it can feel mythical without reading as magical corruption;
-- its behavior creates a clean contrast with the Mooncalf herd and anomalous Mossback later.
+The Gloam Lynx is the opening Woodland's first ordinary hostile predator.
+
+It is:
+- normal native mythical wildlife;
+- solitary;
+- large-cat / cougar-scale;
+- dangerous because it is a predator;
+- not corrupted;
+- not controlled or summoned by an antagonist;
+- not connected to the Mossback anomaly;
+- not connected to a quest reagent.
+
+Its identity deliberately establishes that not everything attacking the player is evil, corrupted, or part of the larger plot.
 
 ### Ecology role
 
 **Predator / hostile wildlife.**
-
-The Gloam Lynx is a normal native solitary predator of the Woodland. It is not corrupted, controlled, summoned, or connected to the larger antagonist plot.
 
 ### Approximate size
 
@@ -121,7 +134,7 @@ Exact model measurements remain visual-development tuning.
 
 Mixed-canopy interior, broken sightlines, fallen timber, rocky/rooted rises, and edge routes that let it observe prey before committing.
 
-It should plausibly hunt medium woodland animals and use cover rather than standing in open clearings waiting for a player.
+It should plausibly hunt medium woodland animals and use cover rather than standing in an open clearing waiting for the player.
 
 ### Normal behavior
 
@@ -130,20 +143,21 @@ It should plausibly hunt medium woodland animals and use cover rather than stand
 - uses cover and lateral movement;
 - watches before attacking;
 - may shadow a potential target for a short distance;
-- commits once it decides the target is viable prey or a territorial threat;
-- does not fight to the death merely because it exists, unless combat/outcome authority later requires that for the authored opening encounter.
+- commits once it decides the target is viable prey or a territorial threat.
 
-### Physical direction
+Exact in-combat defeat, disengagement, and Flee resolution remain owned by Combat authority.
 
-Keep:
+### Physical direction — LOCKED
+
+Preserve:
 - low stalking body;
 - powerful spring-loaded hindquarters;
 - strong forepaws;
-- long tufted ears;
+- tufted ears;
 - expressive ears, tail, shoulders, and spine;
 - dark mottled woodland coat.
 
-Optional fantasy anatomy should stay subtle. Small backward brow spurs or keratin/bony brow ridges may be explored during visual development, but **large horns should be avoided** because they weaken the predator silhouette and push the animal toward boss-monster language.
+A subtle horn/brow feature may be explored only if it preserves the feline silhouette. Avoid large horns or ornament that pushes the animal toward boss-monster language.
 
 Avoid:
 - glowing runes;
@@ -155,71 +169,84 @@ Avoid:
 
 Ordinary low-light eye-shine is acceptable if it reads as animal eye-shine rather than supernatural glowing eyes.
 
-### Pounce readability
+### Pounce readability — LOCKED DIRECTION
 
 The creature's body must communicate the existing committed Pounce before UI reinforcement is considered.
 
-Recommended physical tell:
+Physical tell:
 
-**head/body lower → shoulders settle → hindquarters compress/load → ears flatten or angle back → tail stiffens or changes rhythm → launch**
+**body/head lower → hindquarters compress/load → shoulders settle → ears/tail/posture change → launch**
 
-The exact timing, threatened geometry, damage, and resolution remain Combat authority.
+Combat UI may reinforce the threat according to Combat/UI authority, but it should not invent a tell the creature's animation fails to communicate.
+
+Exact timing, threatened geometry, damage, and resolution remain Combat authority.
 
 Once Pounce is committed, the existing combat commitment rule remains untouched.
 
 ---
 
-# 4. Opening stalking-to-combat sequence
+# 4. First Marlow Woodland encounter
 
-The first Woodland fight should no longer be:
+## Authored encounter, behavior-driven confrontation — LOCKED
 
-**enter Woodland → unexplained enemy combat**
+The opening sequence is:
 
-Recommended authored sequence:
+**quiet trailhead → stalking cues → physical stalking → confrontation → committed Pounce**
 
-## Beat 1 — calm trailhead
+The encounter is authored, but combat is **not** launched by an arbitrary invisible tutorial gate.
 
-The player arrives at the Woodland trailhead and receives the already-approved quiet orientation stretch.
+The fiction is doing the forcing: a hungry solitary predator has decided the lone traveler is worth following.
+
+## Beat 1 — quiet trailhead
+
+The player arrives at the Woodland trailhead and receives the already-approved calm orientation stretch.
 
 Ambient birds/insects and ordinary woodland sound establish a baseline before any threat cue.
 
-No combat UI appears.
+No combat UI appears merely because the player entered the location.
 
-## Beat 2 — first disturbance
+## Beat 2 — first readable cue
 
-After the player moves deeper into mixed canopy, one environmental cue suggests something large moved nearby.
+After the player moves deeper into plausible hunting territory, one environmental cue suggests something substantial moved nearby.
 
-Good candidates:
+Valid cues include:
 - brush movement behind cover;
 - a branch settling after weight left it;
 - a short rustle that stops when the player turns;
-- nearby birds abruptly scattering from one side of the route.
-
-Do not guarantee every cue in one playthrough.
+- nearby birds abruptly scattering from one side of the route;
+- other equivalent physical evidence.
 
 ## Beat 3 — confirmation without a checklist
 
-A second cue confirms that the first was not merely ambience.
+A second cue confirms the first was not merely ambience.
 
-Possible authored variants:
-- the lynx's silhouette crosses a distant gap;
-- ear tufts or tail vanish behind a trunk;
-- ordinary eye-shine catches briefly through brush;
-- a recent scrape or prey remnant is visible if the player happens to look near the route.
+Possible cues include:
+- the lynx's silhouette crossing a distant gap;
+- ear tufts or tail vanishing behind a trunk;
+- ordinary eye-shine through brush;
+- old prey remains;
+- territorial scratches;
+- another physically plausible sign.
 
-The player receives no `Investigate 0/3` objective and no Hunting unlock/tutorial.
+**Guarantee approximately two readable stalking cues before the normal confrontation.** A possible additional cue may appear depending on route and player attention.
 
-**Recommended cue budget:** surface at least two readable stalking cues before the normal confrontation, with an optional third depending on route and attention. The player does not need to click them.
+The cues do not need to be clicked.
 
-## Beat 4 — the predator shadows the route
+Do not use:
+- `Investigate 0/3` or another clue counter;
+- Hunting UI/tutorial progression;
+- quest markers pointing at the predator;
+- a scripted horror-chase sequence.
 
-The Gloam Lynx uses one of a few small authored stalking paths around the player-facing route rather than teleporting between cue points.
+## Beat 4 — physical stalking
+
+The Gloam Lynx uses a few small authored stalking routes around the player-facing route rather than teleporting between cue points.
 
 It may:
 - pause behind cover when watched;
-- circle to another authored observation point;
+- circle toward another authored observation point;
 - remain outside immediate melee range;
-- abandon one approach route and use another if the player moves unexpectedly.
+- use another physically connected stalking route when player movement changes.
 
 This is exploration behavior, not a combat Pounce commitment.
 
@@ -227,38 +254,48 @@ The player should increasingly understand:
 
 > **Something is following me.**
 
-## Beat 5 — confrontation pocket
+## Beat 5 — agency before confrontation
 
-The stalking paths should naturally terminate near one of a small number of spaces that are already suitable for the existing projected hex combat.
+Before the Gloam Lynx commits to confrontation, the player may **retreat and leave the Woodland**.
 
-The lynx physically enters or reveals itself at the edge of that space. It does not pop into formation from nothing.
+That is a valid exercise of agency. The game does not place an invisible wall behind the player or instantly teleport the lynx into combat to prevent departure.
 
-If the player spots and aggressively approaches the animal earlier, combat may begin from the physically valid current area/positions rather than teleporting both actors back to a preferred arena.
+However, if the player **continues deeper through the area while the Gloam Lynx remains actively committed to stalking them**, the predator eventually confronts them and ordinary combat begins.
 
-If the player has not forced an earlier confrontation, the lynx eventually decides the lone traveler is viable prey or a territorial threat and commits to the encounter.
+For this opening MVP, the player does **not** permanently bypass the entire first-predator encounter merely by walking around one trigger volume or taking a few steps around the expected confrontation spot.
 
-## Beat 6 — combat begins before unavoidable damage
+The encounter's persistence comes from the predator continuing to stalk through authored world routes, not from a tutorial volume silently firing somewhere else.
 
-The first encounter should **not** use the stalking sequence as permission for a free unavoidable opening hit.
+## Beat 6 — confrontation pocket
 
-When the creature transitions into a clearly committed attack, combat begins with the creature visible and its dangerous intent readable. Existing Combat authority then owns turn order, start-state handling, Pounce commitment, movement, damage, and counterplay.
+The stalking paths naturally lead toward one of a small number of spaces suitable for the existing projected hex combat.
 
-### Retreat / avoidance question
+The lynx physically enters or reveals itself at the edge of that space. It does not appear directly in combat formation from nothing.
 
-The broader ecology doctrine supports avoidance, but the opening still needs to prove the committed Pounce encounter.
+If the player aggressively approaches the animal earlier and produces a physically valid confrontation, combat may begin from sensible current positions according to Combat authority rather than teleporting both actors into a preferred arena.
 
-Central Brain should decide whether the first-visit Gloam Lynx can be **fully avoided** by retreating or taking another route, or whether the initial Marlow expedition authors a confrontation somewhere on the required deeper route.
+## Beat 7 — combat begins before unavoidable damage
 
-Regardless of that decision:
-- do not teleport the lynx behind the player;
-- do not respawn it instantly after disengagement;
-- do not make it cross obviously impossible space to force combat.
+The stalking sequence does **not** grant the lynx a free unavoidable attack.
+
+When the predator commits to confrontation, combat begins with the creature physically present and its dangerous intent readable.
+
+Existing Combat authority then owns:
+- start-state handling;
+- turn/activation logic;
+- Pounce commitment;
+- movement;
+- damage;
+- counterplay;
+- ordinary Flee rules where legal.
+
+This preserves a reliable first Pounce lesson without presenting the fight as “tutorial battle required.”
 
 ---
 
 # 5. Lightweight roaming / variable-encounter doctrine
 
-## Creature activity pockets
+## Creature activity pockets — LOCKED MVP ARCHITECTURE
 
 Each local exploration map may contain a small number of authored creature activity pockets.
 
@@ -273,7 +310,7 @@ A pocket may define:
 
 These are **not visible glowing spawn nodes**.
 
-## Presence selection
+### Presence selection
 
 On location entry or another meaningful world refresh, each eligible pocket chooses from a small authored state set rather than a giant random table.
 
@@ -288,7 +325,9 @@ Examples:
 
 Story-critical groups do not use this random presence layer unless their owning authority explicitly permits it.
 
-## Small behavior state machines
+The exact selection algorithm and weighting are implementation details.
+
+### Small behavior state machines
 
 Ordinary creature behavior only needs a compact set of states appropriate to that species, for example:
 
@@ -298,7 +337,7 @@ Not every species needs every state.
 
 The goal is believable authored behavior, not simulation for simulation's sake.
 
-## Physical movement rule
+### Physical movement rule
 
 Creatures should enter and leave through understandable world space.
 
@@ -306,11 +345,11 @@ When a creature needs to disappear for performance or state cleanup, prefer doin
 - reaches cover;
 - exits through an authored boundary;
 - moves sufficiently far out of player view;
-- or the player leaves/reloads the location.
+- or the player leaves/reloads the location under appropriate state rules.
 
 Avoid animals vanishing in clear view merely because an AI timer expired.
 
-## Combat transition rule
+### Combat transition rule
 
 A roaming creature does not spawn directly into combat formation.
 
@@ -320,9 +359,9 @@ When confrontation occurs:
 3. the projected combat space uses sensible nearby valid starting positions according to Combat authority;
 4. other physically present eligible participants follow existing group-combat rules.
 
-No absent companion or enemy materializes just because combat started.
+No absent companion or enemy materializes merely because combat started.
 
-## Variation without battle roulette
+### Variation without battle roulette
 
 Useful variables include:
 - presence/absence;
@@ -335,7 +374,7 @@ Useful variables include:
 
 Do not use this doctrine to randomize combat stats, damage, initiative, loot quality, or other systems owned elsewhere.
 
-## Quiet visits are intentional
+### Quiet visits are intentional
 
 Not every return trip needs a fight.
 
@@ -352,23 +391,25 @@ This is a feature, not failed content delivery.
 
 # 6. Persistence / disappearance classes
 
-## A. Ordinary renewable wildlife presence
+## A. Ordinary renewable wildlife presence — LOCKED
 
 Examples: ordinary small animals, grazers, and later Gloam Lynx presence on non-story visits.
 
-Recommended rule:
+Rule:
 - if killed, frightened away, or driven from its pocket, that individual/group remains gone for the current visit;
 - later ecologically plausible presence may return after a **meaningful refresh**;
 - a later visit does not need to reproduce the same individual, count, or activity;
 - immediate behind-the-player respawn is forbidden.
 
-Exact repopulation timing is deferred.
+### Immediate re-entry anti-reroll rule — LOCKED PRINCIPLE
 
-**Recommended minimum anti-reroll rule:** leaving and immediately stepping back into a location should not automatically reroll all wildlife. Preserve a visit/world-state cache until a meaningful refresh condition occurs.
+Leaving and immediately stepping back into a location does **not** automatically reroll the area's wildlife population.
 
-The exact definition of that refresh condition requires later Central Brain / implementation approval.
+Preserve appropriate location/world-state continuity until a meaningful refresh condition occurs.
 
-## B. Authored persistent creature groups
+**Exact meaningful-refresh timing remains deferred.**
+
+## B. Authored persistent creature groups — LOCKED
 
 Example: **Mooncalf herd**.
 
@@ -378,7 +419,7 @@ The Mooncalf herd must preserve the existing nursing-Mooncow reagent logic and f
 
 Temporary flight is not the same as permanent loss. If the herd can recoverably return, existing Mooncalf Milk logic remains viable.
 
-## C. Unique / anomalous encounters
+## C. Unique / anomalous encounters — LOCKED
 
 Example: **opening Mossback individual**.
 
@@ -388,22 +429,24 @@ They are not ordinary renewable combat spawns and should not casually respawn af
 
 ---
 
-# 7. Proposed opening Woodland creature roster
+# 7. Opening Woodland creature roster
 
-The goal is a small coherent roster, not an enemy catalogue.
+The opening Woodland remains a small coherent ecological package, not an enemy catalogue.
 
-## 1. Gloam Lynx — proposed current-slice predator
+## Current opening package
+
+### 1. Gloam Lynx — APPROVED / LOCKED CURRENT PREDATOR
 
 - **Ecology role:** Predator / hostile wildlife
 - **Approximate size:** Cougar-scale to slightly larger
 - **Habitat:** Mixed-canopy interior, fallen timber, rooted/rocky cover, woodland edges
 - **Normal behavior:** Solitary stalking predator; watches, circles, then commits when prey/threat assessment favors attack
-- **Player interactions:** Hear/spot it, notice signs, retreat, approach, disturb, be stalked, potentially fight
-- **Combat:** Likely/possible; intended first committed-Pounce teaching creature if approved
-- **Memorable visual trait:** Long ear tufts plus a low dark mottled silhouette with visibly powerful hindquarters
-- **Scope:** **Recommend current Woodland slice**, but identity/implementation awaits Central Brain approval
+- **Player interactions:** Hear/spot it, notice signs, retreat, approach, disturb, be stalked, fight
+- **Combat:** Yes in the authored first Marlow Woodland encounter if the player continues deeper while actively stalked; future presence may vary ecologically
+- **Memorable visual trait:** Tufted ears plus a low dark mottled silhouette with visibly powerful hindquarters
+- **Scope:** **Current opening Woodland**
 
-## 2. Mooncalf / Mooncow / Moonbull family — existing locked wildlife
+### 2. Mooncalf / Mooncow / Moonbull family — LOCKED CURRENT WILDLIFE
 
 - **Ecology role:** Potentially defensive wildlife
 - **Approximate size:** Juvenile plus large ungulate-like adults; exact 3D scale remains visual tuning
@@ -414,18 +457,19 @@ The goal is a small coherent roster, not an enemy catalogue.
 - **Memorable visual trait:** Visual design must clearly distinguish juvenile, nursing Mooncow, and protective adult roles without relying entirely on UI labels
 - **Scope:** **Existing locked current Woodland content**
 
-## 3. Mossback — existing opening anomalous individual
+### 3. Mossback — LOCKED CURRENT ANOMALOUS INDIVIDUAL
 
 - **Ecology role:** Species baseline is ordinary wildlife; opening individual functions as Monster / anomalous encounter because of abnormal behavior
 - **Approximate size:** Large, heavy quadruped; exact species scale remains visual-development work
-- **Habitat:** Woodland interior/clearing routes with trees, rocks, and lanes that can support existing Charge interaction
+- **Habitat:** Woodland interior/clearing routes with trees, rocks, and lanes that can support the existing Charge interaction
 - **Normal behavior:** Mossbacks are expected to be docile if given adequate space
+- **Opening abnormal behavior:** This individual continues aggressive pursuit when ordinary behavior should have disengaged
 - **Player interactions:** Give space, observe that pursuit continues abnormally, fight if confrontation persists, optionally report incident to Marlow later
 - **Combat:** Yes on the continuing successful opening route under existing authority
 - **Memorable visual trait:** Broad moss-draped or moss-like dorsal mass should communicate weight and straight-line momentum; final anatomy is not settled here
 - **Scope:** **Existing locked current Woodland content**
 
-## 4. Rootmuzzle — proposed identity for the existing small-forager observation
+### 4. Rootmuzzle — APPROVED CURRENT FORAGER IDENTITY
 
 - **Ecology role:** Interactable harmless wildlife
 - **Approximate size:** Large shrew / small rabbit scale, roughly 25–35 cm body length
@@ -434,9 +478,11 @@ The goal is a small coherent roster, not an enemy catalogue.
 - **Player interactions:** Patient observation, cautious approach, watch feeding behavior; rushing close causes it to hide
 - **Combat:** No current combat role
 - **Memorable visual trait:** Broad flexible digging snout and oversized soil-darkened forepaws
-- **Scope:** **Candidate current-slice identity for the already-locked small harmless forager observation**; naming/appearance requires Central Brain approval and does not add a sixth optional discovery
+- **Scope:** **Current opening identity for the already-approved small harmless forager observation**
 
-## 5. Ashwing Thrush — proposed ambient bird family
+Rootmuzzle does **not** create a sixth optional Woodland discovery. It names and gives creature identity to the already-approved small-forager observation.
+
+### 5. Ashwing Thrush — APPROVED CURRENT AMBIENT WILDLIFE
 
 - **Ecology role:** Ambient harmless wildlife
 - **Approximate size:** Small woodland songbird
@@ -445,62 +491,61 @@ The goal is a small coherent roster, not an enemy catalogue.
 - **Player interactions:** Primarily sight/sound observation; not a targetable actor for MVP
 - **Combat:** No
 - **Memorable visual trait:** Ash-grey upper wings with a warmer underside/tail flash visible when the bird bursts from cover
-- **Scope:** **Recommend inexpensive current-slice ambient dressing**, especially because flock scatter can support the Gloam Lynx stalking language without a special effect
+- **Scope:** **Current inexpensive ambient Woodland dressing**
 
-## 6. Fernhorn Roe — proposed future harmless browser
+Ashwing Thrushes may support environmental stalking language, such as scattering in response to a nearby Gloam Lynx. They remain ambient life rather than a collectible/checklist interaction.
 
-- **Ecology role:** Interactable harmless wildlife / visible browser
-- **Approximate size:** Small deer/goat scale
-- **Habitat:** Broken-canopy clearings, bramble edges, open woodland transitions
-- **Normal behavior:** Browses low vegetation, keeps distance, bolts into cover if approached too aggressively, may stop farther away to watch
-- **Player interactions:** Spot from distance, approach cautiously, watch browsing/flee behavior
-- **Combat:** Not intended as normal combat content; defensive combat should not be added merely because it has an HP-capable model
-- **Memorable visual trait:** Short flattened antler/keratin growths with a fern-frond silhouette rather than giant fantasy horns
-- **Scope:** **Future dressing**, not required for the coordinated opening slice
+## Future roster directions only
 
-## 7. Runnelback — proposed future wet-margin defensive animal
+The following names/directions are approved only as future Woodland roster possibilities. They are **not current-slice production requirements** and their exact appearance, mechanics, interaction depth, and combat behavior remain uncommitted until content actually needs them.
 
-- **Ecology role:** Potentially defensive wildlife
-- **Approximate size:** Medium dog / large badger scale
-- **Habitat:** Shallow stream margins, root shelves, muddy banks, reeds/sedges
-- **Normal behavior:** Feeds and rests near water, slips into the stream when given room, warns when cornered or approached near a resting site
-- **Player interactions:** Observe at water, frighten it into retreat, potentially crowd/provoke it
-- **Combat:** Possible in future if cornered/pressed; **not** intended as an opening combat requirement
-- **Memorable visual trait:** Broad paddle-like tail and low overlapping dorsal plates that shed water, fantastical but still animal-functional
-- **Scope:** **Future dressing / later revisit candidate**, not required for the coordinated opening slice
+### Fernhorn Roe — FUTURE DIRECTION ONLY
 
-### Roster scope discipline
+Broad role: harmless visible Woodland browser associated with broken-canopy clearings and vegetation edges.
 
-The current locked Woodland ecology package already specifies **exactly five optional authored discoveries** for the coordinated pass.
+Do not further lock anatomy, behavior tree, interactions, materials, harvests, combat rules, or implementation scope yet.
 
-Therefore this roster must **not** silently add several new current-slice interactables.
+### Runnelback — FUTURE DIRECTION ONLY
 
-Recommended current-slice treatment if Central Brain approves the identities:
-- Gloam Lynx = fills the already-required unnamed first hostile wildlife role;
-- Rootmuzzle = names/fleshes out the already-required small forager observation;
-- Ashwing Thrush = inexpensive ambient biodiversity/danger cue, not a new collectible/checklist interaction;
-- Mooncalf family and Mossback = existing required content;
-- Fernhorn Roe and Runnelback = future dressing only.
+Broad role: wet-margin Woodland animal capable of supporting a future defensive-wildlife niche.
+
+Do not further lock anatomy, behavior tree, interactions, materials, harvests, combat rules, or implementation scope yet.
+
+### Current-slice roster discipline
+
+The current package therefore consists of:
+- **Gloam Lynx** — hostile predator;
+- **Mooncalf / Mooncow / Moonbull** — peaceful/defensive herd;
+- **Mossback** — normally ordinary species, anomalous opening individual;
+- **Rootmuzzle** — harmless burrowing forager;
+- **Ashwing Thrush** — ambient harmless bird.
+
+This stays within existing Woodland scope:
+- Gloam Lynx fills the already-required first hostile wildlife role;
+- Rootmuzzle names the already-required small-forager observation;
+- Ashwing Thrush is ambient biodiversity/danger language rather than a new optional discovery;
+- Mooncalf family and Mossback are existing required content;
+- Fernhorn Roe and Runnelback remain future-only.
 
 ---
 
 # 8. Encounter variation examples for later Woodland revisits
 
-These are examples of the doctrine, not locked encounter tables.
+These examples demonstrate the locked doctrine but are **not** locked encounter tables or population weights.
 
-A mixed-canopy predator pocket might resolve as:
+A mixed-canopy predator pocket might later resolve as:
 - empty but with old scratch/prey signs;
 - Ashwing birds feeding normally;
-- a Fernhorn crossing through and fleeing;
+- harmless wildlife passing through;
 - a Gloam Lynx resting out of the obvious route;
 - a Gloam Lynx actively stalking another animal and potentially noticing the player;
 - no dangerous creature at all.
 
-A wet-margin pocket might resolve as:
+A wet-margin pocket might later resolve as:
 - insects/bird activity only;
 - Rootmuzzle briefly foraging;
-- Runnelback resting near the bank in a later build;
-- recent tracks with the animal already gone.
+- recent tracks with the animal already gone;
+- a future wet-margin species if/when one is actually implemented.
 
 The player should learn habitat associations without learning a slot-machine schedule.
 
@@ -508,7 +553,7 @@ The player should learn habitat associations without learning a slot-machine sch
 
 # 9. Creature visual-development requirements
 
-Final art/modeling is deliberately deferred until ecology and encounter identity are approved.
+Final art/modeling remains deferred until visual-development work is separately authorized.
 
 Project style target remains:
 
@@ -526,9 +571,9 @@ A normal mythical animal should look designed enough to belong in the setting wi
 
 ### Animation-first readability
 
-For any combat-capable creature, concept/model sheets should eventually include behavioral poses, not just neutral turnarounds.
+For combat-capable creatures, concept/model sheets should eventually include behavioral poses, not just neutral turnarounds.
 
-For the Gloam Lynx specifically, future visual development needs:
+For the Gloam Lynx, future visual development needs:
 - neutral walk/trot silhouette;
 - low stalk;
 - watch/freeze posture;
@@ -536,7 +581,7 @@ For the Gloam Lynx specifically, future visual development needs:
 - Pounce load pose;
 - launch silhouette;
 - recovery/landing posture;
-- flee/disengage posture if supported.
+- retreat/flee posture if supported by Combat behavior.
 
 For Mooncalf adults, future visual work should clearly communicate calm, alert, warning, protective interposition, and aggression without requiring a UI state label.
 
@@ -544,45 +589,68 @@ For Mossback, future visual work must make ordinary docility plausible **and** a
 
 ---
 
-# 10. Decisions requiring Central Brain approval
+# 10. Central Brain approval record
 
-1. **Approve or reject `Gloam Lynx` as the canonical first ordinary Woodland predator name/identity.**
-2. **Approve the first-predator anatomy guardrail:** large-cat/cougar scale, subtle fantasy traits, no overt magical/corruption language.
-3. **Approve the stalking sequence as the replacement for immediate unexplained Woodland combat.**
-4. **Decide whether the first-visit Gloam Lynx can be fully avoided/escaped before combat, or whether the initial Marlow route guarantees a confrontation somewhere deeper in the required Woodland route.**
-5. **Approve `Randomize ecology, not battles` as the encounter doctrine.**
-6. **Approve the activity-pocket + small authored state-machine model for roaming wildlife.**
-7. **Approve the persistence split:** ordinary renewable presence vs authored persistent groups vs unique/anomalous encounters.
-8. **Approve the anti-reroll direction that immediate location re-entry does not reroll all wildlife; exact meaningful-refresh timing can remain deferred.**
-9. **Approve, revise, or reject `Rootmuzzle` as the identity of the already-locked small harmless forager observation.**
-10. **Approve, revise, or reject `Ashwing Thrush` as inexpensive ambient Woodland life and a natural stalking cue.**
-11. **Decide whether `Fernhorn Roe` and `Runnelback` are useful future Woodland species or should remain unnamed ecological placeholders.**
-12. **Approve the Mossback taxonomy clarification:** ordinary species baseline, anomalous opening individual/behavior.
+Central Brain reviewed this authority and approved the following:
+
+- **Gloam Lynx** name and identity as the first ordinary Woodland predator;
+- Gloam Lynx large-cat/cougar-scale anatomy direction and subtle-fantasy-trait guardrail;
+- stalking sequence with approximately two guaranteed readable cues and possible additional route-dependent cue;
+- body-language-first committed Pounce setup;
+- first-encounter clarification: player may retreat/leave before confrontation, but continuing deeper while actively stalked eventually produces confrontation rather than permitting permanent bypass through trigger-volume avoidance;
+- ordinary Flee rules after combat begins where legal;
+- **Randomize ecology, not battles** as project encounter doctrine;
+- activity pockets and lightweight authored behavior states for MVP architecture;
+- ordinary renewable wildlife / authored persistent groups / unique-anomalous encounters as the three broad persistence classes;
+- immediate location re-entry does not reroll wildlife population;
+- **Rootmuzzle** as the identity of the existing harmless-forager observation;
+- **Ashwing Thrush** as inexpensive ambient Woodland wildlife and stalking-language support;
+- **Fernhorn Roe** and **Runnelback** as future roster directions only;
+- Mossbacks are normally ordinary creatures, while the opening individual is behaviorally anomalous;
+- opening ecological progression: dangerous normal wildlife → peaceful/defensive wildlife → familiar creature behaving wrong.
 
 ---
 
-# 11. Contradiction / authority review
+# 11. Remaining unresolved / deferred creature decisions
+
+The following remain intentionally uncommitted:
+
+- exact **meaningful-refresh timing/conditions** for ordinary wildlife repopulation;
+- exact activity-pocket population-selection algorithm and weights;
+- exact later-visit frequency/distribution of Gloam Lynx or other ordinary predators;
+- final Gloam Lynx measurements and whether the subtle brow/horn feature survives visual development;
+- final creature models, materials, animation timing, and audio language;
+- detailed future Fernhorn Roe appearance, mechanics, interaction depth, combat behavior, and production scope;
+- detailed future Runnelback appearance, mechanics, interaction depth, combat behavior, and production scope;
+- broader Woodland roster expansion beyond what current content actually needs;
+- cause of the opening Mossback's abnormal behavior and any larger-story escalation pattern.
+
+Combat numbers, Pounce geometry/timing, Flee mechanics, Hunting interactions, quest consequences, and biome placement rules remain owned by their existing authorities rather than becoming unresolved decisions here.
+
+---
+
+# 12. Contradiction / authority review
 
 ## No material contradiction found
 
-The requested authority package is broadly consistent with this proposal:
-- `WORLD_BIOMES_EXPLORATION.md` already requires ordinary hostile Woodland wildlife supporting committed Pounce, a peaceful/defensive Mooncalf herd, and an abnormally aggressive Mossback;
-- `OPENING_FLOW.md` already requires a quiet Woodland arrival before danger and identifies the first ordinary hostile creature as the likely first combat;
-- `CORE_SYSTEMS_PROGRESSION.md` and `GROUP_COMBAT_PARTY_MVP.md` already own the committed-Pounce combat rule and physical participant/start-position logic;
-- `SYSTEMS_HUNTING.md` explicitly supports creatures physically existing in locations instead of spawning only when progress counters are satisfied;
-- `OPENING_MOONCALF_MILK_FAILURE.md` already distinguishes temporary herd flight from genuine permanent loss;
-- `DESIGN_GUARDRAILS.md` strongly supports world-first information, physical consequences, player agency, no invisible battle treadmill, and no tutorial-checklist version of the stalking sequence.
+The approved package remains consistent with current repository authority:
+- `WORLD_BIOMES_EXPLORATION.md` requires ordinary hostile Woodland wildlife supporting committed Pounce, a peaceful/defensive Mooncalf herd, and an abnormally aggressive Mossback;
+- `OPENING_FLOW.md` requires a quiet Woodland arrival before danger and identifies the first ordinary hostile creature as the likely first combat;
+- `CORE_SYSTEMS_PROGRESSION.md` and `GROUP_COMBAT_PARTY_MVP.md` own committed-Pounce combat behavior, ordinary Flee behavior, participant rules, and combat start-state mechanics;
+- `SYSTEMS_HUNTING.md` supports creatures physically existing in locations instead of spawning only when progress counters are satisfied;
+- `OPENING_MOONCALF_MILK_FAILURE.md` distinguishes temporary herd flight from genuine permanent loss;
+- `DESIGN_GUARDRAILS.md` supports world-first information, physical consequences, player agency, and avoiding invisible battle/checklist machinery.
 
-## Scope tension resolved conservatively
+## Optional-discovery scope remains intact
 
-`WORLD_BIOMES_EXPLORATION.md` says the coordinated pass should implement **exactly five optional authored Woodland discoveries**. A larger creature roster could accidentally expand that scope.
+`WORLD_BIOMES_EXPLORATION.md` limits the coordinated pass to its already-approved five optional authored Woodland discoveries.
 
-This proposal avoids that contradiction by:
-- using Gloam Lynx to fill an already-required hostile-wildlife slot;
-- using Rootmuzzle only as a proposed identity for the already-required small-forager observation;
-- using Ashwing Thrush as ambient non-interactive dressing;
-- keeping Fernhorn Roe and Runnelback as future dressing rather than coordinated-slice requirements.
+This creature authority does not expand that count:
+- Gloam Lynx fills an already-required hostile-wildlife slot;
+- Rootmuzzle names the already-required harmless-forager observation;
+- Ashwing Thrush remains ambient non-interactive dressing;
+- Fernhorn Roe and Runnelback remain future-only.
 
 ## Implementation hold preserved
 
-`START_HERE.md` currently states that gameplay coding is on hold pending review/separate authorization. This document is documentation/design only and must not be treated as permission to modify Unity or Blender.
+`START_HERE.md` states that gameplay coding is on hold pending separate authorization. This document is authority/documentation only and is **not permission to modify Unity or Blender**.
