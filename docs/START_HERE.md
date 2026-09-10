@@ -18,7 +18,8 @@ This repository is the continuity authority for the original RPG project.
 12. `docs/CONTRACTS.md`
 13. `docs/SYSTEMS_HUNTING.md`
 14. `docs/SYSTEMS_COOKING.md`
-15. `docs/UNRESOLVED.md`
+15. `docs/UI_HUD_PLAYER_INFORMATION.md`
+16. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -27,6 +28,8 @@ Treat this repository as the source of truth for locked decisions. If a future c
 `docs/DIALOGUE_PLAYER_AGENCY.md` is the continuity authority for playable dialogue logic, player-response quality, conversational state, branching/convergence, and player commitment/agency. Proposed exact prose in that document does not become canon until Central Brain approves it.
 
 `docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design.
+
+`docs/UI_HUD_PLAYER_INFORMATION.md` is the proposed presentation/information-architecture authority for the coordinated UI pass. Central Brain approval is still required for the recommendations explicitly listed there before Unity implementation.
 
 ## Project correction
 
@@ -48,6 +51,7 @@ Central Brain is assembling one coordinated opening implementation/playtest pass
 - Mooncalf herd/container/failure-path behavior
 - rented-room persistent storage
 - at least one fully playable starter Hunting contract
+- coherent HUD/player-information presentation after UI architecture approval
 
 Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
 
