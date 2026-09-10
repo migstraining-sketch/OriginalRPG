@@ -81,7 +81,8 @@ namespace WoodlandSpine
             Check(game.mode==GameMode.Exploration&&game.hp==30&&game.inventory.Armor==1,"immediate control and starting equipment");
             Check(!game.world.wildlife.actor.gameObject.activeInHierarchy,"remote woodland not visible from Inn");
             yield return Capture("01-inn");
-            if(scenario=="inn")yield return InnChecks();
+            if(scenario=="feedback"||scenario=="feedback-early")yield return Feedback();
+            else if(scenario=="inn")yield return InnChecks();
             else if(scenario=="success")yield return Opening();
             else
             {
@@ -90,6 +91,81 @@ namespace WoodlandSpine
                 game.inventory.Receive(game.rules.weapons[1]);game.coordinated.Tick(0);
                 if(scenario=="failure")yield return Failure();else if(scenario=="stress")yield return Stress();else yield return Mud();
             }
+        }
+        IEnumerator CrossRoad()
+        {
+            float deadline=Time.realtimeSinceStartup+4;
+            while(!game.Modal&&game.mode==GameMode.Exploration&&Time.realtimeSinceStartup<deadline)
+            {game.player.GetComponent<CharacterController>().Move(new Vector3(0,-5,-4)*Time.deltaTime);yield return null;}
+            Check(game.coordinated.travel.visible,"walking across road opens Regional Map without E");
+        }
+        IEnumerator Feedback()
+        {
+            var travel=game.coordinated.travel;
+            var camera=game.view.GetComponent<SliceCamera>();
+            camera.ResetView();yield return null;yield return null;
+            float defaultZoom=game.view.orthographicSize;
+            camera.Adjust(90,-.2f,new Vector2(2,1));yield return null;yield return null;
+            Check(camera.Yaw==90&&game.view.orthographicSize<defaultZoom,"exploration camera rotates and zooms");
+            camera.ResetView();yield return null;yield return null;
+            Check(camera.Yaw==0&&Mathf.Approximately(defaultZoom,game.view.orthographicSize),"Home path restores camera framing");
+            game.player.Place(new Vector3(-4,.15f,-5.8f));yield return null;
+            Check(!travel.visible,"southern common-room floor is not a Regional Map exit");
+            game.player.Place(InnLayout.Arrival);yield return null;
+            yield return CrossRoad();
+            Check(game.player.transform.position.z>-5.7f,"inn crossing stays inside the floor");
+            travel.Cancel();
+            for(int i=0;i<10;i++){game.player.GetComponent<CharacterController>().Move(new Vector3(0,0,-.2f));yield return null;}
+            Check(!travel.Blocking&&game.player.transform.position.z>-5.9f,"cancel holds boundary without reopening or entering void");
+            yield return Walk(InnLayout.Arrival);
+            yield return CrossRoad();travel.Cancel();
+            game.opening.state.questAccepted=true;game.opening.state.intro.beat=IntroBeat.Finished;
+            game.inventory.Receive(game.rules.weapons[1]);
+            yield return Travel(Region.Woodland);
+            yield return CrossRoad();
+            Check(travel.knowledge.CanTravel(Region.Inn),"Garrick's Inn selectable after physical Woodland crossing");
+            Check(game.player.transform.position.z>=14,"Woodland crossing holds on ground");
+            travel.selected=Region.Inn;Check(travel.Commit(),"return selected from naturally opened map");
+            while(travel.Blocking)yield return null;
+            Check(travel.knowledge.current==Region.Inn,"return reaches Inn");
+            yield return Travel(Region.Woodland);
+            game.world.wildlife.cleared=true;game.world.wildlife.actor.gameObject.SetActive(false);
+            game.player.Place(new Vector3(0,.1f,55));yield return null;
+            Check(!game.opening.MossbackAwake,"outward trail passes visibly resting Mossback");
+            yield return Capture("resting-mossback");
+            if(scenario=="feedback-early")
+            {
+                game.world.wildlife.cleared=false;
+                game.inventory.weapon=null;
+                game.player.Place(game.world.mossback.actor.position+Vector3.left*2);yield return null;yield return null;
+                Check(game.opening.MossbackAwake&&!game.opening.pastureVisited&&!game.world.wildlife.cleared&&game.mode==GameMode.Dialogue,"approaching resting Mossback wakes it unarmed before pasture or wildlife victory");
+                game.inventory.weapon=game.rules.weapons[1];
+            }
+            else
+            {
+                game.player.Place(new Vector3(-9,.1f,70));yield return null;
+                Check(game.opening.pastureVisited&&!game.opening.state.AllGathered,"pasture reached with no ingredient completion");
+                game.player.Place(new Vector3(-9,.1f,65));yield return null;yield return null;
+                Check(game.opening.MossbackAwake&&game.mode==GameMode.Dialogue,"Mossback visibly wakes on physical return without ingredient gate");
+            }
+            Choose("Keep my distance.");
+            game.player.Place(new Vector3(0,.1f,55));
+            float deadline=Time.realtimeSinceStartup+10;
+            while(game.mode!=GameMode.Combat&&Time.realtimeSinceStartup<deadline)yield return null;
+            Check(game.mode==GameMode.Combat&&game.opening.state.mossbackPursued,"awake Mossback pursues and starts combat");
+            foreach(float angle in new[]{0f,90f,180f,270f})
+            {
+                camera.ResetView();camera.Adjust(angle,-.4f,Vector2.zero);yield return null;yield return null;
+                foreach(var h in game.site.grid.cells)
+                {
+                    var p=game.view.WorldToViewportPoint(game.site.grid.World(h));
+                    Check(p.x>0&&p.x<1&&p.y>0&&p.y<1,"rotated combat board stays inside gameplay viewport");
+                }
+                Vector3 screen=game.view.WorldToScreenPoint(game.site.actor.position);
+                Check(game.battle.Pick(screen,out var picked)&&picked.Equals(game.combat.enemyCell),"Mossback remains clickable after camera rotation");
+            }
+            camera.ResetView();yield return null;
+            yield return Capture("rotatable-combat");
         }
         IEnumerator NavigateCommon(Vector3 target)
         {

@@ -64,12 +64,18 @@ namespace WoodlandSpine
             Shape("Woodland ground",new Vector3(0,-.25f,46),new Vector3(26,.5f,78),green);
             Shape("Trail",new Vector3(0,.005f,45),new Vector3(3,.012f,76),new Color(.31f,.3f,.19f),solid:false);
             // Physical perimeter keeps encounter approach within each authored grid.
-            Shape("West woodland boundary",new Vector3(-13,1,52),new Vector3(1,2,64),green);
-            Shape("East woodland boundary",new Vector3(13,1,52),new Vector3(1,2,64),green);
+            Shape("West woodland boundary",new Vector3(-13,1,49),new Vector3(1,2,70),green);
+            Shape("East woodland boundary",new Vector3(13,1,49),new Vector3(1,2,70),green);
+            Shape("Trailhead west bank",new Vector3(-7.5f,1,14),new Vector3(11,2,1),green);
+            Shape("Trailhead east bank",new Vector3(7.5f,1,14),new Vector3(11,2,1),green);
             Shape("Woodland end",new Vector3(0,1,84),new Vector3(26,2,1),green);
             Label("INN ↓",new Vector3(0,.06f,17),.2f);
             wildlife=MakeSite(new Vector3(0,0,34),false);
             mossback=MakeSite(new Vector3(0,0,55),true);
+            mossback.start=new Hex(4,0);
+            mossback.actor.position=mossback.grid.World(mossback.start)+Vector3.up*.4f;
+            mossback.actor.localScale=new Vector3(1.9f,.72f,2.1f);
+            mossback.actor.GetComponentInChildren<TextMesh>().text="RESTING MOSSBACK";
             // Existing damp-stone prop sits inside this encounter footprint.
             mossback.grid.blocked.Add(mossback.grid.At(new Vector3(-7,0,46.5f)));
             Label("WOODLAND",new Vector3(0,.05f,22),.24f);

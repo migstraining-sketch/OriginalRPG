@@ -60,7 +60,7 @@ namespace WoodlandSpine
             if(game.mode==GameMode.Combat){BattleHUD.Draw(game,width,height,body,small);return;}
             GUILayout.BeginArea(new Rect(16,height-76,width-32,61),GUI.skin.box);
             GUILayout.Label(Time.time<game.noticeUntil||game.nearby==null?game.notice:"[E] "+game.nearby.caption,body);
-            GUILayout.Label("WASD move • E interact • I player panel",small);
+            GUILayout.Label("WASD move • E interact • I panel • Q/R rotate • Wheel zoom • Shift + middle drag pan • Home reset",small);
             GUILayout.EndArea();
         }
         void DrawBrewing(float width,float height)

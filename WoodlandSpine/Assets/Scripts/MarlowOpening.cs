@@ -9,6 +9,8 @@ namespace WoodlandSpine
         [System.NonSerialized] public OpeningWorld props;
         public bool inLab;
         float pursuitTime, recoveryTime=-1;
+        public bool pastureVisited { get; private set; }
+        public bool MossbackAwake=>state.mossbackSeen;
         public string Objective
         {
             get
@@ -135,13 +137,26 @@ namespace WoodlandSpine
         DialogueChoice Posting(string title)=>Choice(title,()=>Say(title,"Posting available. The contract content is not implemented yet.",Choice("Back to board",Board),Leave()));
         public void TickExploration(float delta)
         {
-            if(inLab||!state.AllGathered||game.world.mossback.cleared||!game.world.wildlife.cleared)return;
+            if(inLab||game.coordinated.travel.knowledge.current!=Region.Woodland||game.world.mossback.cleared)return;
             Vector3 p=game.player.transform.position;
+            if(p.z>69)pastureVisited=true;
+            if(!state.mossbackSeen)
+            {
+                // Physical approach, not the contents of the reagent inventory, wakes it.
+                bool close=Vector3.Distance(p,game.world.mossback.actor.position)<3;
+                bool returning=pastureVisited&&p.z<66&&p.z>45;
+                game.world.mossback.actor.localScale=new Vector3(1.9f,.72f+Mathf.Sin(Time.time*1.6f)*.025f,2.1f);
+                var restPosition=game.world.mossback.actor.position;restPosition.y=.4f;game.world.mossback.actor.position=restPosition;
+                if(!close&&!returning)return;
+                game.world.mossback.actor.localScale=new Vector3(1.7f,1.5f,1.9f);
+                restPosition.y=.85f;game.world.mossback.actor.position=restPosition;
+                game.world.mossback.actor.GetComponentInChildren<TextMesh>().text="MOSSBACK";
+            }
             if(p.z<45||p.z>70||Mathf.Abs(p.x)>13)return;
             if(!state.mossbackSeen)
             {
                 state.mossbackSeen=true;
-                Say("Field observation","A Mossback stands beyond the pasture. Marlow said to give it room.",Choice("Keep my distance.",game.CloseDialogue),Choice("Watch quietly from here.",game.CloseDialogue));return;
+                Say("Field observation","The moss-covered shape stirs, lifts its head, and gets to its feet. A Mossback. There is room to pass along the trail.",Choice("Keep my distance.",game.CloseDialogue),Choice("Watch quietly from here.",game.CloseDialogue));return;
             }
             pursuitTime+=delta;
             if(pursuitTime<2)return;

@@ -95,8 +95,8 @@ namespace WoodlandSpine
                 if(Input.GetKeyDown(KeyCode.E)&&nearby!=null&&!showInventory){Interact(nearby.key);return;}
                 if(showInventory||opening.inLab)return;
                 Vector3 p=player.transform.position;
-                // Leaving is unrestricted. The retained combat scaffold activates only for an equipped expedition.
-                if(Time.time>retreatUntil&&opening.state.questAccepted&&inventory.weapon!=null)
+                // Wildlife responds to physical presence; unequipping a weapon is not invisibility.
+                if(Time.time>retreatUntil&&coordinated.travel.knowledge.current==Region.Woodland)
                 {
                     if(!world.wildlife.cleared&&Mathf.Abs(p.x)<12&&p.z>25&&p.z<46)StartCombat(world.wildlife,rules.wildlife);
                     else opening.TickExploration(Time.deltaTime);
@@ -152,6 +152,7 @@ namespace WoodlandSpine
         }
         public void StartCombat(EncounterSite encounter,EnemyData enemy,Hex? foe=null)
         {
+            if(enemy.mossback){encounter.actor.localScale=new Vector3(1.7f,1.5f,1.9f);encounter.actor.GetComponentInChildren<TextMesh>().text="MOSSBACK";}
             retryEncounter=null;
             if(coordinated!=null){checkpointCompanionHP=coordinated.party.ily.hp;checkpointCompanionRest=coordinated.party.ily.needsRest;}
             site=encounter;checkpoint=player.transform.position;checkpointHP=hp;checkpointBandages=inventory.bandages;checkpointPotions=inventory.healthPotions;checkpointEnemy=foe??site.start;

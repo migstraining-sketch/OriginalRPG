@@ -44,7 +44,7 @@ namespace WoodlandSpine
             }
             else GUILayout.Label(c.log,small);
             GUILayout.EndHorizontal();
-            GUILayout.Label(string.IsNullOrEmpty(game.battle.hover)?"Click a unit to focus • Amber marks every committed threat • Esc cancels selection":game.battle.hover,small);
+            GUILayout.Label(string.IsNullOrEmpty(game.battle.hover)?"Click a unit to focus • Amber: committed threats • Q/R: camera • Wheel: zoom out • Home: reset • Esc: cancel":game.battle.hover,small);
             GUILayout.EndArea();
             // Compact labels are informational and do not intercept battlefield clicks.
             foreach(var unit in c.units)if(unit.side==CombatSide.Enemies&&unit.Present)

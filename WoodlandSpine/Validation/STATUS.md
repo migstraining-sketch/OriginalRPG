@@ -1,6 +1,8 @@
 # Current validation status
 
-**Latest follow-up: playable Blender inn integration, 2026-09-10.** See [integration and current validation](../Docs/INN-MODEL-INTEGRATION.md). Rebuilt successfully; all 4,664 editor assertions passed. Updated player cases: inn 159, success 130, Manage 27 passed. These recheck the replaced environment and retained opening/storage/return flow. The six-case report below records the preceding coordinated gameplay pass; its failure, Direct/Independent and stress runs were not repeated for the environment-only follow-up.
+**Latest follow-up: walking exits, camera controls and creature/dialogue reactions, 2026-09-10.** [Change notes](../Docs/PLAYTEST-FEEDBACK-FIXES.md). Windows build passed with no C# compiler warnings/errors and **4,668 editor assertions**. Latest player runs: feedback 537, feedback-early 536, inn 159, success 130, failure 18, Manage 27 — **1,407 checks, all passed**, empty runtime error transcripts. These exercise real controller road crossings, cancellation/re-entry, actual return travel, both Mossback wake paths, rotated combat fitting/picking, and retained opening/rooms/failure/Mud flows. [Current evidence](FeedbackEvidence/README.md). Direct/Independent/group-stress tests below are older evidence; no scheduler rules changed in this follow-up.
+
+Prior follow-up: [playable Blender inn integration](../Docs/INN-MODEL-INTEGRATION.md). Its 4,664 editor assertions and environment evidence remain historical; the latest runs above supersede its overlapping cases.
 
 **2026-09-10 — Coordinated Opening Development Slice / Marlow → Woodland → Mud in the Moonrice + Ily.** Implementation branch: `implementation/coordinated-opening-slice`. No main merge. This supersedes the prior dialogue-only status; older reports remain historical evidence.
 
@@ -14,12 +16,12 @@ Unity **6000.5.6f1**, Windows x64: **PASS** (`SLICE_BUILD_SUCCESS`). Final compi
 | Opening state | 35 |
 | Reactive introduction | 34 |
 | Retained opening/profession rules | 99 |
-| Dialogue/agency | 129 |
+| Dialogue/agency | 133 |
 | Combat viewport | 1,536 |
 | Combat refinements / signatures / intent | 2,460 |
 | Group combat | 153 |
 | Coordinated travel, herd, Mud, storage and Esc | 49 |
-| **Total** | **4,664** |
+| **Total** | **4,668** |
 
 Group schedule cases include 1v1, 1v2, 2v1, 2v2, 3v3, 2v5, 3v5 and 3v6. Tests cover caps, casualty skip without rebucketing, Direct/Independent slots, Defend across rounds, occupancy, recovery eligibility, and Bow legality/reason agreement. Existing refinement tests retain geometry, LOS, Pounce/Charge/signature/cancel checks. Schedule checks are not equivalent to human playtesting every group size.
 

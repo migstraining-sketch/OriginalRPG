@@ -93,6 +93,7 @@ namespace WoodlandSpine
             }
             if(game.full.progress.hunts[0].accepted)travel.knowledge.Discover(Region.Reedwater);
             game.world.inn.Tick(game);
+            travel.TickExit();
             herd.SyncCombat();party.Tick(delta);mud.Tick(delta);
             if(game.mode==GameMode.Exploration&&!Modal&&party.Present&&party.following&&!party.controlAsked&&travel.knowledge.current==Region.Reedwater&&game.player.transform.position.z>3&&Vector3.Distance(party.actor.position,game.player.transform.position)<5)
                 party.Control();

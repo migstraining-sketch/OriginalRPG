@@ -1,0 +1,159 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS imported inn uses combined render groups
+PASS six imported patrons retain ambient behavior
+PASS authored floor and stair collision imported
+PASS baked inn texture assigned: Hearth fieldstone.001
+PASS baked inn texture assigned: Floor oak 03.001
+PASS baked inn texture assigned: Floor oak 02.001
+PASS baked inn texture assigned: Floor oak 01.001
+PASS baked inn texture assigned: Floor oak 04.001
+PASS baked inn texture assigned: Floor oak 05.001
+PASS baked inn texture assigned: Floor oak 00.001
+PASS baked inn texture assigned: Warm lime plaster.001
+PASS baked inn texture assigned: Aged oak / structural.001
+PASS baked inn texture assigned: Window / cool daylight.001
+PASS baked inn texture assigned: Honey oak / worn edges.001
+PASS baked inn texture assigned: Faded blue green cloth.001
+PASS baked inn texture assigned: Unbleached linen.001
+PASS baked inn texture assigned: Forged iron.001
+PASS baked inn texture assigned: Firelight amber.001
+PASS baked inn texture assigned: Aged brass.001
+PASS baked inn texture assigned: Clay pottery.001
+PASS baked inn texture assigned: Marlow bottles.001
+PASS baked inn texture assigned: Contract parchment.001
+PASS baked inn texture assigned: Stone variation 3.001
+PASS baked inn texture assigned: Stone variation 1.001
+PASS baked inn texture assigned: Stone variation 2.001
+PASS baked inn texture assigned: Stone variation 0.001
+PASS baked inn texture assigned: Stone variation 4.001
+PASS baked inn texture assigned: Hearth rug / clay red.001
+PASS baked inn texture assigned: Garrick scale silhouette.001
+PASS baked inn texture assigned: Worn burgundy woven wool.001
+PASS baked inn texture assigned: Faded flax and gold embroidery.001
+PASS baked inn texture assigned: Cracked oxblood leather.001
+PASS baked inn texture assigned: Beeswax candles.001
+PASS baked inn texture assigned: Smoke-darkened copper.001
+PASS baked inn texture assigned: Dried stems.001
+PASS baked inn texture assigned: Herb leaf 2.001
+PASS baked inn texture assigned: Herb leaf 0.001
+PASS baked inn texture assigned: Herb leaf 1.001
+PASS baked inn texture assigned: Warm lime plaster.003
+PASS baked inn texture assigned: Honey oak / worn edges.002
+PASS baked inn texture assigned: Aged oak / structural.002
+PASS baked inn texture assigned: Hearth fieldstone.002
+PASS baked inn texture assigned: Floor oak 00.003
+PASS baked inn texture assigned: Floor oak 01.003
+PASS baked inn texture assigned: Floor oak 02.003
+PASS baked inn texture assigned: Floor oak 03.003
+PASS baked inn texture assigned: Floor oak 04.003
+PASS baked inn texture assigned: Floor oak 05.003
+PASS baked inn texture assigned: Forged iron.003
+PASS baked inn texture assigned: Aged brass.003
+PASS baked inn texture assigned: Unbleached linen.002
+PASS baked inn texture assigned: Clay pottery.002
+PASS baked inn texture assigned: Anonymous scale figures.001
+PASS baked inn texture assigned: Aged oak / structural.003
+PASS baked inn texture assigned: Honey oak / worn edges.003
+PASS baked inn texture assigned: Hearth fieldstone.003
+PASS baked inn texture assigned: Aged oak / structural.004
+PASS baked inn texture assigned: Faded blue green cloth.002
+PASS baked inn texture assigned: Warm lime plaster.004
+PASS baked inn texture assigned: Unbleached linen.003
+PASS baked inn texture assigned: Honey oak / worn edges.004
+PASS baked inn texture assigned: Forged iron.005
+PASS baked inn texture assigned: Hearth rug / clay red.002
+PASS baked inn texture assigned: Worn burgundy woven wool.002
+PASS baked inn texture assigned: Faded flax and gold embroidery.002
+PASS baked inn texture assigned: Warm lime plaster.005
+PASS baked inn texture assigned: Aged oak / structural.005
+PASS baked inn texture assigned: Floor oak 00.005
+PASS baked inn texture assigned: Floor oak 01.005
+PASS baked inn texture assigned: Floor oak 02.005
+PASS baked inn texture assigned: Floor oak 03.005
+PASS baked inn texture assigned: Floor oak 04.005
+PASS baked inn texture assigned: Floor oak 05.005
+PASS baked inn texture assigned: Forged iron.006
+PASS baked inn texture assigned: Aged brass.005
+PASS baked inn texture assigned: Window / cool daylight.002
+PASS baked inn texture assigned: Honey oak / worn edges.005
+PASS baked inn texture assigned: Floor oak 00.002
+PASS baked inn texture assigned: Floor oak 01.002
+PASS baked inn texture assigned: Floor oak 02.002
+PASS baked inn texture assigned: Floor oak 03.002
+PASS baked inn texture assigned: Floor oak 04.002
+PASS baked inn texture assigned: Floor oak 05.002
+PASS baked inn texture assigned: Forged iron.002
+PASS baked inn texture assigned: Aged brass.002
+PASS baked inn texture assigned: Floor oak 00.004
+PASS baked inn texture assigned: Floor oak 01.004
+PASS baked inn texture assigned: Floor oak 02.004
+PASS baked inn texture assigned: Floor oak 03.004
+PASS baked inn texture assigned: Floor oak 04.004
+PASS baked inn texture assigned: Floor oak 05.004
+PASS baked inn texture assigned: Forged iron.004
+PASS baked inn texture assigned: Aged brass.004
+PASS baked inn texture assigned: Anonymous scale figures.002
+PASS baked inn texture assigned: Anonymous scale figures.003
+PASS baked inn texture assigned: Anonymous scale figures.004
+PASS baked inn texture assigned: Anonymous scale figures.005
+PASS baked inn texture assigned: Anonymous scale figures.006
+PASS baked inn texture assigned: Anonymous scale figures.007
+PASS walkable route to (0.00, 0.15, -4.40); reached (0.20, 0.13, -4.40) in Exploration
+PASS walkable route to (0.00, 0.15, 0.55); reached (0.01, 0.13, 0.35) in Exploration
+PASS bar reached on public side
+PASS walkable route to (4.12, 0.15, 0.55); reached (3.91, 0.13, 0.54) in Exploration
+PASS walkable route to (6.00, 0.15, 0.10); reached (5.85, 0.13, 0.13) in Exploration
+PASS walkable route to (7.55, 0.15, -0.80); reached (7.37, 0.13, -0.70) in Exploration
+PASS walkable route to (7.55, 0.15, -0.80); reached (7.37, 0.13, -0.70) in Exploration
+PASS walkable route to (7.55, 1.95, 3.35); reached (7.54, 1.91, 3.18) in Exploration
+PASS walkable route to (6.80, 2.15, 3.35); reached (6.96, 2.09, 3.32) in Exploration
+PASS walkable route to (3.80, 3.80, 3.35); reached (4.02, 3.73, 3.35) in Exploration
+PASS walkable route to (0.00, 3.80, 3.35); reached (0.20, 3.73, 3.35) in Exploration
+PASS walked both connected upstairs flights
+PASS walkable route to (0.00, 3.80, -4.45); reached (0.01, 3.73, -4.23) in Exploration
+PASS walkable route to (1.50, 3.80, -4.45); reached (1.32, 3.73, -4.43) in Exploration
+PASS walkable route to (1.50, 3.80, -3.25); reached (1.47, 3.73, -3.44) in Exploration
+PASS walkable route to (2.25, 3.80, -3.25); reached (2.06, 3.73, -3.30) in Exploration
+PASS new model chest opens existing storage
+PASS walkable route to (1.50, 3.80, -3.25); reached (1.70, 3.73, -3.27) in Exploration
+PASS walkable route to (1.50, 3.80, -4.45); reached (1.53, 3.73, -4.26) in Exploration
+PASS walkable route to (0.00, 3.80, -4.45); reached (0.15, 3.73, -4.44) in Exploration
+PASS walkable route to (0.00, 3.80, 3.35); reached (0.00, 3.73, 3.18) in Exploration
+PASS walkable route to (0.00, 3.80, 3.35); reached (0.00, 3.73, 3.18) in Exploration
+PASS walkable route to (3.80, 3.80, 3.35); reached (3.62, 3.73, 3.34) in Exploration
+PASS walkable route to (6.80, 2.15, 3.35); reached (6.64, 2.29, 3.35) in Exploration
+PASS walkable route to (7.55, 1.95, 3.35); reached (7.37, 1.91, 3.35) in Exploration
+PASS walkable route to (7.55, 0.15, -0.80); reached (7.54, 0.13, -0.60) in Exploration
+PASS returned down the real stairs
+PASS continuous common-room route to (-3.80, 0.15, 3.05)
+PASS walkable route to (7.50, 0.15, -0.25); reached (7.52, 0.22, -0.40) in Exploration
+PASS walkable route to (6.50, 0.15, -0.25); reached (6.65, 0.13, -0.27) in Exploration
+PASS walkable route to (6.50, 0.15, 1.00); reached (6.53, 0.13, 0.79) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.00); reached (-3.05, 0.13, 1.00) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.25); reached (-3.13, 0.13, 1.10) in Exploration
+PASS walkable route to (-3.50, 0.15, 1.25); reached (-3.32, 0.13, 1.18) in Exploration
+PASS walkable route to (-3.50, 0.15, 3.00); reached (-3.50, 0.13, 2.85) in Exploration
+PASS walkable route to (-3.75, 0.15, 3.00); reached (-3.61, 0.13, 2.92) in Exploration
+PASS walkable route to (-3.80, 0.15, 3.05); reached (-3.66, 0.13, 2.95) in Exploration
+PASS walkable route to (-3.80, 0.15, 4.65); reached (-3.79, 0.13, 4.49) in Exploration
+PASS walked through unlocked kitchen door
+PASS walkable route to (-3.80, 0.15, 3.05); reached (-3.80, 0.13, 3.21) in Exploration
+PASS walked back to common room
+PASS continuous common-room route to (-7.50, 0.15, 2.65)
+PASS walkable route to (-3.75, 0.15, 3.00); reached (-3.80, 0.13, 3.21) in Exploration
+PASS walkable route to (-3.75, 0.15, 2.75); reached (-3.77, 0.13, 2.94) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.75); reached (-7.32, 0.13, 2.76) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.65); reached (-7.32, 0.13, 2.76) in Exploration
+PASS private basement remains locked before invitation
+PASS closed basement leaf physically stops entry
+PASS walkable route to (-7.50, 0.15, 2.65); reached (-7.40, 0.13, 2.78) in Exploration
+PASS continuous common-room route to (-4.25, 0.15, -1.40)
+PASS walkable route to (-7.25, 0.15, 2.75); reached (-7.40, 0.13, 2.78) in Exploration
+PASS walkable route to (-4.50, 0.15, 2.75); reached (-4.71, 0.13, 2.75) in Exploration
+PASS walkable route to (-4.50, 0.15, 0.25); reached (-4.49, 0.13, 0.46) in Exploration
+PASS walkable route to (-5.25, 0.15, 0.25); reached (-5.08, 0.13, 0.30) in Exploration
+PASS walkable route to (-5.25, 0.15, -1.25); reached (-5.25, 0.13, -1.07) in Exploration
+PASS walkable route to (-4.25, 0.15, -1.25); reached (-4.46, 0.13, -1.21) in Exploration
+PASS walkable route to (-4.25, 0.15, -1.50); reached (-4.38, 0.13, -1.32) in Exploration
+PASS walkable route to (-4.25, 0.15, -1.40); reached (-4.38, 0.13, -1.32) in Exploration

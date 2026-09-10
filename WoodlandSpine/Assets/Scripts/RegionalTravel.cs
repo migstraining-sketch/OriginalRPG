@@ -12,6 +12,7 @@ namespace WoodlandSpine
         public float progress;
         [System.NonSerialized] public Region? selected;
         SliceGame game;
+        bool exitLatched;
         readonly Dictionary<Region,GameObject> regions=new Dictionary<Region,GameObject>();
         public static string Title(Region region)=>region==Region.Inn?"Garrick's Inn":region==Region.Woodland?"Woodland":"Reedwater Paddies";
         public void Initialize(SliceGame value)
@@ -20,6 +21,9 @@ namespace WoodlandSpine
             var w=game.world;
             var trail=w.Shape("Woodland trailhead",new Vector3(0,.05f,14),new Vector3(3,.1f,1.3f),new Color(.48f,.39f,.26f),solid:false);
             w.Interact(trail,"regional_exit","Return to the regional road",new Vector3(0,0,14));
+            w.Shape("Road sign post",new Vector3(2.4f,.8f,15.2f),new Vector3(.16f,1.6f,.16f),new Color(.3f,.21f,.12f));
+            w.Shape("Road sign board",new Vector3(2.4f,1.5f,15.2f),new Vector3(2,.65f,.12f),new Color(.38f,.29f,.18f),solid:false);
+            w.Label("INN / REGIONAL ROAD",new Vector3(2.4f,2,15.2f),.12f);
             var farm=w.Shape("Reedwater road boundary",game.full.props.origins[0]+new Vector3(0,.05f,-15),new Vector3(3,.1f,1.3f),new Color(.48f,.39f,.26f),solid:false);
             w.Interact(farm,"regional_exit","Leave Reedwater Paddies");
             var authored=new List<Transform>();foreach(Transform t in w.root)authored.Add(t);
@@ -36,6 +40,23 @@ namespace WoodlandSpine
         public void Open(){if(game.mode!=GameMode.Exploration)return;visible=true;selected=null;game.nearby=null;}
         public void PlaceInRegion(Transform actor,Region region){actor.SetParent(regions[region].transform,true);}
         public void Cancel(){if(travelling)return;visible=false;selected=null;}
+        // A road crossing is an interaction too. Keep the actor on the authored floor,
+        // and require a step back before opening again after Stay here.
+        public void TickExit()
+        {
+            if(game.mode!=GameMode.Exploration||game.Modal||game.showInventory)return;
+            Vector3 p=game.player.transform.position;
+            bool inn=knowledge.current==Region.Inn;
+            if(inn&&(game.opening.inLab||game.full.inRoom||p.y<-.5f||p.y>1))return;
+            if(inn&&Mathf.Abs(p.x-1.5f)>1.2f)return; // Only the front doorway is a regional exit.
+            Vector3 origin=knowledge.current==Region.Reedwater?game.full.props.origins[0]:Vector3.zero;
+            float edge=inn?-5.65f:knowledge.current==Region.Woodland?14.2f:origin.z-14.5f;
+            if(p.z>edge+1){exitLatched=false;return;}
+            if(p.z>edge)return;
+            game.player.Place(new Vector3(p.x,p.y,edge+.05f));
+            if(exitLatched)return;
+            exitLatched=true;game.Interact("regional_exit");
+        }
         public bool Commit()
         {
             if(travelling||!selected.HasValue||!knowledge.CanTravel(selected.Value))return false;
@@ -54,6 +75,7 @@ namespace WoodlandSpine
         }
         void SetRegion(Region region)
         {
+            exitLatched=false;
             knowledge.current=region;
             foreach(var pair in regions)pair.Value.SetActive(pair.Key==region);
             // Story characters and collected props retain their logical visibility across visits.

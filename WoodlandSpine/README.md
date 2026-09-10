@@ -12,13 +12,14 @@ If assets/scene need regeneration, use **Woodland → Generate initial scene and
 
 ## Controls
 
-- WASD / arrows: move in exploration. E: nearby interaction.
+- WASD / arrows: move relative to the camera in exploration. E: nearby interaction.
+- Q/R or middle drag: rotate camera. Wheel: zoom. Shift + middle drag: exploration pan. Home: reset. Combat keeps the full board in view.
 - I or top tabs: Player Panel (Inventory, Equipment, Character, Techniques, Journal).
 - Dialogue: click an authored response; Space/Enter advances ordinary Continue. Name entry has its own confirmation. Esc never hides or answers dialogue.
 - Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash, 5 weapon technique. Select a target or destination by clicking; Enter confirms applicable actions. Space ends the current unit's activation.
 - Click a Ready ally to assign the next allied slot. Direct allies accept your orders; Independent allies resolve immediately. Controller preference is set outside combat.
 - Esc / right-click cancels uncommitted combat selection, closes ordinary panels, or cancels a pending storage quantity. Spent movement/actions and completed transfers remain committed.
-- Front entrance: Regional Map. Select a known destination, then commit travel. Back/service door is local property only.
+- Walk through the front entrance or outdoor road boundary to open the Regional Map (E also works nearby). Select a known destination, then commit travel. After Stay here, step back before crossing again. Back/service door is local property only.
 
 ## What connects in this build
 
@@ -39,6 +40,8 @@ Fixed damage, weapon geometry, terrain, LOS, signatures and committed Pounce/Rus
 Tune weapons and creature assets in `Assets/Resources`; `SliceRules` links them and exposes starting values including Ily HP. New creature defaults are prototype tuning, not an expansion of design canon.
 
 ## Verification and limits
+
+Latest owner playtest fixes: [walking exits, camera controls, resting Mossback and troll reaction](Docs/PLAYTEST-FEEDBACK-FIXES.md). First editable [Garrick Blender study](../ArtSource/Garrick/README.md) is available separately; it is not final or integrated NPC art.
 
 See [validation status](Validation/STATUS.md), [manual playtest](PLAYTEST-OPENING.md), and [implementation handoff](Docs/IMPLEMENTATION-HANDOFF.md). Automated checks use isolated runtime fixtures and do not measure a natural first playthrough or establish dialogue pacing/fun. The old 20–30 minute estimate is guidance only.
 

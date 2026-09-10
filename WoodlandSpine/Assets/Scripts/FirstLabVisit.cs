@@ -102,7 +102,7 @@ namespace WoodlandSpine
             A.labCheckpoint="questions";
             game.Talk("Marlow","He should be green.",
                 C("What's wrong with him?",()=>{A.symptomsKnown=true;Line("symptoms","I don't know. He stopped eating first. Then the colour began to fade. His regeneration's slowing too.",JobSetup);}),
-                C("Why is he down here?",()=>{A.rescueKnown=true;game.Talk("Marlow","I found him in the river during the floods. He was trapped and couldn't get clear.",C("You pulled a troll out of the river?",()=>Line("drowning","He was drowning.",()=>{A.symptomsKnown=true;Line("symptoms","He stopped eating first. Now his colour is fading, and his regeneration's slowing.",JobSetup);})));}));
+                C("That's a troll. You brought him into the inn?",()=>{A.rescueKnown=true;game.Talk("Marlow","I found him in the river during the floods. He was trapped and couldn't get clear.",C("You pulled a troll out of the river?",()=>Line("drowning","He was drowning.",()=>{A.symptomsKnown=true;Line("symptoms","He stopped eating first. Now his colour is fading, and his regeneration's slowing.",JobSetup);})));}));
         }
         void JobSetup(){Line("setup","I think I can stabilize him.",Material);}
         void Material(){Line("material","But what I had left isn't enough. I need fresh material.",Ingredients);}
