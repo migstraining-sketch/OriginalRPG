@@ -41,6 +41,7 @@ namespace WoodlandSpine.Editor
             FullOpeningValidation.Run();
             InnDialogueValidation.Run();
             CombatViewportValidation.Run();CombatRefinementValidation.Run(rules);
+            GroupCombatValidation.Run(rules);
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/Scenes/Opening.unity"},locationPathName="Builds/Windows/WoodlandSpine.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.Development});
             if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)throw new Exception("Player build failed: "+report.summary.result);
             Debug.Log("SLICE_BUILD_SUCCESS");
