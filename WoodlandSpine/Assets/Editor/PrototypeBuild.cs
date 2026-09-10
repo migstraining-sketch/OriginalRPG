@@ -23,6 +23,10 @@ namespace WoodlandSpine.Editor
                 rules.wildlife=Enemy("Woodland creature",10,0,4,false);rules.mossback=Enemy("Mossback",34,1,6,true);
                 AssetDatabase.CreateAsset(rules,"Assets/Resources/SliceRules.asset");
             }
+            if(rules.reedback==null){rules.reedback=Enemy("Reedback",18,0,4,false);rules.reedback.pounce=false;rules.reedback.rush=true;rules.reedback.chargeDamage=6;EditorUtility.SetDirty(rules.reedback);}
+            if(rules.juvenileMooncalf==null){rules.juvenileMooncalf=Enemy("Mooncalf",8,0,2,false);rules.juvenileMooncalf.pounce=false;EditorUtility.SetDirty(rules.juvenileMooncalf);}
+            if(rules.nursingMooncow==null){rules.nursingMooncow=Enemy("Nursing Mooncow",12,0,4,false);rules.nursingMooncow.pounce=false;EditorUtility.SetDirty(rules.nursingMooncow);}
+            if(rules.protectiveAdult==null){rules.protectiveAdult=Enemy("Protective adult",12,0,4,false);rules.protectiveAdult.pounce=false;EditorUtility.SetDirty(rules.protectiveAdult);}
             if(!File.Exists("Assets/Scenes/Opening.unity"))
             {
                 var scene=EditorSceneManager.NewScene(NewSceneSetup.EmptyScene,NewSceneMode.Single);
@@ -42,6 +46,7 @@ namespace WoodlandSpine.Editor
             InnDialogueValidation.Run();
             CombatViewportValidation.Run();CombatRefinementValidation.Run(rules);
             GroupCombatValidation.Run(rules);
+            CoordinatedValidation.Run(rules);
             var report=BuildPipeline.BuildPlayer(new BuildPlayerOptions{scenes=new[]{"Assets/Scenes/Opening.unity"},locationPathName="Builds/Windows/WoodlandSpine.exe",target=BuildTarget.StandaloneWindows64,options=BuildOptions.Development});
             if(report.summary.result!=UnityEditor.Build.Reporting.BuildResult.Succeeded)throw new Exception("Player build failed: "+report.summary.result);
             Debug.Log("SLICE_BUILD_SUCCESS");

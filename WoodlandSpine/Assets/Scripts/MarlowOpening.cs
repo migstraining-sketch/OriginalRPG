@@ -13,11 +13,11 @@ namespace WoodlandSpine
         {
             get
             {
-                if(state.huntingBoardUnlocked)return "Opening complete • Hunting board available. Inspect the postings near Garrick.";
+                if(state.huntingBoardUnlocked)return "Local work is available. Inspect the postings near Garrick.";
                 if(state.trollTreated)return "The troll is recovering. Return upstairs and tell Garrick.";
                 if(state.potionCompleted)return "Give the experimental potion to the baby troll.";
                 if(state.returnedToMarlow)return "Use the alchemy workbench beside Marlow. Your preparation resumes if you step away.";
-                if(state.ReadyToReport)return "Bring the ingredients and your observations back to Marlow in the lab.";
+                if(state.ReadyToReport)return "Bring the ingredients back to Marlow.";
                 if(state.questAccepted)return $"HELP MARLOW PREPARE A TREATMENT\n{(state.bloodleafObtained?"✓":"•")} Find Bloodleaf    {(state.silvermossObtained?"✓":"•")} Find Silvermoss    {(state.milkObtained?"✓":"•")} Obtain Mooncalf Milk";
                 return "";
             }
@@ -39,11 +39,11 @@ namespace WoodlandSpine
                 case "troll":Troll();break;
                 case "lab_notes":Say("Marlow's notes","Rescued from the river. Appetite declining. Skin losing its green. Regeneration markedly weaker. Trial ratios, feeding observations and revised preparations fill the dated pages. A town-watch request is marked pending: urgent human emergencies take precedence.");break;
                 case "lab_specimens":Say("Specimen labels","Bloodleaf: red veins, useful leaf tips; keep the living stem. Silvermoss: pale fronds on damp, shaded stone; brush clean. Mooncalf Milk: one measured portion. Field notes: Mossbacks usually remain docile when given space.");break;
-                case "lab_equipment":Say("Expedition equipment","A repaired river net, specimen cases, a drying cloak and well-maintained instruments. These are tools that have seen years of fieldwork. A note lists a covered milk sample pail by the Mooncalf pasture, collected this morning.");break;
+                case "lab_equipment":Say("Expedition equipment","A repaired river net, specimen cases, a drying cloak and well-maintained instruments. These are tools that have seen years of fieldwork.");break;
                 case "bloodleaf":Bloodleaf();break;
                 case "silvermoss":Silvermoss();break;
-                case "mooncalf":Mooncalf();break;
-                case "milk_cache":MilkCache();break;
+                case "mooncalf":game.coordinated.herd.Observe(0);break;
+
                 case "workbench":Workbench();break;
                 case "board":Board();break;
                 default:return false;
@@ -91,7 +91,7 @@ namespace WoodlandSpine
             if(state.trollTreated){Say("Marlow","It worked.\n\nTake the remaining Health Potion. You've learned the preparation; the Health Potion recipe is now in your notebook. I'll stay with him. Tell Garrick, would you?");return;}
             if(state.potionCompleted){Say("Marlow","Let's try the first dose on him. The other is yours if the preparation does what we expect.");return;}
             if(state.returnedToMarlow){Say("Marlow","Everything is laid out at the workbench. I'll supervise. We'll prepare each ingredient before we combine anything.",Choice("Go to the workbench",game.CloseDialogue),Leave());return;}
-            if(state.AllGathered&&state.mossbackDefeated){Report(0);return;}
+            if(state.ReadyToReport){state.returnedToMarlow=true;Say("Marlow","You found them. Good. Bring them to the bench. We can do this.");return;}
             if(!state.sawTroll){Say("Marlow","Look at him first. His color and appetite tell us more than that stack of notes.",Choice("I'll check on him",game.CloseDialogue));return;}
             if(!state.questAccepted)
             {
@@ -102,9 +102,8 @@ namespace WoodlandSpine
         }
         void Advice()
         {
-            Say("Marlow","Bloodleaf has red veins: pinch the useful tips, leave the stem alive. Silvermoss likes damp, shaded stone.\n\nFor Mooncalf Milk, keep your weapon lowered, stand sideways and wait. Let her come to you. There's also a covered field sample collected this morning beside the pasture.\n\nMossbacks are normally docile. Give them room. Ask Garrick for a loaner before leaving.",Leave());
-        }
-        void Bloodleaf()
+            Say("Marlow","Bloodleaf has red veins. Silvermoss grows on damp, shaded stone. The nursing Mooncow in the woodland herd can provide the milk. Take the clean field flask. Garrick can lend you a weapon.",Leave());
+        }        void Bloodleaf()
         {
             if(!state.questAccepted){Say("Field observation","A red-veined plant. Marlow's specimens may help identify which part is useful.");return;}
             if(state.bloodleafObtained){Say("Bloodleaf","The living stem and lower leaves remain. You already have enough useful tips.");return;}
@@ -116,33 +115,10 @@ namespace WoodlandSpine
             if(state.silvermossObtained){Say("Silvermoss","You have enough. Most of the patch remains on the damp stone.");return;}
             Say("Silvermoss","Fine silver-green fronds cling to the cool, shaded stone. Marlow's notes said to leave most of the patch intact.",Choice("Lift a small clean portion",()=>{state.Gather(Ingredient.Silvermoss,game.inventory);Say("Gathered","Silvermoss stored. You leave the surrounding moss undisturbed.");}),Leave());
         }
-        void Mooncalf()
-        {
-            if(!state.questAccepted){Say("Mooncalf","She watches you from the grass, ears turning. Give her room.");return;}
-            if(state.milkObtained){Say("Mooncalf",state.mooncalfOutcome==MooncalfOutcome.Frightened?"She keeps her distance. You already have a sample.":"She has returned to grazing. You have enough milk.");return;}
-            if(state.mooncalfOutcome==MooncalfOutcome.Frightened){Say("Field observation","She stays well back. The covered sample pail beside the pasture offers another route.");return;}
-            Say("Mooncalf","She pauses her grazing. Marlow advised lowering your weapon, standing sideways and waiting.",
-                Choice("Lower weapon; stand sideways and wait",()=>Say("Mooncalf","Her ears settle. She steps toward you and resumes grazing within reach.",Choice("Gently collect a small measure",()=>{state.mooncalfOutcome=MooncalfOutcome.Peaceful;state.Gather(Ingredient.MooncalfMilk,game.inventory);Say("Gathered","Mooncalf Milk stored. She continues grazing. No bond or Taming skill is gained.");}),Leave())),
-                Choice("Shout and drive her away",()=>{state.mooncalfOutcome=MooncalfOutcome.Frightened;props.mooncalf.position+=new Vector3(4,0,2);Say("Field observation","She bolts a short distance away. You can still inspect the covered field sample beside the pasture.");}),Leave());
-        }
-        void MilkCache()
-        {
-            if(!state.questAccepted||state.milkObtained){Say("Covered field sample","A sealed pail labelled: Mooncalf Milk, collected this morning, for Marlow. Leave it if you already have a sample.");return;}
-            Say("Covered field sample","The lid is sealed. The collector's label reads: Mooncalf Milk — for Marlow, collected this morning. This provides an alternative to approaching the animal.",Choice("Take one labelled sample",()=>{state.Gather(Ingredient.MooncalfMilk,game.inventory);Say("Gathered","A sealed measure of Mooncalf Milk, stored for Marlow.");}),Leave());
-        }
-        void Report(int step)
-        {
-            string[] questions={"You met the Mossback? Was it cornered?","Any visible injury?","Could it have been protecting young?","Did you provoke it?"};
-            string[] answers={"I left room. It followed me anyway.","I didn't see an injury.","I didn't see any young.","It approached before the fight. I gave it space."};
-            if(step<questions.Length){Say("Marlow",questions[step],Choice(answers[step],()=>Report(step+1)),Leave());return;}
-            state.returnedToMarlow=true;
-            string milk=state.mooncalfOutcome==MooncalfOutcome.Frightened?"And you frightened the Mooncalf? Next time, wait. The field sample will do today. ":"Thank you for the samples. ";
-            Say("Marlow","That's strange. They're not known to behave that way. I'll investigate when I can leave him safely.\n\n"+milk+"Let's prepare the treatment at the workbench.");
-        }
         void Workbench()
         {
             if(state.potionCompleted){Say("Health Potion preparation",state.healthRecipeUnlocked?"Recipe learned: prepare the leaf tips, clean and bruise the moss, measure the milk; combine leaf, moss, milk; gentle heat and steady stirring. More batches and recipes are outside this opening.":"Two doses prepared. Bring the first to the troll.");return;}
-            if(!state.returnedToMarlow){Say("Marlow","We need the field samples first, and I want to hear what happened outside before we begin.");return;}
+            if(!state.returnedToMarlow){Say("Marlow","We need the ingredients before we can begin.");return;}
             game.dialogue=null;game.showInventory=false;game.mode=GameMode.Brewing;
         }
         public void BrewAction(string action)

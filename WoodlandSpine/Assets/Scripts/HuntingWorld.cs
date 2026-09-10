@@ -4,7 +4,7 @@ namespace WoodlandSpine
     public sealed class HuntingWorld
     {
         public EncounterSite[] sites=new EncounterSite[3];
-        public Vector3[] origins={new Vector3(-34,0,30),new Vector3(34,0,30),new Vector3(64,0,30)};
+        public Vector3[] origins={new Vector3(200,0,0),new Vector3(400,0,0),new Vector3(600,0,0)};
         public Transform wheel, sylvie;
         public GameObject kitchenDoor, roofGap, channelBlock;
         public GameObject[] damage=new GameObject[3];
@@ -13,68 +13,72 @@ namespace WoodlandSpine
         public HuntingWorld(WorldBuilder world,HuntDefinition[] definitions)
         {
             w=world;
-            // These paths join the existing front-door trail, with gates cut into its perimeter.
-            w.Shape("West and east farm path",new Vector3(18,-.22f,15),new Vector3(108,.4f,7),grass);
-            for(int i=0;i<3;i++)
-            {
-                Vector3 p=origins[i];w.Shape(definitions[i].location,p+Vector3.down*.25f,new Vector3(27,.5f,33),grass);
-                w.Shape("Site west boundary",p+new Vector3(-13,.6f,2),new Vector3(.3f,1.2f,28),timber);
-                w.Shape("Site east boundary",p+new Vector3(13,.6f,2),new Vector3(.3f,1.2f,28),timber);
-                w.Shape("Site north boundary",p+new Vector3(0,.6f,16),new Vector3(26,1.2f,.3f),timber);
-                sites[i]=w.MakeSite(p,false);sites[i].actor.name=definitions[i].creature;
-                var label=sites[i].actor.GetComponentInChildren<TextMesh>();if(label!=null)label.text=definitions[i].creature.ToUpperInvariant();
-                var client=w.Shape(definitions[i].client,p+new Vector3(-6,.9f,-10),new Vector3(.7f,.9f,.7f),new Color(.54f,.46f,.33f),PrimitiveType.Capsule);
-                w.Interact(client,"hunt_client_"+i,"Speak to "+definitions[i].client,p+new Vector3(-6,0,-11));
-                for(int c=0;c<4;c++)
-                {
-                    Vector3 spot=p+new Vector3(-6+c*4,0,-6+(c%2)*2);
-                    var clue=w.Shape("Evidence: "+definitions[i].clues[c],spot+Vector3.up*.12f,new Vector3(.8f,.2f,.7f),new Color(.54f,.5f,.34f),PrimitiveType.Cube,false);
-                    w.Interact(clue,"hunt_clue_"+i+"_"+c,"Inspect signs",spot);
-                }
-                var trail=w.Shape("Tracks continue",p+new Vector3(5,.04f,2),new Vector3(.7f,.06f,2),timber,solid:false);
-                w.Interact(trail,"hunt_trail_"+i,"Follow the signs",p+new Vector3(5,0,2));
-                w.Interact(sites[i].actor.gameObject,"hunt_target_"+i,"Observe "+definitions[i].creature);
-                var habitat=w.Shape("Habitat work site",p+new Vector3(5,.1f,6),new Vector3(3,.2f,2),timber,solid:false);
-                w.Interact(habitat,"hunt_habitat_"+i,"Inspect the habitat",p+new Vector3(5,0,6));
-                damage[i]=w.Shape("Unresolved damage",p+new Vector3(-5,.12f,5),new Vector3(4,.24f,4),new Color(.3f,.23f,.12f),solid:false);
-                w.Label(definitions[i].client+" • "+(i==0?"PADDIES":i==1?"COOP":"MILL"),p+new Vector3(0,.06f,-11),.16f);
-            }
-            for(int n=0;n<6;n++)w.Shape("Moonrice row",origins[0]+new Vector3(-8+n*2,.18f,7),new Vector3(.3f,.35f,5),new Color(.46f,.58f,.25f),solid:false);
-            w.Shape("Coop",origins[1]+new Vector3(-7,.7f,6),new Vector3(3,1.4f,3),timber,solid:false);
-            roofGap=w.Shape("Open coop roof",origins[1]+new Vector3(-7,1.5f,6),new Vector3(3,.16f,1),timber,solid:false);
-            for(int n=0;n<3;n++)w.Shape("Duskhen",origins[1]+new Vector3(-6+n,.25f,9),new Vector3(.4f,.5f,.6f),new Color(.55f,.4f,.31f),PrimitiveType.Sphere,false);
-            w.Shape("Mill water",origins[2]+new Vector3(-5,.02f,4),new Vector3(3,.03f,16),new Color(.24f,.43f,.49f),solid:false);
-            channelBlock=w.Shape("Branches blocking channel",origins[2]+new Vector3(-5,.35f,2),new Vector3(3,.7f,1),timber,solid:false);
-            wheel=w.Shape("Mill wheel",origins[2]+new Vector3(-7,1.5f,5),new Vector3(3,3,.35f),timber,PrimitiveType.Cylinder,false).transform;
-            wheel.rotation=Quaternion.Euler(90,0,0);
-            for(int n=0;n<6;n++){var spoke=w.Shape("Wheel spoke",wheel.position,new Vector3(.15f,2.7f,.2f),new Color(.58f,.43f,.27f),solid:false);spoke.transform.rotation=Quaternion.Euler(0,0,n*30);spoke.transform.SetParent(wheel,true);}
+            Vector3 p=origins[0];
+            w.Shape("Reedwater Paddies",p+Vector3.down*.25f,new Vector3(36,.5f,42),grass);
+            w.Shape("West hedgerow",p+new Vector3(-18,1,0),new Vector3(1,2,42),grass);
+            w.Shape("East hedgerow",p+new Vector3(18,1,0),new Vector3(1,2,42),grass);
+            w.Shape("North hedgerow",p+new Vector3(0,1,21),new Vector3(36,2,1),grass);
+            sites[0]=w.MakeSite(p+new Vector3(3,0,8),false);
+            sites[0].actor.name="Reedback";
+            sites[0].actor.GetComponentInChildren<TextMesh>().text="REEDBACK";
+            var client=w.Shape("Toma Reed",p+new Vector3(-6,.9f,-10),new Vector3(.7f,.9f,.7f),new Color(.54f,.46f,.33f),PrimitiveType.Capsule);
+            w.Interact(client,"mud_client","Speak to Toma",p+new Vector3(-6,0,-11));
+            for(int n=0;n<8;n++)w.Shape("Moonrice row",p+new Vector3(-11+n*1.1f,.18f,-3),new Vector3(.3f,.35f,8),new Color(.46f,.58f,.25f),solid:false);
+            damage[0]=w.Shape("Flattened rice and turned soil",p+new Vector3(-7,.06f,-4),new Vector3(5,.1f,3),new Color(.3f,.23f,.12f),solid:false);
             BuildKitchen();
-            w.Label("PADDIES ←     COOP / MILL →",new Vector3(0,.06f,15),.16f);
-        }
-        void BuildKitchen()
+        }        void BuildKitchen()
         {
-            // Doorway transitions are explicit like the existing basement; the room remains explorable.
-            Vector3 p=new Vector3(36,0,-25);
-            w.Shape("Kitchen floor",p+Vector3.down*.2f,new Vector3(14,.4f,12),timber);
-            w.Shape("Kitchen west wall",p+new Vector3(-7,1,0),new Vector3(.25f,2,12),timber);
-            w.Shape("Kitchen east wall",p+new Vector3(7,1,0),new Vector3(.25f,2,12),timber);
-            w.Shape("Kitchen cutaway wall",p+new Vector3(0,.5f,-6),new Vector3(14,1,.25f),timber);
-            w.Shape("Kitchen back wall",p+new Vector3(0,1.5f,6),new Vector3(14,3,.3f),new Color(.55f,.5f,.4f));
-            var exit=w.Shape("Kitchen return door",p+new Vector3(-5,1,-5),new Vector3(1,2,.2f),timber);w.Interact(exit,"kitchen_exit","Return to common room",p+new Vector3(-5,0,-4));
-            sylvie=w.Shape("Sylvie",p+new Vector3(1,.9f,2),new Vector3(.8f,.9f,.8f),new Color(.62f,.59f,.49f),PrimitiveType.Capsule).transform;
-            w.Interact(sylvie.gameObject,"sylvie","Speak to the cook",p+new Vector3(1,0,.5f));
-            var stove=w.Shape("Kitchen stove",p+new Vector3(4,.65f,3),new Vector3(2,1.3f,2),new Color(.2f,.22f,.22f));w.Interact(stove,"cooking","Use the stove",p+new Vector3(4,0,1.5f));
-            w.Shape("Preparation counter",p+new Vector3(-1,.6f,3),new Vector3(3,1.2f,1),timber);
-            var pantry=w.Shape("Shared pantry",p+new Vector3(-5,1,3),new Vector3(2,2,1),timber);w.Interact(pantry,"pantry","Contribute to the pantry",p+new Vector3(-5,0,1.5f));
-            Vector3 room=new Vector3(60,0,-25);w.Shape("Rented room floor",room+Vector3.down*.2f,new Vector3(8,.4f,8),timber);
-            w.Shape("Room west wall",room+new Vector3(-4,1,0),new Vector3(.25f,2,8),timber);
-            w.Shape("Room east wall",room+new Vector3(4,1,0),new Vector3(.25f,2,8),timber);
-            w.Shape("Room back wall",room+new Vector3(0,1,4),new Vector3(8,2,.25f),timber);
-            w.Shape("Room cutaway wall",room+new Vector3(0,.5f,-4),new Vector3(8,1,.25f),timber);
-            w.Shape("Bed",room+new Vector3(2,.4f,1),new Vector3(2,.8f,3),new Color(.58f,.48f,.34f));
-            var door=w.Shape("Room exit",room+new Vector3(-2,1,-3),new Vector3(1,2,.2f),timber);w.Interact(door,"room_exit","Go downstairs",room+new Vector3(-2,0,-2));
+            var previous=w.root;var kitchen=new GameObject("Rear kitchen and service room").transform;kitchen.SetParent(previous);w.root=kitchen;
+            w.Shape("Kitchen floor",new Vector3(0,-.2f,6.5f),new Vector3(6,.4f,5),timber);
+            w.Shape("Kitchen west wall",new Vector3(-3,1.3f,6.5f),new Vector3(.2f,2.6f,5),timber);
+            w.Shape("Kitchen rear wall",new Vector3(0,1.3f,9),new Vector3(6,2.6f,.2f),timber);
+            var partition=w.Shape("Kitchen public partition",new Vector3(0,1.3f,4),new Vector3(6,2.6f,.2f),timber);
+            var cover=w.Shape("Kitchen ceiling",new Vector3(0,3.3f,6.5f),new Vector3(6,.15f,5),timber);
+            var exit=w.Shape("Kitchen service doorway",new Vector3(2.8f,1,5),new Vector3(.2f,2,1.2f),timber);
+            w.Interact(exit,"kitchen_exit","Return to common room",new Vector3(1.8f,0,5));
+            sylvie=w.Shape("Sylvie",new Vector3(-1,.9f,6.8f),new Vector3(.7f,.9f,.7f),new Color(.62f,.59f,.49f),PrimitiveType.Capsule).transform;
+            w.Interact(sylvie.gameObject,"sylvie","Speak to the cook",new Vector3(-1,0,5.6f));
+            var stove=w.Shape("Kitchen stove",new Vector3(1,.6f,8),new Vector3(1.5f,1.2f,1.3f),new Color(.2f,.22f,.22f));w.Interact(stove,"cooking","Use the stove",new Vector3(1,0,6.8f));
+            w.Shape("Preparation counter",new Vector3(-1,.6f,8),new Vector3(2,1.2f,1),timber);
+            var pantry=w.Shape("Shared pantry",new Vector3(-2.5f,.8f,5),new Vector3(.7f,1.6f,1),timber);w.Interact(pantry,"pantry","Contribute to the pantry",new Vector3(-1.5f,0,5));
+            foreach(Transform child in kitchen.GetComponentsInChildren<Transform>(true))child.gameObject.layer=13;
+            partition.layer=0;cover.layer=0;
+            w.root=previous;            BuildRooms();
         }
-        public void Resolve(int index,bool lethal)
+        void BuildRooms()
+        {
+            var previous=w.root;var upper=new GameObject("Inn upper floor").transform;upper.SetParent(previous);w.root=upper;
+            const float floor=3.8f;
+            w.Shape("Upper floor",new Vector3(0,floor-.2f,0),new Vector3(18,.4f,14),timber);
+            w.Shape("Upper west wall",new Vector3(-9,floor+1.3f,0),new Vector3(.25f,2.6f,14),timber);
+            w.Shape("Upper east wall",new Vector3(9,floor+1.3f,0),new Vector3(.25f,2.6f,14),timber);
+            w.Shape("Upper rear wall",new Vector3(0,floor+1.3f,7),new Vector3(18,2.6f,.25f),timber);
+            for(int side=-1;side<=1;side+=2)
+            for(int row=0;row<2;row++)
+            {
+                float z=row==0?-2:3;float x=side*3;
+                w.Shape("Guest room divider",new Vector3(x,floor+.65f,z+2.5f),new Vector3(4.4f,1.3f,.18f),timber);
+                w.Shape("Hall wall",new Vector3(side*.9f,floor+.65f,z+1.1f),new Vector3(.18f,1.3f,2.8f),timber);
+                w.Shape("Hall wall beside door",new Vector3(side*.9f,floor+.65f,z-2),new Vector3(.18f,1.3f,1),timber);
+                var bed=w.Shape("Guest bed",new Vector3(side*4,floor+.35f,z),new Vector3(1.5f,.7f,2.3f),new Color(.58f,.48f,.34f));
+                bool rented=side==1&&row==0;
+                if(rented)
+                {
+                    var chest=w.Shape("Your room chest",new Vector3(2,floor+.4f,-4.1f),new Vector3(1.2f,.8f,.7f),timber);
+                    w.Interact(chest,"room_chest","Open room storage",new Vector3(2,floor,-3.2f));
+                    w.Interact(bed,"room_rest","Rest in your room",new Vector3(3,floor,-2));
+                }
+                else
+                {
+                    var door=w.Shape("Occupied guest room",new Vector3(side*.9f,floor+1,z-1),new Vector3(.18f,2,1.3f),timber);
+                    w.Interact(door,"guest_room","Inspect guest-room door",new Vector3(0,floor,z-1));
+                }
+            }
+            var stairs=w.Shape("Downstairs landing",new Vector3(0,floor+.03f,-5.5f),new Vector3(2.6f,.06f,2.5f),timber,solid:false);
+            w.Interact(stairs,"room_exit","Return downstairs",new Vector3(0,floor,-5.7f));
+            foreach(Transform child in upper.GetComponentsInChildren<Transform>(true))child.gameObject.layer=12;
+            w.root=previous;
+        }        public void Resolve(int index,bool lethal)
         {
             damage[index].SetActive(false);
             if(lethal)sites[index].actor.gameObject.SetActive(false);

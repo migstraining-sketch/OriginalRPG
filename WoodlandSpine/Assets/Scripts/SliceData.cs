@@ -8,6 +8,8 @@ namespace WoodlandSpine
         public WeaponData[] weapons;
         public BodyData coat;
         public EnemyData wildlife,mossback;
+        public EnemyData reedback,juvenileMooncalf,nursingMooncow,protectiveAdult;
+        public int ilyHP=20;
         public Shader placeholderShader;
     }
 }

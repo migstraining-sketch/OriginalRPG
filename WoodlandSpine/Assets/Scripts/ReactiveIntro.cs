@@ -10,7 +10,7 @@ namespace WoodlandSpine
         public float crashDelay=2.5f;
         Vector3 previousPosition;
         bool wasOutside;
-        public InnConversation conversation;
+        [System.NonSerialized] public InnConversation conversation;
         public OpeningState State=>game.opening.state;
         public ReactiveIntroState Story=>State.intro;
         public bool LabReady=>labTime>=4;
@@ -70,7 +70,7 @@ namespace WoodlandSpine
         public void Tick(float delta)
         {
             if(game.opening.inLab){if(game.mode==GameMode.Exploration&&!game.showInventory)labTime+=delta;return;}
-            Vector3 p=game.player.transform.position;bool outside=p.z>7;
+            Vector3 p=game.player.transform.position;bool outside=game.coordinated!=null?game.coordinated.travel.knowledge.current!=Region.Inn:p.z>7;
             if(Story.node=="await_crash"&&!outside&&game.mode==GameMode.Exploration&&!game.showInventory){crashTime+=delta;if(crashTime>=crashDelay&&!Story.sampleBroken){Story.sampleBroken=true;game.world.DropSample();}if(crashTime>=crashDelay+.8f){Stand();conversation.Show("sample");}}
             if(outside&&!wasOutside)
             {

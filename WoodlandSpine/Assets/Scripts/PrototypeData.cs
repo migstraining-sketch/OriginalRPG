@@ -14,6 +14,8 @@ namespace WoodlandSpine
         public BodyData body;
         public int bandages;
         public int bloodleaf, silvermoss, mooncalfMilk, experimentalPotion, healthPotions;
+        public bool cleanFieldFlask;
+        [NonSerialized] public Dictionary<string,int> provisions=new Dictionary<string,int>();
         public int Armor => body == null ? 0 : body.armor;
         public void Store(WeaponData value) { if (!weapons.Contains(value)) weapons.Add(value); }
         public void Store(BodyData value) { if (!bodies.Contains(value)) bodies.Add(value); }

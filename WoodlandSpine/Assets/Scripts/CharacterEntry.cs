@@ -8,7 +8,7 @@ namespace WoodlandSpine
         string traveller="Traveller";
         int color;
         readonly Color[] colors={new Color(.35f,.53f,.7f),new Color(.58f,.39f,.26f),new Color(.38f,.55f,.38f)};
-        void Start(){var args=System.Environment.GetCommandLineArgs();if(System.Array.IndexOf(args,"--combat-camera-smoke")>=0||System.Array.IndexOf(args,"--slice-smoke")>=0||System.Array.IndexOf(args,"--intro-smoke")>=0||System.Array.IndexOf(args,"--opening-smoke")>=0)Enter();}
+        void Start(){var args=System.Environment.GetCommandLineArgs();if(System.Array.IndexOf(args,"--coordinated-smoke")>=0||System.Array.IndexOf(args,"--combat-camera-smoke")>=0||System.Array.IndexOf(args,"--slice-smoke")>=0||System.Array.IndexOf(args,"--intro-smoke")>=0||System.Array.IndexOf(args,"--opening-smoke")>=0)Enter();}
         void Enter(){var game=new GameObject("Slice systems").AddComponent<SliceGame>();game.rules=rules;game.playerName=string.IsNullOrWhiteSpace(traveller)?"Traveller":traveller.Trim();game.coatColor=colors[color];Destroy(gameObject);}
         void OnGUI()
         {

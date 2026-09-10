@@ -12,7 +12,7 @@ namespace WoodlandSpine
         public void Initialize(SliceGame game){this.game=game;motor=GetComponent<CharacterController>();motor.height=1.8f;motor.radius=.35f;motor.center=new Vector3(0,.9f,0);}
         void Update()
         {
-            if(game==null||game.mode!=GameMode.Exploration||game.showInventory||game.full!=null&&game.full.boardVisible)return;
+            if(game==null||game.mode!=GameMode.Exploration||game.showInventory||game.Modal)return;
             if(motor.isGrounded)lastGrounded=transform.position;
             if(transform.position.y<-20){Place(lastGrounded);game.notice="Back on solid ground.";return;}
             float x=(Input.GetKey(KeyCode.D)||Input.GetKey(KeyCode.RightArrow)?1:0)-(Input.GetKey(KeyCode.A)||Input.GetKey(KeyCode.LeftArrow)?1:0);
@@ -29,6 +29,8 @@ namespace WoodlandSpine
         HexGrid framedGrid;
         int framedWidth,framedHeight;
         float framedSize;
+        Vector3 lastTarget;
+        bool wasLab,wasRoom,wasKitchen;
         void LateUpdate()
         {
             if(game==null||game.player==null)return;
@@ -48,9 +50,12 @@ namespace WoodlandSpine
             if(!battle&&!game.opening.inLab&&game.player.transform.position.z<7)target+=Vector3.forward*1.5f;
             if(game.mode==GameMode.Dialogue&&game.intro!=null&&game.intro.Story.beat>=IntroBeat.Sample&&game.intro.Story.beat<=IntroBeat.Warning)target=new Vector3(-4,.5f,-3);
             if(game.opening.inLab)target=OpeningWorld.LabPoint(new Vector3(36,.5f,0));
-            game.view.cullingMask=game.opening.inLab?(1<<9)|(1<<10)|(1<<11):~(1<<9);
+            if(game.full.inKitchen)target=new Vector3(0,.5f,6.5f);
+            game.view.cullingMask=game.full.inKitchen?(1<<13)|(1<<10):game.full.inRoom?(1<<12)|(1<<10):game.opening.inLab?(1<<9)|(1<<10)|(1<<11):~((1<<9)|(1<<12)|(1<<13));
             Vector3 desired=target+(battle?new Vector3(0,22,-14):new Vector3(0,13,-10));
-            transform.position=Vector3.Lerp(transform.position,desired,1-Mathf.Exp(-Time.deltaTime*8));
+            bool transition=wasLab!=game.opening.inLab||wasRoom!=game.full.inRoom||wasKitchen!=game.full.inKitchen||(target-lastTarget).sqrMagnitude>100;
+            transform.position=transition?desired:Vector3.Lerp(transform.position,desired,1-Mathf.Exp(-Time.deltaTime*8));
+            lastTarget=target;wasLab=game.opening.inLab;wasRoom=game.full.inRoom;wasKitchen=game.full.inKitchen;
             transform.rotation=Quaternion.LookRotation(target-transform.position);
             GetComponent<Camera>().orthographicSize=battle?13.5f:9f;
         }

@@ -69,14 +69,14 @@ namespace WoodlandSpine
             var garrick=Shape("Garrick",new Vector3(-5,1.1f,4.7f),new Vector3(1.2f,1.1f,1.2f),new Color(.58f,.34f,.18f),PrimitiveType.Capsule);
             Interact(garrick,"garrick","Speak to the innkeeper",new Vector3(-5,0,1.9f));Label("GARRICK",new Vector3(-5,3,4.7f));
             Shape("Garrick broad apron",new Vector3(-5,1.1f,4.15f),new Vector3(.8f,1,.13f),new Color(.22f,.18f,.13f),solid:false);
-            var board=Shape("Contract board",new Vector3(-3,1.8f,6.7f),new Vector3(2,1.5f,.2f),wood);
-            Interact(board,"board","Inspect contract board",new Vector3(-3,0,5.5f));Label("CONTRACTS",new Vector3(-3,2.9f,6.7f),.12f);
-            for(int n=0;n<3;n++)Shape("Pinned work posting",new Vector3(-3.6f+n*.6f,1.8f,6.55f),new Vector3(.4f,1,.04f),new Color(.78f,.72f,.55f),solid:false);
-            var stock=Shape("Weapons and coat rack",new Vector3(-1.2f,1,4.6f),new Vector3(1.7f,2,.3f),wood);
-            Shape("Sword for sale",new Vector3(-1.7f,1.4f,4.35f),new Vector3(.12f,1.1f,.12f),new Color(.57f,.59f,.57f),solid:false);
-            Shape("Spear for sale",new Vector3(-.8f,1.1f,4.35f),new Vector3(.08f,2.1f,.08f),wood,solid:false);
-            Shape("Coat on peg",new Vector3(-.3f,1.3f,4.35f),new Vector3(.45f,.9f,.2f),new Color(.4f,.39f,.31f),solid:false);
-            Interact(stock,"merchandise","Look at merchandise",new Vector3(-1.2f,0,3.3f));
+            var board=Shape("Contract board",new Vector3(4,1.8f,2),new Vector3(2,1.5f,.2f),wood);
+            Interact(board,"board","Inspect contract board",new Vector3(4,0,.8f));Label("CONTRACTS",new Vector3(4,2.9f,2),.12f);
+            for(int n=0;n<3;n++)Shape("Pinned work posting",new Vector3(3.4f+n*.6f,1.8f,1.85f),new Vector3(.4f,1,.04f),new Color(.78f,.72f,.55f),solid:false);
+            var stock=Shape("Weapons and coat rack",new Vector3(-1.2f,1,2.5f),new Vector3(1.7f,2,.3f),wood);
+            Shape("Sword for sale",new Vector3(-1.7f,1.4f,2.25f),new Vector3(.12f,1.1f,.12f),new Color(.57f,.59f,.57f),solid:false);
+            Shape("Spear for sale",new Vector3(-.8f,1.1f,2.25f),new Vector3(.08f,2.1f,.08f),wood,solid:false);
+            Shape("Coat on peg",new Vector3(-.3f,1.3f,2.25f),new Vector3(.45f,.9f,.2f),new Color(.4f,.39f,.31f),solid:false);
+            Interact(stock,"merchandise","Look at merchandise",new Vector3(-1.2f,0,1.2f));
             Shape("Marlow table",new Vector3(-4,.6f,-2),new Vector3(2,1.2f,1.5f),wood);
             var marlow=Shape("Marlow seated",new Vector3(-4,.8f,-3.4f),new Vector3(.7f,.8f,.7f),new Color(.31f,.53f,.5f),PrimitiveType.Capsule);
             innMarlow=marlow;
@@ -92,9 +92,9 @@ namespace WoodlandSpine
             Shape("Stairwell rail east",new Vector3(-5.9f,.5f,1.5f),new Vector3(.15f,1,9),wood);
             Shape("Stairwell rail west",new Vector3(-8.1f,.5f,1.5f),new Vector3(.15f,1,9),wood);
             Shape("Stairwell end rail",new Vector3(-7,.5f,6),new Vector3(2.2f,1,.15f),wood);
-            var kitchen=Shape("Kitchen door on back wall",new Vector3(5.5f,1.2f,6.75f),new Vector3(1.6f,2.4f,.2f),wood);
-            Shape("Kitchen door serving hatch",new Vector3(5.5f,1.65f,6.6f),new Vector3(.65f,.5f,.1f),new Color(.15f,.12f,.09f),solid:false);
-            Interact(kitchen,"kitchen","Try kitchen door",new Vector3(5.5f,0,5.3f));Label("KITCHEN",new Vector3(5.5f,2.6f,6.7f),.14f);
+            var kitchen=Shape("Kitchen service door",new Vector3(3,1.2f,5.3f),new Vector3(.2f,2.4f,1.6f),wood);
+            Shape("Kitchen service partition",new Vector3(3,1.3f,7.6f),new Vector3(.2f,2.6f,2.8f),wood);
+            Interact(kitchen,"kitchen","Try kitchen door",new Vector3(4.2f,0,5.3f));Label("KITCHEN",new Vector3(3,2.6f,5.3f),.14f);
             for(int n=0;n<5;n++)Shape("Upstairs step",new Vector3(7,n*.18f,-4+n*.5f),new Vector3(2,.35f,.5f),wall);
             var upstairs=Shape("Rooms door",new Vector3(7,1.7f,-1.7f),new Vector3(2,2,.25f),wood);
             Interact(upstairs,"upstairs","Ask about upstairs rooms",new Vector3(7,0,-4.7f));Label("ROOMS",new Vector3(7,3,-1.7f),.15f);
@@ -146,18 +146,17 @@ namespace WoodlandSpine
         }
         public void ShowGrid(EncounterSite site,CombatModel combat,bool attacking,bool moving=true,bool signature=false)
         {
-            Dictionary<Hex,int> reach=combat.grid.Reach(combat.playerCell,combat.movement,combat.enemyCell,out _);
+            Dictionary<Hex,int> reach=combat.Reachable();
             foreach(var pair in site.tiles)
             {
                 Hex h=pair.Key;Color color=new Color(.23f,.32f,.28f);
                 if(combat.grid.difficult.Contains(h))color=new Color(.48f,.36f,.19f);
                 if(combat.grid.blocked.Contains(h))color=new Color(.16f,.18f,.17f);
                 else if((attacking||signature)&&combat.CanTarget(h,signature))color=new Color(.65f,.31f,.3f);
-                else if(moving&&combat.phase==Phase.Player&&reach.ContainsKey(h))color=new Color(.23f,.52f,.61f);
-                if(combat.lane.Contains(h))color=new Color(.96f,.62f,.13f);
-                if(h.Equals(combat.enemyCell))color=(attacking||signature)&&combat.CanTarget(h,signature)?new Color(.9f,.25f,.2f):new Color(.55f,.43f,.36f);
-                if(h.Equals(combat.playerCell))color=new Color(.6f,.83f,.77f);
-                if(combat.pouncing&&h.Equals(combat.pounceTarget))color=new Color(1f,.65f,.1f);
+                else if(moving&&combat.CanAct&&reach.ContainsKey(h))color=new Color(.23f,.52f,.61f);
+                var occupant=combat.At(h);
+                if(occupant!=null)color=occupant.side==CombatSide.Allies?new Color(.6f,.83f,.77f):new Color(.55f,.43f,.36f);
+                if(combat.Threatens(h))color=new Color(.96f,.62f,.13f);
                 pair.Value.sharedMaterial=Material(color);pair.Value.enabled=true;
             }
         }

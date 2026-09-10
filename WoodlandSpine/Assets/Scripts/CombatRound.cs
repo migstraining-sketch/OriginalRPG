@@ -9,6 +9,7 @@ namespace WoodlandSpine
         public readonly List<Combatant> units = new List<Combatant>();
         public Combatant Hero { get; private set; }
         public Combatant Active => active;
+        public Combatant Current => phase==Phase.Enemy?(aiAlly??target):active;
         public Combatant Target => target;
         public bool choosingAlly { get; private set; }
         public int round { get; private set; }
@@ -97,13 +98,13 @@ namespace WoodlandSpine
 
         public bool SelectTarget(Combatant unit)
         {
-            if(unit==null||unit.side!=CombatSide.Enemies||!unit.Present||!units.Contains(unit))return false;
+            if(phase!=Phase.Player||unit==null||unit.side!=CombatSide.Enemies||!unit.Present||!units.Contains(unit))return false;
             target=unit;return true;
         }
 
         void FinishActivation(Combatant unit)
         {
-            unit.spent=true;slot++;EnterSlot();
+            unit.spent=true;unit.primary=false;slot++;EnterSlot();
         }
 
         public bool CheckOutcome()
@@ -173,6 +174,11 @@ namespace WoodlandSpine
                 if(CanTarget(candidate.cell))score+=30;
                 if(ally.inventory.weapon.geometry==WeaponGeometry.Straight&&cell.Distance(candidate.cell)==2)score+=3;
                 if(Threatens(cell))score-=40;
+                foreach(var other in units)if(other!=ally&&other.side==CombatSide.Allies&&other.Present&&other.cell.Distance(cell)==1)
+                {
+                    int exits=0;foreach(var direction in Hex.Directions)if(OpenFor(other.cell+direction,other))exits++;
+                    if(exits==0)score-=60;else if(exits==1)score-=6;
+                }
                 if(score>bestScore){bestScore=score;bestCell=cell;bestEnemy=candidate;}
             }
             ally.cell=original;

@@ -70,8 +70,6 @@ namespace WoodlandSpine
             world.Shape("Mooncalf curious face",new Vector3(5,1.6f,48.7f),new Vector3(.7f,.8f,.7f),new Color(.75f,.76f,.68f),PrimitiveType.Sphere,false).transform.SetParent(mooncalf,true);
             for(int side=-1;side<=1;side+=2)world.Shape("Mooncalf long ear",new Vector3(5+side*.45f,1.8f,48.7f),new Vector3(.2f,.6f,.18f),new Color(.64f,.67f,.55f),PrimitiveType.Capsule,false).transform.SetParent(mooncalf,true);
             world.Interact(mooncalf.gameObject,"mooncalf","Observe Mooncalf");world.Label("MOONCALF",new Vector3(5,2.7f,49),.15f).SetParent(mooncalf,true);
-            var pail=Box("Covered sample pail beside trail",new Vector3(8,.25f,50),new Vector3(.5f,.5f,.5f),new Color(.46f,.39f,.25f));
-            world.Interact(pail,"milk_cache","Inspect covered field sample");
         }
         public void RecoverTroll(float amount)
         {

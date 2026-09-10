@@ -24,4 +24,9 @@ MonoBehaviour:
   coat: {fileID: 11400000, guid: 8cf992ab5d8bf38f67358245584858fe, type: 2}
   wildlife: {fileID: 11400000, guid: e33cd48d588589748eacef1fb63fdfd4, type: 2}
   mossback: {fileID: 11400000, guid: 23fc52dcdd14bdc5c5942405f54908a4, type: 2}
+  reedback: {fileID: 11400000, guid: cfd0dd1c82999ee4cbc95322694b16c1, type: 2}
+  juvenileMooncalf: {fileID: 11400000, guid: 68a887c1726094147b5782cb3d56b824, type: 2}
+  nursingMooncow: {fileID: 11400000, guid: 429d266129918a247a843c935c14cde4, type: 2}
+  protectiveAdult: {fileID: 11400000, guid: 6c64952aa5c544b4db7f4563157066b6, type: 2}
+  ilyHP: 20
   placeholderShader: {fileID: 4800000, guid: 5eda93e678c21e26b0ac661d83bc8425, type: 3}

@@ -121,7 +121,7 @@ namespace WoodlandSpine
             int distance=enemyCell.Distance(playerCell); Hex delta=playerCell-enemyCell; chargeDirection=new Hex(delta.q/distance,delta.r/distance);
             chargeOrigin=enemyCell;
             lane.Clear();lane.Add(enemyCell); Hex h=enemyCell+chargeDirection;
-            while(grid.cells.Contains(h)) {lane.Add(h);if(grid.blocked.Contains(h)||enemy.rush&&h.Distance(chargeOrigin)>2)break;h+=chargeDirection;}
+            while(grid.cells.Contains(h)) {lane.Add(h);if(grid.blocked.Contains(h)||enemy.rush&&h.Distance(chargeOrigin)>=enemy.rushRange)break;h+=chargeDirection;}
             chargeOrigin=enemyCell;preparing=true;return true;
         }
         public void EndPlayer() {if(CanAct)FinishActivation(Acting);}

@@ -98,40 +98,28 @@ namespace WoodlandSpine
         void Questions(string answer=null)
         {
             A.labCheckpoint="questions";
-            var choices=new System.Collections.Generic.List<DialogueChoice>();
-            if(!A.symptomsKnown)choices.Add(C("What's wrong with him?",()=>{A.symptomsKnown=true;Questions("I don't know. He stopped eating first. Then the colour began to fade. His regeneration's slowing too.");}));
-            if(!A.rescueKnown)choices.Add(C("What happened to him?",()=>{A.rescueKnown=true;Line("questions","I found him in the floodwater.",()=>Questions("He was drowning."));}));
-            choices.Add(C("You keep a troll down here?",()=>Questions("He was drowning.")));
-            choices.Add(C("Is he dangerous?",()=>Questions("Usually? Potentially.\n\nRight now, I'm more worried about him.")));
-            choices.Add(C("What do you need?",JobSetup));
-            game.Talk("Marlow",answer??"He should be green.",choices.ToArray());
+            game.Talk("Marlow","He should be green.",
+                C("What's wrong with him?",()=>{A.symptomsKnown=true;Line("symptoms","I don't know. He stopped eating first. Then the colour began to fade. His regeneration's slowing too.",JobSetup);}),
+                C("Why is he down here?",()=>{A.rescueKnown=true;game.Talk("Marlow","I found him in the river during the floods. He was trapped and couldn't get clear.",C("You pulled a troll out of the river?",()=>Line("drowning","He was drowning.",()=>{A.symptomsKnown=true;Line("symptoms","He stopped eating first. Now his colour is fading, and his regeneration's slowing.",JobSetup);})));}));
         }
         void JobSetup(){Line("setup","I think I can stabilize him.",Material);}
-        void Material()
+        void Material(){Line("material","But what I had left isn't enough. I need fresh material.",Ingredients);}
+        void Ingredients()
         {
-            A.labCheckpoint="material";game.Talk("Marlow","But what I had left isn't enough. I need fresh material.");
-            if(A.woodlandKnown)game.dialogue.choices.Add(C("From the woodland?",Ingredients));
-            game.dialogue.continueAction=Ingredients;
+            A.ingredientsKnown=true;A.woodlandKnown=true;A.labCheckpoint="ingredients";
+            game.Talk("Marlow","Bloodleaf. Silvermoss. Mooncalf Milk.",C("Mooncalf milk?",()=>Line("milk_source","The nursing Mooncow's milk. There's a herd in the woodland. I'll lend you a clean field flask for one serving.",()=>JobGate())));
+            game.dialogue.continueAction=()=>JobGate();
         }
-        void Ingredients(){A.ingredientsKnown=true;A.woodlandKnown=true;Line("ingredients","Bloodleaf, Silvermoss, and Mooncalf Milk.",()=>JobGate());}
         void JobGate(string answer=null)
         {
             beat=LabBeat.Decision;A.labCheckpoint="job";
-            bool refused=A.marlowJob==MarlowJob.Refused;
-            if(!refused)A.marlowJob=MarlowJob.Offered;
-            var choices=new System.Collections.Generic.List<DialogueChoice>{
+            if(A.marlowJob!=MarlowJob.Refused)A.marlowJob=MarlowJob.Offered;
+            game.Talk("Marlow","If you bring them back, I can prepare the treatment.\n\nWill you help me?",
                 C("I'll get them.",()=>{A.marlowJob=MarlowJob.Accepted;S.questAccepted=true;game.jobAccepted=true;A.Accept();beat=LabBeat.Accepted;Line("accepted","Thank you.",Briefing);}),
                 C("No.",()=>{A.marlowJob=MarlowJob.Refused;A.Refuse();Line("refused","All right.",game.CloseDialogue);}),
-                C("Where do I find them?",()=>JobGate("Bloodleaf grows beside the woodland trail. Silvermoss likes damp, shaded stone. The Mooncalf pasture is farther on.")),
-                C("Mooncalf milk?",()=>JobGate("Offer grass, lower your weapon and turn sideways. Let her settle.")),
-                C("What am I supposed to do with them?",()=>JobGate("Bring them back to the laboratory. We'll prepare the treatment here.")),
-                C("And you can't go because of him?",()=>{A.cannotLeaveKnown=true;JobGate("His condition can change quickly. I won't leave him unattended.");})};
-            if(!A.paymentAsked)choices.Add(C("What are you paying?",()=>{A.paymentAsked=true;A.paymentKnown=true;JobGate("There is payment for the work.");}));
-            string prompt=(refused?"If you've reconsidered, I still need those ingredients.\n\n":"")+"If you bring them back, I can prepare the treatment.\n\nWill you help me?";
-            game.Talk("Marlow",answer==null?prompt:answer+"\n\n"+prompt,choices.ToArray());
+                C("I'll think about it.",game.CloseDialogue));
         }
-        void Briefing()=>Line("accepted","Bloodleaf: red veins. Pinch the fresh tips; leave the stem rooted. Silvermoss: pale fronds on damp stone, out of the sun. Leave most of the patch.\n\nFor the Mooncalf, offer grass, lower your weapon and turn sideways. Let her settle. Mossbacks normally leave you alone if you give them space.\n\nAsk Garrick for a weapon before you leave.",game.CloseDialogue);
-        void Ale(int step)
+        void Briefing()=>Line("accepted","Bloodleaf has red veins. Silvermoss grows on damp, shaded stone. The herd grazes near water. Take this clean flask for a serving from the nursing Mooncow.\n\nGarrick can lend you a weapon. The front road leads toward the woodland.",game.CloseDialogue);        void Ale(int step)
         {
             if(step==0)Say("Marlow","Yes.",C("Why?",()=>Ale(1)));
             if(step==1)Say("Marlow","Ale.",C("...Ale?",()=>Ale(2)));

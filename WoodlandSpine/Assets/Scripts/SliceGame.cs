@@ -19,6 +19,13 @@ namespace WoodlandSpine
         public ReactiveIntro intro;
         public FirstLabVisit firstLab;
         public FullOpening full;
+        [System.NonSerialized] public BattlePresentation battle;
+        public CoordinatedSlice coordinated;
+        public bool Modal=>coordinated!=null&&coordinated.Modal||full!=null&&full.boardVisible;
+        public System.Action retryEncounter;
+        int checkpointCompanionHP;
+        bool checkpointCompanionRest;
+        bool resolvingActivation;
         public Transform playerVisual;
         [System.NonSerialized] public CombatSelection selection=new CombatSelection();
         public int hp;
@@ -34,7 +41,7 @@ namespace WoodlandSpine
         Hex checkpointEnemy;
         Vector3 checkpoint;
         public Camera view;
-        public string Objective => full?.Objective??(opening==null?"":opening.Objective);
+        public string Objective => coordinated?.Objective??full?.Objective??(opening==null?"":opening.Objective);
         void Start()
         {
             if(rules==null)rules=Resources.Load<SliceData>("SliceRules");
@@ -54,25 +61,30 @@ namespace WoodlandSpine
             intro=gameObject.AddComponent<ReactiveIntro>();intro.Initialize(this);
             firstLab=gameObject.AddComponent<FirstLabVisit>();firstLab.game=this;
             full=gameObject.AddComponent<FullOpening>();full.Initialize(this);
+            battle=new BattlePresentation(this);
+            coordinated=gameObject.AddComponent<CoordinatedSlice>();coordinated.Initialize(this);
             gameObject.AddComponent<SliceHUD>().game=this;
             var smokeArgs=System.Environment.GetCommandLineArgs();
             if(System.Array.IndexOf(smokeArgs,"--combat-camera-smoke")>=0)gameObject.AddComponent<CombatCameraSmoke>().game=this;
-            if(System.Array.IndexOf(smokeArgs,"--opening-smoke")>=0||System.Array.IndexOf(smokeArgs,"--slice-smoke")>=0||System.Array.IndexOf(smokeArgs,"--intro-smoke")>=0)gameObject.AddComponent<FullOpeningSmoke>().game=this;
+            if(System.Array.IndexOf(smokeArgs,"--coordinated-smoke")>=0)gameObject.AddComponent<CoordinatedSmoke>().game=this;
+            if(System.Array.IndexOf(smokeArgs,"--opening-smoke")>=0||System.Array.IndexOf(smokeArgs,"--slice-smoke")>=0||System.Array.IndexOf(smokeArgs,"--intro-smoke")>=0)gameObject.AddComponent<CoordinatedSmoke>().game=this;
         }
         void Update()
         {
             if(player==null)return;
-            intro.Tick(Time.deltaTime);
-            firstLab.Tick(Time.deltaTime);full.Tick(Time.deltaTime);
+            if(!Modal){intro.Tick(Time.deltaTime);firstLab.Tick(Time.deltaTime);full.Tick(Time.deltaTime);}
+            coordinated.Tick(Time.deltaTime);
+            if(coordinated.Modal)
+            {
+                if(Input.GetKeyDown(KeyCode.Escape)||Input.GetMouseButtonDown(1))
+                Back();
+                return;
+            }
             if(mode==GameMode.Dialogue&&enteringName&&Input.GetKeyDown(KeyCode.Return)){SubmitPlayerName(nameDraft);return;}
             if(mode==GameMode.Dialogue&&dialogue.continueAction!=null&&(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.Return))){dialogue.continueAction();return;}
             if(Input.GetKeyDown(KeyCode.Escape)||Input.GetMouseButtonDown(1))
             {
-                if(mode==GameMode.Combat)CancelSelection();
-                else if(mode==GameMode.Dialogue)CloseDialogue();
-                else if(mode==GameMode.Brewing||mode==GameMode.Cooking)mode=GameMode.Exploration;
-                full.boardVisible=false;
-                showInventory=false;return;
+                Back();return;
             }
             if(Input.GetKeyDown(KeyCode.I)&&(mode==GameMode.Exploration||mode==GameMode.Combat))showInventory=!showInventory;
             if(mode==GameMode.Exploration)
@@ -100,23 +112,24 @@ namespace WoodlandSpine
                 if(Input.GetKeyDown(KeyCode.Alpha4))Select(CombatChoice.Dash);
                 if(Input.GetKeyDown(KeyCode.Return))ConfirmSelection();
                 if(Input.GetKeyDown(KeyCode.Space))EndTurn();
-                if(Input.GetMouseButtonDown(0)&&CombatViewport.Pixels(Screen.width,Screen.height).Contains(Input.mousePosition))
-                {
-                    if(CombatTargeting.Pick(view,site.grid,site.actor,combat.enemyCell,Input.mousePosition,out Hex h))
-                    {
-                        if(selection.choice==CombatChoice.Attack||selection.choice==CombatChoice.Signature){if(h.Equals(combat.enemyCell)){ConfirmSelection();return;}}
-                        else if(selection.choice==CombatChoice.Move){if(!combat.Move(h))combat.log="Choose a blue reachable hex. Mud costs 2; units and trees block movement.";}
-                        Refresh();CheckResult();
-                    }
-                }
+                if(CombatViewport.Pixels(Screen.width,Screen.height).Contains(Input.mousePosition))battle.Pointer(Input.GetMouseButtonDown(0));
             }
         }
         public void Talk(string speaker,string text,params DialogueChoice[] choices){dialogue=new DialogueSession(speaker,text,choices);mode=GameMode.Dialogue;showInventory=false;}
         public void Exchange(string speaker,string text,System.Action next){Talk(speaker,text);dialogue.continueAction=next;}
         public void CloseDialogue(){enteringName=false;dialogue=null;mode=GameMode.Exploration;}
+        public void Back()
+        {
+            if(coordinated!=null&&coordinated.Modal){if(coordinated.storage.visible)coordinated.storage.Cancel();else coordinated.travel.Cancel();return;}
+            if(mode==GameMode.Dialogue)return;
+            if(mode==GameMode.Combat)CancelSelection();
+            else if(mode==GameMode.Brewing||mode==GameMode.Cooking)mode=GameMode.Exploration;
+            if(full!=null)full.boardVisible=false;showInventory=false;
+        }
         DialogueChoice Done(string title="Leave conversation")=>new DialogueChoice(title,CloseDialogue);
         public void Interact(string key)
         {
+            if(coordinated!=null&&coordinated.Handle(key))return;
             if(full!=null&&full.Handle(key))return;
             if(firstLab!=null&&firstLab.Handle(key))return;
             if(opening.Interact(key))return;
@@ -139,6 +152,8 @@ namespace WoodlandSpine
         }
         public void StartCombat(EncounterSite encounter,EnemyData enemy,Hex? foe=null)
         {
+            retryEncounter=null;
+            if(coordinated!=null){checkpointCompanionHP=coordinated.party.ily.hp;checkpointCompanionRest=coordinated.party.ily.needsRest;}
             site=encounter;checkpoint=player.transform.position;checkpointHP=hp;checkpointBandages=inventory.bandages;checkpointPotions=inventory.healthPotions;checkpointEnemy=foe??site.start;
             Hex start=site.grid.NearestOpen(player.transform.position,checkpointEnemy);
             if(enemy.pounce&&!foe.HasValue)
@@ -148,6 +163,8 @@ namespace WoodlandSpine
                 {float score=(site.grid.World(h)-site.grid.World(checkpointEnemy)).sqrMagnitude;if(score<best){best=score;checkpointEnemy=h;}}
             }
             combat=new CombatModel(site.grid,rules,inventory,enemy,start,checkpointEnemy,hp);mode=GameMode.Combat;selection.Cancel();showInventory=false;
+            combat.Hero.title=playerName;battle.Begin();
+            if(coordinated!=null&&coordinated.party.JoinCombat())combat.CompleteSetup();
             if(full!=null)full.progress.combatSeen=true;
             notice=enemy.mossback?"Normally docile. This one pursues you. Its charge threatens the marked lane.":"The nearby trail becomes the battlefield. Your exploration position sets your starting hex.";
             Refresh();
@@ -155,9 +172,8 @@ namespace WoodlandSpine
         public void Refresh()
         {
             if(combat==null)return;
-            player.Place(site.grid.World(combat.playerCell)+Vector3.up*.08f);
-            site.actor.position=site.grid.World(combat.enemyCell)+Vector3.up*(combat.enemy.mossback?.85f:.55f);
-            hp=combat.playerHP;world.ShowGrid(site,combat,selection.choice==CombatChoice.Attack,selection.choice==CombatChoice.Move,selection.choice==CombatChoice.Signature);
+            battle.Refresh();
+            hp=combat.Hero.hp;world.ShowGrid(site,combat,selection.choice==CombatChoice.Attack,selection.choice==CombatChoice.Move,selection.choice==CombatChoice.Signature);
         }
         public void Select(CombatChoice choice){if(mode==GameMode.Combat&&combat.phase==Phase.Player){selection.Select(choice);Refresh();}}
         public void CancelSelection(){selection.Cancel();showInventory=false;if(mode==GameMode.Combat)Refresh();}
@@ -168,21 +184,30 @@ namespace WoodlandSpine
             if(committed)selection.Cancel();Refresh();CheckResult();
         }
         public void UseCombatItem(bool potion=false){if(combat.Item(potion))selection.Cancel();Refresh();}
-        public void EndTurn(){if(mode==GameMode.Combat&&combat.phase==Phase.Player){selection.Cancel();combat.EndPlayer();Refresh();StartCoroutine(EnemyPhase());}}
-        IEnumerator EnemyPhase(){yield return new WaitForSeconds(.65f);combat.ResolveEnemy();Refresh();CheckResult();}
+        public void ChooseAlly(Combatant unit){if(combat.SelectAlly(unit)){selection.Cancel();Refresh();RunActivations();}}
+        public void EndTurn(){if(mode==GameMode.Combat&&combat.CanAct){selection.Cancel();combat.EndPlayer();Refresh();RunActivations();}}
+        void RunActivations(){if(!resolvingActivation&&combat.phase==Phase.Enemy)StartCoroutine(EnemyPhase());}
+        IEnumerator EnemyPhase()
+        {
+            resolvingActivation=true;
+            while(mode==GameMode.Combat&&combat.phase==Phase.Enemy)
+            {yield return new WaitForSeconds(.3f);if(mode!=GameMode.Combat||combat.phase!=Phase.Enemy)break;combat.ResolveEnemy();Refresh();CheckResult();}
+            resolvingActivation=false;
+        }
         public void CheckResult()
         {
             if(combat.phase==Phase.Won)
             {
                 site.cleared=true;site.actor.gameObject.SetActive(false);world.HideGrid(site);mode=GameMode.Exploration;
                 if(site==world.mossback){opening.state.mossbackDefeated=true;opening.state.mossbackSurvived=true;}
+                if(coordinated!=null&&coordinated.CombatEnded(combat.phase))return;
                 if(full!=null&&full.CombatEnded(site,combat.phase))return;
                 notice=site==world.mossback?"Mossback defeated. Finish gathering, then return to Marlow's lab.":"Wildlife defeated. Look for Silvermoss by shaded stone and the Mooncalf beyond. The trail continues north.";
             }
-            else if(combat.phase==Phase.Lost){if(full!=null&&full.CombatEnded(site,combat.phase))return;mode=GameMode.Defeated;notice="You fell. Retry restores your state from immediately before this encounter.";}
-            else if(combat.phase==Phase.Fled){if(site==world.mossback)opening.state.mossbackSurvived=true;world.HideGrid(site);mode=GameMode.Exploration;player.Place(new Vector3(0,.1f,site.grid.origin.z-11));retreatUntil=Time.time+2;site.actor.position=site.grid.World(site.start)+Vector3.up*(site==world.mossback?.85f:.55f);notice="Retreated. Approach again when ready; the encounter resets.";}
+            else if(combat.phase==Phase.Lost){if(coordinated!=null)coordinated.herd.SyncCombat();if(full!=null&&site!=coordinated.herd.site&&site!=full.props.sites[0]&&full.CombatEnded(site,combat.phase))return;mode=GameMode.Defeated;notice="You fell. Retry restores your state from immediately before this encounter.";}
+            else if(combat.phase==Phase.Fled){if(site==world.mossback)opening.state.mossbackSurvived=true;world.HideGrid(site);mode=GameMode.Exploration;player.Place(new Vector3(site.grid.origin.x,.1f,site.grid.origin.z-11));retreatUntil=Time.time+2;site.actor.position=site.grid.World(site.start)+Vector3.up*(site==world.mossback?.85f:.55f);notice="Retreated. The wildlife problem remains.";if(coordinated!=null)coordinated.CombatEnded(combat.phase);}
         }
-        public void Retry(){hp=checkpointHP;inventory.bandages=checkpointBandages;inventory.healthPotions=checkpointPotions;player.Place(checkpoint);StartCombat(site,combat.enemy,checkpointEnemy);}
+        public void Retry(){hp=checkpointHP;inventory.bandages=checkpointBandages;inventory.healthPotions=checkpointPotions;player.Place(checkpoint);if(coordinated!=null){coordinated.party.ily.hp=checkpointCompanionHP;coordinated.party.ily.needsRest=checkpointCompanionRest;}var retry=retryEncounter;if(retry!=null)retry();else StartCombat(site,combat.enemy,checkpointEnemy);}
         public void UseBandage(){if(hp<rules.playerHP&&inventory.bandages>0){hp=Mathf.Min(rules.playerHP,hp+rules.bandageHeal);inventory.bandages--;}}
         public void UseHealthPotion(){if(hp<rules.playerHP&&inventory.healthPotions>0){hp=Mathf.Min(rules.playerHP,hp+12);inventory.healthPotions--;}}
     }
