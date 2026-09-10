@@ -33,6 +33,8 @@ namespace WoodlandSpine.Editor
                 new GameObject("Character entry").AddComponent<CharacterEntry>().rules=rules;
                 EditorSceneManager.SaveScene(scene,"Assets/Scenes/Opening.unity");
             }
+            rules.innModel=AssetDatabase.LoadAssetAtPath<GameObject>("Assets/Art/Inn/GarricksInn.innmodel");
+            if(rules.innModel==null)throw new Exception("Imported Blender inn is missing");
             rules.placeholderShader=Shader.Find("Woodland/Placeholder");EditorUtility.SetDirty(rules);
             EditorBuildSettings.scenes=new[]{new EditorBuildSettingsScene("Assets/Scenes/Opening.unity",true)};
             PlayerSettings.companyName="Original RPG Prototype";PlayerSettings.productName="Woodland Spine";

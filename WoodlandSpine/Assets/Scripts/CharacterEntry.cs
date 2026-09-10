@@ -19,7 +19,7 @@ namespace WoodlandSpine
             GUILayout.Space(12);GUILayout.Label("Travel coat color");color=GUILayout.SelectionGrid(color,new[]{"Blue","Ochre","Green"},3,GUILayout.Height(36));
             GUILayout.Space(20);GUILayout.Label("30 HP • Padded Travel Coat, Armor 1");
             GUILayout.Space(20);if(GUILayout.Button("Enter Garrick's Inn",GUILayout.Height(42)))Enter();
-            GUILayout.Label("Placeholder geometry • WASD movement • E interaction");GUILayout.EndArea();
+            GUILayout.Label("Blender inn preview • WASD movement • E interaction");GUILayout.EndArea();
         }
     }
 }

@@ -30,3 +30,4 @@ MonoBehaviour:
   protectiveAdult: {fileID: 11400000, guid: 6c64952aa5c544b4db7f4563157066b6, type: 2}
   ilyHP: 20
   placeholderShader: {fileID: 4800000, guid: 5eda93e678c21e26b0ac661d83bc8425, type: 3}
+  innModel: {fileID: -7693204060912335225, guid: 1229e59a2426f38488cf31c9dd6cf95e, type: 3}

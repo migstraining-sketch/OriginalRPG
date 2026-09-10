@@ -20,7 +20,7 @@ namespace WoodlandSpine
         {
             game=value;game.full.progress.provisions=game.inventory.provisions;
             mud=new MudInTheMoonrice(game);party=new CompanionPresence(game);herd=new MooncalfHerd(game);
-            BuildInnLife();BuildWoodland();
+            BuildWoodland();
             travel=game.gameObject.AddComponent<RegionalTravel>();travel.Initialize(game);
         }
         DialogueChoice C(string label,System.Action action)=>new DialogueChoice(label,action);
@@ -92,6 +92,7 @@ namespace WoodlandSpine
                 if(!flaskLent){flaskLent=true;game.inventory.cleanFieldFlask=true;}
             }
             if(game.full.progress.hunts[0].accepted)travel.knowledge.Discover(Region.Reedwater);
+            game.world.inn.Tick(game);
             herd.SyncCombat();party.Tick(delta);mud.Tick(delta);
             if(game.mode==GameMode.Exploration&&!Modal&&party.Present&&party.following&&!party.controlAsked&&travel.knowledge.current==Region.Reedwater&&game.player.transform.position.z>3&&Vector3.Distance(party.actor.position,game.player.transform.position)<5)
                 party.Control();
@@ -113,24 +114,6 @@ namespace WoodlandSpine
             }
             herd.RestoreVisibility();
             game.opening.props.usefulLeaf.SetActive(!game.opening.state.bloodleafObtained);
-        }
-        void BuildInnLife()
-        {
-            var w=game.world;Color wood=new Color(.34f,.25f,.17f);
-            var hearth=w.Shape("Common-room hearth",new Vector3(-8.3f,.7f,-5.5f),new Vector3(1.2f,1.4f,1.4f),new Color(.35f,.36f,.34f));
-            w.Shape("Hearth embers",new Vector3(-7.8f,.3f,-5.5f),new Vector3(.45f,.2f,.8f),new Color(.79f,.39f,.15f),solid:false);
-            w.Interact(hearth,"basic_rest","Rest by the hearth — free",new Vector3(-6.2f,0,-5.5f));
-            Vector3[] patrons={new Vector3(-4.2f,.7f,-6.2f),new Vector3(-5.8f,.7f,-6.2f),new Vector3(6,.7f,1),new Vector3(-5.1f,.7f,-.5f),new Vector3(-2,.9f,2),new Vector3(2,.7f,-2)};
-            for(int i=0;i<patrons.Length;i++)
-            {
-                var patron=w.Shape("Ambient patron "+(i+1),patrons[i],new Vector3(.6f,.7f,.6f),new Color(.34f+i*.035f,.32f+i*.02f,.27f),PrimitiveType.Capsule);
-                var idle=patron.AddComponent<AmbientPatron>();idle.game=game;idle.seat=i;
-                w.Shape("Occupied stool",patrons[i]-Vector3.up*.45f,new Vector3(.65f,.5f,.65f),wood);
-                var mug=w.Shape(i==3?"Patron's meal":"Patron's mug",patrons[i]+new Vector3(.25f,.4f,.2f),new Vector3(.2f,.2f,.2f),wood,PrimitiveType.Cylinder,false);mug.transform.SetParent(patron.transform,true);
-            }
-            w.Shape("Hearth-side table",new Vector3(-5,.5f,-6.2f),new Vector3(1.1f,1,.8f),wood);
-            w.Shape("Traveler's outer-wall table",new Vector3(7,.5f,1.5f),new Vector3(1.6f,1,1),wood);
-            w.Shape("Traveler's weathered pack",new Vector3(7.8f,.35f,.5f),new Vector3(.55f,.7f,.5f),new Color(.42f,.36f,.24f));
         }
         void Discovery(string key,string name,Vector3 position,string note,Color color,Vector3 scale,PrimitiveType type=PrimitiveType.Sphere)
         {

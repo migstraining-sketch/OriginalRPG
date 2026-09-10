@@ -50,14 +50,14 @@ namespace WoodlandSpine
         public bool Handle(string key)
         {
 
-            if(key=="kitchen_exit"){inKitchen=false;game.player.Place(new Vector3(4.2f,.1f,5.3f));game.CloseDialogue();return true;}
-            if(key=="room_exit"){inRoom=false;game.player.Place(new Vector3(6,.1f,-5));game.CloseDialogue();return true;}
+            if(key=="kitchen_exit"){inKitchen=false;game.player.Place(InnLayout.KitchenOutside);game.CloseDialogue();return true;}
+            if(key=="room_exit"){inRoom=false;game.player.Place(InnLayout.StairsBottom);game.CloseDialogue();return true;}
             if(key=="sylvie"||key=="cooking"){Sylvie();return true;}
             if(key=="pantry"){Pantry();return true;}
             if(key=="board"){Board();return true;}
             if(progress.marlowGone&&(key=="lab_marlow"||key=="marlow"||key=="troll"||key=="workbench"||key=="basement"))
             {Say("The laboratory","Marlow has gone. His workbench is covered, his travel gear gone. This part of the inn is closed.");return true;}
-            if(key=="kitchen"&&progress.kitchenAccess){inKitchen=true;game.CloseDialogue();game.player.Place(new Vector3(1.5f,.1f,5));return true;}
+            if(key=="kitchen"&&progress.kitchenAccess){inKitchen=true;game.CloseDialogue();game.player.Place(InnLayout.KitchenInside);return true;}
             if(key=="upstairs"&&(S.intro.beat==IntroBeat.Finished||progress.defeatedGarrick)){Rooms();return true;}
             if(key=="garrick"&&(S.intro.beat==IntroBeat.Finished||progress.marlowGone))
             {
@@ -104,7 +104,7 @@ namespace WoodlandSpine
             }
             return false;
         }
-        void Rooms(){if(progress.roomRented){Say("Garrick","Room's yours.",C("Go upstairs.",()=>{inRoom=true;game.CloseDialogue();game.player.Place(new Vector3(0,3.9f,-4.7f));}),Back());return;}Say("Garrick","Cheapest room's "+progress.roomPrice+" coins. You've got "+progress.coins+".",C("I'll take it.",()=>{if(progress.Rent())Rooms();else Say("Garrick","Come back when you've got the rest. The common room's here meanwhile.");}),Back());}
+        void Rooms(){if(progress.roomRented){Say("Garrick","Room's yours.",C("Go upstairs.",()=>{inRoom=true;game.CloseDialogue();game.player.Place(InnLayout.UpperLanding);}),Back());return;}Say("Garrick","Cheapest room's "+progress.roomPrice+" coins. You've got "+progress.coins+".",C("I'll take it.",()=>{if(progress.Rent())Rooms();else Say("Garrick","Come back when you've got the rest. The common room's here meanwhile.");}),Back());}
         void Shop()
         {
             Say("Garrick","Basic steel. Nothing fancy. You've got "+progress.coins+" coins.",C("Weapons — 12 coins",()=>{
@@ -160,7 +160,7 @@ namespace WoodlandSpine
             if(progress.marlowGone&&!departureShown){departureShown=true;game.opening.props.labMarlow.SetActive(false);game.world.innMarlow.SetActive(false);game.opening.props.trollHead.localScale*=.95f;game.notice="The laboratory has fallen quiet.";}
             if(S.trollTreated&&!progress.paidByMarlow){progress.paidByMarlow=true;progress.coins+=progress.marlowPayment;}
             if(props.wheel!=null&&progress.hunts[2].resolved)props.wheel.Rotate(Vector3.up,delta*35,Space.Self);
-            if(!loanOffered&&S.questAccepted&&game.inventory.weapon==null&&!game.opening.inLab&&game.mode==GameMode.Exploration&&game.player.transform.position.z>5&&game.player.transform.position.z<8){loanOffered=true;game.Loan();}
+            if(!loanOffered&&S.questAccepted&&game.inventory.weapon==null&&!game.opening.inLab&&game.mode==GameMode.Exploration&&Vector3.Distance(game.player.transform.position,new Vector3(1.5f,.15f,-6))<1){loanOffered=true;game.Loan();}
         }
     }
 }

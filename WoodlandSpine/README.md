@@ -1,6 +1,6 @@
 # WoodlandSpine — Coordinated Opening Development Slice
 
-Playable placeholder Unity project for **Marlow → Woodland → Mud in the Moonrice + Ily**. This is not the complete three-route opening. The repository's design documents remain authority; prototype tuning and prose do not establish new canon.
+Playable Unity prototype for **Marlow → Woodland → Mud in the Moonrice + Ily**, now using the owner-requested Blender inn study. This is not the complete three-route opening. The repository's design documents remain authority; prototype tuning and prose do not establish new canon.
 
 ## Open and play
 
@@ -28,7 +28,7 @@ Returning ingredients prioritizes treatment, then supervised Potion Making and t
 
 All three canonical Hunt postings are visible. Only **Mud in the Moonrice** is selectable in this development slice; the others do not reveal Regional Map destinations. Reedwater supports flexible clues, early wet-margin preparation, witnessed feeding redirection (Manage), or combat followed by explicit manual Harvest (Cull). Valid completion unlocks Hunting. Ily is physically present, can fight Direct or Independent, and is optionally recruited afterward. Toma's provisions/payment lead back to Garrick and Sylvie's existing Cooking lesson.
 
-The inn includes occupied common-room seating, accessible board, physical basement stairs, kitchen, upper-floor landing and four modest guest rooms. Rental remains paid once. The room chest transfers real carried inventory and equipment. Storage persists across regional visits **within the running game**; this prototype has no disk save/load yet. Free Basic Rest at the common-room hearth restores the player and present companions without requiring rental.
+The imported Blender inn includes baked wood/stone/textile materials, occupied common-room seating, accessible board, physical basement stairs, kitchen, two connected upstairs flights and four modest guest rooms. The camera sections the upper floor and front/east walls for visibility. Rental remains paid once. The room chest transfers real carried inventory and equipment. Storage persists across regional visits **within the running game**; this prototype has no disk save/load yet. Free Basic Rest at the common-room hearth restores the player and present companions without requiring rental. Blender is not required to play or open the Unity project; the source model and export instructions are in `../ArtSource/Inn`.
 
 ## Combat
 
@@ -42,4 +42,4 @@ Tune weapons and creature assets in `Assets/Resources`; `SliceRules` links them 
 
 See [validation status](Validation/STATUS.md), [manual playtest](PLAYTEST-OPENING.md), and [implementation handoff](Docs/IMPLEMENTATION-HANDOFF.md). Automated checks use isolated runtime fixtures and do not measure a natural first playthrough or establish dialogue pacing/fun. The old 20–30 minute estimate is guidance only.
 
-Art, animation, camera transitions and interface styling remain placeholders. No final Blender work, networking, later two Hunt routes or save system is included. The 3v6 stress fixture uses test actors; it is not an extra authored encounter. Inventory/storage contents reset when the application closes or Play mode restarts.
+The inn is a visual-study integration, with baked albedo and real-time lighting rather than the exact offline Cycles appearance. Characters, the laboratory, outdoor art, animation and interface styling remain prototypes. No final character art, networking, later two Hunt routes or save system is included. The 3v6 stress fixture uses test actors; it is not an extra authored encounter. Inventory/storage contents reset when the application closes or Play mode restarts.

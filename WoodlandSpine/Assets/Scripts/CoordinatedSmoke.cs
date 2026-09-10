@@ -81,7 +81,8 @@ namespace WoodlandSpine
             Check(game.mode==GameMode.Exploration&&game.hp==30&&game.inventory.Armor==1,"immediate control and starting equipment");
             Check(!game.world.wildlife.actor.gameObject.activeInHierarchy,"remote woodland not visible from Inn");
             yield return Capture("01-inn");
-            if(scenario=="success")yield return Opening();
+            if(scenario=="inn")yield return InnChecks();
+            else if(scenario=="success")yield return Opening();
             else
             {
                 // Explicit fixture skips repeated dialogue for independent edge-case runs.
@@ -89,6 +90,62 @@ namespace WoodlandSpine
                 game.inventory.Receive(game.rules.weapons[1]);game.coordinated.Tick(0);
                 if(scenario=="failure")yield return Failure();else if(scenario=="stress")yield return Stress();else yield return Mud();
             }
+        }
+        IEnumerator NavigateCommon(Vector3 target)
+        {
+            const float step=.25f;Vector3 origin=new Vector3(-8.5f,.15f,-6.5f);
+            System.Func<Vector2Int,Vector3> point=c=>origin+new Vector3(c.x*step,0,c.y*step);
+            System.Func<Vector3,Vector2Int> cell=v=>new Vector2Int(Mathf.RoundToInt((v.x-origin.x)/step),Mathf.RoundToInt((v.z-origin.z)/step));
+            System.Func<Vector3,bool> clear=v=>{
+                foreach(var c in Physics.OverlapCapsule(v+Vector3.up*.4f,v+Vector3.up*1.45f,.30f))
+                    if(c.GetComponent<Explorer>()==null&&!c.isTrigger)return false;
+                return true;
+            };
+            var start=cell(game.player.transform.position);var end=cell(target);var queue=new Queue<Vector2Int>();var prev=new Dictionary<Vector2Int,Vector2Int>();queue.Enqueue(start);prev[start]=start;
+            var directions=new[]{Vector2Int.up,Vector2Int.right,Vector2Int.down,Vector2Int.left};
+            while(queue.Count>0&&!prev.ContainsKey(end))
+            {
+                var c=queue.Dequeue();foreach(var d in directions)
+                {var n=c+d;if(n.x<0||n.x>68||n.y<0||n.y>40||prev.ContainsKey(n)||!clear(point(n))||!clear((point(c)+point(n))*.5f))continue;prev[n]=c;queue.Enqueue(n);}
+            }
+            Check(prev.ContainsKey(end),"continuous common-room route to "+target);
+            var route=new List<Vector3>();for(var c=end;c!=start;c=prev[c])route.Add(point(c));route.Reverse();
+            // Only keep turning points; the actual CharacterController walks every segment.
+            for(int n=0;n<route.Count;n++)if(n==route.Count-1||n==0||(route[n]-route[n-1]).normalized!=(route[n+1]-route[n]).normalized)yield return Walk(route[n]);
+            yield return Walk(target);
+        }
+        IEnumerator InnChecks()
+        {
+            Check(game.world.inn.model.GetComponentsInChildren<MeshRenderer>().Length<45,"imported inn uses combined render groups");
+            Check(game.world.inn.model.GetComponentsInChildren<AmbientPatron>().Length==6,"six imported patrons retain ambient behavior");
+            Check(game.world.inn.model.GetComponentsInChildren<MeshCollider>().Length>=4,"authored floor and stair collision imported");
+            foreach(var renderer in game.world.inn.model.GetComponentsInChildren<MeshRenderer>())
+                foreach(var mat in renderer.sharedMaterials)
+                    if(mat.shader.name=="Standard")Check(mat.mainTexture!=null,"baked inn texture assigned: "+mat.name);
+            yield return Walk(new Vector3(0,.15f,-4.4f));yield return Walk(new Vector3(0,.15f,.55f));
+            Check(Vector3.Distance(game.player.transform.position,game.world.interactions.Find(i=>i.key=="garrick").transform.position)<1,"bar reached on public side");
+            yield return Capture("02-bar");
+            yield return Walk(new Vector3(4.12f,.15f,.55f));yield return Capture("03-board");
+            yield return Walk(new Vector3(6,.15f,.1f));yield return Walk(InnLayout.StairsBottom);
+            foreach(var point in InnLayout.UpstairsRoute)yield return Walk(point);
+            Check(game.full.inRoom&&game.player.transform.position.y>3.5f,"walked both connected upstairs flights");yield return Capture("04-upper-landing");
+            game.full.progress.roomRented=true;yield return null;
+            yield return Walk(new Vector3(0,3.8f,-4.45f));yield return Walk(new Vector3(1.5f,3.8f,-4.45f));yield return Walk(new Vector3(1.5f,3.8f,-3.25f));yield return Walk(InnLayout.ChestApproach);
+            game.Interact("room_chest");Check(game.coordinated.storage.visible,"new model chest opens existing storage");game.Back();yield return Capture("05-bedroom");
+            yield return Walk(new Vector3(1.5f,3.8f,-3.25f));yield return Walk(new Vector3(1.5f,3.8f,-4.45f));yield return Walk(new Vector3(0,3.8f,-4.45f));yield return Walk(InnLayout.UpperLanding);
+            for(int i=InnLayout.UpstairsRoute.Length-1;i>=0;i--)yield return Walk(InnLayout.UpstairsRoute[i]);
+            Check(!game.full.inRoom&&game.player.transform.position.y<.5f,"returned down the real stairs");
+            yield return NavigateCommon(InnLayout.KitchenOutside);
+            game.full.progress.kitchenAccess=true;yield return null;yield return Walk(InnLayout.KitchenInside);
+            Check(game.full.inKitchen,"walked through unlocked kitchen door");yield return Capture("06-kitchen");
+            yield return Walk(InnLayout.KitchenOutside);Check(!game.full.inKitchen,"walked back to common room");
+            yield return NavigateCommon(InnLayout.BasementApproach);
+            Check(game.world.basementHatch.GetComponent<Collider>().enabled&&!game.opening.state.invitedDownstairs,"private basement remains locked before invitation");
+            var motor=game.player.GetComponent<CharacterController>();float until=Time.time+1;
+            while(Time.time<until){motor.Move((Vector3.forward*2+Vector3.down*5)*Time.deltaTime);yield return null;}
+            Check(game.player.transform.position.z<3.3f,"closed basement leaf physically stops entry");
+            yield return Walk(InnLayout.BasementApproach);yield return NavigateCommon(new Vector3(-4.25f,.15f,-1.4f));
+            yield return Capture("07-merchandise");
         }
         IEnumerator Opening()
         {
@@ -99,14 +156,15 @@ namespace WoodlandSpine
             for(int n=0;n<12&&game.dialogue?.continueAction!=null;n++)Continue();
             Check(!game.opening.state.questAccepted&&game.firstLab.leading,"invitation does not accept job");
             yield return new WaitForSeconds(13);
-            yield return Walk(new Vector3(0,.1f,-4.7f));yield return Walk(new Vector3(-7,.1f,-4.7f));yield return Walk(new Vector3(-7,.1f,-3.6f));
-            yield return Walk(new Vector3(-7,-5.9f,5));yield return Walk(new Vector3(-4.5f,-5.9f,5));
+            yield return NavigateCommon(InnLayout.BasementApproach);
+            foreach(var point in InnLayout.DownstairsRoute)yield return Walk(point);
             Check(game.opening.inLab&&game.firstLab.arrived,"physical basement descent and Marlow relocation");
             game.Interact("lab_marlow");Continue();Continue();
             Check(game.dialogue.choices.Count==2,"small forward troll decision");var decision=game.dialogue;game.Back();Check(game.dialogue==decision&&game.mode==GameMode.Dialogue,"Esc preserves visible dialogue");
             yield return Capture("02-lab-choice");Choose("What's wrong with him?");Continue();Continue();Continue();Continue();Choose("I'll get them.");Continue();Continue();game.coordinated.Tick(0);
             Check(game.inventory.cleanFieldFlask&&game.coordinated.travel.knowledge.Knows(Region.Woodland),"accepted job lends flask and reveals Woodland");
-            yield return Walk(new Vector3(-7,-5.9f,5));yield return Walk(new Vector3(-7,.1f,-3.6f));yield return Walk(new Vector3(-7,.1f,-4.7f));yield return Walk(new Vector3(0,.1f,-4.7f));
+            for(int n=InnLayout.DownstairsRoute.Length-1;n>=0;n--)yield return Walk(InnLayout.DownstairsRoute[n]);
+            yield return NavigateCommon(InnLayout.Arrival);
             game.Loan();game.dialogue.choices[0].choose();game.CloseDialogue();
             game.Interact("regional_exit");game.coordinated.travel.selected=Region.Woodland;yield return Capture("03-regional-map");game.Back();Check(!game.Modal,"map cancel preserves Inn");
             yield return Travel(Region.Woodland);
@@ -128,7 +186,7 @@ namespace WoodlandSpine
             game.Interact("basic_rest");Check(game.hp==30&&game.coordinated.party.ily.hp==20&&!game.coordinated.party.ily.needsRest&&!game.full.progress.roomRented,"free Basic Rest before rental recovers present companions");
             int before=game.full.progress.coins;Check(game.full.progress.Rent()&&game.full.progress.coins==before-game.full.progress.roomPrice,"existing rental cost charged once");Check(!game.full.progress.Rent(),"no repeat rental charge");
             game.Interact("upstairs");Choose("Go upstairs.");Check(game.full.inRoom&&game.player.transform.position.y>3,"rented room is upstairs");yield return Capture("05-upstairs");
-            yield return Walk(new Vector3(0,3.9f,-3));yield return Walk(new Vector3(2,3.9f,-3));yield return Walk(new Vector3(2,3.9f,-2.4f));
+            yield return Walk(new Vector3(0,3.8f,-4.45f));yield return Walk(new Vector3(1.5f,3.8f,-4.45f));yield return Walk(new Vector3(1.5f,3.8f,-3.25f));yield return Walk(InnLayout.ChestApproach);
             game.Interact("room_chest");Check(game.coordinated.storage.visible,"physical chest opens storage");var item=InventoryItems.List(game.inventory).Find(i=>i.weapon!=null);Check(InventoryItems.Transfer(game.inventory,game.coordinated.storage.chest,item,1),"store owned weapon");game.Back();Check(!game.coordinated.storage.visible,"chest closes");
             game.Interact("room_exit");yield return Travel(Region.Woodland);yield return Travel(Region.Inn);Check(item.Count(game.coordinated.storage.chest)==1,"storage survives regional travel");
             game.Interact("upstairs");Choose("Go upstairs.");game.Interact("room_chest");yield return Capture("06-storage");Check(InventoryItems.Transfer(game.coordinated.storage.chest,game.inventory,item,1),"withdraw same weapon");game.Back();

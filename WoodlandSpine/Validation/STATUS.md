@@ -1,5 +1,7 @@
 # Current validation status
 
+**Latest follow-up: playable Blender inn integration, 2026-09-10.** See [integration and current validation](../Docs/INN-MODEL-INTEGRATION.md). Rebuilt successfully; all 4,664 editor assertions passed. Updated player cases: inn 159, success 130, Manage 27 passed. These recheck the replaced environment and retained opening/storage/return flow. The six-case report below records the preceding coordinated gameplay pass; its failure, Direct/Independent and stress runs were not repeated for the environment-only follow-up.
+
 **2026-09-10 — Coordinated Opening Development Slice / Marlow → Woodland → Mud in the Moonrice + Ily.** Implementation branch: `implementation/coordinated-opening-slice`. No main merge. This supersedes the prior dialogue-only status; older reports remain historical evidence.
 
 ## Build and editor checks

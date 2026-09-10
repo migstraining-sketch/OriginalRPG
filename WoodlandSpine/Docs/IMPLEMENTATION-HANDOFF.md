@@ -1,5 +1,7 @@
 # Coordinated opening implementation handoff
 
+**Environment follow-up:** the owner's Blender inn is now playable. Read [Inn model integration](INN-MODEL-INTEGRATION.md) for the current model/import pipeline, shared anchors, physical route adaptations, build evidence and visual limitations. The initial authority/build record below remains historical context for the coordinated gameplay systems.
+
 Branch: `implementation/coordinated-opening-slice`. Gameplay authority reviewed at `631f087`; subsequent main `c2b845c` adds only `CHARACTER_VISUAL_DEVELOPMENT.md`, which does not authorize art production or alter gameplay. This branch does not implement the complete three-route opening.
 
 ## Ownership and state boundaries

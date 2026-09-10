@@ -11,5 +11,6 @@ namespace WoodlandSpine
         public EnemyData reedback,juvenileMooncalf,nursingMooncow,protectiveAdult;
         public int ilyHP=20;
         public Shader placeholderShader;
+        public GameObject innModel;
     }
 }

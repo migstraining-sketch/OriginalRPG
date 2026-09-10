@@ -45,14 +45,14 @@ namespace WoodlandSpine
         void Start()
         {
             if(rules==null)rules=Resources.Load<SliceData>("SliceRules");
-            world=new WorldBuilder{shader=rules.placeholderShader};world.Build();hp=rules.playerHP;
+            world=new WorldBuilder{shader=rules.placeholderShader,innPrefab=rules.innModel};world.Build();hp=rules.playerHP;
             inventory=new Inventory{body=rules.coat,bandages=rules.startingBandages};inventory.Store(rules.coat);
             var actor=new GameObject("Player");actor.AddComponent<CharacterController>();player=actor.AddComponent<Explorer>();player.Initialize(this);
             var visual=world.Shape("Player coat",new Vector3(0,.9f,0),new Vector3(.65f,.9f,.65f),coatColor,PrimitiveType.Capsule,false);
             visual.transform.SetParent(actor.transform,false);visual.transform.localPosition=new Vector3(0,.9f,0);
             playerVisual=visual.transform;
             visual.layer=10;
-            player.Place(new Vector3(0,.1f,-3));
+            player.Place(InnLayout.Arrival);
             var cameraObject=new GameObject("Main Camera");cameraObject.tag="MainCamera";view=cameraObject.AddComponent<Camera>();view.orthographic=true;view.nearClipPlane=.1f;view.farClipPlane=150;view.backgroundColor=new Color(.12f,.16f,.19f);view.clearFlags=CameraClearFlags.SolidColor;
             cameraObject.transform.position=new Vector3(0,13,-13);cameraObject.AddComponent<SliceCamera>().game=this;
             cameraObject.AddComponent<AudioListener>();
@@ -91,7 +91,7 @@ namespace WoodlandSpine
             {
                 if(full.boardVisible)return;
                 nearby=null;float closest=2.4f;
-                foreach(var i in world.interactions){if(!i.gameObject.activeInHierarchy)continue;float d=Vector3.Distance(player.transform.position,i.transform.position);if(d<closest){nearby=i;closest=d;}}
+                foreach(var i in world.interactions){if(!i.gameObject.activeInHierarchy||!world.inn.CanInteract(this,i.key))continue;float d=Vector3.Distance(player.transform.position,i.transform.position);if(d<closest){nearby=i;closest=d;}}
                 if(Input.GetKeyDown(KeyCode.E)&&nearby!=null&&!showInventory){Interact(nearby.key);return;}
                 if(showInventory||opening.inLab)return;
                 Vector3 p=player.transform.position;

@@ -21,7 +21,9 @@ namespace WoodlandSpine
             // Pick up the remaining sample before leaving the table.
             actor.localScale=new Vector3(.7f,.55f,.7f);yield return new WaitForSeconds(.7f);actor.localScale=new Vector3(.7f,.9f,.7f);
             var remains=game.world.Shape("Wrapped sample remains",actor.position+new Vector3(.4f,0,0),new Vector3(.22f,.18f,.22f),new Color(.55f,.52f,.42f),solid:false);remains.transform.SetParent(actor,true);
-            Vector3[] route={new Vector3(-4,.9f,-4.8f),new Vector3(-7,.9f,-4.8f),new Vector3(-7,.9f,-3.5f),new Vector3(-7,-5.1f,5),new Vector3(-4.5f,-5.1f,5.3f),new Vector3(0,-5.1f,3)};
+            Vector3[] route={new Vector3(-6.65f,.9f,1.1f),InnLayout.BasementApproach+Vector3.up*.8f,
+                new Vector3(-7.5f,.9f,3.35f),InnLayout.BasementBottom+Vector3.up*.8f,
+                new Vector3(-6.1f,InnLayout.LabFloor+.9f,7.3f),new Vector3(-6.1f,InnLayout.LabFloor+.9f,5),OpeningWorld.LabPoint(new Vector3(36,.9f,3))};
             for(int i=0;i<route.Length;i++)
             {
                 if(i==3){game.world.OpenBasement();game.notice="Marlow: Come on, then.";}
@@ -32,15 +34,15 @@ namespace WoodlandSpine
         public void Tick(float delta)
         {
             Vector3 p=game.player.transform.position;
-            bool under=p.y<-1&&Mathf.Abs(p.x)<10&&p.z<8&&p.z>-8;
+            bool under=p.y<-1&&Mathf.Abs(p.x)<10&&p.z<8.5f&&p.z>-8;
             if(under!=game.opening.inLab)
             {
                 game.opening.inLab=under;
-                foreach(var r in game.world.innRenderers)if(r!=null&&!r.name.StartsWith("Basement stair "))r.enabled=!under;
+                // Camera layers section the inn without changing any collision or persistent renderer state.
                 if(under){game.intro.EnteredLab();game.notice="";}
             }
             if(under&&arrived&&!S.sawTroll&&game.mode==GameMode.Exploration&&!game.showInventory&&Vector3.Distance(p,OpeningWorld.LabPoint(new Vector3(38.7f,.1f,3.3f)))<1.8f){DrawAttention();Reveal();return;}
-            if(!under||p.y>-5.5f||!arrived||game.mode!=GameMode.Exploration||game.showInventory||S.questAccepted||drewAttention)return;
+            if(!under||p.y>InnLayout.LabFloor+.45f||!arrived||game.mode!=GameMode.Exploration||game.showInventory||S.questAccepted||drewAttention)return;
             explored+=delta;if(explored>=explorationSeconds)DrawAttention();
         }
         public void DrawAttention()

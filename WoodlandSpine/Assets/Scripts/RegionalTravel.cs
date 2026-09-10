@@ -18,10 +18,6 @@ namespace WoodlandSpine
         {
             game=value;
             var w=game.world;
-            var door=w.Shape("Front entrance — regional travel",new Vector3(0,1.1f,-7),new Vector3(3,2.2f,.25f),new Color(.35f,.24f,.14f));
-            w.Interact(door,"regional_exit","Leave through the front entrance",new Vector3(0,0,-5.9f));
-            var back=w.Shape("Back door — local property",new Vector3(7.5f,1.1f,7),new Vector3(1.3f,2.2f,.25f),new Color(.35f,.24f,.14f));
-            w.Interact(back,"back_property","Inspect the rear service door",new Vector3(7.5f,0,5.9f));
             var trail=w.Shape("Woodland trailhead",new Vector3(0,.05f,14),new Vector3(3,.1f,1.3f),new Color(.48f,.39f,.26f),solid:false);
             w.Interact(trail,"regional_exit","Return to the regional road",new Vector3(0,0,14));
             var farm=w.Shape("Reedwater road boundary",game.full.props.origins[0]+new Vector3(0,.05f,-15),new Vector3(3,.1f,1.3f),new Color(.48f,.39f,.26f),solid:false);
@@ -50,7 +46,7 @@ namespace WoodlandSpine
             travelling=true;progress=0;
             while(progress<1){progress+=Time.deltaTime/1.4f;yield return null;}
             SetRegion(destination);
-            Vector3 arrival=destination==Region.Inn?new Vector3(0,.1f,-5):destination==Region.Woodland?new Vector3(0,.1f,16):game.full.props.origins[0]+new Vector3(0,.1f,-13);
+            Vector3 arrival=destination==Region.Inn?InnLayout.Arrival:destination==Region.Woodland?new Vector3(0,.1f,16):game.full.props.origins[0]+new Vector3(0,.1f,-13);
             game.player.Place(arrival);game.opening.inLab=false;game.full.inKitchen=false;game.full.inRoom=false;
             game.coordinated.party.Arrive(destination);
             game.coordinated.AfterTravel(destination);

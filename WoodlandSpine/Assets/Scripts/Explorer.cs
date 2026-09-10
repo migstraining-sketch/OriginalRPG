@@ -48,16 +48,18 @@ namespace WoodlandSpine
             game.view.rect=new Rect(0,0,1,1);game.view.ResetAspect();
             Vector3 target=battle?game.site.grid.origin:game.player.transform.position+Vector3.up*.5f;
             if(!battle&&!game.opening.inLab&&game.player.transform.position.z<7)target+=Vector3.forward*1.5f;
-            if(game.mode==GameMode.Dialogue&&game.intro!=null&&game.intro.Story.beat>=IntroBeat.Sample&&game.intro.Story.beat<=IntroBeat.Warning)target=new Vector3(-4,.5f,-3);
+            if(game.coordinated.travel.knowledge.current==Region.Inn&&!game.opening.inLab)target=new Vector3(0,.65f,0);
+            if(game.full.inRoom)target=new Vector3(0,4.1f,0);
+            if(game.mode==GameMode.Dialogue&&game.intro!=null&&game.intro.Story.beat>=IntroBeat.Sample&&game.intro.Story.beat<=IntroBeat.Warning)target=InnLayout.Marlow;
             if(game.opening.inLab)target=OpeningWorld.LabPoint(new Vector3(36,.5f,0));
-            if(game.full.inKitchen)target=new Vector3(0,.5f,6.5f);
-            game.view.cullingMask=game.full.inKitchen?(1<<13)|(1<<10):game.full.inRoom?(1<<12)|(1<<10):game.opening.inLab?(1<<9)|(1<<10)|(1<<11):~((1<<9)|(1<<12)|(1<<13));
+            if(game.full.inKitchen)target=new Vector3(-3,.5f,5.5f);
+            game.view.cullingMask=game.full.inRoom?(1<<12)|(1<<10)|(1<<14):game.opening.inLab?(1<<9)|(1<<10)|(1<<11):~((1<<9)|(1<<12));
             Vector3 desired=target+(battle?new Vector3(0,22,-14):new Vector3(0,13,-10));
             bool transition=wasLab!=game.opening.inLab||wasRoom!=game.full.inRoom||wasKitchen!=game.full.inKitchen||(target-lastTarget).sqrMagnitude>100;
             transform.position=transition?desired:Vector3.Lerp(transform.position,desired,1-Mathf.Exp(-Time.deltaTime*8));
             lastTarget=target;wasLab=game.opening.inLab;wasRoom=game.full.inRoom;wasKitchen=game.full.inKitchen;
             transform.rotation=Quaternion.LookRotation(target-transform.position);
-            GetComponent<Camera>().orthographicSize=battle?13.5f:9f;
+            game.view.orthographicSize=game.full.inRoom?8f:game.full.inKitchen?5.8f:game.opening.inLab?9f:9.5f;
         }
     }
 }
