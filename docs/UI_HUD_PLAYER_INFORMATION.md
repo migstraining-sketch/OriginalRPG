@@ -18,7 +18,7 @@ RuneScape is useful here for **predictable homes for important systems**, not it
 
 `SliceHUD` is functional `OnGUI` scaffolding. It currently combines a wide top information/objective box, text-only HP, Armor and weapon text, one long `Equipment & inventory` scroll panel, a nearly full-width bottom combat panel, a growing/scrolling dialogue overlay, interaction prompts, and separate board/Brewing/Cooking screens.
 
-Current input includes `I` inventory, `E` interact, combat `M` and `1`–`5`, Enter/Space, mouse grid targeting, and Esc/right-click cancellation. `SliceGame` currently lets Esc close dialogue outright.
+Current input includes `I` inventory, `E` interact, combat `M` and `1`–`5`, Enter/Space, mouse grid targeting, and Esc/right-click cancellation. Legacy dialogue behavior allowed Esc to close or suspend dialogue in ways that are no longer approved.
 
 ### Problems found
 
@@ -50,7 +50,7 @@ Use three layers:
 
 The player must always know which layer owns input.
 
-## 1–4. Persistent HUD, HP, future MP, ammo — LOCKED
+## Persistent HUD / HP / future MP / ammo — LOCKED
 
 Keep the exploration HUD edge-anchored and compact. Show HP meter + current/max number, a hidden-until-needed secondary-resource slot, nearby interaction prompt, one compact current-objective reminder when useful, and a small player-system tab/button strip.
 
@@ -80,7 +80,7 @@ Bad:
 
 Detailed memory, observations, inferences and task history belong in Journal.
 
-## 5. Player-system navigation — LOCKED
+## Player-system navigation — LOCKED
 
 The mature player-tab set is:
 
@@ -94,31 +94,31 @@ The mature player-tab set is:
 
 Tabs appear when meaningful rather than presenting locked silhouettes. `I` should open Inventory; `J` is a strong Journal candidate; Character may use `C` after conflict audit. Clicking the active tab closes it. Final default shortcuts beyond established anchors remain implementation/input tuning.
 
-## 6. Inventory — LOCKED DIRECTION
+## Inventory — LOCKED DIRECTION
 
 Inventory answers **what am I carrying, how many, and what can I do with it?** Use one general inventory with readable item icon/name, stack counts, selected-item details and contextual actions. Broad filters such as All / Equipment / Consumables / Materials / Key & Misc are enough if item volume earns them.
 
 Do not add restrictive weight/capacity to make storage useful. Quest reagents remain normal items; Journal explains why they matter.
 
-## 7. Equipment — LOCKED DIRECTION
+## Equipment — LOCKED DIRECTION
 
 Equipment answers **what am I using, and what changes if I equip this?** MVP exposes only **Weapon** and **Body Armor**. A character silhouette is optional, but no empty MMO paper doll.
 
 Weapon details expose decision-relevant damage, range/geometry, Signature technique and LOS/adjacency restrictions. Body Armor exposes Armor and only future properties that actually matter. Comparisons emphasize meaningful changes, not stat soup.
 
-## 8. Character / Stats — LOCKED DIRECTION
+## Character / Stats — LOCKED DIRECTION
 
 Keep a small decision-facing summary: name, HP, Armor, equipped weapon summary, and Movement where useful. Show profession/progression state only when it has meaningful inspectable information.
 
 Do not invent Strength/Dexterity/Intelligence or dozens of derived numbers to fill space. Test every exposed statistic with: **what decision changes because the player can see this?**
 
-## 9. Techniques — LOCKED
+## Techniques — LOCKED
 
 Use **Techniques** as the home for learned weapon techniques unless Central Brain later adopts broader terminology. Each learned technique shows weapon association, concise behavior, range/geometry, damage/effect, Primary Action or other real cost, and special restrictions.
 
 Show learned techniques, not future locked silhouettes. Technique acquisition/loadout rules remain upstream-unresolved.
 
-## 10. Journal / Hunt Notes — LOCKED
+## Journal / Hunt Notes — LOCKED
 
 Journal exists to **remember, not solve**. An active entry can contain motive/objective, location/client/source, discovered observations, supported player-character **Inference**, and last useful trail information.
 
@@ -135,13 +135,13 @@ Example:
 
 For tracking resilience, `The last clear sign led toward the wet eastern margin` is appropriate memory support. `GO HERE →` is not.
 
-## 11. Combat actions — LOCKED
+## Combat actions — LOCKED
 
 Combat keeps the persistent HP/resource HUD and expands the lower edge into a compact **combat command tray**. Preserve the upstream action set: Move, Attack, equipped Signature, Defend, Item, Dash, contextual authored interaction when present, End Turn, and Flee only when legal.
 
 Selecting an action expands a small detail/hint region. The Signature button uses the actual technique name. Keyboard hints remain visible but secondary. The grid remains the primary tactical surface. Do not build a ten-slot MMO hotbar for an opening character with one Signature.
 
-## 12. Combat targeting / range / LOS / intent — LOCKED
+## Combat targeting / range / LOS / intent — LOCKED
 
 The UI must give one trustworthy answer to **can I do this, where, and why?**
 
@@ -169,11 +169,15 @@ UI must not maintain a second copy of damage/Armor formulas that can drift away 
 
 Enemy intent should live primarily on/near the enemy and threatened grid space, with concise tray reinforcement. Telegraph danger, not the solution.
 
-### Multi-enemy telegraph visibility — LOCKED
+### Multi-enemy telegraph visibility — LOCKED / REGRESSION PROTECTION
 
-**A dangerous committed enemy telegraph remains visible even when another enemy is focused or selected.** Focus may reveal fuller detail for one enemy, but it must not hide another enemy's already-committed attack, threatened lane/area, or other essential danger cue.
+**A dangerous committed enemy telegraph remains visible regardless of which enemy is currently focused or selected.**
 
-## 13. Dialogue presentation — LOCKED DIRECTION
+Focus may reveal fuller detail for one enemy, but it must never hide another enemy's already-committed attack, threatened lane/area, target marker, or other essential danger cue.
+
+This is a regression-protection requirement for the coordinated pass.
+
+# Dialogue presentation — LOCKED DIRECTION
 
 Keep characters visually present. Prefer a **lower-third/lower-side dialogue presentation** rather than a large centered modal when composition allows. Show speaker + readable text.
 
@@ -181,13 +185,37 @@ Keep characters visually present. Prefer a **lower-third/lower-side dialogue pre
 
 Avoid scrolling for normal dialogue. If text routinely needs scrolling, fix layout/copy rather than normalizing scroll boxes.
 
-### Dialogue Esc / suspend behavior — LOCKED
+Meaningful branches should have conversational momentum before convergence rather than immediately reopening large FAQ-style root menus.
 
-When a consequential response is waiting, **Esc does not choose, refuse, leave, or end the conversation.** Esc may collapse/suspend the large dialogue presentation, but the conversation remains active and a small **Resume Conversation** affordance remains available. Normal free movement does not resume until the player explicitly resumes the conversation or uses a legitimate authored Leave/End Conversation action.
+## Dialogue Esc / exit behavior — LOCKED
 
-This preserves Esc as interface navigation rather than a hidden roleplaying choice.
+**When a meaningful dialogue decision is waiting, Esc does not hide the conversation and does not choose a response.**
 
-## 14. Room-storage transfer — LOCKED
+The choices remain visible.
+
+Esc must never silently mean:
+- Yes
+- No
+- Refuse
+- Leave
+- Accept
+- End conversation
+
+If the fiction allows the player to disengage, provide an explicit neutral authored response such as `I'll think about it.`, `Not right now.`, `I should go.`, or `End conversation.` Exact wording belongs to the dialogue authority and must fit the context.
+
+If the player selects that explicit exit, preserve unresolved commitment state where appropriate so the conversation can be resumed later.
+
+If the player cannot reasonably leave because of an authored situation, do not invent a fake neutral exit. Esc simply does not dismiss the decision.
+
+### Explicitly rejected legacy state
+
+The following behavior is **not approved** and must be removed in the coordinated implementation:
+
+**dialogue hidden + movement still locked + Resume Conversation prompt required**
+
+Dialogue may be non-modal in presentation, but a meaningful pending choice remains visibly present until the player selects an authored response or the fiction supplies another legitimate transition.
+
+## Room-storage transfer — LOCKED
 
 The physical rented-room chest opens a two-pane interface:
 
@@ -197,34 +225,35 @@ Use the same item language as Inventory, support direct transfer and sensible st
 
 **Completed transfers commit when the transfer action completes.** Esc/back cancels only an unfinished quantity selection or other uncommitted transfer sub-action; it does not reverse items already moved. Once no unfinished sub-action remains, Esc/back closes the storage interface back to the room.
 
-## 15. Regional Map — LOCKED
+## Regional Map — LOCKED
 
 Regional Map is **not a Player Panel tab**. It remains a larger contextual travel interface entered through the appropriate physical Leave/Travel boundary. Preserve stable geography, known destinations, current-location treatment, route presentation and cancel-before-commit behavior from `TRAVEL_WORLD_MAP_MVP.md`.
 
 The player-system shell must not become a magical travel button that bypasses physical travel boundaries.
 
-## 16. Global Esc / Back doctrine — LOCKED
+# Global Esc / Back doctrine — LOCKED
 
-**Esc/back cancels or closes the current uncommitted UI layer. It must never silently perform a consequential in-world or roleplaying choice.**
+**Esc/back may cancel or close the current uncommitted UI layer, but it must never silently perform a consequential in-world or roleplaying choice.**
 
-Examples:
+Distinguish the cases explicitly:
 
-- combat targeting → cancel targeting;
-- Inventory → close Inventory;
-- Storage quantity/sub-action → cancel only that unfinished sub-action; completed transfers remain committed;
-- Storage with no unfinished sub-action → close Storage;
-- Regional Map before travel commitment → cancel/return;
-- dialogue response menu → suspend/collapse presentation without selecting No, Refuse, Leave, or another authored response; conversation remains active until resumed or explicitly ended.
+- **ordinary UI layer** → Esc/back can close the layer or cancel an unfinished sub-action if nothing consequential has committed;
+- **combat targeting / selected-but-uncommitted action** → cancel selection/targeting;
+- **Inventory** → close Inventory;
+- **Storage quantity/sub-action** → cancel only that unfinished sub-action; completed transfers remain committed;
+- **Storage with no unfinished sub-action** → close Storage;
+- **Regional Map before travel commitment** → cancel/return;
+- **dialogue with a meaningful choice waiting** → Esc does not hide, close, choose, refuse, accept, or otherwise resolve the conversation; choices remain visible;
+- **dialogue where fiction permits disengagement** → player must select the explicit authored neutral exit to leave/defer;
+- **dialogue where fiction does not permit a reasonable exit** → do not invent one; Esc remains inert for the pending decision.
 
-If leaving a conversation is itself consequential, it requires an explicit player action/response.
+Committed travel, inventory transfers, combat actions, and world-state changes remain committed. Back does not rewind world state.
 
-Committed movement/actions/travel/transfers remain committed. Back does not rewind world state.
-
-## 17. Progressive UI unlocking — LOCKED
+## Progressive UI unlocking — LOCKED
 
 The shell grows with actual capability: no MP before magic, no ammo before ammo, no giant empty Hunting dashboard, no future-technique silhouettes, and no locked-tab graveyards. When a system becomes relevant, reveal its home with a modest one-time cue rather than a tutorial avalanche.
 
-## 18. Screen-space philosophy — LOCKED
+## Screen-space philosophy — LOCKED
 
 Adopt RuneScape's **predictability**, reject its permanently large viewport tax. Persistent HUD/tab strip stay small. Deeper panels expand only when opened. Combat expands contextually. Dialogue preserves the scene. Regional Map/storage/crafting may use more space because the player deliberately entered those activities.
 
@@ -240,7 +269,9 @@ Support UI scale, readable text, comfortable hit targets, strong hover/selected/
 - Implement the shared UI input/focus/back state contract above before adding Map, storage and new panels.
 - Keep gameplay state separate from presentation so Journal/HUD reads state without becoming quest logic.
 - Split monolithic `SliceHUD` responsibility; do not let debug `OnGUI` become permanent architecture by inertia.
-- Ensure dialogue exposes ordinary Continue separately from authored choices and honors the locked suspend/resume behavior.
+- Ensure dialogue exposes ordinary Continue separately from authored choices.
+- Ensure meaningful dialogue choices stay visible on Esc and no hidden-dialogue/frozen-player/Resume Conversation state survives.
+- Ensure explicit authored dialogue exits preserve unresolved commitment state when appropriate.
 - Ensure Hunting exposes observations/inferences/trail memory as data the Journal can present without inventing checklist progression.
 - Ensure storage uses the same inventory item model, the chest's physical interaction remains the access gate, and completed transfers are not undone by Back.
 - Ensure damage preview consumes the same authoritative calculation/result used by combat resolution rather than reimplementing formulas in UI code.
