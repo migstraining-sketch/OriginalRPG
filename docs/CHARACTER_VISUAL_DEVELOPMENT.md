@@ -40,6 +40,113 @@ Starter-partner guardrail remains inherited and locked:
 
 Practicality does not mean visual blandness. Distinction should come from silhouette, proportion, occupation, wear, material contrast, controlled accent color, and a small number of memorable props rather than costume noise.
 
+## Project-wide visual-style anchor - LOCKED
+
+Central Brain defines the shared project visual style as:
+
+**stylized dark-fantasy anime key art translated into 3D**
+
+This is the default style family for future character-image exploration, character modeling, environment art, presentation imagery, and related visual development unless Central Brain later defines a specific exception.
+
+### Shared 2D / key-art language
+
+Use:
+- anime-inspired character design
+- polished splash-art / key-art presentation quality
+- strong silhouette readability
+- stylized facial design
+- stylized hair shapes
+- clean readable costume layering
+- ornate fantasy form language where appropriate to the specific character or object
+- rich controlled materials and highlights
+- high visual appeal
+- dramatic but readable lighting
+- dark-fantasy mood without drifting into muddy realism
+
+### 3D translation target
+
+The production goal is **anime illustration energy translated into 3D models and environments**.
+
+The target is:
+- stylized rather than photoreal
+- dimensional and materially rich rather than flat/chibi
+- readable at gameplay distance
+- capable of preserving appealing anime-inspired face, hair, silhouette, and costume shapes in 3D
+- dark-fantasy in mood and presentation without defaulting to western gritty realism
+
+It is **not**:
+- photorealism
+- western gritty realism
+- chibi/cartoon simplification
+- a requirement for every surface or costume to become ornate
+
+### Identity remains character-first
+
+The style anchor controls **how the world is visually expressed**, not **who each character is**.
+
+Therefore:
+- Garrick still reads first as a rugged innkeeper / capable fighting man.
+- Sylvie still reads first as a practical elite working chef.
+- Marlow still reads first as a field naturalist / alchemist / creature-focused researcher.
+- Ily still reads first as a seasonal irrigation worker / practical spear fighter.
+
+The style anchor may increase shape appeal, facial stylization, hair design clarity, material richness, controlled ornament, lighting quality, and presentation polish, but it must not overwrite profession, lifestyle, established silhouette doctrine, or character-specific practical constraints.
+
+Do **not** force every character into:
+- glamour-boss styling
+- overly revealing designs
+- identical armor language
+- exaggerated sensual posing
+- the exact mood, costume, body language, or content of the style-anchor image
+
+Ornament is conditional. A character whose life supports ornate forms may use them; a field worker, cook, naturalist, or rugged innkeeper should not acquire impractical decoration merely to prove the game is fantasy.
+
+### Style reference vs character reference
+
+These are separate continuity categories:
+
+**Style reference** = establishes or guides shared rendering, shape language, facial/hair stylization, material treatment, lighting, silhouette clarity, and overall aesthetic family. A style reference does **not** establish the literal identity, face, body, skin tone, hair, clothing, equipment, or personality of an in-world character unless separately approved as that character's reference.
+
+**Character reference** = depicts a specific in-world character and may establish appearance-continuity traits only to the extent Central Brain assigns and approves them. Character references use the exploratory / candidate / approved reference / superseded tracking language below.
+
+A single image can theoretically serve both functions only if Central Brain explicitly assigns both roles. Never infer that from visual similarity.
+
+### Project style-reference ledger
+
+**Reference:** recently uploaded dark-fantasy anime-style reference image previously identified during development as the game's shared art-style “bible”  
+**Source identification:** original upload filename is not exposed in this subchat; identify it by the Central Brain style-anchor instruction and its prior project-wide art-style role  
+**Reference class:** **style reference**  
+**Status:** **APPROVED PROJECT-WIDE STYLE ANCHOR**  
+**Character represented:** none; the depicted subject is **not** Garrick, Sylvie, Marlow, Ily, or any other in-world RPG character
+
+**What this reference establishes/guides:**
+- stylized dark-fantasy anime key-art family
+- polished splash-art presentation quality
+- silhouette clarity and shape appeal
+- stylized facial proportions/design language
+- stylized readable hair masses/shapes
+- clean costume-layer separation
+- controlled fantasy ornament where character context supports it
+- rich but readable material response and highlights
+- dramatic readable lighting
+- overall level of visual appeal and presentation ambition
+- the desired bridge from anime-inspired illustration into 3D production
+
+**What this reference does NOT establish:**
+- any specific RPG character's face
+- any specific RPG character's body proportions
+- skin tone, eye color, hair color, or hairstyle for any character
+- Garrick's beard or clothing
+- Sylvie's face, hair, or chef clothing details
+- Marlow's exploratory identity fields
+- Ily's exploratory identity fields
+- universal armor, glamour, sensuality, posing, or costume exposure
+- the exact content or mood of every future scene
+
+Future character exploration should use this style family while preserving each character's approved identity and profession-first visual logic.
+
+Existing exploratory images do not become style-approved retroactively. If an older exploratory concept communicates useful silhouette or occupation ideas but renders outside this anchor, it may remain useful for those narrow traits, but it should be restyled or regenerated before promotion to a style-consistent candidate character reference.
+
 ---
 
 # 1. Visual-reference audit
@@ -131,7 +238,15 @@ Central Brain has approved their working profiles for **exploratory image develo
 
 Every important visual image should receive a record when it enters project continuity.
 
-Use these image statuses:
+## Reference-class distinction
+
+Classify the reference before assigning character-reference status:
+
+- **Style reference** - shared aesthetic/render language. It guides the project's visual family but establishes no character identity by default.
+- **Character reference** - specific appearance continuity for a named in-world character.
+- **Contextual/environment reference** - a broader scene that may contain a character and provide useful staging/environment-fit evidence without automatically becoming that character's appearance authority.
+
+The four status labels below primarily govern **character references**:
 - **exploratory** - useful for testing possibilities; establishes no canon
 - **candidate** - selected for serious comparison/review; still not canon
 - **approved reference** - Central Brain-approved visual reference whose stated traits should be preserved
@@ -140,7 +255,8 @@ Use these image statuses:
 A contextual/environment image may also be qualified as **candidate / contextual** when a character appears inside a broader scene but the image was not created or approved as a dedicated character sheet.
 
 For each image record:
-- character
+- reference class
+- character, if applicable
 - image identifier/path/link
 - purpose
 - status
@@ -153,9 +269,9 @@ An image may establish only part of a design. An approved clothing/silhouette re
 
 ### Recovery records
 
-A missing historical image is **not** assigned one of the four main image statuses until the actual image is recovered and reviewed. Track it separately as **external reference to recover** so absence cannot be mistaken for permission to redesign.
+A missing historical image is **not** assigned one of the four main character-reference statuses until the actual image is recovered and reviewed. Track it separately as **external reference to recover** so absence cannot be mistaken for permission to redesign.
 
-## Current reference and recovery ledger
+## Current character-reference and recovery ledger
 
 | Character | Reference | Status | Canon / continuity effect |
 | --- | --- | --- | --- |
@@ -165,6 +281,8 @@ A missing historical image is **not** assigned one of the four main image status
 | Sylvie | earlier development character image believed to exist | **external reference to recover** | final face/look remains recovery-first |
 | Marlow | none recovered | none | approved working direction may enter exploratory image generation |
 | Ily | none recovered | none | approved working direction may enter exploratory image generation |
+
+The project-wide dark-fantasy anime anchor is intentionally kept in the separate **Project style-reference ledger** above because it is not a character reference.
 
 ---
 
@@ -535,6 +653,8 @@ The four should remain distinguishable even in neutral poses and muted lighting:
 
 Avoid giving all four the same fantasy base tunic + belt + brown boots with only prop swaps. Profession should alter proportion, layering, wear location, and posture.
 
+Apply the project-wide style anchor to each silhouette through shape appeal, facial/hair stylization, clean layer readability, controlled material treatment, and presentation quality without erasing the profession-driven distinctions above.
+
 ---
 
 # 8. Central Brain approval record - 2026-09-10
@@ -553,27 +673,32 @@ Central Brain approved the following:
 10. Ily's exact skin tone, eyes, hair color, and facial identity remain exploratory.
 11. No final Blender character modeling begins until Central Brain approves a visual reference/direction for that character.
 12. `Garrick’s Inn: A Safe Haven.png` is a **candidate/contextual Garrick reference**, not an approved Garrick character reference.
+13. The recently uploaded dark-fantasy anime reference image is the **approved project-wide style anchor**, not a character reference.
+14. The shared style family is **stylized dark-fantasy anime key art translated into 3D** and applies to future character exploration unless Central Brain defines an exception.
+15. Style influence must not override each character's profession-first identity or force glamour-boss styling, revealing designs, identical armor language, sensual posing, or the anchor image's literal content onto the cast.
 
 ---
 
 # 9. Current visual-production state
 
+**Project visual style:** **stylized dark-fantasy anime key art translated into 3D**. The uploaded anchor is logged as a project-wide **style reference**, not a character appearance reference.  
+
 **Garrick:** approved working silhouette/workwear scaffold; final face/look remains recovery-first. Recovered Inn concept board is candidate/contextual only. Continue searching for the dedicated earlier character image before replacement final-design work.  
 
 **Sylvie:** approved working chef scaffold; final face/look remains recovery-first. Inn concept board provides environment context only, not a usable Sylvie character reference. Continue recovery-first search.  
 
-**Marlow:** approved working profile for first exploratory character-image concepts. No image is canon until separately reviewed and approved.  
+**Marlow:** approved working profile for exploratory character-image concepts. Future/refined exploration should use the project-wide style anchor. No image is canon until separately reviewed and approved.  
 
-**Ily:** approved working profile for first exploratory character-image concepts. No image is canon until separately reviewed and approved.  
+**Ily:** approved working profile for exploratory character-image concepts. Future exploration should use the project-wide style anchor. No image is canon until separately reviewed and approved.  
 
 ## Next visual-production step
 
-- **Garrick:** use the recovered Inn board as contextual evidence only; continue dedicated-reference recovery.
-- **Sylvie:** continue dedicated-reference recovery.
-- **Marlow:** first exploratory image concepts may now be generated when separately requested, prioritizing silhouette, occupation, and overall identity.
-- **Ily:** first exploratory image concepts may now be generated when separately requested, prioritizing worker-first silhouette, wet-field occupation, and overall identity.
+- **Garrick:** use the recovered Inn board as contextual evidence only; continue dedicated-reference recovery, with future character exploration inside the shared style family.
+- **Sylvie:** continue dedicated-reference recovery, with future character exploration inside the shared style family.
+- **Marlow:** evaluate/refine exploratory concepts against the shared style anchor; prioritize silhouette, occupation, and overall identity before tiny costume details.
+- **Ily:** first exploratory image concepts may be developed within the shared style anchor, prioritizing worker-first silhouette, wet-field occupation, and overall identity.
 
 No Unity files changed.  
 No Blender files changed.  
-No images were generated as part of this documentation update.  
-No generated image becomes canon automatically.
+No image becomes a character reference merely by serving as a project style reference.  
+No generated character image becomes canon automatically.
