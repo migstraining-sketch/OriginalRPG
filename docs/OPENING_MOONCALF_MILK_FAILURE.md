@@ -2,13 +2,13 @@
 
 ## Status / authority
 
-This document records the settled opening-only failure rule for **Mooncalf Milk** and supplements `OPENING_FLOW.md` on PR #2.
+This document is the opening-only authority for the **Mooncalf Milk reagent-impossibility branch** and supplements `OPENING_FLOW.md`.
 
-It exists because the current opening authority previously left the fallback ambiguous. The rule below is **settled**, not an invitation to manufacture a quest-safe replacement source.
+The rule below is **settled**. It exists so player freedom can create a real consequence without leaving the player trapped under an impossible objective or softlocking the wider RPG.
 
-## Settled rule
+## Settled source rule
 
-If the player destroys the currently available source of Mooncalf Milk **before obtaining the required serving**, the game does **not** manufacture a replacement source.
+If the player genuinely destroys access to the currently available viable nursing Mooncow **before obtaining the required serving**, the game does **not** manufacture a replacement source.
 
 Provoking or fighting the herd does **not automatically** fail Marlow's quest.
 
@@ -16,60 +16,168 @@ The relevant state is whether a viable source of the required reagent still phys
 
 ### Quest can still continue
 
-If a viable nursing Mooncow survives and remains present, or can reasonably/recoverably return after the disturbance, the player may still obtain the required Mooncalf Milk using an appropriate container.
+The quest remains viable if, for example:
 
-The herd becoming defensive is therefore not itself an automatic quest-failure flag.
+- combat starts but a viable nursing Mooncow survives;
+- an adult becomes hostile but milk can still later be obtained;
+- the herd temporarily flees but can reasonably/recoverably return;
+- the Mooncalf is threatened but the required nursing-Mooncow source remains viable and accessible.
 
-### Quest becomes impossible to complete through this source
+Do not use `combatStarted`, `mooncalfAttacked`, `adultHostile`, or temporary flight by themselves as reagent-failure flags.
 
-If the player's actions genuinely eliminate access to the reagent before it was collected, Marlow's treatment cannot be completed.
+### Reagent becomes genuinely impossible
+
+Trigger the failure branch only once authored world state establishes that the required serving can no longer be obtained from the currently available source.
 
 Examples include:
 
-- killing the viable nursing Mooncow
-- permanently driving away the viable nursing herd
-- otherwise destroying or making the only currently available nursing-Mooncow source genuinely inaccessible
+- the viable nursing Mooncow is killed before milk is obtained;
+- the viable nursing herd is permanently driven away or made unrecoverable before milk is obtained;
+- another authored world-state change genuinely destroys access to the only currently available viable source.
 
 In those states:
 
-- no backup bottle appears
-- no replacement herd spawns for quest convenience
-- no invisible quest correction grants Mooncalf Milk
-- no dead juvenile or dead adult magically produces the same renewable reagent outcome
+- no backup bottle appears;
+- no replacement herd spawns for quest convenience;
+- no hidden merchant suddenly stocks the reagent;
+- no invisible quest correction grants Mooncalf Milk;
+- no dead juvenile or dead adult magically produces the same renewable reagent outcome.
 
 The loss of the reagent source is a physical world consequence of the player's actions.
 
-## Consequence to Marlow's opening quest
+## Immediate objective handling
 
-Without the required Mooncalf Milk serving, the experimental treatment cannot be completed.
+Once reagent impossibility is known, **remove `Obtain Mooncalf Milk` as an active objective immediately**.
 
-The already-established Marlow/troll failure consequences eventually apply if the player does not obtain the needed reagent while a viable source still exists:
+Do not leave the player following an impossible collection instruction.
 
-- the troll's condition continues to deteriorate
-- the troll eventually dies within the established failure window
-- Marlow leaves on an extended expedition to understand/cure the illness
-- his related content becomes unavailable for a significant period
-- Garrick's established response remains: **"Marlow left."**
+The current player intention becomes semantically equivalent to:
 
-Exact timing remains governed by the existing opening/dialogue authority and is not expanded here.
+**Return to Marlow.**
 
-## No global softlock
+Journal/knowledge state should preserve the truth of what happened, for example:
 
-Failure of Marlow's opening quest does **not** softlock the RPG.
+**The required Mooncalf Milk can no longer be obtained from the herd. Marlow should know.**
 
-The wider game continues.
+Exact player-facing prose belongs to Dialogue/UI polish. Do not use a giant `QUEST FAILED` popup as the primary communication.
 
-Systems/content such as:
+The objective-state transition should be deterministic from world state; it does not require waiting for Marlow, a timer, or a reload before the impossible collection instruction is cleared.
 
-- Garrick and the Inn
-- regional travel/world map
-- Hunting and its contracts
-- Sylvie/Cooking when otherwise reachable through established progression/state
-- other non-Marlow world content
+## Return to Marlow
 
-must not become globally inaccessible merely because the player eliminated the Mooncalf Milk source and failed Marlow's treatment.
+The player returns normally through established geography:
 
-Marlow's failure branch is a real consequence inside a continuing RPG, not a game-over state and not a hidden requirement to reload a save.
+**Woodland → Regional Map → Garrick's Inn front entrance → Marlow's lab**
+
+Marlow does not magically know how the source was lost before the player returns/tells him or the missing reagent becomes evident through conversation.
+
+The failure conversation prioritizes:
+
+**player returned without a viable reagent → Marlow understands the treatment cannot be completed → immediate emotional/world consequence**
+
+Do not interrupt this with Mossback discussion.
+
+Exact dialogue and knowledge-state wording remain owned by `DIALOGUE_PLAYER_AGENCY.md`.
+
+## Treatment quest closure
+
+Once Marlow understands that the required reagent is permanently unavailable:
+
+- Marlow's opening treatment quest becomes **impossible to complete**;
+- close/remove its active treatment objective;
+- journal/history may retain the event as remembered failure/world state;
+- the game must not continue directing the player toward an unobtainable ingredient.
+
+This is a real failure state, not a temporarily paused success route.
+
+## Potion Making consequence
+
+Do **not** compensate for the failure by unlocking Potion Making.
+
+If Marlow's treatment cannot be completed:
+
+- the normal opening Potion Making interaction does not occur;
+- **Potion Making does not unlock**;
+- **Health Potion recipe is not learned through this opening route**.
+
+Existing authority that Marlow later leaves for a significant period and his related content becomes unavailable remains intact.
+
+The wider RPG continuing does not mean every missed system is immediately restored.
+
+## Failure → board / Hunting convergence
+
+The player's wider opening progression continues immediately after the Marlow failure conversation resolves enough that Garrick understands the situation.
+
+Locked convergence:
+
+**Marlow treatment failure → Garrick's contract board becomes available → player chooses one starter Hunting contract → accepted contract reveals its destination → Regional Map travel → Hunting progression continues**
+
+The player does **not** need to:
+
+- defeat Garrick;
+- find a replacement Mooncalf Milk source;
+- wait for a hidden illness/departure timer;
+- reload;
+- complete Potion Making.
+
+This failure branch is an explicit alternate way to reach Garrick's normal opening board-available state.
+
+Garrick can recognize that Marlow's immediate job is over/failed and move the player toward ordinary local contract work through appropriate dialogue/state. Exact wording is downstream.
+
+### Hunting destination rules remain unchanged
+
+Marlow's failure does not reveal Hunting locations by itself.
+
+The board becomes available first. Then existing travel rules apply:
+
+- accept `Mud in the Moonrice` → Reedwater Paddies becomes known/selectable;
+- accept `Three Missing by Morning` → Venn Homestead becomes known/selectable;
+- accept `When the Wheel Stopped` → Vale Watermill becomes known/selectable.
+
+No Garrick fight or travel exception is required.
+
+## Marlow / troll aftermath
+
+Do **not** require a hidden real-time illness countdown while the player wanders around.
+
+The immediate failure conversation establishes that the treatment cannot be completed. Longer consequences such as troll deterioration/death and Marlow's extended departure should advance through clear authored/world-state transitions.
+
+For MVP, a deterministic later progression point such as a later departure/return transition or another clear opening milestone is sufficient.
+
+Do not fully design Marlow's long absence here.
+
+The important requirement is that the player is **not left waiting for failure consequences to trigger before being allowed to continue playing**.
+
+Garrick's later established serious response remains available when Marlow actually departs:
+
+> **"Marlow left."**
+
+## Successful route remains unchanged
+
+None of this alters normal success:
+
+**ingredients obtained → return → Marlow relief/hope → Potion Making/treatment → troll stabilizes → opening continues**
+
+This failure branch exists only when the required reagent genuinely becomes unavailable before collection.
+
+## Acceptance tests
+
+Implementation must explicitly satisfy at least:
+
+- attack herd, disengage, viable nursing Mooncow remains → quest still possible;
+- temporary herd flight with recoverable access → quest still possible;
+- nursing Mooncow killed before milk obtained → collection objective removed;
+- player receives Return to Marlow intention rather than impossible collection instruction;
+- returning without milk produces failure conversation/state;
+- treatment quest closes as impossible;
+- Potion Making does not unlock;
+- Garrick's board becomes available through failure progression;
+- player can accept a starter Hunt normally;
+- accepted Hunt destination becomes selectable through Regional Map normally;
+- no replacement herd, bottle, merchant, or hidden source appears;
+- no Garrick fight is required;
+- no hidden timer is required for Hunting progression;
+- successful Marlow route remains unchanged.
 
 ## Design principle
 

@@ -13,22 +13,25 @@ This repository is the continuity authority for the original RPG project.
 7. `docs/GROUP_COMBAT_PARTY_MVP.md`
 8. `docs/CHARACTERS.md`
 9. `docs/OPENING_FLOW.md`
-10. `docs/TRAVEL_WORLD_MAP_MVP.md`
-11. `docs/WORLD_BIOMES_EXPLORATION.md`
-12. `docs/DIALOGUE_PLAYER_AGENCY.md`
-13. `docs/INN_STARTING_AREA.md`
-14. `docs/CONTRACTS.md`
-15. `docs/SYSTEMS_HUNTING.md`
-16. `docs/HUNTING_PARTNERS.md`
-17. `docs/SYSTEMS_COOKING.md`
-18. `docs/UI_HUD_PLAYER_INFORMATION.md`
-19. `docs/UNRESOLVED.md`
+10. `docs/OPENING_MOONCALF_MILK_FAILURE.md`
+11. `docs/TRAVEL_WORLD_MAP_MVP.md`
+12. `docs/WORLD_BIOMES_EXPLORATION.md`
+13. `docs/DIALOGUE_PLAYER_AGENCY.md`
+14. `docs/INN_STARTING_AREA.md`
+15. `docs/CONTRACTS.md`
+16. `docs/SYSTEMS_HUNTING.md`
+17. `docs/HUNTING_PARTNERS.md`
+18. `docs/SYSTEMS_COOKING.md`
+19. `docs/UI_HUD_PLAYER_INFORMATION.md`
+20. `docs/UNRESOLVED.md`
 
 ## Working rule
 
 Treat this repository as the source of truth for locked decisions. If a future chat finds a contradiction, do not silently rewrite upstream canon. Flag it, propose a fix, and update the relevant continuity files after Central Brain approval.
 
 `docs/DIALOGUE_PLAYER_AGENCY.md` is the continuity authority for playable dialogue logic, player-response quality, conversational state, branching/convergence, and player commitment/agency. Proposed exact prose in that document does not become canon until Central Brain approves it.
+
+`docs/OPENING_MOONCALF_MILK_FAILURE.md` is the opening-only authority for detecting genuine Mooncalf Milk reagent impossibility, clearing impossible objectives, returning to Marlow, preserving the missed Potion Making consequence, and converging the failed Marlow route back into Garrick's board/Hunting progression.
 
 `docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design. For the opening MVP, Garrick's **front door is the sole Regional Map exit** and regional return arrives through/at the front entrance; the back door remains local Inn/property space with exact future use unresolved.
 
@@ -48,7 +51,7 @@ This is an **original RPG**, not an AdventureQuest/BattleOn reconstruction and n
 
 The opening is designed through:
 
-**Character Creation → Garrick's Inn → Marlow's opening quest → Regional Map → Woodland → Potion Making → first Hunting contract → Regional Map → contract destination → Hunting → Sylvie → Cooking unlock.**
+**Character Creation → Garrick's Inn → Marlow's opening quest → Regional Map → Woodland → Potion Making on success OR Marlow treatment-failure branch → first Hunting contract → Regional Map → contract destination → Hunting → Sylvie → Cooking unlock.**
 
 A playable Unity prototype exists, but implementation does not promote itself to canon.
 
