@@ -45,7 +45,7 @@ The game should phrase this as concise player observation/inference rather than 
 
 > Rice crushed and pushed aside, not cleanly eaten. Mudgrubs are exposed where the soil was turned. The animal is probably digging for the grubs beneath the crop.
 
-A player who misses evidence may still locate and attack the Reedback. Missing the inference mainly means the non-lethal solution is less obvious/not yet enabled by understanding.
+A player who misses evidence may still locate and attack the Reedback. Missing the inference makes the non-lethal solution less obvious and provides less contextual guidance, but it does **not** disable physically sensible authored world interactions.
 
 ### Tracking sequence
 From the paddies to the encounter area, use **three short tracking beats** rather than a direct objective arrow:
@@ -73,12 +73,16 @@ Keep durability in ordinary early-creature territory and tune during Unity imple
 ### Non-lethal redirection
 The alternate feeding location is a muddy wet margin a short distance away from the rice beds. It already contains mudgrubs, but the surface is too compacted/shallowly crusted for easy feeding compared with the cultivated paddy.
 
-Once the player has correctly inferred the mudgrub behavior, enable the contextual solution:
+The authored world interactions are physically available whenever the world state makes them sensible; they are **not** unlocked by an inference flag:
 
 1. **Open/loosen the wet feeding patch** at one authored interaction point, exposing mudgrubs.
 2. **Create a readable connection away from the crop** by opening the small muddy runnel/soft path between the Reedback's current feeding area and the alternate patch.
 
 This is one compact environmental manipulation sequence, not a bait inventory or trapping system. The exposed grubs and disturbed mud provide the cause-and-effect cue.
+
+Evidence and inference still matter because they can clarify the purpose of these actions, improve Hunt Notes/contextual observations, make subtle interaction assistance clearer, and let the player predict that the Reedback may prefer this feeding site. They do not turn the interactions on or off.
+
+A curious player may therefore prepare part or all of the alternate feeding area before formally reaching the mudgrub inference. If the Reedback later uses that prepared site, the player/world may recognize the cause-and-effect through observation rather than being forced backward through the clue sequence.
 
 When the Reedback detects the newly accessible feeding patch, it moves to investigate/feed there. The player then observes it settle into repeated digging away from the rice. That behavioral change, not merely the animal walking offscreen, marks the non-lethal wildlife problem as resolved.
 
@@ -116,9 +120,10 @@ After resolution, the player leaves Reedwater Paddies through its travel boundar
 - **Attack immediately:** allowed. This commits to a possible lethal fight but does not auto-complete the contract.
 - **Find mudgrubs before Toma:** allowed. Preserve the observation so later investigation can use it.
 - **Solve with partial clues:** allowed once enough evidence supports the mudgrub inference.
+- **Prepare alternate feeding area early:** allowed. If the player discovers the authored wet-margin/runnel interactions before the formal inference, they may physically use them. If the Reedback later settles into feeding there away from the crop, that can satisfy the Manage resolution without forcing the player to backtrack through clue clicks.
 - **Discover redirect, then kill:** allowed. Final route becomes lethal and requires Harvest.
 - **Scare it away temporarily:** not completion; cause remains unresolved.
-- **Reach alternate feeding patch early:** world interaction may be visible, but the meaningful redirect action should require the player-character to have enough evidence to understand why exposing mudgrubs there matters. Do not present a glowing 'Solve Quest' interaction without that knowledge.
+- **Reach alternate feeding patch early:** the authored interaction may be available whenever physically sensible. Relevant evidence/inference may make its significance and contextual assistance clearer, but must not serve as an invisible permission gate.
 
 ### Contract-specific Unity acceptance tests
 - Accepting the contract can reveal/make Reedwater Paddies selectable through the regional travel layer; arrival spawn is at the farm approach, not beside the first clue or Reedback.
@@ -127,6 +132,9 @@ After resolution, the player leaves Reedwater Paddies through its travel boundar
 - Any two appropriate clues can produce the basic feeding inference; exposed mudgrubs plus supporting evidence produces the explicit mudgrub inference.
 - Player can reach/fight the Reedback without completing every clue/tracking beat.
 - Tracking uses three readable signs and no giant direct-to-creature objective arrow.
+- Authored alternate feeding-patch/runnel interactions do not hard-require the mudgrub inference flag if the action is already physically sensible in the current world state.
+- Player can prepare the alternate feeding area before formal inference, later observe the Reedback feeding there, and complete Manage without being forced to backtrack through clue interactions.
+- Evidence/inference may update Hunt Notes, observations, descriptions, prediction, and interaction surfacing without changing the underlying physical availability of those authored actions.
 - Scaring the Reedback away without solving the feeding cause does not complete the contract.
 - Redirect resolution requires an alternate mudgrub feeding patch and results in observable feeding behavior away from the crop.
 - Killing the Reedback does not complete the lethal route until manual Harvest produces Fresh Reedback Haunch.
@@ -150,15 +158,19 @@ The following were already locked before this implementation pass:
 - both routes feed Sylvie's Cooking introduction
 - all three starter contracts remain equal canon choices
 
-New implementation recommendations in this section:
+Central Brain has now approved the implementation package with the systemic-discovery revision that physically sensible authored world interactions must not be hard-gated by inference flags.
+
+Approved implementation details in this section:
 - exact three-clue set and two-clue inference threshold
 - exact three-beat tracking trail
 - compact Reedback Pursue + readable short Rush combat identity
 - authored alternate wet-margin feeding patch and two-interaction redirection sequence
 - Toma's minimal knowledge/reaction state
 - explicit sequence-break/completion tests
+- early preparation of the alternate feeding area as a valid discovery path
+- knowledge affects understanding, notes, contextualization, prediction, and surfacing rather than physical permission
 
-No new major system is required. These implementation recommendations may be tuned during Unity playtesting without changing the locked contract premise, provided Central Brain is informed of any material behavioral change.
+No new major system is required. These implementation details may be tuned during Unity playtesting without changing the locked contract premise, provided Central Brain is informed of any material behavioral change.
 
 ---
 
