@@ -13,7 +13,7 @@ The sub-chat owns Inn-facing design such as:
 - relationship-driven access changes inside the building
 - secrets, flavor interactions, and future Inn expansion hooks
 
-It does **not** override Central Brain or upstream system authorities. Hunting mechanics belong in `SYSTEMS_HUNTING.md`; Cooking mechanics belong in `SYSTEMS_COOKING.md`; opening chronology belongs in `OPENING_FLOW.md`. If Inn design discovers a contradiction with upstream canon, flag it for Central Brain instead of silently rewriting it.
+It does **not** override Central Brain or upstream system authorities. Hunting mechanics belong in `SYSTEMS_HUNTING.md`; Cooking mechanics belong in `SYSTEMS_COOKING.md`; opening chronology belongs in `OPENING_FLOW.md`; playable dialogue/player-agency authority belongs in `DIALOGUE_PLAYER_AGENCY.md`. If Inn design discovers a contradiction with upstream canon, flag it for Central Brain instead of silently rewriting it.
 
 Garrick's Inn is the player's first home base and should feel like a believable building before it feels like a menu hub.
 
@@ -231,11 +231,13 @@ She checks one against the light or otherwise inspects it without cracking it.
 
 > **Sylvie:** "Fresh."
 
-If the player asks how she can tell:
+If the player wants to challenge her certainty, use a genuine yes/no setup:
 
+> **Player:** "You can tell they're fresh just by looking?"
+>
 > **Sylvie:** "Yes."
 
-The joke is that the player asked whether she could tell, not how.
+This preserves the dry joke while making the answer grammatically and conversationally valid. If a future version instead uses an open question such as **"How can you tell?"**, Sylvie must actually explain what she observed rather than replying **"Yes."**
 
 The ingredient itself does **not** reveal whether the player killed the Nightquill or secured/deterred its hunting route. Sylvie only reacts to that choice if the player tells her what happened.
 
@@ -274,7 +276,7 @@ This is intentionally humble food. Sylvie demonstrates mastery by making somethi
 - remove slightly loose
 - let residual heat finish the dish
 
-Useful exchange:
+Possible ingredient-specific player attitude remains optional rather than mandatory:
 
 > **Player:** "They're eggs."
 >
@@ -354,11 +356,13 @@ The naturally shed material should not be treated as a consolation ingredient. I
 
 The system-level lesson is **source and handling matter**.
 
-## Shared tasting beat
+## Shared tasting beat — PLAYER AGENCY LOCKED
 
 Whichever variant occurred, Sylvie plates an intentionally simple dish and the player tastes it.
 
-Preferred universal exchange:
+Sylvie's food should be presented as clearly excellent through presentation, sensory description, cooking results, and her established competence. **The game must not force the player character to express amazement, praise, comedic disbelief, or another personality the player did not choose.**
+
+The previously preferred universal exchange:
 
 > **Player:** "...What did you do to this?"
 >
@@ -368,7 +372,16 @@ Preferred universal exchange:
 >
 > **Sylvie:** "So am I."
 
-Ingredient-specific alternates may include:
+is now an **optional expressive route only**, not the mandatory universal reaction.
+
+If this moment presents player responses, include at least one natural non-performative path. Suitable direction includes:
+
+- **"Can you teach me to do that?"** → direct learning interest
+- **"What did you do differently?"** → practical curiosity
+- **"That's good."** → restrained positive reaction
+- ordinary **Continue / finish tasting** if no explicit roleplaying response is needed before the next beat
+
+Ingredient-specific expressive alternates may still exist, but none is mandatory:
 
 **Reedback**
 
@@ -390,7 +403,7 @@ Ingredient-specific alternates may include:
 
 Sylvie is not bashful or surprised by praise. She already knows she is exceptional.
 
-If asked for the secret, the direction remains:
+If the player asks for the secret, the direction remains:
 
 > **Sylvie:** "There isn't one. Good ingredient. Right preparation. Right pan. Right heat. Right amount of time."
 
@@ -398,11 +411,11 @@ Exact phrasing can be polished in implementation.
 
 ## Pantry arrangement and exact Cooking unlock
 
-After tasting the dish, the player can ask Sylvie to teach them.
+After tasting the dish, the player can ask Sylvie to teach them. The player must not be forced to praise her first in order to reach this request.
 
 The structural sequence is locked:
 
-**Sylvie prepares first dish → player tastes it → player asks to learn → Sylvie explains the arrangement → player accepts → Cooking unlocks.**
+**Sylvie prepares first dish → player tastes → player chooses/expresses a response if warranted → player asks to learn → Sylvie explains the arrangement → player accepts → Cooking unlocks.**
 
 Cooking unlocking means **Sylvie has agreed to teach the player**, not that the player became competent simply by watching once.
 
