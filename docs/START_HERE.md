@@ -45,12 +45,18 @@ Central Brain is assembling one coordinated opening implementation/playtest pass
 - approved dialogue revisions
 - approved MVP combat refinements
 - regional-map/travel layer
+- Mooncalf herd/container/failure-path behavior
+- rented-room persistent storage
 - at least one fully playable starter Hunting contract
 
 Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
 
 The travel layer must preserve geography without manufacturing empty traversal: meaningful destinations use a visual regional map, only plausibly known locations become selectable, and short route/travel presentation communicates that travel occurred.
 
-Room-rental behavior is currently working well in playtest and should remain untouched by travel work unless a separate genuine bug/contradiction is identified.
+Room-rental behavior is currently working well in playtest. Preserve that behavior while adding the approved persistent personal storage benefit from `INN_STARTING_AREA.md`.
 
 **Do not move on to designing the first 1–2 hours after Cooking unlock yet.** Finish refining and validating the opening experience first.
+
+## Ongoing player experience review
+
+The project owner requested an Asmongold-informed review lens on 2026-09-10. Read `PLAYER_EXPERIENCE_REVIEW_LENS.md` when evaluating new design or implementation decisions. It defines evidence-based advisory criticism, not impersonation or a replacement for locked canon. The initial scored assessment is `reviews/2026-09-10-opening-player-review.md`; it distinguishes current code, newer design revisions and untested experience. Recommendations should be reported for discussion rather than silently implemented as design changes.
