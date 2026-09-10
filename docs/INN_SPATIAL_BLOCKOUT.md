@@ -8,33 +8,41 @@ This is the narrow opening-MVP authority for Inn population, architecture, circu
 
 Doctrine: **the Inn is a believable occupied building first and a menu hub second. The player enters a place already in motion.**
 
-# 1. Opening population
+Central Brain has reviewed this spatial package and considers it **locked enough to produce the first visual floor plan and Blender greybox brief**. Exact greybox dimensions remain subject to the approved walkability/camera tuning ranges below.
 
-Target **6 ambient/minor patrons** in the opening common room, with roughly **5–9** as a playtest range rather than a hard count. This is in addition to Garrick, Marlow, and Sylvie.
+# 1. Opening population — LOCKED
+
+Use **6 ambient patrons** for the first implementation, with roughly **5–9** retained as a visual/playtest tuning range rather than a hard systemic count. This is in addition to Garrick, Marlow, and Sylvie.
 
 ### Major NPCs
-- Garrick: behind bar; service/social anchor.
+- Garrick: behind bar; primary service/social anchor.
 - Marlow: opening table, then basement according to chronology.
 - Sylvie: working in kitchen; mostly unseen before proper introduction.
 
 ### Minor authored NPCs
-Use **0–2 named/repeatable locals or travelers** for MVP if useful. They may have short interactions or recur later, but should not automatically become quest givers. Exact identities remain open.
+Use **0 newly named minor patrons** for the first implementation.
+
+The opening population should therefore rely on existing major characters plus ambient patrons. Named/repeatable locals or travelers may be considered later if playtesting earns them, but this first implementation should not add new named Inn NPCs merely to make the room feel occupied.
 
 ### Ambient patrons
 Most occupants are lightweight population: eat, drink, talk, rest, look toward disturbances, and optionally enter/leave later if inexpensive. No full dialogue trees, schedules, procedural conversations, per-patron reputation, or day/night simulation.
 
-Recommended opening composition:
+Locked initial composition target:
 - two locals sharing a hearth-side table
 - one traveler alone with visible gear at an outer-wall table
 - one patron actively eating near the hearth/service half
 - one occupied bar stool away from Garrick's main interaction point
-- one additional patron at a partially occupied communal table or second stool
+- one additional patron at a partially occupied communal table or second suitable seat
 
 Keep at least one usable table and several empty seats. Busy must retain negative space.
 
-# 2. Ground-floor footprint and plan
+# 2. Ground-floor footprint and plan — LOCKED GREYBOX TARGET
 
-Greybox target: approximately **18 m wide × 14 m deep** enclosed footprint before wall thickness. Allow roughly ±10–15% during camera/walkability playtesting. The common room uses about two-thirds of the floor; kitchen/service/vertical circulation uses most of the remainder.
+Initial greybox target: approximately **18 m wide × 14 m deep** enclosed footprint before wall thickness.
+
+Dimensions remain adjustable roughly **±10–15%** through walkability/camera playtesting. This tuning allowance is explicitly approved and should not be treated as continuity drift.
+
+The common room uses about two-thirds of the floor; kitchen/service/vertical circulation uses most of the remainder.
 
 Organize the building as:
 1. front/public arrival band
@@ -44,17 +52,18 @@ Organize the building as:
 ```text
                          REAR / LOCAL PROPERTY
 ┌────────────────────────────────────────────────────────────────┐
-│ BACK DOOR       KITCHEN / SYLVIE                  STAIRS UP    │
-│ local only    ┌──────────────────┐              ┌───────────┐  │
-│               │ service / prep   │              │ to rooms  │  │
-│               └───────┬──────────┘              └─────┬─────┘  │
-│                       │ kitchen door/pass              │        │
-│ ┌──────────┐   ╔══════╧════════════════════╗     clear landing │
-│ │BASEMENT ↓│   ║       GARRICK'S BAR       ║                   │
-│ └────┬─────┘   ║       G ●                 ║                   │
-│      │          ╚═══════════════════════════╝                   │
-│ Marlow ●M       [weapon case / armory display]   [BOARD]       │
-│ table             public-side merchandise       public access  │
+│        KITCHEN / SYLVIE        REAR SERVICE PASSAGE            │
+│      ┌──────────────────┐   ┌──────────────────────┐           │
+│      │ service / prep   │──▶│ staff/service route │── BACK     │
+│      │                  │   │ Garrick-side access │   DOOR     │
+│      └───────┬──────────┘   └──────────────────────┘  local    │
+│              │ kitchen door/pass                              │
+│ ┌──────────┐ ╔╧════════════════════════════╗      STAIRS UP    │
+│ │BASEMENT ↓│ ║       GARRICK'S BAR         ║    ┌───────────┐  │
+│ └────┬─────┘ ║       G ●                   ║    │ to rooms  │  │
+│      │        ╚═════════════════════════════╝    └─────┬─────┘  │
+│ Marlow ●M     [weapon case / armory]   [BOARD]   clear landing │
+│ table           public browse         public access             │
 │                                                                │
 │ ┌───────────┐   ┌─────────────┐       ┌─────────────────┐     │
 │ │ FIREPLACE │   │ locals x2   │       │ traveler + gear │     │
@@ -71,7 +80,21 @@ Organize the building as:
 
 ASCII is relational authority, not final wall geometry/art.
 
-# 3. Front entrance and player start
+## Building-character allowance — LOCKED
+
+The visual floor plan and Blender greybox should **not** turn this into one perfectly rectangular box subdivided into perfectly aligned rectangles.
+
+Allow modest architectural irregularity consistent with an Inn that has been used, repaired, or expanded over time, while preserving gameplay readability.
+
+Approved examples:
+- kitchen/service portion may project slightly from the main public footprint
+- fireplace/chimney mass may create thicker exterior structure
+- slight offsets may exist between service and public portions
+- wall runs or room edges may be subtly non-uniform where this helps the building feel accumulated rather than diagrammatic
+
+Do **not** turn these irregularities into a maze, awkward navigation, hidden circulation, or major footprint redesign. Gameplay clarity remains more important than architectural eccentricity.
+
+# 3. Front entrance and player start — LOCKED
 
 The **front door remains the sole opening-MVP Regional Map exit** and regional return point.
 
@@ -79,11 +102,11 @@ After Character Creation place the player roughly **2–3 m inside** the door wi
 
 The initial view should catch Garrick/bar as the strongest social anchor, a glimpse of the board, some occupied common-room life, Marlow off-axis, and the upstairs direction. Do not spawn the player staring squarely into Garrick like a dialogue rail.
 
-# 4. Bar, merchandise, contract board, and Garrick sightlines
+# 4. Bar, merchandise, contract board, and Garrick sightlines — LOCKED
 
 Recommended bar footprint: **5.5–6.5 m long × 1.0–1.2 m deep**, with **1.2–1.5 m** staff clearance behind it and **2.0–2.5 m** public clearway in front.
 
-Place it in the rear-middle/right half of the common room. One or two stools may be occupied, but Garrick's main player interaction point stays clear.
+Place it in the rear-middle/right half of the common room. Garrick/bar remains the **primary social anchor**. One or two stools may be occupied, but Garrick's main player interaction point stays clear.
 
 ## Garrick's merchandise / armory presentation
 
@@ -107,8 +130,6 @@ The player approaches and interacts with the board entirely from normal common-r
 
 Recommended board interaction zone: preserve roughly **1.5–2.0 m clear standing/approach space** in front of it, outside the stair landing, kitchen route, and main central aisle. The board should be visible from the room and preferably glimpsed from the opening view, but not readable in detail from spawn.
 
-This preserves the intended social logic: locals leave work with Garrick, Garrick controls access to the postings, but customers never need permission to physically enter his bar just to look at the board.
-
 ## Garrick sightlines
 
 From Garrick's normal position he should directly or nearly directly see:
@@ -125,17 +146,17 @@ No supernatural awareness through walls.
 
 Kitchen traffic passes his service-side peripheral view. The upstairs stair begins in the rear-right public area before disappearing upward. The basement door sits across the central aisle on the rear-left/service edge. If later dressing partly occludes that door, opening sound plus Marlow's opening presence can support the reaction.
 
-# 5. Marlow opening placement
+# 5. Marlow opening placement — LOCKED
 
 Marlow uses a small **2-person table about 4–6 m from Garrick**, left/rear of the common room and near, but not blocking, the basement route.
 
-The table supports meal, drink, notebook, satchel, harmless specimens, and the breakable sample. It is close enough for the Garrick/Marlow exchange, far enough that Marlow has his own space, and off-axis from player spawn.
+The table supports meal, drink, notebook, satchel, harmless specimens, and the breakable sample. It is close enough for the Garrick/Marlow exchange, far enough that Marlow has his own space, and **off-axis from player spawn**.
 
 Do not place ambient patron bodies directly across the important Garrick↔Marlow opening composition. Marlow's crash should be physically readable as a disturbance in the room.
 
-# 6. Hearth and seating
+# 6. Hearth and seating — LOCKED
 
-Place the main fireplace on the **left exterior wall**, diagonal/opposite the bar, creating a second social pole.
+Place the main fireplace on the **left exterior wall**, diagonal/opposite the bar. The fireplace/hearth remains the **secondary social anchor**.
 
 Hearth zone target: **3.5–4.5 m wide** including safe furniture clearance. Its chimney can rise along the exterior wall through the upper floor rather than cutting through central guest space.
 
@@ -146,33 +167,44 @@ Typical footprints:
 - 4-person/common table: **1.2–1.6 m × 0.8–1.0 m**
 - chair clearance: about **0.9 m minimum**, preferably **1.2 m+** on player-facing routes
 
-# 7. Kitchen, service, and back door
+# 7. Kitchen, rear service passage, and back door — LOCKED REFINEMENT
 
-Sylvie's kitchen occupies the **rear-left/center service side directly adjacent to the bar**.
+Sylvie's kitchen occupies the **rear-left/center service side directly adjacent to the bar/service operation**.
+
+The back door must read clearly as part of **Inn service circulation**, not as an unrelated second exterior entrance beside the basement/Marlow area.
+
+Locked circulation relationship:
+
+**common/public room → service/kitchen threshold → small rear service passage → back door**
+
+The rear service passage may also relate naturally to Garrick's staff side so supplies, staff movement, deliveries, or future local-property use can occur without routing through the middle of the public room.
 
 Required relationship:
-- normal doorway from common/service side that reads socially private
+- normal kitchen doorway from common/service side that reads socially private
 - efficient plate/food path to bar/common room
 - optional small pass/shelf between kitchen and bar service side
-- service-side relationship to the back door
+- compact rear service passage on the kitchen/staff side
+- back door reached through that service passage rather than presented as a peer public entrance in the common room
 
-The **back door sits on the rear wall near the kitchen/service zone**. It remains local Inn/property space only and is **not** a Regional Map portal. No final function is assigned by this pass.
+The **back door remains local Inn/property space only** and is **not** a Regional Map portal. No final exterior function is assigned by this pass.
+
+Do not decide whether it eventually leads to an inn yard, deliveries, refuse/storage, stable, garden, alley, or anything else. Preserve only the architectural service relationship and future compatibility.
 
 Kitchen oven/hearth/vent should use the rear/service wall or a flue that can rise without colliding with the upstairs central hall. It need not share the common-room chimney.
 
 Preserve: **“My inn. Her kitchen.”**
 
-# 8. Basement access
+# 8. Basement access — LOCKED
 
-Use a real closed door to a descending stair, not an exposed dungeon opening. Put it on the rear-left/service edge near Marlow's opening area.
+Use a real closed door to a descending stair, not an exposed dungeon opening. Put it on the rear-left/service edge near Marlow's opening area, but keep it visually and circulationally distinct from the rear service-passage/back-door route.
 
 Recommended stair clear width: **1.1–1.3 m**; stair run/landing footprint roughly **3.5–4.5 m** depending on turn. It can descend beneath the common/service footprint toward the established lab.
 
 Furniture and patron anchors should naturally avoid this door, making it read as private/resident access. This pass does not redesign Marlow's lab.
 
-# 9. Upstairs / rentable rooms
+# 9. Upstairs / rentable rooms — LOCKED FIRST GREYBOX
 
-Use a compact landing + central hall with **four modest guest rooms**. This is enough for a believable inn without hotel-management scope.
+Use a compact landing + central hall with **four modest guest rooms**. This is approved for the first greybox and is enough for a believable Inn without hotel-management scope.
 
 ```text
                            REAR
@@ -187,15 +219,15 @@ Use a compact landing + central hall with **four modest guest rooms**. This is e
                            FRONT
 ```
 
-Which numbered room becomes the player's can change. The requirement is a stable physical rented room containing the already-approved **bed + persistent storage chest**.
+Which numbered room becomes the player's can change. The requirement is a **stable physical rented-room location** containing the already-approved **bed + persistent storage chest**.
 
 Room interior target: **3.5–4.5 m × 4–5 m**. Hall: **1.4–1.8 m** clear. Landing: approximately **2.5 m × 2.5 m minimum**.
 
 Do not add decorating, housing construction, storage upgrades, property ownership, or companions living there.
 
-# 10. Circulation and bottlenecks
+# 10. Circulation and bottlenecks — LOCKED GREYBOX TARGETS
 
-Preserve a **front door → central aisle → bar/rear** circulation spine about **2.0–2.5 m wide**. Branches reach hearth, bar/board, merchandise, stairs, kitchen, and basement.
+Preserve a **front door → central aisle → bar/rear** circulation spine about **2.0–2.5 m wide**. Branches reach hearth, bar/board, merchandise, stairs, kitchen, basement, and the staff/service threshold.
 
 No furniture, merchandise fixture, or patron marker should permanently reduce a primary route below about **1.2 m**; major routes should usually remain **1.8 m+**.
 
@@ -211,22 +243,25 @@ Avoid:
 - kitchen door opening into the bar interaction queue
 - basement door hidden behind Marlow's table
 - patrons idling in the central aisle
+- public traffic using the rear service passage as though it were a second lobby entrance
 
-# 11. Patron placement zones
+# 11. Patron placement zones — LOCKED FIRST IMPLEMENTATION
 
-**A — Hearth locals:** two locals at a small table near fireplace.
+**A — Hearth locals:** two ambient locals at a small table near fireplace.
 
-**B — Traveler edge:** one traveler + pack at exterior wall/window.
+**B — Traveler edge:** one ambient traveler + pack at exterior wall/window.
 
-**C — Eating patron:** one diner near hearth/service half, outside central aisle; visually proves Sylvie has customers.
+**C — Eating patron:** one ambient diner near hearth/service half, outside central aisle; visually proves Sylvie has customers.
 
-**D — Bar regular:** one occupied end stool, never Garrick's primary interaction position or the merchandise/board approach.
+**D — Bar regular:** one ambient patron at an occupied end stool, never Garrick's primary interaction position or the merchandise/board approach.
 
-**E — Flexible/partial table:** sixth patron or deliberately empty/partial communal table for density tuning.
+**E — Flexible/partial table:** sixth ambient patron or deliberately partial communal seating placement for density tuning.
+
+These are ambient roles only for the first implementation. **Do not name them yet.**
 
 All anchors stay outside door swings, stair landings, board interaction space, merchandise interaction space, Marlow's focal staging line, and the arrival pocket.
 
-# 12. Minimal ambient behavior
+# 12. Minimal ambient behavior — LOCKED MVP TARGET
 
 Reusable MVP set:
 - quiet seated conversation
@@ -241,7 +276,7 @@ Do not implement schedules, procedural conversations, full day/night turnover, o
 
 During important dialogue the Inn does **not** freeze. Nearby chatter can dip modestly; patrons retain small idle motions; avoid launching loud ambient barks over focal lines; Marlow's crash earns brief looks before patrons resume.
 
-# 13. Greybox-ready measurements
+# 13. Greybox-ready measurements — APPROVED STARTING VALUES
 
 These are gameplay-friendly starting values, not historical engineering requirements:
 
@@ -264,21 +299,69 @@ These are gameplay-friendly starting values, not historical engineering requirem
 
 Wall thickness, beams, windows, door swings, and stair headroom should be represented in the visual plan/Blender greybox enough to prevent the building reading as disconnected rectangles, but final architectural art is not locked.
 
-# 14. Architectural plausibility notes
+# 14. Architectural plausibility notes — LOCKED DIRECTION
 
 - Common-room fireplace sits on an exterior wall with a plausible vertical stack.
 - Kitchen heat/venting uses rear/service wall or separate flue.
 - Upstairs stair and hall occupy the rear-right/central footprint rather than teleporting between floors.
 - Basement stair descends under the service/common footprint without requiring impossible overlap.
 - Front windows can serve common-room public walls; avoid placing major windows where kitchen/service/privacy logic would make them awkward.
-- Back door aligns with service circulation, not the Regional Map.
+- Back door is reached through the rear service circulation rather than reading as a second common-room entrance.
 - Garrick's public merchandise and contract board sit beside his service area without requiring customer entry behind the bar.
+- Modest footprint/wall irregularity is desirable if it makes the Inn feel repaired/expanded over time without harming navigation.
 - Furniture and fixtures leave door swings and circulation usable.
 
 Do not lock final materials, textures, furniture models, lighting, palette, or architectural ornament in this pass.
 
-# 15. Existing character visual-reference audit
+# 15. Existing character visual-reference audit — PRESERVED
 
 Repository review for this pass found **character role/personality/behavior notes** in `docs/CHARACTERS.md`, but no authoritative appearance specification there for Garrick, Sylvie, Marlow, or Ily.
 
-The repository tree/search reviewed for this task did **not surface committed portrait/reference-image files for Garrick or
+The repository tree/search reviewed for this task did **not surface committed portrait/reference-image files for Garrick or Sylvie**. Existing Unity content contains prototype character representations/scripts, but those are implementation scaffolding and must not be promoted into final visual canon.
+
+Current repo-supported visual information:
+- **Garrick:** rugged/large/strong character direction only; no locked appearance sheet found.
+- **Marlow:** personality/role/opening staging only; no locked appearance sheet found.
+- **Sylvie:** personality/role/culinary authority only; no locked appearance sheet found.
+- **Ily:** role/personality/profession + Spear tactical identity; no locked appearance sheet found.
+
+Central Brain believes external image references may exist from earlier development. **Recover/confirm those references rather than inventing replacements.** Do not redesign appearances in this pass.
+
+# 16. Approval state
+
+## Central Brain-approved / locked for spatial production
+- ~18 × 14 m initial ground-floor greybox target
+- roughly ±10–15% walkability/camera adjustment allowance
+- 6 ambient patrons for first implementation
+- 5–9 patron tuning range
+- 0 newly named minor patrons for first implementation
+- Garrick/bar as primary social anchor
+- fireplace/hearth as secondary social anchor
+- Marlow table ~4–6 m from Garrick and off-axis from spawn
+- player start ~2–3 m inside front entrance with breathing room
+- public merchandise/weapon display beside Garrick's bar without obstructing circulation
+- public contract board just outside/adjacent to bar, never requiring entry behind counter
+- private-looking closed basement door/stair
+- four modest upstairs rooms for first greybox
+- stable player room with bed + persistent storage chest
+- approved circulation widths and ambient behavior targets
+- rear service passage connecting kitchen/staff side to back door
+- modest architectural irregularity without compromising gameplay readability
+- front door remains Regional Map/regional travel
+- back door remains local Inn/property future space
+
+## Still intentionally unresolved / downstream
+- exact final exterior silhouette after visual floor-plan iteration
+- exact projection/offset amount of kitchen/service addition
+- final wall thicknesses/beam placement/window pattern
+- final materials, lighting, furniture art, and decorative treatment
+- what exists outside the back door
+- authoritative character appearance sheets until external references are recovered/confirmed
+
+# 17. Production readiness
+
+Central Brain considers this spatial authority **locked enough for the next production-design step**:
+
+**design authority → first top-down visual floor plan → Blender greybox brief → Blender greybox → Unity walkable blockout → proportion/camera playtest → later environment art**
+
+The visual-plan/greybox builder should not need to invent the Inn's population target, core footprint, social anchors, circulation, service relationships, back-door logic, sightlines, stair placement, room count, patron zones, merchandise/board access, or approximate scale.
