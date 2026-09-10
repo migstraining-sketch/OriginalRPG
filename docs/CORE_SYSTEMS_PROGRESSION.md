@@ -35,7 +35,6 @@ Prefer a few understandable, consistent interacting rules over bespoke scripted 
 - base Movement **3**
 - one Primary Action
 - split movement before/after the action
-- current single-combat prototype alternates player/enemy phases
 - no universal opportunity attacks or universal facing/flanking
 - Open / Difficult / Blocking terrain; Difficult costs 2 Movement
 - readable enemy intent/telegraphs
@@ -52,6 +51,8 @@ While Defending:
 **Damage Taken = max(1, ceil((Attack Damage - Armor) × 0.5))**
 
 Prototype: player 30 HP / Armor 1; fixed damage; starter Sword 6. Shields remain deferred.
+
+**Defend duration is now locked:** Defend begins immediately when used and lasts until the start of that Combatant's next activation, when it expires before the new action. It does not expire merely because the global round changed.
 
 ### Equipment / weapon signatures
 
@@ -75,16 +76,19 @@ No universal Shove for MVP. One equipped weapon at a time; switching in combat s
 - combat progression should add permanent tactical verbs horizontally before numerical inflation; exact technique acquisition remains unresolved
 - Bow targeting inconsistency is a priority Unity implementation bug
 
+Committed telegraphs are now explicit: once Pounce, Rush, Charge, or another committed action locks a target/lane/destination/order, it does not silently adapt because another unit acted first unless that creature has an explicit adaptation rule. General intent such as Pursue may remain reactive.
+
 ## Group combat / party expansion — LOCKED / CURRENT DIRECTION
 
 Detailed authority:
 
 **`docs/GROUP_COMBAT_PARTY_MVP.md`**
 
-Central Brain has approved the group-combat architecture with a distributed numerical-advantage activation revision.
+Central Brain considers the group-combat grammar complete enough for the coordinated Unity pass.
 
 Locked direction:
 - architecture supports roughly **1–3 allies vs 1–6 enemies**, with six enemies an upper target rather than default encounter size
+- ordinary MVP allied Combat Participants are capped at **3 total**, including player, Active Party companions, and temporary/local helpers
 - player character + up to **2 active companions**
 - model **Combatant + Side + Controller + activation state**, not one-player/one-enemy assumptions
 - distinguish **Recruited Roster / Active Party / Combat Participants**
@@ -101,15 +105,15 @@ Locked direction:
 
 ### Distributed activation scheduler — locked
 
-Group combat uses unit activations inside rounds, but numerical superiority must not create a large tail of uninterrupted enemy turns after all allies act.
+At round start, build the schedule from Combatants who are **Ready and present at that round start**.
 
-When enemies outnumber allies, divide enemy activations into deterministic buckets distributed after allied activation slots.
+When enemies outnumber allies, divide enemy activations into deterministic buckets after allied activation slots.
 
 If `A` is allied Ready count and `E` is enemy Ready count with `E > A`:
 - base bucket = `floor(E / A)`
 - remainder = `E mod A`
 - the first `remainder` buckets receive one extra enemy activation
-- schedule one Ally activation, then that enemy bucket, repeating until all units have acted once
+- schedule one Ally activation, then that enemy bucket, repeating until all scheduled units have had their slot
 
 Examples:
 - **3v6:** `A → E → E → A → E → E → A → E → E`
@@ -118,15 +122,33 @@ Examples:
 
 Equal sides alternate normally starting with Allies. If allies outnumber enemies, alternate while enemies remain, then resolve remaining allied activations. No Speed/initiative stat is added.
 
-At extreme disparity such as 1v6, consecutive enemy turns are unavoidable if every combatant acts once; these encounters should be uncommon and ordinary AI activations must remain brisk.
+### Casualties / fleeing inside a round — locked
 
-### Opening defeat policy — locked
+If a scheduled Combatant becomes **Defeated, flees, surrenders, or otherwise leaves the encounter before its slot**, skip that activation.
+
+Do **not** rebucket or rebuild the remainder of the current round.
+
+Recalculate the next schedule at the start of the following round from then-present Ready Combatants.
+
+### Mixed-controller allied slots — locked
+
+Allied activation slots belong to the **Side**, not controller type.
+
+When multiple allied Combatants are Ready, the player chooses which Ready ally takes the next allied slot. If that Combatant is **Direct**, the player resolves it; if **Independent**, its AI immediately resolves it.
+
+There is no separate initiative track for AI companions.
+
+### Opening defeat / companion recovery — locked
 
 For MVP opening encounters:
 
 **player character Defeated → battle lost.**
 
-This is an encounter-level rule, not a universal engine truth. The player remains architecturally a Combatant who can enter Defeated state, and encounter rules decide whether that ends combat. Do not hard-code `playerHP <= 0` as the permanent combat-ending architecture.
+This remains an encounter-level rule, not a universal engine-level truth.
+
+A companion Defeated during combat is out for that encounter. After victory, the companion recovers to a stable **1 HP** but is **ineligible for further combat until the party Rests**. They may continue traveling/remaining physically present narratively unless authored content says otherwise.
+
+No revive items, injury tables, permanent companion death, bleed-out timers, or unconscious-body management are part of MVP.
 
 ### Starter Hunt companion direction — locked
 
@@ -142,9 +164,24 @@ These local NPCs should:
 - potentially demonstrate different combat styles/weapon geometry
 - become recruitable through character/narrative logic rather than as an automatic tutorial reward
 
-Exact identities, personalities, recruitment conditions, and kits belong to the upcoming Hunting/character design pass.
+The 3-allied-participant cap still applies. A local helper does not become a fourth normal Combat Participant if player + 2 Active Companions are already participating.
 
-**Do not modify Unity from this group-combat direction until Central Brain issues the coordinated implementation specification.**
+Exact identities, personalities, recruitment conditions, and kits belong to Hunting/character authority.
+
+### Coordinated Unity test priority — recommendation
+
+Implementation should prove smaller cases before stress testing the architectural ceiling:
+
+1. **1v1 regression**
+2. **1v2 / Mooncalf-style** multi-enemy targeting
+3. **2v1 with Ily/local partner**
+4. **2v2**
+5. **3v3**
+6. **3v5 / 3v6** scheduling/readability stress test
+
+This is a testing recommendation, not an authored encounter-progression rule.
+
+**Do not modify Unity from this direction until Central Brain issues/executes the coordinated implementation specification.**
 
 ## Dedicated opening-system authorities
 
@@ -179,10 +216,12 @@ Do not silently decide:
 - advanced initiative/reaction economies beyond the locked distributed MVP scheduler
 - shields, durability, enchantments, rarity/set systems, encumbrance
 - deep Smithing progression
-- final Well Fed / Rest Quality formulas
+- final Well Fed / Rest Quality formulas beyond the companion combat-eligibility consequence tied to Rest
 - exact economy/reward values
 - full loot/trading economy
-- exact companion identities, kits, recruitment conditions, post-defeat recovery, or technique-acquisition rules
+- exact companion identities, kits, recruitment conditions, or technique-acquisition rules
+- long-term injury/revival/permanent-death systems
+- larger allied encounter rules beyond the ordinary MVP cap of 3 Combat Participants
 - networking/co-op implementation
 
 ## Working rule
