@@ -2,9 +2,11 @@
 
 ## Status / authority
 
-**PROPOSED FOR CENTRAL BRAIN APPROVAL, with Mud in the Moonrice specified deeply enough for the coordinated Unity pass.**
+**LOCKED / CURRENT DIRECTION.**
 
-This document extends the locked starter-Hunt and group-combat authorities without rewriting either.
+Central Brain has approved the shared starter-Hunt partner doctrine, the character-level identities for all three starter partners, and the full **Mud in the Moonrice + Ilyra Fen** implementation specification for the upcoming coordinated Unity pass.
+
+Detailed implementation for Sable Venn / **Three Missing by Morning** and Nessa Vale / **When the Wheel Stopped** remains deliberately deferred until those contracts receive their own implementation passes.
 
 Upstream authorities remain:
 - `GROUP_COMBAT_PARTY_MVP.md` for Combatant / Side / Controller, Direct vs Independent control, activation scheduling, Active Party vs local Combat Participants, defeat rules, and physical-presence doctrine;
@@ -15,98 +17,128 @@ Upstream authorities remain:
 
 **Do not modify Unity from this document alone.** Central Brain is coordinating one implementation pass.
 
-## Shared local-partner doctrine
+## Locked shared local-partner doctrine
 
 Each starter Hunting contract has one local NPC who can work beside the player during that contract and may become recruitable afterward.
 
-These characters are not preselected classes, tutorial mannequins, or mandatory party members. The first starter contract the player chooses can naturally become the first potential-companion introduction, but all three contracts remain equal canon choices.
+All three starter Hunts remain equal choices. Whichever Hunt the player chooses first may naturally become the player's first exposure to a potential companion. **Mud in the Moonrice is the first Unity implementation target, not the mandatory party-onboarding route.**
 
-Shared rules:
-- the NPC is physically present for a believable local reason before the player needs party mechanics;
-- the NPC does not identify the Hunt's hidden cause or point out every clue;
-- the player still owns the core investigation and may sequence-break it normally;
-- the NPC can react to discoveries the player makes without becoming an answer dispenser;
-- combat does not become mandatory merely to demonstrate an ally;
-- no creature HP inflation, duplicate target, or extra wildlife is added solely to justify group combat;
-- if combat happens, the NPC uses the normal Combatant / Side / Controller rules rather than helper damage outside the turn system;
+Locked rules:
+- the NPC is physically present for a believable local reason before party mechanics are needed;
+- the NPC does not identify the Hunt's hidden cause, point out every clue, or solve the investigation for the player;
+- the player still owns the core Hunting problem and may sequence-break it normally;
+- the NPC can react to discoveries without becoming an answer dispenser;
+- combat is not forced merely to demonstrate an ally;
+- no creature HP inflation, duplicate target, or artificial extra wildlife is added solely for tutorial symmetry;
+- if combat happens, the NPC uses ordinary **Combatant / Side / Controller** rules rather than helper damage outside the turn system;
 - if the Hunt resolves peacefully, the NPC remains physically useful through ordinary local work, environmental manipulation, observation, or confirmation;
-- lethal and non-lethal routes remain legitimate and are not converted into companion approval tests;
-- recruitment is optional and follows from the relationship/event, not a `COMPANION UNLOCKED` reward button;
-- a recruited character later follows normal Recruited Roster / Active Party rules. Completing their Hunt does not automatically place them into the Active Party.
+- Cull and Manage remain legitimate practical routes rather than companion-approval morality tests;
+- recruitment is optional and conversational, not an automatic consequence of `contractComplete`;
+- recruitment does not automatically place the NPC into the Active Party; normal Recruited Roster / Active Party rules apply afterward.
 
-## First ally-control choice
+## Character-first weapon guardrail
 
-### Timing
+**The starter partners' weapons are tactical identities, not their personalities.**
 
-When the local partner and player are about to enter a plausible confrontation area, or the NPC explicitly agrees to accompany the player into the risky part of the Hunt, present one compact character-grounded choice **before combat begins**.
+Do not reduce Ily to “the Spear companion,” Sable to “the Bow companion,” or Nessa to “the Sword companion.” Their professions, relationships, motives, worldview, habits, obligations, interests, flaws, and later development must remain capable of carrying them outside combat.
 
-Recommended semantic choice:
-- **"Stay on my lead."** → Direct for this NPC if combat occurs.
-- **"Use your judgment."** → Independent AI for this NPC if combat occurs.
+Weapon geometry is one tactical expression of a character, not the character's reason to exist.
 
-Exact wording can adapt to character voice. The purpose is not to explain every party rule. A small contextual hint may clarify the mechanical meaning on first exposure, e.g. `Direct control` / `Independent`, but the dialogue itself should sound like two people agreeing how to work together.
+## Locked first ally-control choice
 
-No free mid-combat switching is added.
+Before a plausible confrontation, when the local partner has agreed to accompany the player into the risky part of the Hunt, use one compact character-grounded choice:
+
+- **“Stay on my lead.”** → Direct
+- **“Use your judgment.”** → Independent
+
+Exact wording may receive small character-voice polish later without changing the meaning.
+
+Do not dump initiative, Ready/Spent, activation buckets, AI scripting, or controller theory into this exchange. Minimal contextual UI may clarify `Direct` / `Independent` on first exposure if needed.
+
+No free mid-combat control switching is added.
+
+### Unexpected combat before the choice
+
+If combat begins unexpectedly before this arrangement is discussed, a physically present local partner defaults to **Independent** for that encounter when they have a believable reason to intervene.
+
+Do not interrupt already-started combat with controller setup.
 
 ### If combat never happens
 
-The choice simply remains the working arrangement for the dangerous portion of the job and never needs a combat tutorial payoff. On a Manage route the NPC continues physically with the player and contributes through believable non-combat actions.
-
-### If combat starts before the choice can occur
-
-Sequence breaks must not create a modal tutorial in the middle of danger. If an early attack or accidental engagement starts combat before the arrangement was discussed, the local NPC enters as **Independent** by default for that encounter if they are physically present and have a believable reason to intervene.
-
-Afterward, if another combat can occur, the player may establish the preference before that later encounter. Do not pause an already-started fight to ask for controller settings.
+The local partner remains physically present and useful on a peaceful Manage route. The control choice does not need an artificial combat payoff.
 
 ### Local partner vs recruited companion
 
-The pre-fight choice governs the local NPC as a Combat Participant during the contract. It does not mean the NPC is already recruited. If recruited later, the normal persistent per-companion Direct/Independent preference from party authority applies.
+The contract-time control choice governs a local Combat Participant. It does not mean the NPC is already recruited. If recruitment later succeeds, persistent companion control preference follows the normal party authority.
 
 ---
 
-# 1. Mud in the Moonrice — Ilyra Fen
+# 1. Mud in the Moonrice — Ilyra “Ily” Fen
+
+## Authority status
+
+**APPROVED AND LOCKED FOR THE COORDINATED UNITY PASS.**
+
+The detailed Mud + Ily integration below is current implementation authority. It must fit around the already-approved Hunt rather than rewriting it.
+
+Preserve without alteration:
+- three primary clues;
+- flexible clue order;
+- two-clue inference resilience;
+- explicit mudgrub inference from mudgrubs + supporting evidence;
+- three-beat tracking trail;
+- no giant direct-to-Reedback objective arrow;
+- early Reedback discovery/attack;
+- Reedback Pursue + short committed Rush;
+- manual Harvest;
+- wet-margin redirect;
+- early physical interaction with the alternate feeding area;
+- temporary scare-off ≠ completion;
+- behavioral Manage completion.
 
 ## Identity
 
 **Name:** Ilyra Fen  
 **Usual name:** Ily  
-**Role:** irrigation hand / ditch-mender who takes seasonal work maintaining field channels, bunds, and wetland edges around Reedwater  
+**Opening role:** seasonal irrigation hand / ditch-mender around Reedwater  
 **Weapon:** practical field spear  
-**Combat identity:** reach and spacing control
+**Combat identity:** reach, spacing, lane control, normal Spear + Drive geometry
 
-Ily is not Toma's employee in a permanent retainer sense. She takes seasonal farm and water-control work across the lowlands and knows Reedwater's channels because she has repaired them before.
+Ily takes seasonal farm and water-control work across the lowlands. She is not permanently bound to Toma's farm, but she has repaired Reedwater's channels before and knows the local irrigation hardware.
 
 ## Personality
 
-Dry, practical, alert, and mildly competitive about physical work. Ily dislikes standing around theorizing when something can be tested safely, but she is not reckless. She notices craftsmanship, bad repairs, useful terrain, and whether someone actually pulls their weight.
+Dry, practical, alert, and mildly competitive about physical work. Ily dislikes sloppy fixes and empty boasting but is patient with genuine uncertainty. She prefers the smallest change that actually solves a recurring physical problem.
 
-She does not romanticize animals or hunting. A Reedback wrecking a crop is a real problem; killing it can be reasonable. Redirecting it is also reasonable if the fix actually lasts. Her standard is **does the solution work**, not whether it earns moral purity points.
+She does not romanticize Hunting. A Reedback damaging crops is a real problem. Killing it can be reasonable. Redirecting it can also be reasonable if the change actually lasts. Her standard is whether the solution works, not whether it earns moral purity points.
 
 Character texture:
-- impatient with sloppy work, patient with genuine uncertainty;
-- likes solving physical problems with the smallest effective change;
+- notices craftsmanship, failed repairs, useful terrain, and whether someone pulls their weight;
+- tests practical ideas when doing so is safe;
 - skeptical of people who talk bigger than they act;
-- finds quiet satisfaction in watching water or terrain behave properly after a repair.
+- quietly enjoys watching water, ground, or machinery behave correctly after a repair.
 
-## Why she is at Reedwater Paddies
+Her Spear supports her tactical identity, but **it does not define her personality**.
 
-Toma asked Ily to inspect and patch the damaged low bund/entry route because repeated Reedback traffic and churned water are beginning to damage irrigation control as well as rice.
+## Why she is at Reedwater
 
-She is already there when the player arrives, working near the edge of the paddies with tools and her field spear within reach. This makes her presence independent of party onboarding.
+Toma asked Ily to inspect and patch the repeatedly damaged low bund / irrigation edge because Reedback traffic and churned water are beginning to damage water control as well as the rice.
+
+She is already working near the paddy edge when the player arrives, with tools and her field spear nearby. Her presence makes sense even if party mechanics did not exist.
 
 ## Relationship to Toma and the problem
 
-Ily and Toma know each other through seasonal farm work. There is mutual respect with ordinary friction: Toma wants the crop protected quickly; Ily refuses to promise that patching the same broken edge again will matter if nobody understands why the animal keeps returning.
+Ily and Toma know each other through seasonal farm work. There is mutual respect with ordinary friction: Toma wants the crop protected quickly; Ily is unwilling to promise that repairing the same break again will matter if nobody understands why the animal keeps returning.
 
 She knows:
 - which channel edges have been damaged;
-- which bund section she has repaired before;
+- which bund section has been repaired before;
 - that simply chasing the animal away has not lasted;
-- how to loosen or open the authored wet-margin/runnel terrain safely.
+- how to work the authored wet-margin/runnel terrain safely.
 
-She does **not** know at first:
-- that mudgrubs are the cause;
-- the complete three-clue inference;
+She does **not** initially know:
+- that mudgrubs are driving the Reedback's behavior;
+- the full three-clue inference;
 - exactly where the Reedback currently is;
 - whether Cull or Manage is the better solution.
 
@@ -116,31 +148,27 @@ She must not pre-solve the Hunt.
 
 Arrival remains at the sensible farm approach from regional travel.
 
-Toma remains the client and establishes the practical crop problem. Ily is visible nearby working rather than standing beside Toma waiting to join a quest.
+Toma remains the client and establishes the crop problem. Ily is visible nearby doing real work rather than standing beside him as a companion-selection object.
 
-The player may:
-- speak to Toma first;
-- speak to Ily first;
-- inspect nearby world evidence first;
-- move deeper into the paddies and sequence-break toward the Reedback.
+The player may speak to Toma first, speak to Ily first, inspect evidence first, or move deeper into the paddies and sequence-break toward the Reedback.
 
-Ily-first conversation should establish only that she is repairing damage that keeps recurring. She can say, in her own voice, that patching the edge again will not explain why the animal keeps choosing this field. She does not point to the mudgrubs or identify the answer.
+If spoken to first, Ily can establish only that she is repairing damage that keeps recurring. She may observe that another patch will not explain why the animal keeps choosing this field. She does not identify mudgrubs or reveal the solution.
 
-## Relationship to the existing three clues
+## Relationship to the approved clue structure
 
-The existing clue set is unchanged:
+The existing clues remain:
 1. churned feeding patch;
 2. exposed mudgrubs;
 3. broad Reedback tracks / entry route.
 
 Flexible order and two-clue resilience remain unchanged.
 
-Ily's contribution is **reactive, not revelatory**:
-- if the player inspects churned rice, she may note that this is not what a clean grazing pattern looks like, but does not finish the inference;
-- if the player exposes/discovers mudgrubs, she may react that the turned soil is full of them, leaving the player/Hunt Notes to connect cause and behavior;
-- at the track/entry route, she can distinguish old repair damage from fresh traffic if useful, but the tracks still carry the tracking information.
+Ily's role is **reactive, not revelatory**:
+- after the player inspects churned rice, she may note that it does not resemble clean grazing;
+- after the player discovers mudgrubs, she may react to how many are in the turned soil without completing the inference;
+- at the entry route, she may distinguish fresh traffic from an older repair, while the tracks still carry the Hunting information.
 
-If the player ignores Ily entirely, the Hunt remains solvable. The NPC is additive, not a dependency for investigation.
+If the player largely ignores Ily, the Hunt remains fully solvable.
 
 ## Following the Reedback
 
@@ -149,338 +177,236 @@ The approved three tracking beats remain unchanged:
 2. muddy flank rub on reeds/brush;
 3. fresh digging / newly exposed mudgrubs near the encounter area.
 
-Ily follows loosely once she and the player have a practical reason to head after the animal. She does not call out the next sign before the player reaches it.
+Once there is a practical reason to head after the animal, Ily follows loosely. She waits while the player inspects, catches up naturally on narrow paths, and may confirm a sign after the player finds it. She does not announce the next clue or draw a path to the Reedback.
 
-Useful behavior:
-- waits while the player inspects;
-- catches up naturally after narrow paddy paths;
-- can give a brief confirmation after a sign is found;
-- does not draw an invisible line to the encounter area.
-
-If the player reaches the Reedback early, Ily catches up where physically plausible rather than forcing a return to the trail.
+If the player reaches the Reedback early, Ily may catch up where physically plausible rather than forcing a return to the intended trail.
 
 ## First control-mode exchange
 
-Before the final wet-margin/encounter area, if combat has not already started, Ily recognizes that they may be close to a large animal.
+Before the final wet-margin / confrontation area, if combat has not already started, Ily can ask whether the player wants her following their calls or handling herself if the Reedback turns on them.
 
-Recommended exchange intent:
+Locked semantic responses:
+- **“Stay on my lead.”** → Direct
+- **“Use your judgment.”** → Independent
 
-**Ily:** asks whether the player wants her following their calls or handling herself if the Reedback turns on them.
+No systems lecture accompanies the exchange.
 
-Responses:
-- **"Stay on my lead."** → Direct.
-- **"Use your judgment."** → Independent.
-
-No additional menu explaining initiative, Ready/Spent, activation buckets, or AI settings appears here. The first actual allied activation can carry minimal contextual UI if needed.
-
-If the player attacked the Reedback before this exchange and Ily is present, she enters Independent for that fight rather than freezing the action for setup.
+If the player starts combat before this conversation and Ily is physically present, she enters as **Independent** for that encounter.
 
 ## Combat style and tactical geometry
 
-Ily uses the established **Spear** geometry:
+Ily uses the established Spear rules:
 - basic thrust at range 1–2 in a straight hex line;
 - **Drive** for reduced damage plus a one-hex push when legal.
 
-What she demonstrates naturally:
-- an ally can threaten from behind/beside the player rather than occupying the same adjacent space;
-- reach creates lane choices;
-- Drive can restore spacing after a Rush or move the Reedback away from a vulnerable route;
-- allied positioning matters even in a 2-v-1 without requiring more enemies.
+What her presence can naturally demonstrate:
+- an ally can threaten from behind or beside the player rather than crowding the same adjacent cell;
+- reach creates lane and sequencing choices;
+- Drive can restore spacing after a Rush or alter a vulnerable lane;
+- allied positioning matters even in a 2-v-1.
 
-Do **not** inflate Reedback durability to ensure Ily gets multiple turns. A quick 2-v-1 is acceptable. The point is that the party architecture works, not that every mechanic receives a showcase reel.
+Do **not** increase Reedback durability to guarantee Ily showcase turns. A short 2-v-1 is acceptable.
 
-## Independent AI behavior
+## Locked Independent AI behavior
 
 If Independent, Ily should:
-- seek a legal range-2 straight-line thrust when available rather than crowding adjacent by default;
-- avoid standing in the Reedback's clearly telegraphed Rush lane where a reasonable alternative exists;
-- use Drive when the push creates useful spacing, protects a route, or prevents immediate close pressure;
-- prefer full-damage basic attacks when the push has no meaningful positional value;
+- seek a legal range-2 straight-line thrust when useful rather than crowding adjacent by default;
+- avoid standing in a clearly telegraphed Rush lane where a reasonable alternative exists;
+- use Drive when its push creates meaningful spacing, protects a route, or prevents immediate close pressure;
+- prefer the full-damage basic attack when the push has no meaningful positional value;
 - avoid blocking the player's only clear approach/retreat lane when equivalent positions exist;
-- Defend if trapped under a severe readable threat with no useful attack/reposition.
+- Defend if trapped under severe readable threat with no better attack/reposition.
 
-She does not need bespoke Hunt-only combat powers.
+She receives no bespoke Hunt-only combat powers.
 
 ## Cull route participation
 
-If the player attacks or combat otherwise becomes necessary, Ily joins if physically present.
+If the player attacks or combat otherwise occurs, Ily joins when physically present and circumstances justify it.
 
-Her attitude is practical. She does not shame the player for killing the Reedback and does not celebrate the death as sport.
+Her reaction is practical. She does not shame the player for killing the Reedback and does not celebrate the death as sport.
 
 After victory:
-- she does **not** auto-loot;
-- she does **not** perform the Hunt's Harvest for the player;
-- the existing manual **Harvest Reedback → Fresh Reedback Haunch** remains the player's required Hunting step;
-- she may stand watch or make a brief practical comment while the player Harvests.
+- Ily does not auto-loot;
+- Ily does not perform Harvest for the player;
+- the player must still manually use **Harvest Reedback**;
+- manual Harvest still produces **Fresh Reedback Haunch** and gates lethal completion.
 
-If the player discovered the Manage possibility first and then kills the Reedback, Ily accepts that as the player's decision unless the surrounding circumstances provide a character-specific reason to object. The contract still follows the lethal completion rule.
+If the player first discovers the Manage possibility and later kills the Reedback, the contract follows the normal Cull completion rule.
 
 ## Manage route participation
 
-The approved wet-margin solution remains unchanged and remains physically available before formal inference where authored world state supports it.
-
-Ily is especially useful here because water/ground work is her trade, but she must not become the solution button.
+The approved wet-margin solution remains unchanged and physically available before formal inference where the authored world state supports it.
 
 Player-facing ownership remains:
-- the player notices or chooses to loosen/open the alternate wet feeding patch;
-- the player notices or chooses to open the small muddy runnel/soft connection;
-- the player may do these early, before formal inference;
-- the Reedback must later settle into feeding there for completion.
+- the player notices/chooses to loosen the alternate wet feeding patch;
+- the player notices/chooses to open the small muddy runnel/soft connection;
+- the player may do these early before formal inference;
+- the Reedback must later settle into feeding there for Manage completion.
 
-Ily can contribute physically **after the player initiates the work**:
-- brace or pull aside a small channel board;
-- hold a tool/edge while the player opens the runnel;
-- tamp/close the crop-side break after the alternate route is prepared;
-- help keep the new water/mud path stable while they wait and observe.
+Ily may physically assist **after the player initiates the work** through believable irrigation labor, such as bracing a channel board, holding a tool/edge while the runnel is opened, tamping the crop-side break, or helping stabilize the new water/mud path while they observe.
 
 These are cooperative staging actions, not extra puzzle steps and not requirements for the solution to exist.
 
-If the player prepared the alternate patch before speaking to Ily, she recognizes the work already done and helps with whatever remains instead of resetting the sequence.
+If the player prepared the alternate patch before speaking to Ily, she recognizes the work already done and helps only with what remains. She never resets the sequence.
 
-When the Reedback settles into the alternate patch, Ily can be the human witness who quietly confirms the practical result, e.g. the animal is digging there and no longer crossing the rice. The **behavior itself** remains the authoritative completion evidence.
+When the Reedback settles into the alternate patch, Ily may quietly confirm the practical result, but the **animal's behavior** remains the authoritative completion evidence.
 
 ## Temporary scare-off
 
-Ily does not misread fleeing as success. If the Reedback is merely frightened away while the feeding cause remains, she treats the job as unfinished.
+Ily does not misread fleeing as success. If the Reedback is only frightened away while the feeding cause remains, she treats the job as unfinished.
 
-She should not announce the exact solution. A practical reaction such as observing that it has come back before is enough.
-
-## Sequence-break behavior
+## Locked sequence-break support
 
 Support at minimum:
-- **Player investigates before speaking to Ily:** she reacts to current state rather than replaying setup.
-- **Player finds Reedback early:** Ily can catch up/participate if plausibly nearby; no forced return to clue chain.
-- **Player starts combat before controller choice:** Ily defaults Independent for that encounter.
-- **Player prepares wet margin early:** Ily does not invalidate it. Later Reedback use can still complete Manage.
-- **Player completes most/all Manage setup alone:** Ily contributes only what remains and does not demand a ceremonial cooperation step.
-- **Player kills after preparing redirect:** Cull becomes the actual route and manual Harvest remains required.
-- **Player scares Reedback away:** Ily recognizes temporary relief, not completion.
-- **Ily is ignored:** Hunt can still complete. Recruitment opportunity may be weaker or unavailable depending on the later relationship gate, but Hunting progression must not break.
+- player investigates before speaking to Ily;
+- player finds Reedback early;
+- player starts combat before controller choice → Ily defaults Independent;
+- player prepares wet margin early;
+- player completes most/all Manage setup alone;
+- player kills after preparing redirect → Cull + manual Harvest;
+- player scares Reedback away → still incomplete;
+- player largely ignores Ily → Hunting progression still works.
 
 ## Resolution reactions
 
 ### Cull
 
-Ily's reaction should be matter-of-fact: the animal was causing real damage and the player resolved it. If the player Harvests cleanly, she can respect that they did not waste the animal.
+Matter-of-fact acceptance that a real farm problem was resolved. Clean Harvest/non-waste may earn character respect, but Cull itself is not morally penalized.
 
 ### Manage
 
-Ily is more personally interested in this outcome because it resembles good field work: change the conditions so the problem stops recurring. This should be curiosity/satisfaction, not moral approval. She should not give more valuable rewards or better recruitment simply because the player chose Manage.
+Ily is personally interested because changing the conditions resembles good field work. This is professional satisfaction, not moral approval. Manage does not receive superior rewards or recruitment eligibility.
 
-## Recruitment direction
+## Recruitment
 
-**Proposed:** after the contract is genuinely complete and the player has worked alongside Ily enough for mutual respect to exist, a future-travel offer becomes conversationally available.
+Both Cull and Manage can support later recruitment.
 
-Ily is a seasonal worker rather than someone permanently bound to Reedwater. Her existing work is wrapping up once the damaged water control is stabilized, so agreeing to take other paid work/adventures is plausible.
+Recruitment requires an actual relationship/conversation beat and does **not** automatically follow `contractComplete`.
 
-Recruitment should require an actual exchange, not completion alone. Example intent:
-- player indicates they could use someone competent on the road / asks whether Ily takes work beyond field jobs;
-- Ily decides the player is worth working with based on having seen them handle a real problem;
-- she may agree to meet at Garrick's Inn or another sensible roster anchor after finishing the day's repair.
+Because Ily is a seasonal worker rather than permanently tied to Reedwater, future travel is plausible once the immediate water-control work is stabilized. A player may later ask whether she takes work beyond field jobs / whether she would travel with them. Ily can decide based on the relationship and what she observed during the job.
 
-If the player never asks/engages, no recruitment popup appears.
+If the player never engages that possibility, no recruitment popup appears.
 
-Both Cull and Manage can lead to recruitment. The route may color one or two lines, but does not determine eligibility by morality.
+Successful recruitment places Ily in the **Recruited Roster** according to normal party authority. It does not silently make her an Active Companion.
 
-## Mud-specific implementation state additions
+## Mud-specific implementation state
 
-In addition to the already-approved Hunting state, implementation should be able to represent:
-- `ilyMet`
-- `ilyWorkingWithPlayer` / local-cooperation state
-- `ilyControllerPreference` = Direct / Independent for the contract encounter
-- `ilyPhysicallyPresentForEncounter`
-- `ilySawCullOutcome`
-- `ilySawManageOutcome`
-- `ilyRecruitmentConversationAvailable`
-- `ilyRecruited` only if/when the later explicit relationship exchange succeeds
+In addition to the existing Hunting state, implementation must be able to distinguish at least:
+- whether Ily has been met;
+- whether she is currently cooperating with the player locally;
+- her Direct / Independent encounter preference if discussed;
+- whether she is physically present when combat begins;
+- whether she witnessed the Cull or Manage outcome where dialogue depends on it;
+- whether a recruitment conversation has become contextually available;
+- whether recruitment has actually succeeded.
 
-Exact variable names are downstream. Do not collapse recruitment into `contractComplete == true`.
+Exact variable names are downstream. Never collapse recruitment into `contractComplete == true`.
 
-## Mud-specific acceptance tests
+## Mud + Ily Unity acceptance tests
 
 All existing Mud acceptance tests remain in force, plus:
-- Ily is physically present at Reedwater for field-repair reasons before party mechanics are needed.
-- The original three clues, two-clue resilience, and three tracking beats work with or without speaking to Ily.
-- Ily never pre-identifies mudgrubs as the answer or points directly to the Reedback.
-- Before a normal confrontation, the player can establish Direct or Independent control through a compact character-grounded exchange.
-- If combat starts early before that exchange, Ily can join as Independent without a mid-combat setup modal.
-- In combat, Ily is a normal allied Combatant using Spear/Drive geometry and normal activation rules.
-- Reedback HP/enemy count are not inflated to justify Ily.
-- On Cull, Ily does not Harvest; manual player Harvest still produces Fresh Reedback Haunch and gates lethal completion.
-- On Manage, Ily remains physically present and can help with authored fieldwork after player initiation without becoming required to unlock the wet-margin interactions.
-- Early player preparation of the alternate feeding site remains valid.
-- Temporary scare-off remains incomplete even with Ily present.
-- Stable Reedback feeding at the alternate patch remains the Manage completion condition.
-- Neither route automatically recruits Ily.
-- If recruited, Ily enters Recruited Roster state rather than being silently forced into Active Party.
+- Ily is physically present at Reedwater for irrigation-repair reasons before party mechanics are needed;
+- original clues, inference resilience, and tracking work with or without speaking to Ily;
+- Ily never identifies mudgrubs as the answer for the player or points directly to the Reedback;
+- before normal confrontation, Direct/Independent can be established through the approved compact exchange;
+- early combat before that exchange defaults a present Ily to Independent without opening setup mid-fight;
+- in combat, Ily is a normal allied Combatant using Spear/Drive and normal activation rules;
+- Reedback HP/enemy count are not inflated for Ily;
+- on Cull, player manual Harvest remains required;
+- on Manage, Ily can assist after player initiation without gating the wet-margin interactions;
+- early player preparation of the alternate site remains valid;
+- temporary scare-off remains incomplete;
+- stable Reedback feeding away from the rice remains required for Manage completion;
+- Ily can remain physically present through a peaceful route without forcing combat;
+- Hunt completion alone does not recruit Ily.
 
 ---
 
 # 2. Three Missing by Morning — Sable Venn
 
-## Identity
+## Authority status
+
+**CHARACTER-LEVEL DIRECTION LOCKED. DETAILED CONTRACT INTEGRATION DEFERRED.**
+
+Do not treat this section as a complete implementation spec for Three Missing by Morning.
+
+## Locked identity
 
 **Name:** Sable Venn  
-**Role:** Mara Venn's adult niece, courier and occasional homestead hand  
-**Weapon:** Bow  
-**Combat identity:** LOS, preferred range, pressured fallback
+**Relationship:** Mara Venn's adult niece  
+**Opening role:** courier / temporary homestead hand  
+**Weapon identity:** Bow, centered on range and line of sight
 
-Sable has returned to the homestead after Mara sent word that animals were disappearing. She grew up helping around the property but now makes money carrying parcels and messages between scattered settlements.
+## Locked character direction
 
-## Personality
+Quick-witted, restless, observant, and lightly irreverent under pressure. She dislikes letting an unseen threat choose the terms of an encounter.
 
-Quick-witted, restless, observant about people, and mildly irreverent when nervous. Sable likes motion and hates waiting for something unseen to choose the terms of an encounter. She is affectionate toward Mara but bristles when treated like a child who came home to be protected.
+Her courier work already takes her along regional roads, making later travel/recruitment plausible without requiring her to abruptly abandon a fixed life.
 
-She is not an expert monster hunter. Her strengths are routes, sightlines, patience at distance, and knowing the physical layout of the homestead.
+Cull and Manage remain practical alternatives rather than morality tests.
 
-## Relationship to client/problem
+Her Bow is a tactical identity, **not her personality**. Future writing should develop her courier life, family relationship with Mara, habits, worldview, motives, obligations, and interests independently of ranged combat.
 
-Mara asked Sable to come because livestock losses were continuing and she wanted another pair of eyes at night. Sable has checked the yard and ground approaches repeatedly and found very little, which supports the Hunt's misdirection without giving away the elevated glide route.
+## Deferred to Three Missing implementation pass
 
-She does not know the Nightquill answer at the start.
+Do not lock yet:
+- exact first-contact staging;
+- exact clue reactions;
+- detailed Nightquill follow behavior;
+- detailed Bow AI priorities in that encounter;
+- exact peaceful participation;
+- exact sequence-break responses;
+- precise recruitment timing/conditions/dialogue.
 
-## Hunt participation
-
-Sable can:
-- describe where she already watched from without declaring where the predator came from;
-- help inspect the property after the player identifies something worth checking;
-- hold/open a ladder or stable a loose roof access point after the player decides to examine above;
-- on the non-lethal route, physically help secure the vent/remove the easy glide access after the player understands the route;
-- keep watch from a different angle while the player tests whether the deterrence works.
-
-She should never announce `look at the roof` merely because her contract exists.
-
-## Combat geometry
-
-If the Nightquill is hunted, Sable demonstrates the **Bow**:
-- range 2–4 and LOS matter;
-- she prefers open sightlines and avoids adjacency;
-- Quick Shot is an emergency fallback if pressured at range 1.
-
-This makes her mechanically distinct from Ily without making her numerically superior.
-
-## Independent AI
-
-Sable should:
-- preserve range 2–4 when practical;
-- reposition for clear LOS rather than firing through Blocking terrain;
-- avoid ending adjacent to the Nightquill if a safe firing position exists;
-- use Quick Shot only when already pressured at range 1 and a better escape/reposition is unavailable within the action economy;
-- avoid blocking the player's route through narrow coop/yard geometry.
-
-## Lethal vs non-lethal reaction
-
-**Lethal:** accepts that a predator repeatedly taking livestock may need to be killed; no trophy-hunter celebration.  
-**Non-lethal:** takes satisfaction in shutting down the route because she dislikes being outmaneuvered, not because it is morally superior.
-
-Fresh Duskhen Eggs remain Mara's contract ingredient reward regardless of route.
-
-## Recruitment direction
-
-Sable's courier work already takes her on regional roads, making occasional adventuring plausible. After working together successfully, the player may ask whether she wants better-paid/more interesting road work.
-
-She should not automatically abandon Mara or become recruited because the Nightquill contract ended. A short relationship exchange determines whether she joins the Recruited Roster.
-
-What makes choosing Sable first feel different: she introduces a more mobile, conversational partner and teaches **distance / LOS / watching space above ground** rather than field control.
+The future implementation pass must preserve the existing Nightquill Hunt rather than redesigning it around Sable.
 
 ---
 
 # 3. When the Wheel Stopped — Nessa Vale
 
-## Identity
+## Authority status
+
+**CHARACTER-LEVEL DIRECTION LOCKED. DETAILED CONTRACT INTEGRATION DEFERRED.**
+
+Do not treat this section as a complete implementation spec for When the Wheel Stopped.
+
+## Locked identity
 
 **Name:** Nessa Vale  
-**Role:** Oren Vale's younger sister and working mill hand / repairer  
-**Weapon:** short sword / heavy work blade represented by Sword geometry  
-**Combat identity:** flexible close range and Lunge mobility
+**Relationship:** Oren Vale's younger sister  
+**Opening role:** working mill hand / repairer  
+**Weapon identity:** Sword, centered on flexible close movement + Lunge
 
-Nessa works at the mill and has been trying to keep the channel clear while Oren handles customers, grain, and the stopped machinery. The recurring blockage is directly costing both of them work.
+## Locked character direction
 
-## Personality
+Steady, wry, stubborn, and mechanically curious. Nessa tends to mentally disassemble a broken system while other people are still complaining about it and dislikes repairs that treat symptoms instead of causes.
 
-Steady, wry, stubborn, and mechanically curious. Nessa has the habit of taking broken things apart mentally while someone else is still complaining about them. She dislikes waste, including wasted effort, and gets visibly irritated when a repair treats a symptom instead of the cause.
+Her connection to the mill is real. Future recruitment should feel like a meaningful personal choice rather than her abandoning her home and work because a quest ended.
 
-Compared with Ily she is less terrain-specialized and more machinery-minded; compared with Sable she is quieter and more deliberate.
+Cull and Manage remain practical alternatives rather than morality tests.
 
-## Relationship to client/problem
+Her Sword is a tactical identity, **not her personality**. Future writing should develop her relationship to Oren, mill work, local responsibilities, habits, worldview, ambitions, and conflicts independently of close-range combat.
 
-Nessa knows:
-- what debris she has removed from the wheel;
-- how often the channel reclogs;
-- where the old side-channel controls are;
-- which mill structures can be safely manipulated.
+## Deferred to When the Wheel Stopped implementation pass
 
-She does not initially know that the Brookmaws established a nursery or that the blockage is constructed habitat rather than random debris.
+Do not lock yet:
+- exact first-contact staging;
+- exact Brookmaw clue reactions;
+- detailed Sword/Lunge AI priorities in that encounter;
+- exact relocation assistance;
+- exact sequence-break responses;
+- precise recruitment timing/conditions/dialogue.
 
-## Hunt participation
-
-Nessa can:
-- distinguish machine damage from ordinary wear after the player identifies relevant debris;
-- help move heavy channel material once the player determines what needs changing;
-- on the Manage route, operate/hold mill hardware while the player restores the safer side-channel;
-- help observe whether water flow and Brookmaw movement have genuinely shifted away from the wheel.
-
-She must not point out the nursery/young before the player investigation earns that understanding.
-
-## Combat geometry
-
-If Cull occurs, Nessa demonstrates the **Sword**:
-- reliable adjacent basic attack;
-- Lunge from exactly 2 straight hexes creates a mobile close-range approach;
-- she is flexible rather than specialized in reach or distance.
-
-Do not add Brookmaws or increase their durability solely to give her more activations. Existing contract ecology determines enemy count.
-
-## Independent AI
-
-Nessa should:
-- use ordinary Movement + basic attack as the reliable default;
-- use Lunge when it creates a meaningful two-hex engagement while preserving movement for later repositioning;
-- avoid standing in water/terrain states that are clearly disadvantageous if equivalent land routes exist;
-- prioritize threats currently interfering with the player's route or mill-control space rather than chasing arbitrary targets.
-
-## Lethal vs non-lethal reaction
-
-**Lethal:** accepts removal if the nursery cannot/will not be safely moved; focuses afterward on clearing the mill rather than celebrating kills.  
-**Non-lethal:** appreciates that moving the nursery and restoring water flow solves both causes at once; again this is mechanical satisfaction, not morality scoring.
-
-Existing Fresh Brookmaw Tail / Naturally Shed Brookmaw Tail outcomes remain unchanged.
-
-## Recruitment direction
-
-Nessa is the least naturally itinerant of the three, so recruitment should feel like a larger personal choice. Proposed direction: the restored mill reduces the immediate pressure keeping her tied to constant emergency repair, and working with the player reminds her that she enjoys solving problems outside the mill walls.
-
-The player may open that possibility after the contract; Nessa does not instantly agree just because the wheel turns again. Exact commitment wording/timing should be character-polished before lock.
-
-What makes choosing Nessa first feel different: a grounded, quieter partner centered on **close-range mobility / machinery / environmental problem solving** rather than field reach or ranged scouting.
+The future implementation pass must preserve the existing Brookmaw Hunt rather than redesigning it around Nessa.
 
 ---
 
-# Comparative balance
+# Design gate status
 
-The three should feel different because their lives and geometry differ, not because one is the optimal starter companion.
+**Starter-Hunt partner design gate: COMPLETE for the upcoming coordinated Unity pass.**
 
-- **Ilyra Fen / Mud in the Moonrice:** Spear; spacing, lanes, fieldwork; dry practical energy.
-- **Sable Venn / Three Missing by Morning:** Bow; range, LOS, elevated threat; restless courier energy.
-- **Nessa Vale / When the Wheel Stopped:** Sword; flexible close range, Lunge, mill/environment interaction; steady mechanical energy.
-
-Balance guardrails:
-- no partner receives clearly superior opening stats/reward value merely because of contract order;
-- each should be competent enough that Independent AI feels trustworthy without outperforming the player's own decisions;
-- combat style is illustrative, not a class lock for the player's future party;
-- peaceful cooperation should be as character-revealing as fighting;
-- recruitment availability should be comparable in opportunity, but personality may make the exact conversation and immediate willingness differ;
-- no starter contract is required to access the party system long-term.
-
-# Central Brain decisions still required
-
-Unless separately approved, the following are proposals from this pass:
-1. exact identities/names: **Ilyra Fen, Sable Venn, Nessa Vale**;
-2. their relationships/jobs at the three locations;
-3. their opening weapon geometries: Spear / Bow / Sword respectively;
-4. Ily's full Mud implementation behavior and local state;
-5. the character-grounded `Stay on my lead` / `Use your judgment` presentation of Direct vs Independent;
-6. Independent-by-default handling if combat sequence-breaks before that choice;
-7. the broad recruitment hooks and whether recruitment can be offered immediately after each contract or should occur on a later encounter/return.
-
-No decision in this document changes the already-approved Hunting clues, inference thresholds, tracking, creature behavior, Harvest rules, ecological resolutions, ingredient outcomes, or Hunting unlock conditions.
+Current implementation authority for that pass:
+- shared local-partner/control/recruitment doctrine: locked;
+- Ilyra Fen + Mud in the Moonrice integration: locked/current;
+- Sable Venn character-level concept: locked, detailed Hunt integration deferred;
+- Nessa Vale character-level concept: locked, detailed Hunt integration deferred.
