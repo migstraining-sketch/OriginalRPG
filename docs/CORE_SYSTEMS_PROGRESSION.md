@@ -52,7 +52,7 @@ While Defending:
 
 Prototype: player 30 HP / Armor 1; fixed damage; starter Sword 6. Shields remain deferred.
 
-**Defend duration is now locked:** Defend begins immediately when used and lasts until the start of that Combatant's next activation, when it expires before the new action. It does not expire merely because the global round changed.
+**Defend duration is locked:** Defend begins immediately when used and lasts until the start of that Combatant's next activation, when it expires before the new action. It does not expire merely because the global round changed.
 
 ### Equipment / weapon signatures
 
@@ -76,7 +76,7 @@ No universal Shove for MVP. One equipped weapon at a time; switching in combat s
 - combat progression should add permanent tactical verbs horizontally before numerical inflation; exact technique acquisition remains unresolved
 - Bow targeting inconsistency is a priority Unity implementation bug
 
-Committed telegraphs are now explicit: once Pounce, Rush, Charge, or another committed action locks a target/lane/destination/order, it does not silently adapt because another unit acted first unless that creature has an explicit adaptation rule. General intent such as Pursue may remain reactive.
+Committed telegraphs are explicit: once Pounce, Rush, Charge, or another committed action locks a target/lane/destination/order, it does not silently adapt because another unit acted first unless that creature has an explicit adaptation rule. General intent such as Pursue may remain reactive.
 
 ## Group combat / party expansion — LOCKED / CURRENT DIRECTION
 
@@ -146,9 +146,26 @@ For MVP opening encounters:
 
 This remains an encounter-level rule, not a universal engine-level truth.
 
-A companion Defeated during combat is out for that encounter. After victory, the companion recovers to a stable **1 HP** but is **ineligible for further combat until the party Rests**. They may continue traveling/remaining physically present narratively unless authored content says otherwise.
+A companion Defeated during combat is out for that encounter. After **victory or a successful party Flee**, the companion recovers to a stable **1 HP** but is **ineligible for further combat until Basic Rest**. They may continue traveling/remaining physically present narratively unless authored content says otherwise.
 
-No revive items, injury tables, permanent companion death, bleed-out timers, or unconscious-body management are part of MVP.
+If an authored outcome logically prevents that companion from escaping with the party, it must be an explicit exception rather than ordinary MVP behavior.
+
+No revive items, injury tables, permanent companion death, bleed-out timers, unconscious-body management, corpse retrieval, or abandonment rules are part of MVP.
+
+### Basic Rest — locked MVP recovery rule
+
+**Basic Rest is available for free through Garrick's Inn hearth/common-room rest point and does not require renting a room.**
+
+Basic Rest:
+- restores the player to full HP
+- restores present companions to full HP
+- clears the state preventing previously Defeated companions from entering another combat
+- costs nothing
+- requires returning to Garrick's Inn
+
+Basic Rest is deliberately narrow. It does **not** introduce Rest Quality, fatigue, hunger, injury systems, paid recovery, buffs, time-management mechanics, or mandatory room rental.
+
+The rented room remains separately valuable through its private bed/rest location, persistent storage, home continuity, and potential future Rest Quality mechanics.
 
 ### Starter Hunt companion direction — locked
 
@@ -190,6 +207,7 @@ This is a testing recommendation, not an authored encounter-progression rule.
 - Potion Making: `SYSTEMS_POTION_MAKING.md`
 - Regional travel: `TRAVEL_WORLD_MAP_MVP.md`
 - Group combat / party: `GROUP_COMBAT_PARTY_MVP.md`
+- Inn-facing Basic Rest location/presentation: `INN_STARTING_AREA.md`
 
 ## Cross-system proposals still not locked
 
@@ -216,7 +234,8 @@ Do not silently decide:
 - advanced initiative/reaction economies beyond the locked distributed MVP scheduler
 - shields, durability, enchantments, rarity/set systems, encumbrance
 - deep Smithing progression
-- final Well Fed / Rest Quality formulas beyond the companion combat-eligibility consequence tied to Rest
+- final Well Fed / Rest Quality formulas beyond the locked Basic Rest recovery effect
+- fatigue, hunger, injury, paid recovery, camp-rest, or time-management systems
 - exact economy/reward values
 - full loot/trading economy
 - exact companion identities, kits, recruitment conditions, or technique-acquisition rules
