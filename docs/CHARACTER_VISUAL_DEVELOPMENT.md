@@ -6,13 +6,14 @@
 
 This document owns character-appearance continuity and reference tracking for the current visual-development pass. It does **not** rewrite personality, dialogue, story role, quest logic, combat rules, or gameplay canon. Those remain owned by their existing authorities.
 
-Central Brain approved the working visual direction in this file on 2026-09-10, with Garrick and Sylvie still subject to reference recovery for final face/look decisions.
+Central Brain approved the working visual direction in this file on 2026-09-10. Garrick remains recovery-first for final face/look decisions. Sylvie now has a Central Brain-recognized **candidate character reference** that establishes an appearance direction while leaving her final working-chef outfit and final reference approval unresolved.
 
 Status language in this document is deliberate:
 - **Inherited canon** preserves already-established character/system constraints.
 - **Approved working direction** is approved for visual development, concept exploration, and continuity guidance, but may still contain explicitly provisional palette/material details.
 - **Exploratory identity field** means generated concepts may test alternatives, but no choice is canon until Central Brain approves it.
-- **Recovery-sensitive** means a prior approved image may override or refine the current working scaffold when recovered.
+- **Recovery-sensitive** means a prior approved image may override or refine a current working scaffold when recovered.
+- **Candidate character reference** means a specific character image is important enough to guide appearance continuity, but it is not yet an approved final reference and establishes only the traits explicitly recorded for it.
 
 Do **not** modify Unity or Blender from this document alone.
 
@@ -173,21 +174,15 @@ Current committed PNG files are prototype/playtest validation screenshots such a
 
 No dedicated committed character-art/reference directory was found.
 
-No committed portrait, turnaround, concept sheet, approved reference image, or candidate character-reference image was found for:
-- Garrick
-- Sylvie
-- Marlow
-- Ily
+## Library/reference updates - 2026-09-10
 
-## Library recovery update - 2026-09-10
+### Garrick contextual reference
 
 Central Brain located and this subchat inspected a Library image named:
 
 **`Garrick’s Inn: A Safe Haven.png`**
 
 This is the previously generated Garrick's Inn concept board. It includes a visible Garrick behind the bar and labels the kitchen as Sylvie's working space.
-
-### Garrick contextual reference record
 
 **Character:** Garrick  
 **Image:** Library - `Garrick’s Inn: A Safe Haven.png`  
@@ -218,13 +213,49 @@ This is the previously generated Garrick's Inn concept board. It includes a visi
 
 The contextual board therefore **does not satisfy the search for a dedicated earlier Garrick character image**. Continue recovery before replacement final-design work.
 
-### Sylvie contextual result
+### Sylvie candidate character reference
 
-The same board contains Sylvie's labeled kitchen, but it does **not** provide a meaningful Sylvie character appearance reference.
+Central Brain and the project owner provided an external appearance-direction image now present in the Library as:
 
-It may support environmental compatibility for her future design, such as working safely in a hot, practical kitchen, but it establishes **no Sylvie face, hair, body, clothing, skin, eye, or identity traits**.
+**`The Warmhearted Tavern Cook.png`**
 
-Continue recovery-first search for Sylvie.
+**Reference class:** **character reference**  
+**Character:** Sylvie  
+**Purpose:** appearance-direction reference to preserve the woman while redesigning her into the project's practical chef-first canon  
+**Status:** **CANDIDATE CHARACTER REFERENCE**  
+**Authority:** Central Brain explicitly classified this image as an important Sylvie appearance-direction reference, but **not** a literal final outfit sheet.
+
+Central translation rule:
+
+**Keep the woman. Adapt the outfit into Sylvie.**
+
+**What this candidate establishes/guides:**
+- short blonde hair
+- blue eyes
+- attractive anime facial-design direction
+- compact feminine silhouette
+- confident visual presence
+- general beauty/appeal direction
+- compatibility with the approved project-wide **stylized dark-fantasy anime key art translated into 3D** family
+
+**What this candidate does NOT establish:**
+- final outfit
+- final apron design
+- exact level of exposure
+- final body proportions
+- exact pose/body language
+- literal kitchen costume canon
+- exact garment construction
+- final footwear
+- final tool loadout
+- final material/palette balance beyond the broader Sylvie and project style authorities
+- final Blender/modeling reference
+
+The image's revealing/playful clothing is specifically **not** carried into literal game canon. Future concepts should preserve the woman's appearance direction while adapting her into a practical elite chef suited to heat, movement, food safety, service, and Garrick's Inn.
+
+The previous recovery-first concern no longer blocks **exploratory Sylvie outfit adaptation** because Central Brain has now supplied a character-specific candidate direction. If another earlier dedicated Sylvie image is later recovered, compare it deliberately rather than silently replacing this candidate. Final Sylvie approval still belongs to Central Brain.
+
+The Inn concept board's labeled Sylvie kitchen remains environment context only and establishes no character-appearance traits.
 
 ### Marlow and Ily
 
@@ -248,7 +279,7 @@ Classify the reference before assigning character-reference status:
 
 The four status labels below primarily govern **character references**:
 - **exploratory** - useful for testing possibilities; establishes no canon
-- **candidate** - selected for serious comparison/review; still not canon
+- **candidate** - selected for serious comparison/review; still not final canon
 - **approved reference** - Central Brain-approved visual reference whose stated traits should be preserved
 - **superseded** - formerly useful/approved but replaced by a later explicit decision
 
@@ -277,8 +308,8 @@ A missing historical image is **not** assigned one of the four main character-re
 | --- | --- | --- | --- |
 | Garrick | Library `Garrick’s Inn: A Safe Haven.png` | **candidate / contextual** | supports environment fit and rugged bartender context only; does not lock identity traits |
 | Garrick | dedicated earlier character image believed to exist | **external reference to recover** | final face/look remains recovery-first |
+| Sylvie | Library `The Warmhearted Tavern Cook.png` | **candidate character reference** | establishes short blonde hair, blue eyes, attractive anime face/general beauty direction, compact feminine silhouette, and confident visual presence; outfit is not canon |
 | Sylvie | `Garrick’s Inn: A Safe Haven.png` kitchen area | environmental context only, **not a character reference** | establishes no Sylvie appearance traits |
-| Sylvie | earlier development character image believed to exist | **external reference to recover** | final face/look remains recovery-first |
 | Marlow | none recovered | none | approved working direction may enter exploratory image generation |
 | Ily | none recovered | none | approved working direction may enter exploratory image generation |
 
@@ -384,52 +415,91 @@ Must remain readable: mass, shoulders, workwear silhouette, grounded posture.
 
 ## Central Brain approval state
 
-**APPROVED WORKING SCAFFOLD, RECOVERY-SENSITIVE FOR FINAL FACE/LOOK.**
+**APPROVED WORKING CHEF SCAFFOLD + CANDIDATE CHARACTER APPEARANCE DIRECTION.**
 
-Approved:
+Approved working scaffold:
 - compact, uncluttered working-chef silhouette
 - practical apron-led clothing
-- secured-hair working requirement
+- hair-control appropriate to a working kitchen
 - closed practical footwear
 - approximate **163-173 cm / 5'4"-5'8"** working range
 - apparent **late-20s to early-40s** working range
 - controlled off-white / dark-neutral / warm-accent material direction as provisional palette guidance
 
-The recovered Inn board does not provide a meaningful Sylvie character depiction and does not resolve any identity fields.
+Candidate appearance direction from **`The Warmhearted Tavern Cook.png`**:
+- short blonde hair
+- blue eyes
+- attractive anime facial design
+- compact feminine silhouette
+- confident visual presence
+- general beauty/appeal direction
+
+The candidate's current revealing/playful outfit is **not** approved as Sylvie's literal working costume.
+
+## Candidate appearance direction
+
+**Face:** preserve the candidate's attractive anime face language and confident presence as the current appearance direction. Exact facial geometry remains subject to Central Brain's later candidate/approval review rather than becoming final canon automatically.
+
+**Eyes:** blue is part of the candidate direction.
+
+**Hair:** short blonde hair is part of the candidate direction. The exact cut, strand arrangement, and final 3D shape remain to be refined within the project style anchor. Because the hair is short, the previous generic “secured hair” requirement should be interpreted functionally rather than forcing an unnecessary bun or braid: the final style simply must stay controlled and believable around heat and food.
+
+**Skin tone:** not established by Central Brain's current candidate-trait list; do not lock it merely from the image.
+
+**Build/proportions:** retain the existing compact feminine working silhouette and **5'4"-5'8"** working range. The reference does not lock final body proportions.
 
 ## Approved working visual direction
 
-**Overall silhouette:** compact, controlled, uncluttered. Arms and shoulders free to work. Her outline should communicate quick access to tools and zero tolerance for dangling costume pieces near flame, knives, pans, or food.
+**Overall silhouette:** compact, controlled, uncluttered. Arms and shoulders free to work. The silhouette should keep the candidate's feminine appeal while reading unmistakably as a high-competence working chef rather than a tavern pin-up or combat character.
 
-**Approximate height/build:** **163-173 cm / 5'4"-5'8"**, lean-to-sturdy working build with functional shoulder/forearm strength. A recovered approved reference may refine this range.
+**Posture/body language:** upright, precise, efficient, confident. In the kitchen, she occupies space with practiced certainty rather than posing for attention. Movements should feel deliberate and fast when needed.
 
-**Apparent age:** **late 20s to early 40s**. The important read is mastery, not youth or age signaling.
+**Clothing layers:** translate the reference into breathable, heat-safe, movement-safe chef clothing. Useful directions include a fitted but fully practical base shirt/blouse, short or secured sleeves, a substantial apron as the major visual block, durable trousers or another safe lower layer, and restrained fitted leather/cloth accents only where they serve tools or structure. Preserve shape appeal through tailoring and silhouette rather than exposure.
 
-**Posture/body language:** upright, precise, efficient. In the kitchen, she occupies space with practiced certainty rather than dramatic poses. Movements should feel deliberate and fast when needed.
+**Exposure rule:** attractiveness is welcome; **fanservice-first design is not**. No deep open neckline, deliberately falling-off shirt, lingerie-coded underlayer, or impractical exposed skin merely to reproduce the source image's playful presentation.
 
-**Face:** final facial identity remains recovery-sensitive. Direction only: composed, observant, capable of severe evaluation without requiring exaggerated anger.
+**Footwear:** closed, stable, practical kitchen shoes or short boots with reliable traction.
 
-**Skin/hair/eyes:** unresolved pending recovery.
+**Materials/fabrics:** washable linen/cotton-like cloth, heavy apron canvas, restrained leather for tool sheath/strap where useful, with rich controlled rendering appropriate to the project style anchor.
 
-**Hairstyle:** exact identity remains recovery-sensitive, but the **working-state requirement is approved**: hair is secured away from face, flame, and food. Bun, braid, wrap, tie, or another controlled solution may be tested after recovery.
-
-**Clothing layers:** breathable work shirt/blouse with sleeves short or secured; fitted practical waist layer if needed; substantial working apron; durable trousers or another movement-safe lower layer. No decorative tails, giant sleeves, corsetry, or exposed glamour styling that fights the kitchen fiction.
-
-**Footwear:** closed, stable, practical kitchen shoes/short boots with good traction.
-
-**Materials/fabrics:** washable linen/cotton-like cloth, heavy apron canvas, restrained leather for tool sheath/strap where useful.
-
-**Palette/material direction:** controlled warm off-white/cream, dark neutral such as charcoal/deep brown, and one restrained warm or culinary/Inn-adjacent accent. This remains provisional rather than exact palette canon.
+**Palette/material direction:** controlled warm off-white/cream, dark neutral such as charcoal/deep brown, and one restrained warm or culinary/Inn-adjacent accent. Preserve the reference's appealing light-hair/dark-clothing contrast where useful, but exact costume colors remain exploratory.
 
 **Wear/repair/weathering:** cleaner and more controlled than most working characters. Heat wear, faint staining, or a repaired apron is plausible, but maintenance itself is part of her competence. Her tools should look used and exceptionally cared for.
 
-**Signature objects:** one excellent working knife should matter more than a necklace of culinary props. A folded cloth and/or tasting spoon can support normal kitchen behavior without becoming mascot accessories.
+**Signature objects:** one excellent working knife should matter more than a necklace of culinary props. A folded cloth, tasting spoon, or pan can support normal kitchen behavior without becoming mascot accessories.
 
-**Profession cues:** apron, secured hair, heat-safe/knife-safe clothing, maintained blade, confident handling of the preparation space.
+**Profession cues:** apron, controlled short hair, heat-safe/knife-safe clothing, maintained blade, confident handling of preparation space, and clothing shapes that make sense near open flame and food.
 
 **Combat readability:** none required for this slice. Do not add armor or weapon language merely to make her look “RPG ready.”
 
-**Gameplay-camera identity:** clean apron block against darker work layer; secured-hair silhouette; compact, efficient posture; one immediately readable chef tool when working.
+**Gameplay-camera identity:** short blonde hair mass; light hair against darker chef layer; compact apron-led silhouette; confident upright posture; one immediately readable chef tool when working.
+
+## Sylvie exploratory adaptation brief - CURRENT NEXT STEP
+
+Goal:
+
+**Keep the woman. Adapt the outfit into Sylvie.**
+
+A useful exploratory pass should preserve the candidate face/hair/eye/beauty direction while testing practical chef silhouettes inside the locked project style family.
+
+Explore variation through:
+- apron architecture and shape
+- sleeve treatment
+- fitted vs looser chef layers
+- waist/tool organization
+- dark-fantasy material accents that remain kitchen-practical
+- controlled short-hair shape refinement
+- footwear and trouser/skirt-safe lower-body solutions
+- chef tools and body language
+
+Do **not** treat outfit variants as different women. The exploratory pass is about translating one candidate Sylvie identity into believable game clothing.
+
+Suggested useful directions for review:
+- **A. Service Chef:** cleanest, most controlled Inn-service silhouette; crisp apron geometry and efficient movement.
+- **B. Hearth Chef:** slightly warmer/heavier working layers for heat, roasting, lifting pans, and a rugged roadside-Inn feel.
+- **C. Precision Chef:** sharpest tailored silhouette and tool organization; strongest perfectionist/master-craft visual read without becoming formal/noble.
+
+All remain exploratory until Central Brain chooses whether any image should become a candidate outfit/character reference.
 
 ## Blender/modeling readiness
 
@@ -438,15 +508,16 @@ The recovered Inn board does not provide a meaningful Sylvie character depiction
 No final Sylvie Blender model begins yet.
 
 When modeling is later authorized, preserve:
-- uncluttered working silhouette
+- candidate short-blonde-hair identity direction if approved through final review
+- compact working silhouette
 - free arms/shoulders
 - apron as a major readable layer
-- secured hair in working state
 - practical closed footwear
+- strong light-hair/dark-layer silhouette separation if retained
 
 Safe simplification: apron stitching, tiny utensil loops, small stains, minor fasteners.
 
-Must remain readable: apron, hair-control solution, clean working posture, one key tool.
+Must remain readable: hair silhouette, apron, clean working posture, one key tool.
 
 ---
 
@@ -647,7 +718,7 @@ Must read from gameplay distance:
 The four should remain distinguishable even in neutral poses and muted lighting:
 
 - **Garrick:** largest, broadest, most block-like mass; rooted workwear silhouette.
-- **Sylvie:** compact, clean, apron-led working silhouette with arms free.
+- **Sylvie:** compact, clean, apron-led working silhouette with short-blonde-hair candidate direction.
 - **Marlow:** narrower layered field-research silhouette with satchel asymmetry.
 - **Ily:** athletic laborer silhouette with strong lower-leg work treatment and optional long spear line.
 
@@ -661,10 +732,10 @@ Apply the project-wide style anchor to each silhouette through shape appeal, fac
 
 Central Brain approved the following:
 
-1. Garrick and Sylvie remain recovery-first for final face/look decisions.
+1. Garrick remains recovery-first for final face/look decisions.
 2. Garrick's broad/heavy grounded silhouette, practical layered workwear, **6'2"-6'4"** working range, and **mid-40s to mid-50s** apparent-age range.
 3. Garrick's restrained worn wood/earth/smoke material language and muted warm-accent direction as provisional rather than exact palette canon.
-4. Sylvie's compact uncluttered working-chef silhouette, apron-led clothing, secured-hair working requirement, closed footwear, **5'4"-5'8"** working range, and **late-20s to early-40s** apparent-age range.
+4. Sylvie's compact uncluttered working-chef silhouette, apron-led clothing, kitchen-safe hair-control requirement, closed footwear, **5'4"-5'8"** working range, and **late-20s to early-40s** apparent-age range.
 5. Sylvie's controlled off-white/dark-neutral/warm-accent material direction as provisional.
 6. Marlow's narrow layered field-naturalist silhouette, field outer layer, cross-body satchel, notebook/specimen language, muted natural palette, **5'9"-6'0"** range, and **early-30s to early-40s** apparent-age range for exploratory image development.
 7. Marlow's exact skin tone, eyes, hair color, and facial identity remain exploratory.
@@ -676,6 +747,10 @@ Central Brain approved the following:
 13. The recently uploaded dark-fantasy anime reference image is the **approved project-wide style anchor**, not a character reference.
 14. The shared style family is **stylized dark-fantasy anime key art translated into 3D** and applies to future character exploration unless Central Brain defines an exception.
 15. Style influence must not override each character's profession-first identity or force glamour-boss styling, revealing designs, identical armor language, sensual posing, or the anchor image's literal content onto the cast.
+16. Library image **`The Warmhearted Tavern Cook.png`** is a **candidate character reference for Sylvie**.
+17. That Sylvie candidate establishes short blonde hair, blue eyes, attractive anime facial-design/general beauty direction, compact feminine silhouette, and confident visual presence.
+18. That Sylvie candidate does **not** establish final outfit, final apron, exact exposure, final proportions, exact pose, or literal kitchen costume canon.
+19. Sylvie's next exploratory pass should preserve the woman while adapting her clothing into a practical high-competence chef design: **Keep the woman. Adapt the outfit into Sylvie.**
 
 ---
 
@@ -685,7 +760,7 @@ Central Brain approved the following:
 
 **Garrick:** approved working silhouette/workwear scaffold; final face/look remains recovery-first. Recovered Inn concept board is candidate/contextual only. Continue searching for the dedicated earlier character image before replacement final-design work.  
 
-**Sylvie:** approved working chef scaffold; final face/look remains recovery-first. Inn concept board provides environment context only, not a usable Sylvie character reference. Continue recovery-first search.  
+**Sylvie:** now has a **candidate character appearance reference** in `The Warmhearted Tavern Cook.png`. Preserve its short blonde hair, blue eyes, attractive anime facial direction, compact feminine silhouette, and confident visual presence while redesigning the outfit into practical chef-first game clothing. The source outfit is not canon.  
 
 **Marlow:** approved working profile for exploratory character-image concepts. Future/refined exploration should use the project-wide style anchor. No image is canon until separately reviewed and approved.  
 
@@ -694,7 +769,7 @@ Central Brain approved the following:
 ## Next visual-production step
 
 - **Garrick:** use the recovered Inn board as contextual evidence only; continue dedicated-reference recovery, with future character exploration inside the shared style family.
-- **Sylvie:** continue dedicated-reference recovery, with future character exploration inside the shared style family.
+- **Sylvie:** produce an exploratory chef-outfit adaptation pass using the candidate woman and project style anchor. Do not promote any generated adaptation beyond **exploratory** until Central Brain reviews it.
 - **Marlow:** evaluate/refine exploratory concepts against the shared style anchor; prioritize silhouette, occupation, and overall identity before tiny costume details.
 - **Ily:** first exploratory image concepts may be developed within the shared style anchor, prioritizing worker-first silhouette, wet-field occupation, and overall identity.
 
