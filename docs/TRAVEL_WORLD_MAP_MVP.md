@@ -28,6 +28,8 @@ Central Brain has approved the following opening travel package:
 - room-rental behavior remains protected
 - qualitative visual distance for MVP rather than exact travel-minute labels
 - roughly 1–2 seconds of route/travel presentation as the current prototype target, subject to playtesting
+- **Garrick's Inn front door is the opening MVP's regional-travel exit**
+- **the Inn back door is not a Regional Map portal; it remains local Inn/property space reserved for future use**
 
 ## Problem being solved
 
@@ -47,15 +49,23 @@ Meaningful regional travel uses:
 
 **Current location → Leave/Travel boundary → Regional Map → select known destination → short route/travel transition → destination arrival**
 
+For Garrick's Inn specifically, the physical grammar is:
+
+**Garrick's Inn front door → Regional Map → known regional destination**
+
+Return travel uses:
+
+**Regional Map → Garrick's Inn → arrive through/at the front entrance**
+
 Opening examples:
 
-**Garrick's Inn → Regional Map → Woodland**
+**Garrick's Inn front door → Regional Map → Woodland**
 
-**Woodland → Regional Map → Garrick's Inn**
+**Woodland → Regional Map → Garrick's Inn front entrance**
 
 After starter contracts become known:
 
-**Garrick's Inn → Regional Map → Reedwater Paddies / Venn Homestead / Vale Watermill**
+**Garrick's Inn front door → Regional Map → Reedwater Paddies / Venn Homestead / Vale Watermill**
 
 Remote destinations return through the same regional layer rather than pretending they physically border the Inn or each other.
 
@@ -132,13 +142,27 @@ The background geography may naturally imply that the region continues beyond th
 
 ### Garrick's Inn
 
-For the current MVP, the Inn's meaningful exterior exit/travel interaction should lead to the regional map rather than directly to the Woodland.
+For the opening MVP, **the front door is the Inn's sole regional-travel exit**.
 
-Do not create a mandatory Inn-yard scene solely to justify this system.
+Using/leaving through the front door opens the Regional Map rather than loading the Woodland or another regional destination directly.
 
-A later immediate exterior/grounds area remains compatible with the architecture, but it is **not required for this pass**.
+Do not choose whichever doorway is most technically convenient as the travel portal. The front entrance is the physical connection between Garrick's Inn and regional travel, reinforcing the Inn as a believable building with stable spatial logic.
 
-The fiction is simply that the player leaves the Inn/local grounds and reaches the point where regional travel is abstracted.
+### Back door — local space only
+
+The Inn back door is **not** a Regional Map exit for MVP and must not become a second map portal.
+
+It belongs to Garrick's Inn/local property and is reserved for future local content. Exact future use is intentionally unresolved.
+
+Potential eventual uses may include an inn yard, deliveries, refuse/storage, stable, kitchen/service access, garden, alley, or another local-property function, but **none of these are selected or implemented by this travel package**.
+
+Preserve only the rule:
+
+**front door = regional travel**
+
+**back door = local Inn space / future use**
+
+Do not create a mandatory Inn-yard scene solely to justify regional travel. A later immediate exterior/grounds area remains compatible with the architecture but is not required for this pass.
 
 ### Remote locations
 
@@ -155,6 +179,8 @@ Opening the regional map is not itself a commitment to travel.
 The player should be able to cancel/back out and remain at the location they were leaving, unless the local fiction explicitly moved them past a one-way boundary.
 
 Once a destination is selected and travel is committed, the arrival occurs after the lightweight travel transition.
+
+When Garrick's Inn is selected as the return destination, arrival should stage the player **through or immediately at the front entrance**, not at the back door, kitchen, basement, or an arbitrary interior spawn point.
 
 ## Communicating distance and geography
 
@@ -198,6 +224,7 @@ The exact token animation and audio implementation are downstream presentation c
 Arrival should place the player at a sensible entrance edge/road/trailhead for that location rather than in the middle of its objective.
 
 Examples:
+- Garrick's Inn: through/at the front entrance
 - Woodland: trailhead/entry path with enough quiet space before the first combat or ingredient interaction
 - Reedwater Paddies: farm approach, not directly beside the Reedback clue
 - Venn Homestead: property approach, allowing the player to meet Mara and inspect the scene
@@ -213,7 +240,8 @@ After Marlow's woodland job is explicitly accepted:
 - Woodland becomes known/selectable.
 - Objective should communicate traveling to the Woodland, not imply the Inn door is the quest entrance.
 - Marlow provides/lends the clean field container needed for the Mooncalf Milk reagent before departure.
-- Leaving Garrick's Inn opens the Regional Map.
+- Player leaves Garrick's Inn through the **front door**.
+- Front door opens the Regional Map.
 - Player selects Woodland.
 - Brief route/travel presentation.
 - Player arrives at Woodland trailhead.
@@ -225,7 +253,7 @@ Return:
 - opens Regional Map with Woodland as current location
 - selects Garrick's Inn
 - travel transition
-- arrives back at the Inn
+- arrives through/at Garrick's Inn **front entrance**
 - returns to Marlow physically in the lab
 
 On return, the map/travel layer does not trigger or assume any Mossback conversation. Marlow's immediate priority is the troll treatment; NPC knowledge of the Mossback remains governed by dialogue/player-agency state.
@@ -241,10 +269,16 @@ A contract destination becomes selectable **only after that contract is accepted
 
 The other two contract locations are not automatically revealed as selectable merely because their postings exist.
 
+After contract acceptance:
+- leave Garrick's Inn through the **front door**
+- Regional Map
+- select accepted contract destination
+
 After contract resolution:
 - leave destination through its travel boundary
 - Regional Map
 - select Garrick's Inn
+- arrive through/at the **front entrance**
 - return to Garrick with outcome/material
 
 The other two starter contracts remain available and can reveal their destinations later when accepted.
@@ -253,11 +287,13 @@ The other two starter contracts remain available and can reveal their destinatio
 
 The opening rule that the player may genuinely leave Garrick's Inn remains intact.
 
-If the player leaves before learning any other destination, the Regional Map may contain only **Garrick's Inn as the known/current anchor** and no meaningful selectable destination yet.
+If the player uses the **front door** before learning any other destination, the Regional Map may contain only **Garrick's Inn as the known/current anchor** and no meaningful selectable destination yet.
 
 For MVP, do not invent a fake destination merely to reward premature leaving.
 
 The map can simply communicate that the player does not yet know where they are going and allow them to return/back out. If Central Brain later wants a small freely-known nearby destination, that is a separate content decision.
+
+The back door must not be used as an alternate escape around this state; it remains a local Inn/property boundary reserved for future content.
 
 This is preferable to turning the Woodland into the default exterior simply because it exists technically.
 
@@ -298,6 +334,8 @@ Travel implementation should be able to represent at minimum:
 - commit destination
 - short travel transition
 - destination arrival spawn/entry point
+- Garrick's Inn **front door** as the sole opening-MVP regional-travel trigger
+- Garrick's Inn **front entrance** as its regional return/arrival point
 
 Opening destination IDs/concepts needed:
 - Garrick's Inn
@@ -332,14 +370,18 @@ Do not design/implement yet:
 - Mooncalf herd simulation
 - milk-production/replenishment timers
 - detailed fluid-volume simulation
+- any specific back-door destination/function
 
 ## Approval status
 
-Central Brain has approved the core regional-map direction and the following former proposal details for MVP:
+Central Brain has approved the core regional-map direction and the following details for MVP:
 1. qualitative visual distance rather than exact travel-minute labels
 2. accepting each starter contract as the opening trigger that makes its specific destination selectable
 3. no invented destination when a player leaves before knowing anywhere else; allow cancel/return
 4. roughly 1–2 seconds of route trace/token movement plus fade/ambient change as the current prototype target, subject to playtesting
 5. destination arrival at a sensible local entrance/trailhead rather than directly at the quest objective
+6. **Garrick's Inn front door is the sole opening-MVP regional-travel exit**
+7. **regional return to Garrick's Inn arrives through/at the front entrance**
+8. **the back door is not a Regional Map portal and remains local Inn/property space reserved for future use**
 
-No additional travel-system approval question is created by the Mooncalf herd revision. The herd/container/resource behavior is local Woodland/opening logic; travel only needs to preserve Woodland revisitation and not erase that world state.
+No specific back-door function is chosen by this package.
