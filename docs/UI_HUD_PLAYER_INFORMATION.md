@@ -169,6 +169,10 @@ UI must not maintain a second copy of damage/Armor formulas that can drift away 
 
 Enemy intent should live primarily on/near the enemy and threatened grid space, with concise tray reinforcement. Telegraph danger, not the solution.
 
+### Multi-enemy telegraph visibility — LOCKED
+
+**A dangerous committed enemy telegraph remains visible even when another enemy is focused or selected.** Focus may reveal fuller detail for one enemy, but it must not hide another enemy's already-committed attack, threatened lane/area, or other essential danger cue.
+
 ## 13. Dialogue presentation — LOCKED DIRECTION
 
 Keep characters visually present. Prefer a **lower-third/lower-side dialogue presentation** rather than a large centered modal when composition allows. Show speaker + readable text.
@@ -177,13 +181,21 @@ Keep characters visually present. Prefer a **lower-third/lower-side dialogue pre
 
 Avoid scrolling for normal dialogue. If text routinely needs scrolling, fix layout/copy rather than normalizing scroll boxes.
 
+### Dialogue Esc / suspend behavior — LOCKED
+
+When a consequential response is waiting, **Esc does not choose, refuse, leave, or end the conversation.** Esc may collapse/suspend the large dialogue presentation, but the conversation remains active and a small **Resume Conversation** affordance remains available. Normal free movement does not resume until the player explicitly resumes the conversation or uses a legitimate authored Leave/End Conversation action.
+
+This preserves Esc as interface navigation rather than a hidden roleplaying choice.
+
 ## 14. Room-storage transfer — LOCKED
 
 The physical rented-room chest opens a two-pane interface:
 
 **Carried Inventory ↔ Room Storage**
 
-Use the same item language as Inventory, support direct transfer and sensible stack/quantity handling, and let Esc/back close back to the room while the transfer remains uncommitted. No global-bank access, needless confirmations, or transfer tax. Storage is valuable through organization and stockpiling, not a crippled backpack.
+Use the same item language as Inventory, support direct transfer and sensible stack/quantity handling, and keep access physically tied to the room chest. No global-bank access, needless confirmations, or transfer tax. Storage is valuable through organization and stockpiling, not a crippled backpack.
+
+**Completed transfers commit when the transfer action completes.** Esc/back cancels only an unfinished quantity selection or other uncommitted transfer sub-action; it does not reverse items already moved. Once no unfinished sub-action remains, Esc/back closes the storage interface back to the room.
 
 ## 15. Regional Map — LOCKED
 
@@ -199,13 +211,14 @@ Examples:
 
 - combat targeting → cancel targeting;
 - Inventory → close Inventory;
-- Storage → close Storage;
+- Storage quantity/sub-action → cancel only that unfinished sub-action; completed transfers remain committed;
+- Storage with no unfinished sub-action → close Storage;
 - Regional Map before travel commitment → cancel/return;
-- dialogue response menu → Esc must **not** secretly select No, Refuse, Leave, or another authored response.
+- dialogue response menu → suspend/collapse presentation without selecting No, Refuse, Leave, or another authored response; conversation remains active until resumed or explicitly ended.
 
 If leaving a conversation is itself consequential, it requires an explicit player action/response.
 
-Committed movement/actions/travel remain committed. Back does not rewind world state.
+Committed movement/actions/travel/transfers remain committed. Back does not rewind world state.
 
 ## 17. Progressive UI unlocking — LOCKED
 
@@ -224,13 +237,14 @@ Support UI scale, readable text, comfortable hit targets, strong hover/selected/
 # Must resolve before / during coordinated implementation
 
 - Fix/verify Bow targeting so code legality, grid highlight, hover explanation and click acceptance are identical.
-- Define a shared UI input/focus/back state contract implementing the locked Esc/back doctrine before adding Map, storage and new panels.
+- Implement the shared UI input/focus/back state contract above before adding Map, storage and new panels.
 - Keep gameplay state separate from presentation so Journal/HUD reads state without becoming quest logic.
 - Split monolithic `SliceHUD` responsibility; do not let debug `OnGUI` become permanent architecture by inertia.
-- Ensure dialogue exposes ordinary Continue separately from authored choices.
+- Ensure dialogue exposes ordinary Continue separately from authored choices and honors the locked suspend/resume behavior.
 - Ensure Hunting exposes observations/inferences/trail memory as data the Journal can present without inventing checklist progression.
-- Ensure storage uses the same inventory item model and the chest's physical interaction remains the access gate.
+- Ensure storage uses the same inventory item model, the chest's physical interaction remains the access gate, and completed transfers are not undone by Back.
 - Ensure damage preview consumes the same authoritative calculation/result used by combat resolution rather than reimplementing formulas in UI code.
+- Ensure dangerous committed enemy telegraphs remain visible even when focus moves elsewhere.
 
 # Explicitly unresolved / deferred
 
