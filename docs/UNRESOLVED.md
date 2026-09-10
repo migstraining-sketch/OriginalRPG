@@ -25,9 +25,26 @@ Questions for that later phase still include:
 - How often should the player return to Marlow/Sylvie?
 - Does the early game need another local destination or can the inn + nearby contract areas sustain the first hour or two?
 
-## Rest Quality
+## Basic Rest / Rest Quality
 
-**Immediate dependency, not a request for a full Rest Quality system:** defeated companions recover to stable 1 HP after victory and cannot fight until Rest under `GROUP_COMBAT_PARTY_MVP.md`. Central Brain still needs to define the minimal accessible Rest action, its cost/location and restoration, and recovery after Flee. Do not assume the deferred system already provides this interaction or silently require a paid room.
+### Basic Rest — resolved and locked for MVP
+
+A minimal recovery action now exists and is **not** part of the unresolved Rest Quality system.
+
+**Basic Rest is available for free through Garrick's Inn hearth/common-room rest point and does not require renting a room.**
+
+Basic Rest:
+- restores the player to full HP;
+- restores present companions to full HP;
+- clears the state preventing previously Defeated companions from entering another combat;
+- costs nothing;
+- requires returning to Garrick's Inn.
+
+A companion who was Defeated and then reaches the post-encounter state at 1 HP after **victory or successful Flee** remains combat-ineligible until Basic Rest.
+
+This resolves the immediate companion-recovery dependency. Do not re-open Basic Rest merely because deeper rest design remains unfinished.
+
+### Rest Quality — still unresolved
 
 Concept exists but exact mechanics do not.
 
@@ -35,12 +52,15 @@ Potential quality ladder mentioned:
 **floor < sleeping bag < protected camp < proper bed**
 
 Do not freeze yet:
-- what resting restores
-- whether it restores HP/MP
-- how Well Fed interacts with rest
-- room bonuses
-- frequency/limits
-- camp rules
+- Rest Quality bonuses/effects;
+- whether Well Fed interacts with Rest Quality;
+- room-specific bonuses;
+- camp-rest rules;
+- fatigue/hunger systems;
+- time-management/rest-frequency mechanics;
+- paid or premium recovery layers.
+
+The rented room remains valuable through its private bed/rest location, persistent storage, home continuity, and potential future Rest Quality mechanics. It is **not** required for ordinary MVP recovery.
 
 ## Well Fed
 
@@ -125,7 +145,7 @@ Unresolved:
 
 ## Combat
 
-The opening MVP combat model now has a locked/current refinement direction in `CORE_SYSTEMS_PROGRESSION.md`.
+The opening MVP combat model now has a locked/current refinement direction in `CORE_SYSTEMS_PROGRESSION.md` and group-combat authority in `GROUP_COMBAT_PARTY_MVP.md`.
 
 Locked/current opening direction includes:
 - small tactical hex grids projected over the exploration environment
@@ -142,6 +162,10 @@ Locked/current opening direction includes:
 - behavioral weaknesses over arbitrary tooltip weaknesses where practical
 - teach → mastery → remix enemy evolution
 - permanent learned weapon techniques as the preferred progression direction
+- group combat supports roughly 1–3 allies vs 1–6 enemies under the locked distributed activation grammar
+- player-down = battle loss for opening encounters, while remaining an encounter rule rather than universal engine truth
+- defeated companions recover to 1 HP after victory or successful Flee and require Basic Rest before re-entering combat
+- free Basic Rest at Garrick's Inn clears that combat-ineligibility state and restores present party HP
 
 Still unresolved:
 - final long-term combat stats/formulas
@@ -154,10 +178,11 @@ Still unresolved:
 - armor penetration
 - advanced status effects
 - cover/high-ground bonuses
-- advanced initiative
+- advanced initiative beyond the locked MVP group scheduler
 - shield mechanics
 - magic/ranged/melee long-term relationships
 - exact encounter tuning after Unity playtests
+- long-term injury/revival/recovery systems beyond Basic Rest
 
 Do not inherit BattleOn formulas by default.
 
