@@ -43,29 +43,29 @@ Organize the building as:
 
 ```text
                          REAR / LOCAL PROPERTY
-┌──────────────────────────────────────────────────────────────┐
-│ BACK DOOR       KITCHEN / SYLVIE               STAIRS UP    │
-│ local only    ┌──────────────────┐            ┌───────────┐  │
-│               │ service / prep   │            │ to rooms  │  │
-│               └───────┬──────────┘            └─────┬─────┘  │
-│                       │ kitchen door/pass            │        │
-│ ┌──────────┐   ╔══════╧════════════════════╗   clear landing │
-│ │BASEMENT ↓│   ║       GARRICK'S BAR       ║                 │
-│ └────┬─────┘   ║       G ●                 ║                 │
-│      │          ╚═══════════════════════════╝                 │
-│ Marlow ●M        CONTRACT BOARD behind/near bar               │
-│ table                                                        │
-│                                                              │
-│ ┌───────────┐   ┌─────────────┐       ┌─────────────────┐   │
-│ │ FIREPLACE │   │ locals x2   │       │ traveler + gear │   │
-│ │ diner     │   │ small table │       │ edge table      │   │
-│ └───────────┘   └─────────────┘       └─────────────────┘   │
-│                                                              │
-│ partial communal table        CENTRAL / ARRIVAL CLEAR SPACE   │
-│                                                              │
-│ WINDOWS                         PLAYER START ●                │
-│                           ┌──── FRONT DOOR ────┐              │
-└───────────────────────────┴────────────────────┴──────────────┘
+┌────────────────────────────────────────────────────────────────┐
+│ BACK DOOR       KITCHEN / SYLVIE                  STAIRS UP    │
+│ local only    ┌──────────────────┐              ┌───────────┐  │
+│               │ service / prep   │              │ to rooms  │  │
+│               └───────┬──────────┘              └─────┬─────┘  │
+│                       │ kitchen door/pass              │        │
+│ ┌──────────┐   ╔══════╧════════════════════╗     clear landing │
+│ │BASEMENT ↓│   ║       GARRICK'S BAR       ║                   │
+│ └────┬─────┘   ║       G ●                 ║                   │
+│      │          ╚═══════════════════════════╝                   │
+│ Marlow ●M       [weapon case / armory display]   [BOARD]       │
+│ table             public-side merchandise       public access  │
+│                                                                │
+│ ┌───────────┐   ┌─────────────┐       ┌─────────────────┐     │
+│ │ FIREPLACE │   │ locals x2   │       │ traveler + gear │     │
+│ │ diner     │   │ small table │       │ edge table      │     │
+│ └───────────┘   └─────────────┘       └─────────────────┘     │
+│                                                                │
+│ partial communal table          CENTRAL / ARRIVAL CLEAR SPACE  │
+│                                                                │
+│ WINDOWS                           PLAYER START ●                │
+│                             ┌──── FRONT DOOR ────┐              │
+└─────────────────────────────┴────────────────────┴──────────────┘
                          FRONT / REGIONAL TRAVEL
 ```
 
@@ -79,26 +79,51 @@ After Character Creation place the player roughly **2–3 m inside** the door wi
 
 The initial view should catch Garrick/bar as the strongest social anchor, a glimpse of the board, some occupied common-room life, Marlow off-axis, and the upstairs direction. Do not spawn the player staring squarely into Garrick like a dialogue rail.
 
-# 4. Bar, board, and Garrick sightlines
+# 4. Bar, merchandise, contract board, and Garrick sightlines
 
 Recommended bar footprint: **5.5–6.5 m long × 1.0–1.2 m deep**, with **1.2–1.5 m** staff clearance behind it and **2.0–2.5 m** public clearway in front.
 
 Place it in the rear-middle/right half of the common room. One or two stools may be occupied, but Garrick's main player interaction point stays clear.
 
-Mount the contract board behind Garrick or slightly over his shoulder. It is visible as a promise of work but accessed from the public/bar side; the player never needs to walk behind the counter.
+## Garrick's merchandise / armory presentation
+
+Garrick sells practical weapons and armor, so the room should physically show that trade rather than making all merchandise exist only in a shop menu.
+
+Place a **compact weapon case/rack and small armory display adjacent to the bar on the public side**, preferably toward one end rather than directly in front of Garrick. It can visibly contain representative opening merchandise such as a sword, spear, bow, body armor, or other practical adventuring stock supported by current equipment authority.
+
+The display is for browsing/interaction and visual storytelling. It must **not** become a freestanding island in the central aisle or narrow the main bar clearway. Keep roughly **1.5 m+ clear approach space** in front of the display and preserve the **2.0–2.5 m central/bar circulation spine** around it.
+
+Additional stock may plausibly remain behind/under Garrick's counter or on staff-side shelving, but the player-facing merchandise interaction should occur from public floor space. Garrick does not invite customers behind the bar to shop.
+
+Because the merchandise sits beside the bar and inside Garrick's normal sightline, browsing is natural and theft/provocation can be witnessed without supernatural awareness.
+
+## Contract board
+
+The contract board must be **physically accessible from the public side of the room**. Do **not** mount the interactable board literally behind Garrick's counter in a way that would require the player to enter staff/bar space.
+
+Place it **just outside one end of the bar**, mounted on an adjacent wall, short divider/endcap, or other public-facing vertical surface. It should visually belong to Garrick's service/work area and remain close enough that he can immediately see someone inspecting or trying to claim a posting.
+
+The player approaches and interacts with the board entirely from normal common-room floor space. Garrick stays behind his bar.
+
+Recommended board interaction zone: preserve roughly **1.5–2.0 m clear standing/approach space** in front of it, outside the stair landing, kitchen route, and main central aisle. The board should be visible from the room and preferably glimpsed from the opening view, but not readable in detail from spawn.
+
+This preserves the intended social logic: locals leave work with Garrick, Garrick controls access to the postings, but customers never need permission to physically enter his bar just to look at the board.
+
+## Garrick sightlines
 
 From Garrick's normal position he should directly or nearly directly see:
 - front entrance
 - central aisle
-- board approach
+- public contract-board approach
+- public merchandise/armory display
 - upstairs approach
 - kitchen doorway
-- merchandise/bar interaction zone
+- main bar interaction zone
 - basement-door approach
 
 No supernatural awareness through walls.
 
-Kitchen traffic passes his service-side peripheral view. The upstairs stair begins in the rear-right public area before disappearing upward. The basement door sits across the central aisle on the rear-left/service edge. If later dressing partly occludes that door, opening sound plus Marlow's opening presence can support the reaction. Opening merchandise remains at/behind the bar so ordinary theft is directly witnessed.
+Kitchen traffic passes his service-side peripheral view. The upstairs stair begins in the rear-right public area before disappearing upward. The basement door sits across the central aisle on the rear-left/service edge. If later dressing partly occludes that door, opening sound plus Marlow's opening presence can support the reaction.
 
 # 5. Marlow opening placement
 
@@ -170,12 +195,16 @@ Do not add decorating, housing construction, storage upgrades, property ownershi
 
 # 10. Circulation and bottlenecks
 
-Preserve a **front door → central aisle → bar/rear** circulation spine about **2.0–2.5 m wide**. Branches reach hearth, bar/board, stairs, kitchen, and basement.
+Preserve a **front door → central aisle → bar/rear** circulation spine about **2.0–2.5 m wide**. Branches reach hearth, bar/board, merchandise, stairs, kitchen, and basement.
 
-No furniture/patron marker should permanently reduce a primary route below about **1.2 m**; major routes should usually remain **1.8 m+**.
+No furniture, merchandise fixture, or patron marker should permanently reduce a primary route below about **1.2 m**; major routes should usually remain **1.8 m+**.
 
 Avoid:
 - table blocking spawn
+- weapon case/armory display becoming a central-aisle island
+- merchandise forcing the player into the bar's staff area
+- board placement requiring the player to enter behind the counter
+- board interaction zone overlapping stairs/kitchen traffic
 - stools forming a wall across the bar
 - stairs emptying into a dining chair
 - Marlow blocking basement access
@@ -191,11 +220,11 @@ Avoid:
 
 **C — Eating patron:** one diner near hearth/service half, outside central aisle; visually proves Sylvie has customers.
 
-**D — Bar regular:** one occupied end stool, never Garrick's primary interaction position.
+**D — Bar regular:** one occupied end stool, never Garrick's primary interaction position or the merchandise/board approach.
 
 **E — Flexible/partial table:** sixth patron or deliberately empty/partial communal table for density tuning.
 
-All anchors stay outside door swings, stair landings, board interaction space, Marlow's focal staging line, and the arrival pocket.
+All anchors stay outside door swings, stair landings, board interaction space, merchandise interaction space, Marlow's focal staging line, and the arrival pocket.
 
 # 12. Minimal ambient behavior
 
@@ -225,6 +254,8 @@ These are gameplay-friendly starting values, not historical engineering requirem
 - secondary circulation: **~1.2–1.5 m**
 - bar: **~5.5–6.5 × 1.0–1.2 m**
 - behind-bar staff clearance: **~1.2–1.5 m**
+- public board approach: **~1.5–2.0 m clear**
+- public merchandise approach: **~1.5 m+ clear**
 - stair clear width: **~1.1–1.3 m**
 - upstairs hall: **~1.4–1.8 m**
 - guest room: **~3.5–4.5 × 4–5 m**
@@ -241,7 +272,8 @@ Wall thickness, beams, windows, door swings, and stair headroom should be repres
 - Basement stair descends under the service/common footprint without requiring impossible overlap.
 - Front windows can serve common-room public walls; avoid placing major windows where kitchen/service/privacy logic would make them awkward.
 - Back door aligns with service circulation, not the Regional Map.
-- Furniture leaves door swings and circulation usable.
+- Garrick's public merchandise and contract board sit beside his service area without requiring customer entry behind the bar.
+- Furniture and fixtures leave door swings and circulation usable.
 
 Do not lock final materials, textures, furniture models, lighting, palette, or architectural ornament in this pass.
 
@@ -249,51 +281,4 @@ Do not lock final materials, textures, furniture models, lighting, palette, or a
 
 Repository review for this pass found **character role/personality/behavior notes** in `docs/CHARACTERS.md`, but no authoritative appearance specification there for Garrick, Sylvie, Marlow, or Ily.
 
-The repository tree/search reviewed for this task did **not surface committed portrait/reference-image files for Garrick or Sylvie**. Existing Unity content contains prototype character representations/scripts, but those are implementation scaffolding and must not be promoted into final visual canon.
-
-Current repo-supported visual information:
-- **Garrick:** rugged/large/strong character direction only; no locked appearance sheet found.
-- **Marlow:** personality/role/opening staging only; no locked appearance sheet found.
-- **Sylvie:** personality/role/culinary authority only; no locked appearance sheet found.
-- **Ily:** role/personality/profession + Spear tactical identity; no locked appearance sheet found.
-
-Central Brain believes Garrick/Sylvie image references may exist from earlier development outside the currently surfaced repository material. **Recover/confirm those references rather than inventing replacements.** Do not redesign appearances in this pass.
-
-# 16. Locked/proposed/unresolved distinction
-
-## Locked upstream rules preserved
-- immediate player autonomy
-- kitchen social gate
-- basement/Marlow chronology
-- board gate
-- room-rental flow and persistent chest benefit
-- front door = sole MVP Regional Map exit/return
-- back door = local Inn/property future-use only
-- Sylvie remains unseen/unintroduced until appropriate chronology
-
-## Proposed blockout behavior for Central Brain approval
-- 6 opening patrons, 5–9 playtest range
-- ~18 × 14 m footprint
-- rear-middle/right bar
-- left-wall hearth
-- rear-left/center kitchen + service back door
-- rear-left private basement access
-- rear-right upstairs access
-- four upstairs guest rooms
-- dimensions and patron zones above
-
-## Central Brain decisions still required
-1. Approve or revise the proposed ground-floor orientation/proportions.
-2. Approve the **6-patron target** and 5–9 tuning range.
-3. Decide whether MVP needs any named minor authored patron now, or ambient-only is sufficient.
-4. Confirm four upstairs guest rooms as enough for blockout, or request another modest count.
-5. Recover/confirm Garrick and Sylvie visual references believed to exist outside the surfaced repo; confirm whether Marlow/Ily already have external references.
-6. Final exact room assignment/numbering remains presentation-level unless implementation needs a stable identifier.
-
-# 17. Production readiness
-
-After Central Brain approves the proposed items above, this layout is specific enough for the next pipeline:
-
-**design authority → top-down visual plan → Blender greybox → Unity walkable blockout → proportion/camera playtest → later environment art**
-
-The greybox builder should not need to invent the building's core footprint, circulation, service relationships, sightlines, stair placement, patron zones, or approximate scale.
+The repository tree/search reviewed for this task did **not surface committed portrait/reference-image files for Garrick or
