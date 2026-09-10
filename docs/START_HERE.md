@@ -12,13 +12,14 @@ This repository is the continuity authority for the original RPG project.
 6. `docs/CORE_SYSTEMS_PROGRESSION.md`
 7. `docs/CHARACTERS.md`
 8. `docs/OPENING_FLOW.md`
-9. `docs/TRAVEL_WORLD_MAP_MVP.md`
-10. `docs/DIALOGUE_PLAYER_AGENCY.md`
-11. `docs/INN_STARTING_AREA.md`
-12. `docs/CONTRACTS.md`
-13. `docs/SYSTEMS_HUNTING.md`
-14. `docs/SYSTEMS_COOKING.md`
-15. `docs/UNRESOLVED.md`
+9. `docs/OPENING_MOONCALF_MILK_FAILURE.md`
+10. `docs/TRAVEL_WORLD_MAP_MVP.md`
+11. `docs/DIALOGUE_PLAYER_AGENCY.md`
+12. `docs/INN_STARTING_AREA.md`
+13. `docs/CONTRACTS.md`
+14. `docs/SYSTEMS_HUNTING.md`
+15. `docs/SYSTEMS_COOKING.md`
+16. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -28,6 +29,8 @@ Treat this repository as the source of truth for locked decisions. If a future c
 
 `docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design.
 
+`docs/OPENING_MOONCALF_MILK_FAILURE.md` is the opening-only authority for detecting genuine Mooncalf Milk reagent impossibility, removing impossible objectives, returning to Marlow, preserving the Potion Making consequence, and converging the failed Marlow route back into Garrick's board/Hunting progression.
+
 ## Project correction
 
 This is an **original RPG**, not an AdventureQuest/BattleOn reconstruction and not an October 15, 2002 chronology project. AdventureQuest, BattleOn, RuneScape, World of Warcraft, and other referenced games are research/inspiration only.
@@ -36,7 +39,7 @@ This is an **original RPG**, not an AdventureQuest/BattleOn reconstruction and n
 
 The opening is designed through:
 
-**Character Creation → Garrick's Inn → Marlow's opening quest → Regional Map → Woodland → Potion Making → first Hunting contract → Regional Map → contract destination → Hunting → Sylvie → Cooking unlock.**
+**Character Creation → Garrick's Inn → Marlow's opening quest → Regional Map → Woodland → Potion Making on success OR Marlow failure branch → first Hunting contract → Regional Map → contract destination → Hunting → Sylvie → Cooking unlock.**
 
 A playable Unity prototype exists, but implementation does not promote itself to canon.
 
