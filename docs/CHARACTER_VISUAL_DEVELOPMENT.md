@@ -2,15 +2,21 @@
 
 ## Status / authority
 
-**PROVISIONAL VISUAL-DEVELOPMENT AUTHORITY — CENTRAL BRAIN REVIEW REQUIRED.**
+**CENTRAL BRAIN-APPROVED VISUAL-DEVELOPMENT DIRECTION.**
 
 This document owns character-appearance continuity and reference tracking for the current visual-development pass. It does **not** rewrite personality, dialogue, story role, quest logic, combat rules, or gameplay canon. Those remain owned by their existing authorities.
 
-No new appearance detail in this file becomes locked merely because it is written here. Sections labeled **Inherited canon** preserve already-established constraints. Sections labeled **Provisional visual proposal** are candidate directions awaiting Central Brain approval. Recovered prior artwork outranks a new proposal where that artwork was previously approved.
+Central Brain approved the working visual direction in this file on 2026-09-10, with Garrick and Sylvie still subject to reference recovery for final face/look decisions.
+
+Status language in this document is deliberate:
+- **Inherited canon** preserves already-established character/system constraints.
+- **Approved working direction** is approved for visual development, concept exploration, and continuity guidance, but may still contain explicitly provisional palette/material details.
+- **Exploratory identity field** means generated concepts may test alternatives, but no choice is canon until Central Brain approves it.
+- **Recovery-sensitive** means a prior approved image may override or refine the current working scaffold when recovered.
 
 Do **not** modify Unity or Blender from this document alone.
 
-Immediate scope is limited to:
+Immediate scope remains limited to:
 - Garrick
 - Sylvie
 - Marlow
@@ -36,11 +42,11 @@ Practicality does not mean visual blandness. Distinction should come from silhou
 
 ---
 
-# 1. Repository visual-reference audit
+# 1. Visual-reference audit
 
-## Audit basis
+## Repository audit basis
 
-Reviewed current `main` at `631f087a49fe6e3a80a3e437b191e51fefcdbd14`, including:
+Initial audit reviewed `main` before the first visual-development commit, including:
 - `docs/START_HERE.md`
 - `docs/CHARACTERS.md`
 - `docs/HUNTING_PARTNERS.md`
@@ -48,55 +54,76 @@ Reviewed current `main` at `631f087a49fe6e3a80a3e437b191e51fefcdbd14`, including
 - `docs/INN_SPATIAL_BLOCKOUT.md`
 - `docs/OPENING_FLOW.md`
 - `docs/DESIGN_GUARDRAILS.md`
-- repository tree, current committed image files, and searches for appearance / portrait / visual-reference language
-
-## What exists
+- repository tree
+- committed image files
+- searches for appearance / portrait / visual-reference language
 
 The repository contains strong character-role, profession, personality, staging, and gameplay-context authority for all four characters.
 
 Current committed PNG files are prototype/playtest validation screenshots such as combat framing, Inn/kitchen/lab views, and encounter captures. They are **not character concept art or approved appearance references**.
 
-`docs/INN_SPATIAL_BLOCKOUT.md` already records that no authoritative appearance specification was found for Garrick, Sylvie, Marlow, or Ily and that prototype character representations must not be promoted into final visual canon.
-
-## What is missing
+`docs/INN_SPATIAL_BLOCKOUT.md` already records that no authoritative appearance specification was found in the repository for Garrick, Sylvie, Marlow, or Ily and that prototype character representations must not be promoted into final visual canon.
 
 No dedicated committed character-art/reference directory was found.
 
-No committed portrait, turnaround, concept sheet, approved reference image, or candidate reference image was found for:
+No committed portrait, turnaround, concept sheet, approved reference image, or candidate character-reference image was found for:
 - Garrick
 - Sylvie
 - Marlow
 - Ily
 
-### Garrick — external reference to recover
+## Library recovery update - 2026-09-10
 
-Earlier development is believed to have produced a Garrick image reference, but it is not currently committed or clearly represented in repository notes.
+Central Brain located and this subchat inspected a Library image named:
 
-**Recovery state:** external reference to recover.
+**`Garrick’s Inn: A Safe Haven.png`**
 
-Until recovered and reviewed:
-- do not invent a replacement “final Garrick”;
-- do not lock face, hair, exact age, skin tone, eye color, scars, or exact costume palette;
-- provisional silhouette/workwear guidance below exists only to organize review and should yield to a previously approved image if one is recovered.
+This is the previously generated Garrick's Inn concept board. It includes a visible Garrick behind the bar and labels the kitchen as Sylvie's working space.
 
-### Sylvie — external reference to recover
+### Garrick contextual reference record
 
-Earlier development is believed to have produced a Sylvie image reference, but it is not currently committed or clearly represented in repository notes.
+**Character:** Garrick  
+**Image:** Library - `Garrick’s Inn: A Safe Haven.png`  
+**Purpose:** Inn/environment concept board with contextual Garrick depiction  
+**Status:** **candidate / contextual visual reference**  
+**Authority:** Central Brain explicitly classified it as candidate/contextual, not automatically an approved Garrick character reference.
 
-**Recovery state:** external reference to recover.
+**What the image may help establish or test:**
+- Garrick should visually belong behind the bar rather than look pasted into the Inn as a separate fantasy-archetype costume.
+- A rugged, middle-aged working-bartender read is compatible with the character and environment direction.
+- Broad physical presence, practical work posture, and restrained rugged clothing can work within the Inn's warm wood/earth/smoke visual language.
+- Garrick should remain readable as the bar's human anchor within the larger room composition.
+- The character should harmonize with the Inn's lived-in competence rather than compete with it through bright heroic armor or ornate costume language.
 
-Until recovered and reviewed:
-- do not invent a replacement “final Sylvie”;
-- do not lock face, hair, exact age, skin tone, eye color, or exact costume palette;
-- provisional occupational/silhouette guidance below exists only to organize review and should yield to a previously approved image if one is recovered.
+**What the image does NOT establish:**
+- beard or beard style
+- facial identity or exact facial structure
+- hair, hairline, or hair color
+- skin tone
+- eye color
+- exact apparent age
+- exact height or body proportions
+- scars or other permanent facial/body marks
+- exact shirt, vest, apron, belt, boots, or clothing construction
+- exact character palette
+- signature weapon or combat equipment
+- final Blender/modeling reference
 
-### Marlow
+The contextual board therefore **does not satisfy the search for a dedicated earlier Garrick character image**. Continue recovery before replacement final-design work.
 
-No prior committed visual reference was found. No external-reference recovery requirement is currently known from repository authority.
+### Sylvie contextual result
 
-### Ily
+The same board contains Sylvie's labeled kitchen, but it does **not** provide a meaningful Sylvie character appearance reference.
 
-No prior committed visual reference was found. No external-reference recovery requirement is currently known from repository authority.
+It may support environmental compatibility for her future design, such as working safely in a hot, practical kitchen, but it establishes **no Sylvie face, hair, body, clothing, skin, eye, or identity traits**.
+
+Continue recovery-first search for Sylvie.
+
+### Marlow and Ily
+
+No prior committed or known dedicated appearance references have been recovered for Marlow or Ily.
+
+Central Brain has approved their working profiles for **exploratory image development**.
 
 ---
 
@@ -105,10 +132,12 @@ No prior committed visual reference was found. No external-reference recovery re
 Every important visual image should receive a record when it enters project continuity.
 
 Use these image statuses:
-- **exploratory** — useful for testing possibilities; establishes no canon
-- **candidate** — selected for serious comparison/review; still not canon
-- **approved reference** — Central Brain-approved visual reference whose stated traits should be preserved
-- **superseded** — formerly useful/approved but replaced by a later explicit decision
+- **exploratory** - useful for testing possibilities; establishes no canon
+- **candidate** - selected for serious comparison/review; still not canon
+- **approved reference** - Central Brain-approved visual reference whose stated traits should be preserved
+- **superseded** - formerly useful/approved but replaced by a later explicit decision
+
+A contextual/environment image may also be qualified as **candidate / contextual** when a character appears inside a broader scene but the image was not created or approved as a dedicated character sheet.
 
 For each image record:
 - character
@@ -116,24 +145,26 @@ For each image record:
 - purpose
 - status
 - date/status authority if known
-- traits the image establishes
+- traits the image establishes or may guide
 - traits the image explicitly does **not** establish
 - relationship to earlier/later references
 
-An image may establish only part of a design. Example: an approved clothing/silhouette reference does not automatically lock eye color if the image was never approved for facial identity.
+An image may establish only part of a design. An approved clothing/silhouette reference does not automatically lock eye color if the image was never approved for facial identity.
 
 ### Recovery records
 
-A missing historical image is **not** assigned one of the four image statuses until the actual image is recovered and reviewed. Track it separately as **external reference to recover** so absence cannot be mistaken for permission to redesign.
+A missing historical image is **not** assigned one of the four main image statuses until the actual image is recovered and reviewed. Track it separately as **external reference to recover** so absence cannot be mistaken for permission to redesign.
 
-Current recovery ledger:
+## Current reference and recovery ledger
 
-| Character | Reference | Recovery state | Canon effect |
+| Character | Reference | Status | Canon / continuity effect |
 | --- | --- | --- | --- |
-| Garrick | earlier development image believed to exist | **external reference to recover** | blocks replacement final-look decisions until checked |
-| Sylvie | earlier development image believed to exist | **external reference to recover** | blocks replacement final-look decisions until checked |
-| Marlow | none found/known | none | visual exploration may proceed after Central Brain approves profile direction |
-| Ily | none found/known | none | visual exploration may proceed after Central Brain approves profile direction |
+| Garrick | Library `Garrick’s Inn: A Safe Haven.png` | **candidate / contextual** | supports environment fit and rugged bartender context only; does not lock identity traits |
+| Garrick | dedicated earlier character image believed to exist | **external reference to recover** | final face/look remains recovery-first |
+| Sylvie | `Garrick’s Inn: A Safe Haven.png` kitchen area | environmental context only, **not a character reference** | establishes no Sylvie appearance traits |
+| Sylvie | earlier development character image believed to exist | **external reference to recover** | final face/look remains recovery-first |
+| Marlow | none recovered | none | approved working direction may enter exploratory image generation |
+| Ily | none recovered | none | approved working direction may enter exploratory image generation |
 
 ---
 
@@ -150,25 +181,33 @@ Current recovery ledger:
 - belongs visually to Garrick's Inn: **rugged roadside sanctuary / lived-in competence / repaired and practical**
 - should not become a generic Viking bartender, polished noble tavern owner, or fantasy-paladin armor mannequin
 
-## Recovery constraint
+## Central Brain approval state
 
-**Face/hair identity and any appearance traits established by the missing earlier reference remain unresolved until recovery.**
+**APPROVED WORKING SCAFFOLD, RECOVERY-SENSITIVE FOR FINAL FACE/LOOK.**
 
-The proposal below is deliberately a silhouette-and-function scaffold rather than a replacement character design.
+Approved:
+- broad/heavy grounded innkeeper silhouette
+- approximate **188-193 cm / 6'2"-6'4"** working range
+- apparent **mid-40s to mid-50s** working range
+- practical layered workwear
+- restrained worn wood/earth/smoke material language
+- muted warm-accent direction as provisional palette guidance, not exact palette canon
 
-## Provisional visual proposal — NOT LOCKED
+The recovered Inn board is useful contextual evidence, but it does not lock beard, face, hair, skin, clothing details, or other identity traits.
+
+## Approved working visual direction
 
 **Overall silhouette:** broad, dense, grounded. Large shoulders and torso create immediate physical presence, but the silhouette should read as a powerful working innkeeper rather than a costumed warrior. Keep major forms simple: broad upper body, sturdy lower body, practical layered workwear.
 
-**Approximate height/build:** candidate range around **188–193 cm / 6'2"–6'4"**, heavily built with real mass through shoulders, chest, forearms, and legs. Strong rather than bodybuilder-cut. Exact height must yield to recovered artwork if it contradicts this range.
+**Approximate height/build:** **188-193 cm / 6'2"-6'4"**, heavily built with real mass through shoulders, chest, forearms, and legs. Strong rather than bodybuilder-cut. A recovered approved dedicated character reference may refine this working range.
 
-**Apparent age:** candidate **mid-40s to mid-50s**. Old enough for accumulated competence and history, not physically diminished.
+**Apparent age:** **mid-40s to mid-50s**. Old enough for accumulated competence and history, not physically diminished. Exact apparent age may be refined after dedicated-reference recovery.
 
 **Posture/body language:** economical, planted stance; rarely needs theatrical intimidation. Behind the bar he should look comfortable owning the space. When attention sharpens, a small posture change should be enough to make him feel dangerous.
 
-**Face:** defer exact shape/features to recovered reference. Direction only: lived-in, strong-featured, capable of reading stern at rest without turning into a permanent scowl or barbarian caricature.
+**Face:** final facial identity remains recovery-sensitive. Direction only: lived-in and strong-featured, capable of reading stern at rest without turning into a permanent scowl or barbarian caricature.
 
-**Skin/hair/eyes:** **do not establish in this pass before reference recovery.**
+**Skin/hair/eyes:** unresolved pending recovery. The beard and light/medium skin presentation visible in the contextual Inn board are **not canonized**.
 
 **Hairstyle:** recover first. Whatever is retained should be practical and low-maintenance rather than ornamental fantasy styling.
 
@@ -176,25 +215,29 @@ The proposal below is deliberately a silhouette-and-function scaffold rather tha
 
 **Footwear:** heavy practical boots with good floor grip, worn but maintained.
 
-**Materials/fabrics:** wool, linen, heavy canvas, worn leather, iron/brass hardware in restrained amounts.
+**Materials/fabrics:** wool, linen, heavy canvas, worn leather, restrained iron/brass hardware.
 
-**Palette direction:** provisional smoke/charcoal, worn brown, muted cream, dark russet/oxblood or similarly restrained warm accent. Exact palette is recovery-sensitive.
+**Palette/material direction:** worn wood/earth/smoke values with muted cream and one restrained warm accent such as dark russet/oxblood. This is approved **provisional palette direction**, not exact color canon.
 
 **Wear/repair/weathering:** repaired seams, rubbed leather, polished wear at habitual contact points, sleeves/forearms showing work. Lived-in rather than filthy.
 
-**Signature objects:** practical key ring and/or ledger/coin handling can support landlord/merchant identity; ordinary belt knife is plausible. A weapon may be accessible in his work environment, but he should not need to wear conspicuous armor or a heroic weapon rig to communicate capability.
+**Signature objects:** practical key ring and/or ledger/coin handling can support landlord/merchant identity; ordinary belt knife is plausible. A weapon may be accessible in his work environment, but he should not need conspicuous armor or a heroic weapon rig to communicate capability.
 
 **Profession cues:** bar/service work, keys, practical merchant storage, rolled or work-ready sleeves, hands and clothing suited to moving barrels/crates and maintaining the building.
 
-**Combat readability:** if Garrick enters combat, his body mass and rooted stance should carry the read. Avoid turning on a separate “tank costume.” Any weapon should look like something a capable man keeps for real trouble, not his personality made into equipment.
+**Combat readability:** if Garrick enters combat, his body mass and rooted stance should carry the read. Avoid a separate “tank costume.” Any weapon should look like something a capable man keeps for real trouble, not his personality converted into equipment.
 
 **Gameplay-camera identity:** broad shoulder/torso silhouette; large physical scale relative to nearby patrons; simple sturdy work layers; confident stationary posture behind the bar.
 
-## Provisional Blender/modeling readiness — HOLD FOR RECOVERY
+## Blender/modeling readiness
 
-Do not start a final Garrick model until the earlier external image is recovered or Central Brain explicitly waives recovery.
+**HOLD FOR APPROVED CHARACTER REFERENCE/DIRECTION.**
 
-If a temporary visual blockout is later authorized, preserve only:
+No final Garrick Blender model begins yet.
+
+The current working scaffold can guide temporary proportions or future concept briefs, but final modeling waits until Central Brain approves a Garrick visual reference/direction after recovery work.
+
+When modeling is later authorized, preserve:
 - broad/heavy proportion contrast
 - simple workwear layers
 - large readable hands/forearms
@@ -221,27 +264,36 @@ Must remain readable: mass, shoulders, workwear silhouette, grounded posture.
 - controlled, maintained tools/clothing
 - avoid giant comedy chef hat, impractical glamour styling, or unrelated combat armor
 
-## Recovery constraint
+## Central Brain approval state
 
-**Face/hair identity and any appearance traits established by the missing earlier reference remain unresolved until recovery.**
+**APPROVED WORKING SCAFFOLD, RECOVERY-SENSITIVE FOR FINAL FACE/LOOK.**
 
-The proposal below is an occupational/silhouette scaffold, not permission to replace the earlier look.
+Approved:
+- compact, uncluttered working-chef silhouette
+- practical apron-led clothing
+- secured-hair working requirement
+- closed practical footwear
+- approximate **163-173 cm / 5'4"-5'8"** working range
+- apparent **late-20s to early-40s** working range
+- controlled off-white / dark-neutral / warm-accent material direction as provisional palette guidance
 
-## Provisional visual proposal — NOT LOCKED
+The recovered Inn board does not provide a meaningful Sylvie character depiction and does not resolve any identity fields.
+
+## Approved working visual direction
 
 **Overall silhouette:** compact, controlled, uncluttered. Arms and shoulders free to work. Her outline should communicate quick access to tools and zero tolerance for dangling costume pieces near flame, knives, pans, or food.
 
-**Approximate height/build:** candidate range around **163–173 cm / 5'4"–5'8"**, lean-to-sturdy working build with functional shoulder/forearm strength. Exact height is recovery-sensitive.
+**Approximate height/build:** **163-173 cm / 5'4"-5'8"**, lean-to-sturdy working build with functional shoulder/forearm strength. A recovered approved reference may refine this range.
 
-**Apparent age:** candidate **late 20s to early 40s**. The important read is mastery, not youth or age signaling.
+**Apparent age:** **late 20s to early 40s**. The important read is mastery, not youth or age signaling.
 
 **Posture/body language:** upright, precise, efficient. In the kitchen, she occupies space with practiced certainty rather than dramatic poses. Movements should feel deliberate and fast when needed.
 
-**Face:** defer exact features to recovered reference. Direction only: composed, observant, capable of a severe evaluation without requiring exaggerated anger.
+**Face:** final facial identity remains recovery-sensitive. Direction only: composed, observant, capable of severe evaluation without requiring exaggerated anger.
 
-**Skin/hair/eyes:** **do not establish in this pass before reference recovery.**
+**Skin/hair/eyes:** unresolved pending recovery.
 
-**Hairstyle:** recovery-sensitive, but working-state requirement is clear: hair should be secured away from face, flame, and food. Bun, braid, wrap, tie, or another controlled solution can satisfy this without locking the exact style.
+**Hairstyle:** exact identity remains recovery-sensitive, but the **working-state requirement is approved**: hair is secured away from face, flame, and food. Bun, braid, wrap, tie, or another controlled solution may be tested after recovery.
 
 **Clothing layers:** breathable work shirt/blouse with sleeves short or secured; fitted practical waist layer if needed; substantial working apron; durable trousers or another movement-safe lower layer. No decorative tails, giant sleeves, corsetry, or exposed glamour styling that fights the kitchen fiction.
 
@@ -249,7 +301,7 @@ The proposal below is an occupational/silhouette scaffold, not permission to rep
 
 **Materials/fabrics:** washable linen/cotton-like cloth, heavy apron canvas, restrained leather for tool sheath/strap where useful.
 
-**Palette direction:** provisional warm off-white/cream, charcoal/deep brown, with one restrained food/inn-adjacent accent such as herb green, wine, or muted rust. Exact palette is recovery-sensitive.
+**Palette/material direction:** controlled warm off-white/cream, dark neutral such as charcoal/deep brown, and one restrained warm or culinary/Inn-adjacent accent. This remains provisional rather than exact palette canon.
 
 **Wear/repair/weathering:** cleaner and more controlled than most working characters. Heat wear, faint staining, or a repaired apron is plausible, but maintenance itself is part of her competence. Her tools should look used and exceptionally cared for.
 
@@ -261,11 +313,13 @@ The proposal below is an occupational/silhouette scaffold, not permission to rep
 
 **Gameplay-camera identity:** clean apron block against darker work layer; secured-hair silhouette; compact, efficient posture; one immediately readable chef tool when working.
 
-## Provisional Blender/modeling readiness — HOLD FOR RECOVERY
+## Blender/modeling readiness
 
-Do not start a final Sylvie model until the earlier external image is recovered or Central Brain explicitly waives recovery.
+**HOLD FOR APPROVED CHARACTER REFERENCE/DIRECTION.**
 
-If a temporary visual blockout is later authorized, preserve only:
+No final Sylvie Blender model begins yet.
+
+When modeling is later authorized, preserve:
 - uncluttered working silhouette
 - free arms/shoulders
 - apron as a major readable layer
@@ -292,21 +346,42 @@ Must remain readable: apron, hair-control solution, clean working posture, one k
 - may have notes, herbs, specimens, bottles, or a satchel with him even while taking a meal break
 - avoid generic wizard robes, neon-glowing alchemist costume, and visual clowning
 
-## Provisional visual proposal — NOT LOCKED
+## Central Brain approval state
+
+**APPROVED FOR EXPLORATORY IMAGE DEVELOPMENT.**
+
+Approved working direction:
+- narrow layered field-naturalist silhouette
+- field outer layer
+- cross-body satchel
+- notebook/specimen language
+- muted natural palette
+- approximate **175-183 cm / 5'9"-6'0"** range
+- apparent **early-30s to early-40s** range
+
+Exploratory identity fields:
+- exact skin tone
+- eye color
+- exact hair color
+- exact facial identity
+
+The first generated image is not canon. Explore silhouette, occupation, and overall identity before tiny costume detail.
+
+## Approved working visual direction
 
 **Overall silhouette:** narrower and more layered than Garrick. A field coat/overshirt and cross-body satchel create an asymmetrical researcher silhouette. He should look ready to walk into brush, crouch beside an animal, collect a sample, then return to a cluttered workbench.
 
-**Approximate height/build:** candidate **175–183 cm / 5'9"–6'0"**, slim-to-average build with field stamina rather than obvious fighting musculature.
+**Approximate height/build:** **175-183 cm / 5'9"-6'0"**, slim-to-average build with field stamina rather than obvious fighting musculature.
 
-**Apparent age:** candidate **early 30s to early 40s**.
+**Apparent age:** **early 30s to early 40s**.
 
-**Posture/body language:** slight forward observational lean when interested; otherwise modest, unshowy posture. Mild awkwardness should come from attention being captured by the subject of interest, not from physical incompetence.
+**Posture/body language:** slight forward observational lean when interested; otherwise modest, unshowy posture. Mild awkwardness should come from attention being captured by the subject of interest, not physical incompetence.
 
-**Face shape/features:** candidate longer/softer face with alert, thoughtful eyes and mild field/lab fatigue. Avoid exaggerated eccentric-scientist expressions.
+**Face shape/features:** exploratory. A longer/softer face with alert, thoughtful eyes and mild field/lab fatigue is a useful starting test, but exact structure is not locked. Avoid exaggerated eccentric-scientist expressions.
 
-**Skin tone / eye color:** intentionally open. No current authority supports locking either.
+**Skin tone / eye color:** exploratory.
 
-**Hair direction:** medium length or otherwise slightly imperfectly controlled, capable of looking wind-touched after field work without becoming comic bed-hair. Exact color remains open for image exploration.
+**Hair direction:** medium length or otherwise slightly imperfectly controlled, capable of looking wind-touched after field work without becoming comic bed-hair. Exact style and color remain exploratory.
 
 **Clothing layers:** practical shirt; light vest or pocketed mid-layer; field coat/overshirt that can be removed in the lab; durable trousers; optional lab apron only when actually useful. Sleeves should plausibly roll up for specimen handling.
 
@@ -324,25 +399,18 @@ Must remain readable: apron, hair-control solution, clean working posture, one k
 
 **Combat readability:** no “mage silhouette” is required. If he ever participates in danger, competence should grow from tools/knowledge and behavior rather than robe geometry.
 
-**Gameplay-camera identity:** narrow layered outline; cross-body satchel; field coat/overshirt; notebook or specimen handling pose. His silhouette should remain distinct from the player and from ordinary Inn patrons without needing glowing props.
+**Gameplay-camera identity:** narrow layered outline; cross-body satchel; field coat/overshirt; notebook or specimen handling pose. His silhouette should remain distinct from the player and ordinary Inn patrons without needing glowing props.
 
-## Provisional Blender/modeling readiness — AFTER APPROVAL ONLY
+## Blender/modeling readiness
 
-Key silhouette shapes:
+No final Marlow Blender model begins until Central Brain approves a visual reference/direction produced from image exploration.
+
+Future modeling priorities:
 - narrow torso
 - mid-length field outer layer
 - cross-body satchel mass
 - sturdy boot shape
-
-Essential layers:
-- base shirt
-- practical mid/outer field layer
-- trousers
-- boots
-- satchel
-
-Must-keep props:
-- satchel
+- base shirt + practical mid/outer field layer + trousers + boots + satchel
 - notebook/sketchbook or equivalent field-record object
 - at least one readable specimen/container family
 
@@ -371,21 +439,41 @@ Must read from gameplay distance:
 - her weapon is a tactical identity, not her personality
 - she must read as a worker first and fantasy companion second
 
-## Provisional visual proposal — NOT LOCKED
+## Central Brain approval state
+
+**APPROVED FOR EXPLORATORY IMAGE DEVELOPMENT.**
+
+Approved working direction:
+- athletic worker-first silhouette
+- wet-ground clothing/boots
+- visible labor wear
+- approximate **168-178 cm / 5'6"-5'10"** range
+- apparent **mid-20s to mid-30s** range
+- simple durable field spear with functional head/ferrule and no ceremonial styling
+
+Exploratory identity fields:
+- exact skin tone
+- eye color
+- exact hair color
+- exact facial identity
+
+The first generated image is not canon. Explore worker silhouette, occupation, wet-field practicality, and overall identity before tiny costume detail.
+
+## Approved working visual direction
 
 **Overall silhouette:** compact-athletic laborer with clear lower-leg wet-work protection and a long straight spear line when the weapon is present. Avoid adventurer capes, decorative pauldrons, or armor bulk that erases the field-worker read.
 
-**Approximate height/build:** candidate **168–178 cm / 5'6"–5'10"**, athletic and work-conditioned rather than sculpted. Strong back, legs, hands, and forearms from repetitive field labor.
+**Approximate height/build:** **168-178 cm / 5'6"-5'10"**, athletic and work-conditioned rather than sculpted. Strong back, legs, hands, and forearms from repetitive field labor.
 
-**Apparent age:** candidate **mid-20s to mid-30s**.
+**Apparent age:** **mid-20s to mid-30s**.
 
 **Posture/body language:** balanced, economical, slightly forward-ready on uncertain ground. She should look comfortable bracing, lifting, testing footing, and using leverage. Alertness is carried in head/shoulder orientation rather than a permanent combat crouch.
 
-**Face shape/features:** candidate practical, weather-exposed face with a direct attentive read. Avoid “battle-maiden” glamour shorthand. Exact facial structure remains open for exploration.
+**Face shape/features:** exploratory. A practical, weather-exposed, direct attentive read is appropriate to test. Avoid “battle-maiden” glamour shorthand.
 
-**Skin tone / eye color:** intentionally open. No current authority supports locking either.
+**Skin tone / eye color:** exploratory.
 
-**Hair direction:** firmly secured for wet/physical work, such as a braid, compact tie, bun, wrap, or combination. Avoid loose heroic hair flowing around tools and water. Exact style/color remains open.
+**Hair direction:** firmly secured for wet/physical work, such as a braid, compact tie, bun, wrap, or combination. Avoid loose heroic hair flowing around tools and water. Exact style/color remains exploratory.
 
 **Clothing layers:** breathable work shirt with secured/rolled sleeves; reinforced waist or short work vest only if it serves tools; durable trousers cut for stepping through mud/channels; lower-leg wraps/gaiters or boot construction designed for wet ground; compact tool belt/rope loop rather than adventurer utility clutter.
 
@@ -393,13 +481,13 @@ Must read from gameplay distance:
 
 **Materials/fabrics:** linen/hemp/canvas, waxed or oiled leather at wet-contact areas, rope, simple iron/steel hardware.
 
-**Palette direction:** silt brown / reed green / faded blue-green or similarly weathered lowlands colors, with undyed tan and dark wet-leather values. Keep contrast strong enough that her torso and long weapon remain readable against green-brown paddy environments.
+**Palette direction:** silt brown / reed green / faded blue-green or similarly weathered lowlands colors, with undyed tan and dark wet-leather values. Keep contrast strong enough that torso and long weapon remain readable against green-brown paddy environments.
 
 **Wear/repair/weathering:** mud/water staining concentrated from knees downward; repaired knees/seat/elbows where field work actually wears clothing; sun fade; hand/tool wear. Avoid covering the whole character in generic grime.
 
 **Signature objects:** practical field spear plus one small irrigation-work cue such as rope, wedges/pins, compact hand tool, or repair bundle. Do not hang an entire workshop from her belt.
 
-**Spear direction:** straight durable wood shaft; simple functional iron/steel head; reinforced butt/ferrule; wrapped grip only where useful. It may plausibly serve as a depth/ground probe, animal deterrent, or general field-side defensive tool, but should remain a credible weapon rather than a ceremonial relic or improvised broomstick.
+**Spear direction - APPROVED:** straight durable wood shaft; simple functional iron/steel head; reinforced butt/ferrule; wrapped grip only where useful. It may plausibly serve as a depth/ground probe, animal deterrent, or general field-side defensive tool, but remains a credible weapon rather than a ceremonial relic or improvised broomstick.
 
 **Profession cues:** wet-ground footwear, rolled/secured work clothing, lower-leg staining, repair wear, small field-tool cue, body language comfortable around channels and unstable footing.
 
@@ -407,21 +495,19 @@ Must read from gameplay distance:
 
 **Gameplay-camera identity:** long spear line; secured hair; rolled work sleeves; protected/muddy lower legs; compact tool/rope accent. These should distinguish her even before the player knows she is recruitable.
 
-## Provisional Blender/modeling readiness — AFTER APPROVAL ONLY
+## Blender/modeling readiness
 
-Key silhouette shapes:
+No final Ily Blender model begins until Central Brain approves a visual reference/direction produced from image exploration.
+
+Future modeling priorities:
 - athletic compact body
 - clean long spear line
 - narrow practical torso layers
 - distinct wet-work lower-leg/boot mass
-
-Essential clothing layers:
 - work shirt
 - durable work trousers
 - wet-ground boots/gaiters
 - minimal belt/tool layer
-
-Must-keep props:
 - practical spear
 - one restrained irrigation-work cue
 
@@ -438,7 +524,7 @@ Must read from gameplay distance:
 
 ---
 
-# 7. Cross-character silhouette separation — PROVISIONAL
+# 7. Cross-character silhouette separation - APPROVED DIRECTION
 
 The four should remain distinguishable even in neutral poses and muted lighting:
 
@@ -451,32 +537,43 @@ Avoid giving all four the same fantasy base tunic + belt + brown boots with only
 
 ---
 
-# 8. Exact Central Brain decisions required
+# 8. Central Brain approval record - 2026-09-10
 
-Central Brain should approve, reject, or revise the following before any candidate images are promoted:
+Central Brain approved the following:
 
-1. **Recovery doctrine:** confirm Garrick and Sylvie remain blocked from replacement final-look design until earlier external image references are recovered/reviewed, unless Central Brain explicitly waives recovery.
-2. **Garrick silhouette scaffold:** broad/heavy grounded innkeeper; candidate 188–193 cm; apparent mid-40s to mid-50s; practical layered workwear; no armor-led read.
-3. **Garrick palette/material direction:** restrained smoke/charcoal/brown/cream with one muted warm accent, subject to recovered reference.
-4. **Sylvie silhouette scaffold:** compact uncluttered working-chef silhouette; candidate 163–173 cm; apparent late-20s to early-40s; apron as major layer; secured-hair working requirement; practical closed footwear.
-5. **Sylvie palette/material direction:** controlled off-white/charcoal/brown with one restrained culinary/Inn accent, subject to recovered reference.
-6. **Marlow direction:** narrow layered field-naturalist silhouette; candidate 175–183 cm and early-30s to early-40s; field outer layer + cross-body satchel + notebook/specimen containers; non-robed muted natural palette.
-7. **Marlow identity fields left open:** confirm skin tone, eye color, exact hair color, and exact facial identity should remain exploratory rather than invented as canon in this pass.
-8. **Ily direction:** athletic lowlands-worker silhouette; candidate 168–178 cm and mid-20s to mid-30s; wet-work boots/gaiters, practical compact field clothing, visible labor wear, no armor-heavy adventurer styling.
-9. **Ily spear direction:** simple durable field spear with functional head/ferrule and no ceremonial-hero treatment; spear remains tactical/readability cue rather than personality shorthand.
-10. **Ily identity fields left open:** confirm skin tone, eye color, exact hair color, and exact facial identity should remain exploratory until image review.
-11. **Next image step:** after profile review, recover Garrick/Sylvie references first; only then decide whether refinement or replacement exploration is needed. Marlow/Ily candidate-image exploration may begin after their profile directions are approved.
-12. **Modeling gate:** no final Blender character modeling from these provisional notes. Modeling briefs become production-ready only after Central Brain approves a visual direction/reference for that character.
+1. Garrick and Sylvie remain recovery-first for final face/look decisions.
+2. Garrick's broad/heavy grounded silhouette, practical layered workwear, **6'2"-6'4"** working range, and **mid-40s to mid-50s** apparent-age range.
+3. Garrick's restrained worn wood/earth/smoke material language and muted warm-accent direction as provisional rather than exact palette canon.
+4. Sylvie's compact uncluttered working-chef silhouette, apron-led clothing, secured-hair working requirement, closed footwear, **5'4"-5'8"** working range, and **late-20s to early-40s** apparent-age range.
+5. Sylvie's controlled off-white/dark-neutral/warm-accent material direction as provisional.
+6. Marlow's narrow layered field-naturalist silhouette, field outer layer, cross-body satchel, notebook/specimen language, muted natural palette, **5'9"-6'0"** range, and **early-30s to early-40s** apparent-age range for exploratory image development.
+7. Marlow's exact skin tone, eyes, hair color, and facial identity remain exploratory.
+8. Ily's athletic worker-first silhouette, wet-ground clothing/boots, labor wear, **5'6"-5'10"** range, and **mid-20s to mid-30s** apparent-age range for exploratory image development.
+9. Ily's simple durable field spear with functional head/ferrule and no ceremonial styling.
+10. Ily's exact skin tone, eyes, hair color, and facial identity remain exploratory.
+11. No final Blender character modeling begins until Central Brain approves a visual reference/direction for that character.
+12. `Garrick’s Inn: A Safe Haven.png` is a **candidate/contextual Garrick reference**, not an approved Garrick character reference.
 
 ---
 
-# 9. First-pass production state
+# 9. Current visual-production state
 
-**Garrick:** recovery-blocked for final face/look; provisional silhouette/workwear scaffold only.  
-**Sylvie:** recovery-blocked for final face/look; provisional occupation/silhouette scaffold only.  
-**Marlow:** provisional profile ready for Central Brain review; no approved image yet.  
-**Ily:** provisional profile ready for Central Brain review; no approved image yet.
+**Garrick:** approved working silhouette/workwear scaffold; final face/look remains recovery-first. Recovered Inn concept board is candidate/contextual only. Continue searching for the dedicated earlier character image before replacement final-design work.  
+
+**Sylvie:** approved working chef scaffold; final face/look remains recovery-first. Inn concept board provides environment context only, not a usable Sylvie character reference. Continue recovery-first search.  
+
+**Marlow:** approved working profile for first exploratory character-image concepts. No image is canon until separately reviewed and approved.  
+
+**Ily:** approved working profile for first exploratory character-image concepts. No image is canon until separately reviewed and approved.  
+
+## Next visual-production step
+
+- **Garrick:** use the recovered Inn board as contextual evidence only; continue dedicated-reference recovery.
+- **Sylvie:** continue dedicated-reference recovery.
+- **Marlow:** first exploratory image concepts may now be generated when separately requested, prioritizing silhouette, occupation, and overall identity.
+- **Ily:** first exploratory image concepts may now be generated when separately requested, prioritizing worker-first silhouette, wet-field occupation, and overall identity.
 
 No Unity files changed.  
 No Blender files changed.  
-No generated image in this pass is automatically canon.
+No images were generated as part of this documentation update.  
+No generated image becomes canon automatically.
