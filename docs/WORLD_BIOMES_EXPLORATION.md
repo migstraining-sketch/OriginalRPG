@@ -341,21 +341,21 @@ The optional ecology must not become a scavenger checklist or delay the urgent o
 
 Implement exactly these five optional authored pieces for the coordinated pass. None is required for Marlow's treatment.
 
-## 1. Sunberry bramble — gatherable inventory item
+## 1. Sunberry bramble — observation / environmental discovery only
 
-**Implementation scope: gatherable and enters Inventory in this pass.**
+**Implementation scope: does NOT enter Inventory in this pass.**
 
-**Purpose category:** near-future culinary hook.
+**Purpose category:** near-future culinary hook, deliberately not materialized as a carried item until Cooking gives it a present use.
 
 **Placement:** broken-canopy/sunny clearing edge rather than deep shade.
 
-**Interaction:** one readable bramble/berry source can be inspected and gathered in a small amount. Do not scatter repeated berry nodes across the map.
+**Interaction:** inspect/observe one readable bramble and its fruit. Do not scatter repeated berry nodes across the map.
 
-**Current payoff:** a real edible natural find and a learned environmental association: Sunberry brambles favor light gaps.
+**Current payoff:** an edible-looking natural discovery and a learned environmental association: Sunberry brambles favor light gaps.
 
 **Do not invent yet:** exact Cooking recipe, mechanical food effect, Well Fed interaction, sale price, Cooking XP, stack/economy rules, or exact replenishment timing. Cooking authority owns future culinary use.
 
-Treat the living bramble as the renewable source rather than destroying it for one harvest.
+The living bramble remains a plausible renewable biological source for later use, but no gathering/respawn behavior is required in this coordinated pass.
 
 ## 2. Pale shelf fungus — observation / unknown discovery only
 
@@ -453,7 +453,7 @@ Preserve these semantics even if simplified prototype internals still use reset/
 - **Bloodleaf:** harvesting useful portions does not automatically destroy the source plant. Future availability is plausible; exact timing remains deferred.
 - **Silvermoss:** a gathered patch may be locally exhausted for the current visit; exact regrowth timing remains deferred.
 - **Mooncalf Milk:** renewable only while an appropriate living nursing source remains or recoverably returns. Existing failure-path authority controls.
-- **Sunberry:** the living bramble remains the physical source. Exact future fruiting/replenishment timing is deferred.
+- **Sunberry:** observation only in this pass; the living bramble remains the physical future source, but no gathering/respawn behavior is required yet.
 - **Pale shelf fungus:** observation only in this pass, so no gathering/respawn behavior is required.
 - **Evergreen resin seep:** observation only in this pass, so no gathering/respawn behavior is required.
 - **forager observation / split-tree landmark:** once noticed they remain knowledge/location discoveries, not regenerating reward containers.
@@ -479,7 +479,7 @@ Do not decide:
 - ingredient substitutions;
 - Cooking XP from gathering.
 
-Sunberry is a real inventory ingredient candidate now, but Cooking authority owns what it eventually does.
+Sunberry remains a visible near-future culinary hook, but it does not enter Inventory until Cooking gives it a real present use.
 
 ## Potion Making
 
@@ -512,12 +512,11 @@ Do not decide:
 - global respawn economics;
 - encumbrance or spoilage.
 
-For this coordinated pass, the only new optional Woodland inventory resource approved here is **Sunberry**.
+For this coordinated pass, **none of the five optional Woodland discoveries enters Inventory**. Existing quest resources remain gatherable according to their owning authorities.
 
 # Approval record
 
 Central Brain approved this authority with the following locked/current decisions:
-
 - biome hierarchy: **Regional geography → biome identity → local conditions → authored location → current world state**;
 - environmental association as the core gathering-placement rule;
 - lightweight **Notice → Recognize → Identify → Understand use** discovery principle;
@@ -527,7 +526,7 @@ Central Brain approved this authority with the following locked/current decision
 - future-biome design checklist;
 - opening Woodland micro-habitat package;
 - all five optional Woodland discoveries;
-- coordinated-pass inventory scope: **Sunberry enters Inventory; pale shelf fungus, evergreen resin seep, small forager burrow, and split old tree/spring seep remain observation/environment discoveries only.**
+- coordinated-pass optional-discovery scope: **Sunberry, pale shelf fungus, evergreen resin seep, small forager burrow, and split old tree/spring seep are all observation/environment discoveries only; none enters Inventory in this pass.**
 
 No further World / Biomes design approval is required before the coordinated opening Unity pass unless implementation exposes a contradiction with another authority.
 
@@ -537,8 +536,8 @@ Central Brain's coordinated pass should account for:
 - modest Woodland branching/side pockets rather than a straight quest corridor;
 - ecological micro-habitat dressing that visually explains resource placement;
 - exactly five optional authored discoveries/interactions;
-- **Sunberry as the only new optional inventory resource from this package**;
-- observation-only handling for fungus, resin, forager, and split-tree spring;
+- observation-only handling for Sunberry, fungus, resin, forager, and split-tree spring;
+- no new optional inventory resource from this package;
 - no discovery checklist, resource-marker carpet, or generalized gathering-system expansion;
 - subtle nearby interaction assistance where needed for readability;
 - preserving living-source/world-state consequences for Mooncalf Milk;
