@@ -328,25 +328,41 @@ This is an encounter rule, not a universal engine truth.
 
 The player character is architecturally a Combatant capable of entering Defeated state. Encounter rules decide whether that state ends battle. Do **not** hard-code combat termination directly to `playerHP <= 0` as a permanent system assumption.
 
-### Defeated companion after victory — LOCKED MVP recovery rule
+### Defeated companion after victory or successful Flee — LOCKED MVP recovery rule
 
 A companion Defeated during combat remains out for that encounter.
 
-After the encounter ends in victory:
+After the encounter ends in **victory or a successful party Flee**:
 - that companion recovers to a stable **1 HP**;
-- they **cannot participate in another combat until the party Rests**;
+- they **cannot participate in another combat until Basic Rest**;
 - they may remain physically present and continue traveling narratively unless an authored scene says otherwise.
 
-This is an MVP consequence, not the final injury/recovery system.
+If an authored encounter outcome logically prevents that companion from escaping with the party, that must be an explicit authored exception rather than ordinary MVP behavior.
+
+### Basic Rest dependency — LOCKED
+
+Basic Rest is available for free at **Garrick's Inn** through the **hearth/common-room rest point** and does **not** require renting a room.
+
+Basic Rest:
+- restores the player to full HP;
+- restores present companions to full HP;
+- clears the combat-ineligibility state on companions who were previously Defeated;
+- costs nothing;
+- requires returning to Garrick's Inn.
+
+This is the complete recovery dependency required by group combat. It does not add Rest Quality, fatigue, hunger, injuries, paid recovery, buffs, time-management mechanics, or mandatory room rental.
+
+The rented room remains separately valuable through its private bed/rest location, persistent storage, home continuity, and possible future Rest Quality mechanics.
 
 Do **not** add:
 - revive items;
 - injury tables;
 - permanent companion death;
 - bleed-out timers;
-- unconscious-body management.
+- unconscious-body management;
+- corpse retrieval or abandonment rules.
 
-The exact later Rest/injury/revival model remains deferred.
+Deeper Rest/injury/revival systems remain deferred.
 
 ---
 
@@ -456,7 +472,8 @@ Required behavioral tests should include:
 - committed Pounce/Rush/Charge keeps its target/lane/destination/order unless creature rules explicitly permit adaptation;
 - Defend persists across round boundaries when necessary and expires only at the start of that Combatant's next activation;
 - Direct and Independent allies share the same allied activation slots;
-- defeated companion returns at stable 1 HP after victory and is combat-ineligible until Rest;
+- defeated companion returns at stable 1 HP after victory **or successful Flee** and is combat-ineligible until Basic Rest;
+- Basic Rest at Garrick's Inn restores present companions and clears that combat-ineligibility state;
 - ordinary allied Combat Participants never exceed 3;
 - full player + 2 companion party does not gain a fourth normal activation from a local helper.
 
@@ -489,6 +506,7 @@ Do not design/implement yet:
 - permanent companion death;
 - general revive items or revival subsystem;
 - injury tables / bleed-out / unconscious-body management;
+- corpse retrieval / abandonment systems;
 - companion gear progression unless separately approved;
 - advanced companion tactics editor;
 - individual Speed/initiative stats;
@@ -497,4 +515,5 @@ Do not design/implement yet:
 - formation editor;
 - final recruit roster or final companion identities;
 - larger allied battle rules;
-- exact long-term post-defeat recovery model beyond the locked MVP 1-HP-until-Rest rule.
+- Rest Quality, fatigue, hunger, paid recovery, time-management mechanics;
+- exact long-term post-defeat recovery model beyond the locked MVP 1-HP-until-Basic-Rest rule.
