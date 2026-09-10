@@ -10,16 +10,19 @@ This repository is the continuity authority for the original RPG project.
 4. `docs/DESIGN_PILLARS.md`
 5. `docs/DESIGN_GUARDRAILS.md`
 6. `docs/CORE_SYSTEMS_PROGRESSION.md`
-7. `docs/CHARACTERS.md`
-8. `docs/OPENING_FLOW.md`
-9. `docs/TRAVEL_WORLD_MAP_MVP.md`
-10. `docs/WORLD_BIOMES_EXPLORATION.md`
-11. `docs/DIALOGUE_PLAYER_AGENCY.md`
-12. `docs/INN_STARTING_AREA.md`
-13. `docs/CONTRACTS.md`
-14. `docs/SYSTEMS_HUNTING.md`
-15. `docs/SYSTEMS_COOKING.md`
-16. `docs/UNRESOLVED.md`
+7. `docs/GROUP_COMBAT_PARTY_MVP.md`
+8. `docs/CHARACTERS.md`
+9. `docs/OPENING_FLOW.md`
+10. `docs/TRAVEL_WORLD_MAP_MVP.md`
+11. `docs/WORLD_BIOMES_EXPLORATION.md`
+12. `docs/DIALOGUE_PLAYER_AGENCY.md`
+13. `docs/INN_STARTING_AREA.md`
+14. `docs/CONTRACTS.md`
+15. `docs/SYSTEMS_HUNTING.md`
+16. `docs/HUNTING_PARTNERS.md`
+17. `docs/SYSTEMS_COOKING.md`
+18. `docs/UI_HUD_PLAYER_INFORMATION.md`
+19. `docs/UNRESOLVED.md`
 
 ## Working rule
 
@@ -27,9 +30,15 @@ Treat this repository as the source of truth for locked decisions. If a future c
 
 `docs/DIALOGUE_PLAYER_AGENCY.md` is the continuity authority for playable dialogue logic, player-response quality, conversational state, branching/convergence, and player commitment/agency. Proposed exact prose in that document does not become canon until Central Brain approves it.
 
-`docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design.
+`docs/TRAVEL_WORLD_MAP_MVP.md` is the opening-only authority for the regional travel layer connecting Garrick's Inn, the Woodland, and starter Hunting destinations. It is intentionally not a full endgame/overworld travel design. For the opening MVP, Garrick's **front door is the sole Regional Map exit** and regional return arrives through/at the front entrance; the back door remains local Inn/property space with exact future use unresolved.
 
-`docs/WORLD_BIOMES_EXPLORATION.md` is the continuity authority for biome identity, local ecology, environmental resource placement, exploration discoveries, renewable/finite natural-source philosophy, and the opening Woodland ecology package. Proposed Woodland additions in that document remain subject to Central Brain approval and do not authorize Unity changes on their own.
+`docs/WORLD_BIOMES_EXPLORATION.md` is the locked continuity authority for biome identity, local ecology, environmental resource placement, exploration discoveries, renewable/finite natural-source philosophy, and the opening Woodland ecology package. Its coordinated-pass Woodland scope is current authority and does not authorize Unity changes on its own.
+
+`docs/UI_HUD_PLAYER_INFORMATION.md` is the Central Brain-approved presentation/information-architecture authority for the coordinated UI pass. Its three-layer architecture and Esc/back doctrine are locked; exact screen composition remains Unity/playtest tuning.
+
+`docs/GROUP_COMBAT_PARTY_MVP.md` is the locked authority for party/group-combat architecture, distributed activations, Active Party vs Recruited Roster vs Combat Participants, controller ownership, and opening defeat policy.
+
+`docs/HUNTING_PARTNERS.md` is the locked authority for starter-Hunt local partner structure. Ilyra “Ily” Fen is implementation-ready for `Mud in the Moonrice`; Sable Venn and Nessa Vale are locked at character direction only until their contracts receive later implementation passes.
 
 ## Project correction
 
@@ -47,11 +56,14 @@ Central Brain is assembling one coordinated opening implementation/playtest pass
 
 - approved dialogue revisions
 - approved MVP combat refinements
-- regional-map/travel layer
+- locked group-combat/party architecture
+- regional-map/travel layer with front-door travel grammar
 - Mooncalf herd/container/failure-path behavior
 - rented-room persistent storage
-- at least one fully playable starter Hunting contract
-- approved Woodland biome/exploration ecology additions, if Central Brain accepts the proposed package
+- `Mud in the Moonrice` as the first fully playable starter Hunting contract
+- Ilyra “Ily” Fen local-partner integration
+- approved HUD/player-information architecture
+- approved Woodland biome/exploration ecology additions
 
 Do **not** modify Unity piecemeal from individual design documents before that coordinated pass.
 
