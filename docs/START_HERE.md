@@ -48,3 +48,7 @@ The current priority is to **implement and playtest the approved MVP combat-refi
 In parallel, the Garrick/Marlow opening dialogue is under active authored review in `docs/DIALOGUE_PLAYER_AGENCY.md`. Do not implement proposed exact dialogue from that document until Central Brain approves it.
 
 **Do not move on to designing the first 1–2 hours after Cooking unlock yet.** Finish refining and validating the opening's combat/dialogue experience first.
+
+## Ongoing player experience review
+
+The project owner requested an Asmongold-informed review lens on 2026-09-10. Read `PLAYER_EXPERIENCE_REVIEW_LENS.md` when evaluating new design or implementation decisions. It defines evidence-based advisory criticism, not impersonation or a replacement for locked canon. The initial scored assessment is `reviews/2026-09-10-opening-player-review.md`; it distinguishes current code, newer design revisions and untested experience. Recommendations should be reported for discussion rather than silently implemented as design changes.
