@@ -6,6 +6,7 @@ namespace WoodlandSpine
     {
         public readonly GameObject model;
         public Transform sylvie;
+        public IllustratedInnActor garrick;
         public GameObject kitchenDoor,playerDoor;
         readonly WorldBuilder w;
         Transform upper,kitchen,cutaway,basementDoor;
@@ -27,6 +28,7 @@ namespace WoodlandSpine
             var kp=Pivot("KitchenDoor",new Vector3(-4.45f,0,3.8f));kitchenDoor=kp.gameObject;
             var kb=kp.gameObject.AddComponent<BoxCollider>();kb.center=new Vector3(.65f,1.15f,0);kb.size=new Vector3(1.3f,2.3f,.12f);
             Anchor("garrick","Speak to the innkeeper",new Vector3(0,0,.65f));
+            garrick=IllustratedInnActor.Install(model.transform);
             Anchor("board","Inspect contract board",new Vector3(4.12f,0,.95f));
             Anchor("merchandise","Look at merchandise",new Vector3(-4.25f,0,-1.4f));
             w.innMarlow=w.Shape("Marlow seated",InnLayout.Marlow,new Vector3(.7f,.8f,.7f),new Color(.31f,.53f,.5f),PrimitiveType.Capsule,false);

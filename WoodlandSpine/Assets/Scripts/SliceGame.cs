@@ -55,6 +55,7 @@ namespace WoodlandSpine
             player.Place(InnLayout.Arrival);
             var cameraObject=new GameObject("Main Camera");cameraObject.tag="MainCamera";view=cameraObject.AddComponent<Camera>();view.orthographic=true;view.nearClipPlane=.1f;view.farClipPlane=150;view.backgroundColor=new Color(.12f,.16f,.19f);view.clearFlags=CameraClearFlags.SolidColor;
             cameraObject.transform.position=new Vector3(0,13,-13);cameraObject.AddComponent<SliceCamera>().game=this;
+            if(world.inn.garrick!=null)world.inn.garrick.viewingCamera=view;
             cameraObject.AddComponent<AudioListener>();
             var backdrop=new GameObject("Camera background").AddComponent<Camera>();backdrop.depth=-100;backdrop.cullingMask=0;backdrop.clearFlags=CameraClearFlags.SolidColor;backdrop.backgroundColor=view.backgroundColor;
             opening=gameObject.AddComponent<MarlowOpening>();opening.Initialize(this);

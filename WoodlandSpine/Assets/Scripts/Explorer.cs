@@ -38,7 +38,7 @@ namespace WoodlandSpine
         public void Adjust(float rotation,float zoomDelta,Vector2 drag)
         {
             yaw=Mathf.Repeat(yaw+rotation,360);
-            zoom=Mathf.Clamp(zoom+zoomDelta,.6f,1.7f);
+            zoom=Mathf.Clamp(zoom+zoomDelta,.3f,1.7f);
             if(game.mode!=GameMode.Combat)
             {
                 Vector3 right=Vector3.ProjectOnPlane(transform.right,Vector3.up).normalized;

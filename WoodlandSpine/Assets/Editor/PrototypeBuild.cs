@@ -12,6 +12,7 @@ namespace WoodlandSpine.Editor
         public static void Setup()
         {
             Directory.CreateDirectory("Assets/Resources");Directory.CreateDirectory("Assets/Scenes");
+            IllustratedCharacterAssets.Prepare();
             var rules=AssetDatabase.LoadAssetAtPath<SliceData>("Assets/Resources/SliceRules.asset");
             if(rules==null)
             {

@@ -1,6 +1,8 @@
-# Garrick — first Blender outfit and proportion study
+# Garrick — illustrated trial and historical Blender studies
 
-**Owner rejected the v01 through v04 Blender previews on 2026-09-10.** The owner clarified that the target is illustrated/animated fantasy, not photorealism, and allowed a 2D-looking approach. The latest candidate is the [illustrated direction preview](Illustrated-v01/README.md). It is a generated 2D illustration awaiting visual judgment, not a Blender render or game-ready asset. The earlier Blender files are preserved as rejected studies. Do not install them in Unity as accepted character art.
+**Owner rejected the v01 through v04 Blender previews on 2026-09-10.** The owner clarified that the target is illustrated/animated fantasy, not photorealism, and allowed a 2D-looking approach. The owner then approved trying the [illustrated direction preview](Illustrated-v01/README.md) inside the inn. The latest work is the [playable illustrated cutout trial](Illustrated-Cutout-v01/README.md). It is a generated 2D image rendered within Unity, not a Blender model or finished animated character. The earlier Blender files below are preserved as rejected studies. Do not install them in Unity as accepted character art.
+
+## Historical Blender v01 study
 
 Owner-requested Blender work, 2026-09-10. This is an **editable blockout**, not final character art or a replacement for the approved character sheet. It is not installed in Unity.
 

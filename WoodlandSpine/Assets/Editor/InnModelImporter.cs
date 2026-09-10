@@ -9,7 +9,7 @@ using UnityEngine.Rendering;
 namespace WoodlandSpine.Editor
 {
     // Offline Blender export: metres, Unity axes, baked albedo and authored collision.
-    [ScriptedImporter(1,"innmodel")]
+    [ScriptedImporter(2,"innmodel")]
     public sealed class InnModelImporter : ScriptedImporter
     {
         [Serializable] class Header { public int version; public Surface[] materials; }
@@ -42,7 +42,26 @@ namespace WoodlandSpine.Editor
                     for(int v=0;v<n;v++){vertices[v]=V(r);normals[v]=V(r);uv[v]=new Vector2(r.ReadSingle(),r.ReadSingle());}
                     var mesh=new Mesh{name=name,indexFormat=IndexFormat.UInt32};mesh.vertices=vertices;mesh.normals=normals;mesh.uv=uv;
                     int subs=r.ReadInt32();mesh.subMeshCount=subs;var used=new Material[subs];
-                    for(int s=0;s<subs;s++){used[s]=mats[r.ReadInt32()];var ids=new int[r.ReadInt32()];for(int t=0;t<ids.Length;t++)ids[t]=r.ReadInt32();mesh.SetTriangles(ids,s);}
+                    var proxyVertices=new List<Vector3>();var proxyNormals=new List<Vector3>();var proxyUv=new List<Vector2>();Material proxyMaterial=null;
+                    for(int s=0;s<subs;s++)
+                    {
+                        int materialIndex=r.ReadInt32();used[s]=mats[materialIndex];var ids=new int[r.ReadInt32()];for(int t=0;t<ids.Length;t++)ids[t]=r.ReadInt32();
+                        // The legacy export combined Garrick into Common. Isolate only his
+                        // uniquely named source material; furniture and collision stay untouched.
+                        if(name=="Common"&&h.materials[materialIndex].name.StartsWith("Garrick scale silhouette",StringComparison.Ordinal))
+                        {
+                            proxyMaterial=used[s];foreach(int vertex in ids){proxyVertices.Add(vertices[vertex]);proxyNormals.Add(normals[vertex]);proxyUv.Add(uv[vertex]);}
+                            mesh.SetTriangles(Array.Empty<int>(),s);
+                        }
+                        else mesh.SetTriangles(ids,s);
+                    }
+                    if(proxyMaterial!=null)
+                    {
+                        var proxy=new GameObject("GarrickProxy");proxy.transform.SetParent(root.transform);
+                        var pm=new Mesh{name="Garrick original scale figure"};pm.SetVertices(proxyVertices);pm.SetNormals(proxyNormals);pm.SetUVs(0,proxyUv);
+                        var indices=new int[proxyVertices.Count];for(int t=0;t<indices.Length;t++)indices[t]=t;pm.SetTriangles(indices,0);pm.RecalculateBounds();
+                        proxy.AddComponent<MeshFilter>().sharedMesh=pm;proxy.AddComponent<MeshRenderer>().sharedMaterial=proxyMaterial;ctx.AddObjectToAsset("garrick-proxy",pm);
+                    }
                     mesh.RecalculateBounds();go.AddComponent<MeshFilter>().sharedMesh=mesh;go.AddComponent<MeshRenderer>().sharedMaterials=used;
                     ctx.AddObjectToAsset("mesh"+i,mesh);
                 }

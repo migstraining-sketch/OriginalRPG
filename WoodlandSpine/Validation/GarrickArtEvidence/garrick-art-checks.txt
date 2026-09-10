@@ -1,0 +1,31 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS illustration and isolated original are present
+PASS illustration replaces original without duplicate body
+PASS visual plane adds no collision or interaction blocker
+PASS cutout shader supported by actual player renderer
+PASS import preserves source image aspect ratio
+PASS art shares inn region visibility
+PASS walkable route to (0.00, 0.15, -4.40); reached (0.16, 0.13, -4.40) in Exploration
+PASS walkable route to (0.00, 0.15, 0.55); reached (0.01, 0.13, 0.36) in Exploration
+PASS existing public-side approach finds Garrick interaction
+PASS Garrick opening dialogue still opens from bar
+PASS cutout faces movable camera at yaw 45
+PASS cutout faces movable camera at yaw 90
+PASS cutout faces movable camera at yaw 180
+PASS cutout faces movable camera at yaw 270
+PASS cutout faces movable camera at yaw 0
+PASS exploration wheel supports close zoom
+PASS existing exploration pan frames Garrick at close zoom
+PASS comparison toggle restores only the original figure
+PASS pixel validation uses a real graphics device
+PASS green source background renders as empty space
+PASS opaque torso remains visible
+PASS no key-green rectangle or edge pixels leak into GPU result
+PASS opaque foreground geometry occludes the cutout
+PASS commit known destination Woodland
+PASS travel completes to Woodland
+PASS inn cutout is hidden in Woodland
+PASS commit known destination Inn
+PASS travel completes to Inn
+PASS illustrated Garrick survives return to inn

@@ -1,0 +1,13 @@
+{
+  "date": "2026-09-10",
+  "unity": "6000.5.6f1",
+  "build": "Windows x64",
+  "gameAssemblySHA256": "36618082AE5C600F0F7484C1BB7CF49A8F198C0ED51A8F2FCEE1BF0EBBC2CF77",
+  "executableSHA256": "95D0C3362277726ADCE36509ACE867138EDB472DA0D02DB64EB4BEEAFF0C29BC",
+  "sourceImageSHA256": "019AE9E45241CEF8123C32A7D5D9B5D1D595E0CA87FCA4F6B37B75BB8EFA2ED5",
+  "editorAssertions": 4668,
+  "garrickArtChecks": 31,
+  "innRegressionChecks": 160,
+  "runtimeErrors": 0,
+  "humanPlaytest": false
+}

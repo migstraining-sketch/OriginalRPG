@@ -14,6 +14,7 @@ If assets/scene need regeneration, use **Woodland → Generate initial scene and
 
 - WASD / arrows: move relative to the camera in exploration. E: nearby interaction.
 - Q/R or middle drag: rotate camera. Wheel: zoom. Shift + middle drag: exploration pan. Home: reset. Combat keeps the full board in view.
+- F8 in the inn: compare illustrated Garrick with the old scale figure. Close exploration zoom is available; pan toward the bar to inspect him.
 - I or top tabs: Player Panel (Inventory, Equipment, Character, Techniques, Journal).
 - Dialogue: click an authored response; Space/Enter advances ordinary Continue. Name entry has its own confirmation. Esc never hides or answers dialogue.
 - Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash, 5 weapon technique. Select a target or destination by clicking; Enter confirms applicable actions. Space ends the current unit's activation.
@@ -41,7 +42,7 @@ Tune weapons and creature assets in `Assets/Resources`; `SliceRules` links them 
 
 ## Verification and limits
 
-Latest owner playtest fixes: [walking exits, camera controls, resting Mossback and troll reaction](Docs/PLAYTEST-FEEDBACK-FIXES.md). First editable [Garrick Blender study](../ArtSource/Garrick/README.md) is available separately; it is not final or integrated NPC art.
+Latest visual follow-up: [illustrated Garrick in the playable inn](Docs/GARRICK-ILLUSTRATED-TRIAL.md), with an F8 comparison toggle and closer exploration zoom. This is one static painted pose; the earlier rejected Blender character studies remain separate. Retained playtest fixes: [walking exits, camera controls, resting Mossback and troll reaction](Docs/PLAYTEST-FEEDBACK-FIXES.md).
 
 See [validation status](Validation/STATUS.md), [manual playtest](PLAYTEST-OPENING.md), and [implementation handoff](Docs/IMPLEMENTATION-HANDOFF.md). Automated checks use isolated runtime fixtures and do not measure a natural first playthrough or establish dialogue pacing/fun. The old 20–30 minute estimate is guidance only.
 

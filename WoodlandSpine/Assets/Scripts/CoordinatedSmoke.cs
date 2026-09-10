@@ -7,7 +7,7 @@ using UnityEngine;
 namespace WoodlandSpine
 {
     // Opt-in built-player verification. No saves or external profiles are loaded or modified.
-    public sealed class CoordinatedSmoke : MonoBehaviour
+    public sealed partial class CoordinatedSmoke : MonoBehaviour
     {
         public SliceGame game;
         int checks;string folder,scenario;
@@ -82,6 +82,7 @@ namespace WoodlandSpine
             Check(!game.world.wildlife.actor.gameObject.activeInHierarchy,"remote woodland not visible from Inn");
             yield return Capture("01-inn");
             if(scenario=="feedback"||scenario=="feedback-early")yield return Feedback();
+            else if(scenario=="garrick-art")yield return GarrickArt();
             else if(scenario=="inn")yield return InnChecks();
             else if(scenario=="success")yield return Opening();
             else
