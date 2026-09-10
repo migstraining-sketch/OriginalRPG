@@ -468,17 +468,116 @@ Potions retain immediate/reactive uses such as healing. Food provides preparatio
 
 All five starter dish variants should provide mechanically equivalent introductory value so neither contract choice nor lethal/non-lethal resolution creates a hidden "bad tutorial reward."
 
-## Upstairs / room rental
+# Upstairs / room rental and personal storage
 
-Room rental is Day One content.
+Room rental is Day One content and remains optional.
 
 The cheapest room should cost roughly **5–10 coins beyond starting wealth**. Marlow's reward should move the player closer; exploration can potentially let the player afford it sooner.
 
 If the player can afford it early, let them rent it. Do not artificially preserve poverty to force the Hunting path.
 
-Exact Rest Quality effects are unresolved.
+Exact Rest Quality effects remain unresolved.
 
-Long-term room ideas may include storage, personalization, trophies, and better rest, but do not overbuild them until Rest/player housing is formally designed.
+## Locked room benefits
+
+Renting a room at Garrick's Inn gives the player, at minimum:
+
+- a bed / personal rest location
+- access to the player's first **persistent personal storage chest/container**
+
+The room is therefore mechanically useful even before Rest Quality is finalized. It becomes the player's first practical home-base location for keeping surplus equipment, reagents, containers, ingredients, Hunting materials, and miscellaneous adventure items between trips.
+
+The intended early loop can naturally become:
+
+**travel → gather resources → return to Garrick's Inn → use some → store surplus in the rented room → prepare for a later trip**
+
+This is a convenience, organization, and stockpiling benefit. It is **not** justification for making the starting backpack unpleasant.
+
+### Inventory guardrail — locked
+
+Do **not** intentionally cripple the starting inventory, backpack size, or carrying capacity to force room rental.
+
+The opening must remain fully playable before the player can afford a room. Core Systems currently establishes one general inventory, sensible material stacking, and no restrictive carrying-capacity rule for the MVP opening. Room storage should complement that design rather than become relief from manufactured friction.
+
+Do not add restrictive carry weight/capacity as part of the room-storage pass.
+
+## Proposed MVP storage behavior
+
+These are the preferred implementation behaviors for the future Unity pass, subject to Central Brain approval where noted.
+
+### Before renting
+
+A physical chest/container may already exist in the rentable room as part of the believable furnishing.
+
+Before the player has rented that room, it is not their property and does not function as personal storage. If the room itself is inaccessible before rental under the current room flow, no special chest interaction is needed. If the player can physically see or inspect the room/chest before renting, use a simple contextual response such as **"Not your room."** or route the interaction through Garrick's existing rental/access logic.
+
+Do not introduce a global storage menu or magical bank interface.
+
+### On successful rental
+
+As soon as the existing room-rental transaction successfully grants the player access to that room, its chest becomes usable as personal storage.
+
+No separate storage purchase, key quest, tutorial mission, or second unlock is required.
+
+The chest should be a physical interactable in the room. Opening it exposes the player's stored contents; closing it returns to normal room exploration.
+
+### Persistence
+
+Stored contents are conceptually persistent world/player state:
+
+- items deposited remain stored when the player leaves the room
+- leaving the inn does not clear storage
+- traveling to another location does not clear storage
+- returning to the same rented room restores access to the same stored contents
+- normal scene reloads or travel transitions must not reset the chest to empty
+
+Exact save serialization and code authority are deferred to implementation. The design requirement is simply that room storage behaves as stable personal property, not as a temporary scene container.
+
+### Rental lapse / future expiry
+
+Rental duration and expiry are not resolved here and should remain unresolved until the room/economy model is deliberately designed.
+
+Storage must be future-proofed against either outcome:
+
+- if MVP room rental does **not** expire, storage remains accessible whenever the player's room is accessible
+- if rental expiry is added later, expiry may temporarily remove room/chest access, but it must **not delete, confiscate, reroll, or spill stored items**
+- stored contents remain safely associated with the player's room/storage state during any lapse
+- renewing/re-renting the appropriate room should restore access to the same stored contents unless Central Brain later approves a different explicit ownership model
+
+Do not invent punitive item loss for missed rent.
+
+Whether Garrick would allow retrieval during a lapse, require renewal first, or handle another reasonable access rule is an economy/dialogue question still requiring Central Brain approval. Whatever rule is chosen, the items remain safe.
+
+## Explicit MVP non-goals
+
+Do not expand this room-storage addition into:
+
+- housing construction
+- furniture placement/decorating systems
+- multiple storage tabs
+- remote/global bank access
+- crafting directly from storage
+- shared account storage
+- storage upgrades
+- property deeds/permanent room ownership
+- companions living in the room
+
+A believable chest in the rented room is enough for MVP.
+
+## Unresolved room / economy questions
+
+The following remain intentionally unresolved:
+
+- exact Rest Quality effects
+- whether room rental has a duration/expiry at all in MVP
+- if expiry exists, exact duration and renewal price/rules
+- whether a lapsed renter may retrieve stored items before renewing or must first restore room access
+- exact storage UI presentation/capacity, provided it does not create artificial opening friction
+- whether later inns or player-owned spaces eventually provide separate or linked storage
+
+Do not answer these silently during Unity implementation. Bring them back to Central Brain if implementation requires a decision.
+
+Long-term ideas such as personalization, trophies, improved rest, or broader housing remain deferred and should not be bundled into this storage feature.
 
 ## Relationship-driven space changes
 
@@ -488,6 +587,6 @@ Examples:
 - kitchen: initially blocked → Garrick later explicitly sends player inside → Sylvie eventually may trust player with independent access
 - basement: initially private → Marlow invites player → lab becomes Potion Making home
 - board: visible but gated by Garrick's trust → available after player demonstrates competence or sequence-breaks
-- upstairs: initially a coin goal → potentially becomes player's first home
+- upstairs: initially a coin goal → rented room becomes the player's first personal rest/storage space
 
 The inn should evolve from "place the tutorial happened" into a genuine recurring home base.
