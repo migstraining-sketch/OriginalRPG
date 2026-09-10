@@ -12,6 +12,32 @@ Core verbs:
 
 Not every hunt needs every step, but this is the shared grammar.
 
+## Starter-Hunt local partner integration — LOCKED
+
+Each starter Hunting contract has its own physically present local potential companion. Detailed authority lives in `HUNTING_PARTNERS.md`; group-combat rules remain owned by `GROUP_COMBAT_PARTY_MVP.md`.
+
+Locked Hunting-facing rules:
+- all three starter Hunts remain equal choices;
+- whichever Hunt is chosen first may naturally provide the player's first potential-companion exposure;
+- local partners do not solve investigation/inference for the player;
+- combat is not forced merely to demonstrate party mechanics;
+- do not inflate wildlife HP or add artificial extra enemies for tutorial symmetry;
+- Cull and Manage remain legitimate;
+- if combat occurs, a local partner uses normal Combatant / Side / Controller rules;
+- recruitment is optional and conversational, never automatic from contract completion;
+- **“Stay on my lead.”** maps to Direct and **“Use your judgment.”** maps to Independent, with small voice polish permitted later;
+- if unexpected combat begins before the arrangement is discussed, a physically present local partner defaults to Independent for that encounter;
+- do not interrupt an already-started fight with controller setup.
+
+**Character-first guardrail:** the partners' weapons are tactical identities, not their personalities. Hunting content must not reduce Ily, Sable, or Nessa to weapon tutorials wearing NPC faces.
+
+Current scope:
+- **Ilyra “Ily” Fen + Mud in the Moonrice:** full integration locked/current for the coordinated Unity pass;
+- **Sable Venn:** character-level direction locked, detailed Three Missing by Morning integration deferred;
+- **Nessa Vale:** character-level direction locked, detailed When the Wheel Stopped integration deferred.
+
+The local-partner layer must fit around the approved Hunting grammar rather than rewrite it.
+
 ## Inspect
 
 The player interacts with clues physically present in the world:
@@ -186,7 +212,7 @@ Starter Hunting should teach observation, not punish curiosity harshly.
 
 # First playable Hunting proof: Mud in the Moonrice
 
-`CONTRACTS.md` owns the contract-specific fiction, clue placement, Toma state, exact route outcomes, and acceptance tests. This section defines the Hunting-system state grammar that the first implementation must prove.
+`CONTRACTS.md` owns the contract-specific fiction, clue placement, Toma state, exact route outcomes, and acceptance tests. `HUNTING_PARTNERS.md` owns the now-locked Ilyra Fen integration. This section defines the Hunting-system state grammar that the first implementation must prove.
 
 ## Required state separation
 
@@ -273,17 +299,13 @@ The following sequence is explicitly valid:
 
 If this occurs, do not require the player to backtrack and click two clues merely to validate a solution they already discovered through world interaction and observation.
 
-The inference system can update retroactively or through the observed cause-and-effect where useful. For example, seeing the Reedback settle into the loosened mudgrub patch may itself justify a stronger observation about what it was seeking.
+The inference system can update retroactively or through the observed cause-and-effect where useful.
 
 ## Temporary displacement vs resolved behavior
-
-The first hunt must establish a reusable distinction:
 
 **An animal leaving the immediate encounter area is not automatically a solved wildlife problem.**
 
 A Reedback that is merely frightened off still has the same food incentive and may return. Management resolution requires a durable enough behavioral/environmental change for the contract's scope: the alternate feeding patch is prepared and the animal is observed feeding there away from the crop.
-
-This distinction should later support deterrence/relocation contracts without treating any fleeing AI state as success.
 
 ## Lethal completion and Harvest
 
@@ -295,11 +317,9 @@ For Mud in the Moonrice:
 3. Manual Harvest produces the guaranteed **Fresh Reedback Haunch**.
 4. Only then is the lethal route's wildlife/Hunting task considered complete for opening progression.
 
-Do not auto-transfer the haunch on the death frame.
+Do not auto-transfer the haunch on the death frame. Ily does not perform this Harvest for the player.
 
 ## Non-lethal ingredient rule
-
-A Manage route does not need to extract an edible product from the living target.
 
 For Mud in the Moonrice, the established **Preserved Reedback Cut** comes from Toma's earlier legitimate regional cull/food supply after the player resolves the present animal/crop problem non-lethally.
 
@@ -313,66 +333,17 @@ For the first implemented contract:
 - **Cull path:** Reedback dead + required manual Harvest completed.
 - **Manage path:** alternate feeding area successfully prepared + Reedback observed settling into feeding behavior away from the crop.
 
-Do not unlock Hunting on:
-- contract acceptance;
-- area entry;
-- first clue;
-- reaching an inference;
-- first attack;
-- Reedback death before Harvest;
-- temporarily scaring the animal away;
-- killing unrelated wildlife.
-
-The unlock presentation should remain modest and integrated with existing opening feedback rather than a giant profession-graduation screen.
-
-## Contract travel boundary
-
-Hunting does not own regional travel, but the first playable contract must be compatible with the approved regional-map authority:
-
-**Garrick's Inn → Regional Map → Reedwater Paddies** after accepting the contract, and **Reedwater Paddies → Regional Map → Garrick's Inn** after or during the visit.
-
-Arrival should begin at a sensible farm approach so the player has room to meet Toma/read the damaged paddies before stepping onto the first evidence. Hunting logic must not assume the player spawned beside a clue or creature.
+Do not unlock Hunting on contract acceptance, area entry, first clue, reaching an inference, first attack, Reedback death before Harvest, temporary scare-off, or unrelated wildlife kills.
 
 ## Intrinsic-fun acceptance check
 
-Before increasing coin/XP/reward values, playtest the hunt with reward numbers mentally hidden.
+The contract succeeds as a Hunting proof if the player can enjoyably notice signs, form a hypothesis, track the creature, choose a direct or environmentally grounded solution, discover valid world interactions, see the problem state change, and deal with the result. Ily may enrich this experience as a character and local collaborator, but the Hunt must still function if the player largely ignores her.
 
-The contract succeeds as a Hunting proof if the player can enjoyably:
-- notice a small readable set of signs;
-- form a cause-and-effect hypothesis;
-- follow a short trail without pixel hunting;
-- choose between a direct hunt and an environmentally grounded management solution;
-- discover a valid environmental interaction before fully understanding it and later connect cause to effect;
-- see the paddies/problem state meaningfully change;
-- manually deal with the result.
+## Current approval boundary
 
-If that loop is weak, fix the investigation, tracking, encounter, or resolution. Do not compensate with larger rewards.
+The Mud Hunting implementation package and the detailed Ily integration are both **approved/current for the coordinated Unity pass**.
 
-## Approval boundary for this proof
-
-Already locked upstream:
-- Hunting identity and five-verb grammar;
-- evidence should live in the world with subtle assistance;
-- no single mandatory clue should brick the investigation;
-- short 2–4-sign tracking chains;
-- Cull/Manage are internal categories rather than morality buttons;
-- manual Harvest;
-- no randomized starter material tiers;
-- completing a real starter contract unlocks Hunting;
-- Mud in the Moonrice premise and both ingredient outcomes.
-
-Central Brain has approved the implementation package with one revision: physically sensible authored world interactions must **not** be hard-gated by inference flags.
-
-Approved implementation details now include:
-- exact evidence threshold and explicit mudgrub-knowledge threshold;
-- state separation listed above;
-- early physical access to the Reedback regardless of investigation completion;
-- authored alternate feeding-patch/runnel interactions remaining physically available when sensible regardless of inference state;
-- knowledge affecting understanding, Hunt Notes, contextual description, prediction, and interaction surfacing rather than physical permission;
-- early preparation of the alternate feeding area as a valid systemic-discovery sequence break;
-- redirection success requiring observed stable feeding at the alternate patch rather than simple flee state.
-
-These recommendations deliberately avoid adding traps, bait inventories, procedural tracking, ecology simulation, a generic Dig verb, or a new Hunting-only UI framework.
+No new Hunting subsystem is created by the partner layer. Preserve the existing hunt first; layer local character presence and ordinary group-combat participation around it.
 
 ## Deferred
 
@@ -389,3 +360,5 @@ Do not define yet:
 - trading economy
 - spoilage simulation
 - advanced tracking UI
+- detailed Sable/Nightquill integration
+- detailed Nessa/Brookmaw integration
