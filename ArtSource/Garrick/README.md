@@ -1,6 +1,6 @@
 # Garrick — first Blender outfit and proportion study
 
-**Owner rejected the v01, v02 and v03 previews on 2026-09-10.** These files are preserved as earlier studies, not approved art. The latest attempt is the [v04 hair groom and head proportion experiment](v04/README.md). It is also unfinished and awaiting visual judgment. Do not install these studies in Unity as accepted character art.
+**Owner rejected the v01 through v04 Blender previews on 2026-09-10.** The owner clarified that the target is illustrated/animated fantasy, not photorealism, and allowed a 2D-looking approach. The latest candidate is the [illustrated direction preview](Illustrated-v01/README.md). It is a generated 2D illustration awaiting visual judgment, not a Blender render or game-ready asset. The earlier Blender files are preserved as rejected studies. Do not install them in Unity as accepted character art.
 
 Owner-requested Blender work, 2026-09-10. This is an **editable blockout**, not final character art or a replacement for the approved character sheet. It is not installed in Unity.
 
