@@ -1,5 +1,7 @@
 # Garrick — first Blender outfit and proportion study
 
+**Owner rejected the v01 preview on 2026-09-10.** The files below are preserved as an earlier study, not approved art. The owner then supplied the actual cast lineup and Garrick sheet. Continue with [v02](v02/README.md), which uses those references directly. Do not install v01 in Unity.
+
 Owner-requested Blender work, 2026-09-10. This is an **editable blockout**, not final character art or a replacement for the approved character sheet. It is not installed in Unity.
 
 Authority checked: `origin/main` at `7aed489`, especially [Garrick's approved modeling brief](https://github.com/migstraining-sketch/OriginalRPG/blob/7aed4898e90c4c659ea655b29923fae5a0b7fbe0/docs/GARRICK_VISUAL_APPROVED_REFERENCE.md). The Character Visual Development conversation also records the approved four characters and planned shared scale lineup. Its accessible history did not supply the actual approved sheet image. The face/hair forms here are provisional study geometry; no exact likeness match or final scale approval is claimed.
