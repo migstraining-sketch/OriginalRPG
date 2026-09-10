@@ -30,10 +30,9 @@ This repository is the continuity authority for the original RPG project.
 
 ## Working rule
 
-**Owner instruction, 2026-09-10: review first; gameplay coding is on hold.** Read the updated GitHub package, provide an honest review for Central Brain, and resolve material concerns before a separately authorized implementation pass. Locked design status alone is not permission to start coding. Documentation cleanup may remove clearly superseded instructions, but reviewer recommendations must remain proposals until accepted. Do not claim a guaranteed 10/10 experience from documents.
+**Owner-approved coordinated implementation, 2026-09-10.** The final blocker review passed and the owner separately authorized the **Marlow → Woodland → Mud in the Moonrice + Ily** slice. Implementation is on `implementation/coordinated-opening-slice` for PR review; do not merge directly to main. See [current implementation validation](../WoodlandSpine/Validation/STATUS.md). Natural dialogue/UI/pacing acceptance is not yet established. Review-first development still applies to future design packages.
 
-Current review: [coordinated package assessment](reviews/2026-09-10-coordinated-package-review.md). Earlier reviews are dated evidence, not a current defect list.
-
+The [earlier package assessment](reviews/2026-09-10-coordinated-package-review.md) is dated evidence, not a current unresolved blocker list. Prototype implementation does not establish new canon.
 Treat this repository as the source of truth for locked decisions. If a future chat finds a contradiction, do not silently rewrite upstream canon. Flag it, propose a fix, and update the relevant continuity files after Central Brain approval.
 
 `docs/DIALOGUE_PLAYER_AGENCY.md` is the continuity authority for playable dialogue logic, player-response quality, conversational state, branching/convergence, and player commitment/agency. Proposed exact prose in that document does not become canon until Central Brain approves it.

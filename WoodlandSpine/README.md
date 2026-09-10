@@ -1,73 +1,45 @@
-# WoodlandSpine — existing opening prototype
+# WoodlandSpine — Coordinated Opening Development Slice
 
-**Status, 2026-09-10:** the newer coordinated design package is not implemented. Gameplay coding is on hold for the owner's review-first process. See the [current package review](../docs/reviews/2026-09-10-coordinated-package-review.md). The behavior below describes the earlier prototype, not compliance with every current design document.
+Playable placeholder Unity project for **Marlow → Woodland → Mud in the Moonrice + Ily**. This is not the complete three-route opening. The repository's design documents remain authority; prototype tuning and prose do not establish new canon.
 
-Open this project in Unity **6000.5.6f1**, open **Assets/Scenes/Opening.unity**, and press Play. Do not play an empty Untitled scene. The scene builds its placeholder world when Play starts.
+## Open and play
 
-For the standalone version, run **Builds/Windows/WoodlandSpine.exe**. Keep the entire Windows folder together, including the Data directory and DLLs.
+1. Add this `WoodlandSpine` folder in Unity Hub with **Unity 6000.5.6f1**.
+2. Open `Assets/Scenes/Opening.unity`, then press Play. An empty Untitled scene contains no game.
+3. Start inside Garrick's Inn with immediate control. Speak to Garrick; enter your name when he asks. Follow Marlow only if you choose to hear him out.
 
-The existing opening implements an earlier revision of **docs/DIALOGUE_PLAYER_AGENCY.md**. See **Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md** for that baseline and **PLAYTEST-OPENING.md** for the route. Newer lab/return dialogue revisions await implementation. Earlier supplied scripts and validation reports are historical sources.
-
-## Current implementation
-
-- Coat colour, name entry when Garrick asks, immediate control inside the inn, contextual introductions and unrestricted initial departure.
-- Spoken player responses separated from NPC exchanges. Marlow's invitation precedes Garrick's warning. Marlow collects the sample remains and walks to unlock the laboratory.
-- A real staircase descends six metres into the lab beneath the inn. Walking down or back up changes camera cutaway; the player is not teleported. Marlow permanently relocates downstairs.
-- Free lab exploration; optional ale exchange; protective reactions to opening jars/enclosures; a quiet placeholder creature sound draws Marlow to the troll. Rescue, illness, research, inability to leave and watch backlog precede the ingredient briefing and genuine accept/refuse decision.
-- Weapon loan, connected woodland, ordinary creature, three ingredients with peaceful/frightened/violent Mooncalf choices, unexplained Mossback pursuit, tactical hex combat on the terrain, return and naturalist debrief.
-- Supervised Health Potion preparation, troll treatment, visible recovery, player remainder, payment and board access. Repeat preparation consumes ingredients plus a herb contribution. Gathering patches replenish on individual cooldowns.
-- Three equally presented contracts. Separate observation, interpretation, following, habitat/kill resolution and food outcomes. Nonlethal outcomes supported for all three. Lethal Reedback/Brookmaw routes require harvesting at the habitat before client payment. Mill wheel resumes moving, coop roof is secured, and redirected animals remain elsewhere in the site.
-- Garrick opens kitchen access after a completed contract. Sylvie evaluates the actual ingredient, demonstrates the common cooking steps, delivers the taste exchange and offers instruction. Cooking unlocks on acceptance. Optional practice uses the same session system and requires a pantry contribution. Well Fed is a status only; it does not heal.
-- Small coin/weapon/body shop and optional paid room. Taking stock after a warning can flag a criminal incident and lead to a prototype bout. Winning Garrick's bout gives early board access, permitting Hunting/Cooking before Marlow.
+If assets/scene need regeneration, use **Woodland → Generate initial scene and data** (or run `Tools/Build-Prototype.ps1` from this folder). The build tool validates rules, creates missing data assets and writes `Builds/Windows/WoodlandSpine.exe`. Quit that executable before rebuilding. Builds and Unity caches are not committed.
 
 ## Controls
 
-- WASD / arrows: move. E: nearby interaction. I: inventory and equipment.
-- Dialogue: click an actual player reply. Space/Enter or Continue advances an NPC exchange. Esc leaves the conversation; narrative milestones remain recorded.
-- Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash, 5 weapon Signature. Click a highlighted hex to move or the enemy to attack. After selecting Attack, you can also click Attack [enemy] or press Enter. Confirm Dash/Defend with Enter. Space ends the turn. Esc/right-click cancels an uncommitted selection.
-- Brewing/Cooking: use the displayed controls. Stepping away preserves that preparation.
-- Inventory lists coins, ingredient counts and edible provisions. Select a provision to use it for cooking or contribution.
+- WASD / arrows: move in exploration. E: nearby interaction.
+- I or top tabs: Player Panel (Inventory, Equipment, Character, Techniques, Journal).
+- Dialogue: click an authored response; Space/Enter advances ordinary Continue. Name entry has its own confirmation. Esc never hides or answers dialogue.
+- Combat: M Move, 1 Attack, 2 Defend, 3 Item, 4 Dash, 5 weapon technique. Select a target or destination by clicking; Enter confirms applicable actions. Space ends the current unit's activation.
+- Click a Ready ally to assign the next allied slot. Direct allies accept your orders; Independent allies resolve immediately. Controller preference is set outside combat.
+- Esc / right-click cancels uncommitted combat selection, closes ordinary panels, or cancels a pending storage quantity. Spent movement/actions and completed transfers remain committed.
+- Front entrance: Regional Map. Select a known destination, then commit travel. Back/service door is local property only.
 
-## Rules and tuning
+## What connects in this build
 
-30 player HP, zero innate Armor; the starting coat supplies Armor 1. Weapon and Body slots only. Sword 6 adjacent; Spear 6 in a straight direction at 1–2; Bow 5 at 2–4 with LOS. No random miss/critical/damage rolls. Damage is max(1, attack minus armor), halved and rounded up while defending.
+The revised inn introduction leads to Marlow's small, forward-moving lab conversation and explicit job acceptance. The clean field flask supports peaceful milk collection from a living nursing Mooncow. Bloodleaf, Silvermoss, wildlife and Mossback occupy the woodland. Five optional discoveries add observations to Knowledge without inventory items or completion counters.
 
-Three movement plus one Primary Action; split movement; mud costs two; Dash adds three; switching weapons in combat uses the action. Obstacles stop sight and Mossback charge; hitting a tree staggers it for a phase. Bow can reposition without opportunity attacks. Flee permits retry; it no longer completes the mandatory Mossback milestone.
+Returning ingredients prioritizes treatment, then supervised Potion Making and the troll. Destroying the viable nursing source before collection immediately replaces the impossible objective with Return to Marlow. Reporting that failure closes treatment without Potion Making and still opens Garrick's board. Hostility by itself does not fail the job.
 
-Weapon/enemy/main combat values remain assets in Assets/Resources. OpeningProgress holds provisional room/coin/illness defaults; HuntDefinition supplies contract data, and FullOpening exposes creature data and gathering cooldown during Play. These are deliberately small systems, not final profession/economy design.
+All three canonical Hunt postings are visible. Only **Mud in the Moonrice** is selectable in this development slice; the others do not reveal Regional Map destinations. Reedwater supports flexible clues, early wet-margin preparation, witnessed feeding redirection (Manage), or combat followed by explicit manual Harvest (Cull). Valid completion unlocks Hunting. Ily is physically present, can fight Direct or Independent, and is optionally recruited afterward. Toma's provisions/payment lead back to Garrick and Sylvie's existing Cooking lesson.
 
-The illness clock starts with the invitation and runs while the game is running, including conversations. Default **45 minutes**, tunable through OpeningProgress. Treatment stops it. Expiry removes Marlow and closes his opening content for the rest of the session. This duration was not specified in the supplied text: it is a visible prototype assumption, not a locked design decision. There is no later replacement Potion Making route yet.
+The inn includes occupied common-room seating, accessible board, physical basement stairs, kitchen, upper-floor landing and four modest guest rooms. Rental remains paid once. The room chest transfers real carried inventory and equipment. Storage persists across regional visits **within the running game**; this prototype has no disk save/load yet. Free Basic Rest at the common-room hearth restores the player and present companions without requiring rental.
 
-## Validation
+## Combat
 
-Tools/Build-Prototype.ps1 imports, runs combat/opening/intro/progression assertions in Unity and builds Windows. Tools/Compile-Source.ps1 checks source compilation against the installed Unity assemblies. Run the built player with --opening-smoke and an absolute -logFile path for the current automated gameplay test. The older --intro-smoke and --slice-smoke flags redirect to this current test; their old test classes are retained as historical coverage only.
+Combat stays on a hex grid over its encounter space. Units own HP, equipment, movement, Primary Action, controller, Defend and committed intent. Ordinary participant limits are 1–3 allies and 1–6 enemies. Frozen round schedules distribute enemies across allied slots; removed units skip slots until the next round rebuild. Defend lasts until that unit's next activation.
 
-Read Validation/DIALOGUE-CORRECTION.md for the latest dialogue evidence and Validation/OPENING-RESULT.md for the preceding full-opening pass. Automated scripts drive gameplay callbacks and walk selected real routes. They do not certify dialogue quality, natural pacing, every mouse interaction or a full human playthrough.
+Fixed damage, weapon geometry, terrain, LOS, signatures and committed Pounce/Rush/Charge share model rules with highlights, hover reasons and click acceptance. Every committed threat remains visible even when another enemy is selected. The camera reserves actual space for the compact tray so the battlefield is not hidden behind its border. After victory or successful Flee, a defeated companion returns at 1 HP and needs Basic Rest before another fight.
 
-## Deliberate limits
+Tune weapons and creature assets in `Assets/Resources`; `SliceRules` links them and exposes starting values including Ily HP. New creature defaults are prototype tuning, not an expansion of design canon.
 
-All geometry, gestures and sound are placeholders. No Blender assets, voiced dialogue, polished art or final animations. Kitchen and rented-room access still use explicit same-scene doorway transfers; only the first lab descent is now continuous physical traversal. Garrick's prototype bout uses a nearby outdoor blockout and a simple yield outcome; a larger crime/guard/reputation system is not implemented. Investigation clues are simple inspectable props, and nonlethal repairs are authored interactions rather than simulation. The three jobs use the common combat rules with different authored evidence; creature-specific advanced combat is not implemented.
+## Verification and limits
 
-Consequences and inventory persist across visits in the running session, not across quitting or stopping Play. Rooms can be rented and entered; sleeping/rest quality is deferred. Well Fed has no stat effect. No additional professions, recipe catalogue, later progression or explanation for Mossback behaviour was added. The 20–35 minute target is not yet established by human playtesting.
+See [validation status](Validation/STATUS.md), [manual playtest](PLAYTEST-OPENING.md), and [implementation handoff](Docs/IMPLEMENTATION-HANDOFF.md). Automated checks use isolated runtime fixtures and do not measure a natural first playthrough or establish dialogue pacing/fun. The old 20–30 minute estimate is guidance only.
 
-Next step: resolve the current Central Brain review recommendations before authorizing gameplay changes. Human pacing and staging acceptance are still required later.
-
-
-
-
-## Continuity review
-
-See [CONTINUITY-AUDIT.md](Docs/CONTINUITY-AUDIT.md) for the historical comparison. The existing solo combat refinement is implemented; the newer group-combat package is not. Full Cooking, Hunting observation/tracking and narrative acceptance remain incomplete. Buying gear stores it without auto-equipping; open inventory to equip it. Body armor can be changed outside combat.
-
-
-## Approved combat refinement
-
-Key 5 selects Lunge (Sword), Drive (Spear), or Quick Shot (Bow). Click the enemy or press Enter to confirm; Esc/right-click cancels. The first woodland creature now telegraphs a committed Pounce. See [COMBAT-REFINEMENT.md](Docs/COMBAT-REFINEMENT.md) for exact rules, terrain treatment, targeting fixes and validation.
-
-
-
-## Revised opening dialogue
-
-The baseline conversation is described in [DIALOGUE-AGENCY-IMPLEMENTATION.md](Docs/DIALOGUE-AGENCY-IMPLEMENTATION.md). Enter your name when Garrick asks, not during coat selection. Hearing Marlow out and accepting his woodland job are separate choices. Follow the newer repository authority for future changes, not historical supplied scripts.
-
-
+Art, animation, camera transitions and interface styling remain placeholders. No final Blender work, networking, later two Hunt routes or save system is included. The 3v6 stress fixture uses test actors; it is not an extra authored encounter. Inventory/storage contents reset when the application closes or Play mode restarts.

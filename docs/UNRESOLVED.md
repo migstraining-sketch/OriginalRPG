@@ -4,9 +4,8 @@ These items are intentionally **not** finalized. Future chats should not invent 
 
 ## Immediate next frontier
 
-The current priority is **reviewing the coordinated opening package before gameplay coding**, per the owner's 2026-09-10 instruction. See [current review](reviews/2026-09-10-coordinated-package-review.md). Existing signatures, Pounce and targeting/cancel fixes are in the earlier prototype; regression testing them is not the same as implementing the newer party/travel/UI package.
-
-Required combat regressions when implementation is authorized include:
+The owner approved implementation after final blocker review. The current frontier is reviewing and human-playtesting the **Marlow → Woodland → Mud in the Moonrice + Ily** implementation branch. See [validation status](../WoodlandSpine/Validation/STATUS.md). Automated success is not acceptance of dialogue staging, UI readability, fun or natural pacing. No complete three-route opening is claimed.
+Combat regressions to preserve through implementation review include:
 - Sword Lunge
 - Spear Drive
 - Bow Quick Shot
