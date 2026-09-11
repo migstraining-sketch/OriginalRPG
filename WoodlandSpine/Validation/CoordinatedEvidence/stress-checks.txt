@@ -1,0 +1,35 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS commit known destination Woodland
+PASS travel completes to Woodland
+PASS stress fixture ally joins within cap
+PASS stress fixture ally joins within cap
+PASS 3v6 full participant stress
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 0
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 45
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 90
+PASS individual enemy pick at camera angle 180
+PASS individual enemy pick at camera angle 180
+PASS individual enemy pick at camera angle 180
+PASS individual enemy pick at camera angle 180
+PASS individual enemy pick at camera angle 180
+PASS individual enemy pick at camera angle 180
+PASS departed unit does not rebuild current schedule
+PASS next round reflects 3v5 after departure
+PASS defeated companion recovers stable and ineligible
+PASS Basic Rest restores eligibility

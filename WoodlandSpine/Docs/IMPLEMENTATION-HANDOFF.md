@@ -1,23 +1,45 @@
-# Implementation handoff — baseline and pending design
+# Coordinated opening implementation handoff
 
-Status refreshed 2026-09-10. Latest gameplay commit: `72d6411`. **Gameplay changes are on hold for review.** New group combat, travel, milk failure, storage, Inn layout, partner and dialogue/UI revisions are design work awaiting implementation. See the [current review](../../docs/reviews/2026-09-10-coordinated-package-review.md).
+**Environment follow-up:** the owner's Blender inn is now playable. Read [Inn model integration](INN-MODEL-INTEGRATION.md) for the current model/import pipeline, shared anchors, physical route adaptations, build evidence and visual limitations. The initial authority/build record below remains historical context for the coordinated gameplay systems.
 
-The repository's root docs remain the design authority. This folder imports the existing WoodlandSpine Unity prototype and its accumulated opening-flow implementation; it does not replace or rewrite those documents.
+Branch: `implementation/coordinated-opening-slice`. Gameplay authority reviewed at `631f087`; subsequent main `c2b845c` adds only `CHARACTER_VISUAL_DEVELOPMENT.md`, which does not authorize art production or alter gameplay. This branch does not implement the complete three-route opening.
 
-## Included
+## Ownership and state boundaries
 
-Character entry and exploration; contextual Garrick/Marlow dialogue and supplied dialogue authority; a physical basement staircase and first troll/lab visit; weapon loan and inventory; connected woodland and deterministic hex battles; Mossback lane telegraph, obstacles and stagger; ingredient outcomes and first potion preparation; three hunting contracts with lethal/nonlethal outcomes; Sylvie's kitchen introduction and cooking; minimal shop and paid room entry. All visual geometry and audio are placeholders.
+| Area | Files / responsibility |
+| --- | --- |
+| Combat rules | `Combatant`, `CombatRound`, `CombatModel`, `HexGrid`: units, frozen scheduler, authoritative legality and deterministic effects |
+| Combat presentation | `BattlePresentation`, `BattleHUD`, `CombatViewport`, `WorldBuilder.ShowGrid`: actor bindings, picking, labels, tray and highlights |
+| Integration | `CoordinatedSlice`: routes explicit interactions, outcomes and objectives to independent state owners |
+| Travel | `CoordinatedState.TravelKnowledge`, `RegionalTravel`: known destinations, front-door commitment, regional visibility, arrival |
+| Opening | `InnConversation`, `ReactiveIntro`, `FirstLabVisit`, `MarlowOpening`, `OpeningState`: knowledge and explicit commitment, treatment priority |
+| Herd | `MooncalfHerd`, `HerdState`: separately living members, reusable flask, viable source, failed-treatment continuation |
+| Mud | `MudInTheMoonrice`, `MudInvestigation`: any two clues, early preparation, observed feeding, Cull then Harvest, reward |
+| Ily | `CompanionPresence`: physical location, local presence, recruited roster vs active travel, controller preference, recovery |
+| Player/context UI | `PlayerPanel`, `SliceHUD`, `RoomStorage`: state readers and explicit transfers; Journal owns notes |
+| World blockout | `WorldBuilder`, `OpeningWorld`, `HuntingWorld`, `AmbientPatron`: common room, lab, upper rooms, kitchen, Woodland and Reedwater |
+| Data | `SliceData`, `EnemyData`, `Resources/*.asset`: editable defaults including new herd/Reedback assets and Ily HP |
+| Validation | editor `GroupCombatValidation` / `CoordinatedValidation` plus existing suites; opt-in player `CoordinatedSmoke` |
 
-Assets, scene, .meta identifiers, Packages, ProjectSettings, validation sources, build tools and playtest notes are versioned. Library, local settings, logs, generated assemblies and Windows player output are excluded. Open this repository's WoodlandSpine folder in Unity Hub to develop here. The earlier outputs copy is the import source, not a second repository to maintain.
+`SliceGame` remains the existing entry point and orchestrator. New UI does not own quest progress. Region groups preserve child active states; changing regions must not reactivate a dead creature or reveal a remote encounter. There are no frame-by-frame broad scene scans.
 
-## Combat targeting correction
+## Invariants to preserve
 
-The camera previously rendered enemies behind the action panel while world input rejected clicks there. Combat now uses a camera viewport between the header and action panel, fitted to all battlefield cells and actor height. Exploration restores the full viewport. UI clicks remain isolated from world clicks. Selecting Attack also offers an explicit enemy confirmation button and Enter shortcut; the same range, sight, phase and Primary Action rules apply.
+- `CombatModel.Hero` is the player. Legacy `playerHP/playerCell/inventory` accessors refer to the acting allied unit inside combat; use Hero for exploration synchronization. `Current` exposes the actual resolving unit for HUD labels.
+- Multiple Ready allies choose the next allied slot; Independent control resolves through the same rules. Controller changes occur before combat. Local helpers count toward the ordinary three-allied-participant cap.
+- Removing a participant skips its existing slot. The next round rebuilds buckets. Defend expires when its owner starts another activation. Focus never rewrites committed threats.
+- Actor picking, grid highlighting, hover text and click acceptance call model legality. Empty tray margins never become a hidden world-click rejection area; the camera reserves the tray's footprint.
+- `MarlowInterest` is not `MarlowJob`. Invitation, curiosity, entering the lab, ordinary Continue and Esc do not imply acceptance. Esc leaves decisions visible.
+- Return with ingredients precedes optional Mossback discussion. No Mossback kill gate on treatment. No backup milk pail or failure timer. Source destruction before collection is genuinely final for that treatment attempt.
+- The lent field flask is a real inventory entry. Milk is carried in that container; preparation returns the clean flask. The first loan happens once, including when the flask is stored.
+- Mud preparation works without clue flags. Two clues can support inference, but do not compel Manage/Cull. Witnessed feeding or explicit Harvest determines valid completion. Killing after Manage invalidates that Manage result until Harvest. Rewards do not duplicate.
+- Personal storage transfers real item references/counts. Equipped gear is explicitly unequipped on storing. Completed transfers survive panel cancellation and regional travel. Storage is session-persistent because the prototype has no disk save system.
+- Free hearth Rest restores the player and present companions, including eligibility. No rental, price, quality, fatigue or timer is attached.
 
-## Provisional and incomplete
+## Verification and outstanding acceptance
 
-The existing 45-minute illness timer is superseded by the new authored-state direction and must be replaced in the authorized coordinated pass. Room price and small coin rewards remain prototype assumptions. No save/load exists; new persistent-storage design is not proof of disk persistence. Kitchen and room doors use same-scene transfers; the lab uses real stairs. Crime/guards, room rest, final art, voiced dialogue and later progression are incomplete. [Validation status](../Validation/STATUS.md) records the earlier build. Automated callback tests do not establish dialogue quality or replace manual mouse/pacing acceptance.
+The build script regenerates missing assets, runs all editor suites, and produces the Windows executable. The opt-in runtime runner tests the integrated success route and independent failure/Manage/Cull/Ily/stress cases. It directly invokes some authored interactions and uses fixtures for exceptional states; it is not a full human input replay.
 
-Next step: resolve the current review's design dependencies before authorizing code. Subsequent playtesting must include natural dialogue, group targeting and the real success/failure routes, not only scripted callbacks.
+See `Validation/STATUS.md` for final counts and `PLAYTEST-OPENING.md` for manual acceptance. Camera render evidence shows actual runtime placeholder geometry, not the IMGUI interface. Host full-window capture returned black frames, so UI screenshot acceptance and natural pacing/timing remain unverified. The former chest obstruction was found by a CharacterController walking check and fixed before delivery.
 
-The follow-up wide/short Game-view fix caps combat viewport aspect at 1.8 and compacts the combat header. This prevents adjacent prototype sites from appearing at the sides. Validation/STATUS.md records the focused camera regression and reviewed screenshot.
+No design contradiction or gameplay-rule exception was required. Remaining tuning includes camera/readability at the user's window size, dialogue staging, terrain spacing, Independent ally feel and natural first-play length. Do not promote prototype prose, creature tuning or placeholder silhouettes into canon. Next production step is a human playthrough of these routes, followed by targeted fixes; later Sable/Nessa routes and final Blender art remain separate work.

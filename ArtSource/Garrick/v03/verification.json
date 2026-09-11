@@ -1,0 +1,36 @@
+{
+  "blender": "5.2.1 LTS",
+  "base_vertices": 4368,
+  "base_faces": 4341,
+  "anatomical_base": "MakeHuman CC0",
+  "morph_weights": {
+    "caucasian-male-young.target": 0.67,
+    "caucasian-male-old.target": 0.33,
+    "universal-male-young-maxmuscle-averageweight.target": 0.58,
+    "chin-width-incr.target": 0.36,
+    "chin-bones-incr.target": 0.32,
+    "head-square.target": 0.3
+  },
+  "render_source": "actual Blender Cycles geometry",
+  "face_texture_projection": "provisional UV registration of existing generated v02 albedo; geometric eyeballs and features",
+  "rigged": false,
+  "unity_installed": false,
+  "native_reopen": "passed",
+  "packed_images": [
+    {
+      "name": "Garrick-Reference.png",
+      "packed": true
+    },
+    {
+      "name": "Garrick_Face_Albedo.png",
+      "packed": true
+    },
+    {
+      "name": "Opening-Cast-Lineup.png",
+      "packed": true
+    }
+  ],
+  "eyeballs": 2,
+  "iris_meshes": 2,
+  "geometry_and_render_files": "present"
+}

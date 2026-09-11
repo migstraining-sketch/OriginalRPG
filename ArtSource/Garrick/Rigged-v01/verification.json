@@ -1,0 +1,38 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "check": "single retained 65-bone character skeleton"
+    },
+    {
+      "pass": true,
+      "check": "no duplicate imported rigs"
+    },
+    {
+      "pass": true,
+      "check": "finite character geometry"
+    },
+    {
+      "pass": true,
+      "check": "no empty character meshes"
+    },
+    {
+      "pass": true,
+      "check": "all skinning modifiers target the retained rig"
+    },
+    {
+      "pass": true,
+      "check": "all referenced image textures load from saved project"
+    },
+    {
+      "pass": true,
+      "check": "breathing action deforms the live skeleton"
+    }
+  ],
+  "mesh_objects": 18,
+  "triangles": 22463,
+  "bones": 65,
+  "textures_packed": true,
+  "unity_integrated": false,
+  "visual_approval": false
+}

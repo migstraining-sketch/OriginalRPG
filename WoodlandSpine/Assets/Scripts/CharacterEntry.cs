@@ -8,7 +8,7 @@ namespace WoodlandSpine
         string traveller="Traveller";
         int color;
         readonly Color[] colors={new Color(.35f,.53f,.7f),new Color(.58f,.39f,.26f),new Color(.38f,.55f,.38f)};
-        void Start(){var args=System.Environment.GetCommandLineArgs();if(System.Array.IndexOf(args,"--combat-camera-smoke")>=0||System.Array.IndexOf(args,"--slice-smoke")>=0||System.Array.IndexOf(args,"--intro-smoke")>=0||System.Array.IndexOf(args,"--opening-smoke")>=0)Enter();}
+        void Start(){var args=System.Environment.GetCommandLineArgs();if(System.Array.IndexOf(args,"--coordinated-smoke")>=0||System.Array.IndexOf(args,"--combat-camera-smoke")>=0||System.Array.IndexOf(args,"--slice-smoke")>=0||System.Array.IndexOf(args,"--intro-smoke")>=0||System.Array.IndexOf(args,"--opening-smoke")>=0)Enter();}
         void Enter(){var game=new GameObject("Slice systems").AddComponent<SliceGame>();game.rules=rules;game.playerName=string.IsNullOrWhiteSpace(traveller)?"Traveller":traveller.Trim();game.coatColor=colors[color];Destroy(gameObject);}
         void OnGUI()
         {
@@ -19,7 +19,7 @@ namespace WoodlandSpine
             GUILayout.Space(12);GUILayout.Label("Travel coat color");color=GUILayout.SelectionGrid(color,new[]{"Blue","Ochre","Green"},3,GUILayout.Height(36));
             GUILayout.Space(20);GUILayout.Label("30 HP • Padded Travel Coat, Armor 1");
             GUILayout.Space(20);if(GUILayout.Button("Enter Garrick's Inn",GUILayout.Height(42)))Enter();
-            GUILayout.Label("Placeholder geometry • WASD movement • E interaction");GUILayout.EndArea();
+            GUILayout.Label("Blender inn preview • WASD movement • E interaction");GUILayout.EndArea();
         }
     }
 }

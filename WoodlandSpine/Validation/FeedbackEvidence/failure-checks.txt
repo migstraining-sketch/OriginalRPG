@@ -1,0 +1,18 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS commit known destination Woodland
+PASS travel completes to Woodland
+PASS juvenile provocation starts one three-member herd battle
+PASS provocation alone is not milk failure
+PASS source death replaces impossible objective immediately
+PASS party can Flee at boundary
+PASS commit known destination Inn
+PASS travel completes to Inn
+PASS dialogue open for I killed the nursing Mooncow. I couldn't bring a serving.
+PASS authored choice I killed the nursing Mooncow. I couldn't bring a serving.
+PASS ordinary Continue available
+PASS genuine failure continues to board without Potion Making
+PASS unavailable route cannot be accepted
+PASS commit known destination Reedwater
+PASS travel completes to Reedwater
+PASS failure route continues into Hunt

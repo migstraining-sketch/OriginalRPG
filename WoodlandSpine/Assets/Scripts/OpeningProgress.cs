@@ -18,7 +18,7 @@ namespace WoodlandSpine
         public bool marlowGone, crimeWarned, criminal, defeatedGarrick, combatSeen;
         public float illnessElapsed, illnessSeconds=2700;
         public string food="";
-        public System.Collections.Generic.Dictionary<string,int> provisions=new System.Collections.Generic.Dictionary<string,int>();
+        [NonSerialized] public System.Collections.Generic.Dictionary<string,int> provisions=new System.Collections.Generic.Dictionary<string,int>();
         public int foodPortions {get=>provisions.TryGetValue(food,out int count)?count:0;set=>provisions[food]=Math.Max(0,value);}
         public int pantryContributions, labContributions;
         public bool Choose(int index){if(index<0||index>=3||hunts[index].rewarded)return false;if(activeHunt>=0&&!hunts[activeHunt].rewarded)return activeHunt==index;activeHunt=index;hunts[index].accepted=true;return true;}

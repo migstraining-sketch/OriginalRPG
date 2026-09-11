@@ -1,0 +1,29 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS commit known destination Reedwater
+PASS travel completes to Reedwater
+PASS arrival does not solve Hunt
+PASS dialogue open for Use your judgment.
+PASS authored choice Use your judgment.
+PASS Ily joins physically and shares allied slots
+PASS deterministic battle reached victory with ordinary HP/actions
+PASS kill alone does not complete Cull
+PASS dialogue open for Harvest Reedback.
+PASS authored choice Harvest Reedback.
+PASS ordinary Continue available
+PASS manual harvest completes Cull
+PASS ordinary Continue available
+PASS route-specific food reward supplied once
+PASS dialogue open for You could come with me. I could use someone practical.
+PASS authored choice You could come with me. I could use someone practical.
+PASS dialogue open for Travel with me.
+PASS authored choice Travel with me.
+PASS optional spoken recruitment distinguishes active party
+PASS commit known destination Inn
+PASS travel completes to Inn
+PASS active companion physically arrives at Inn
+PASS dialogue open for I was going to find something to do with them.
+PASS authored choice I was going to find something to do with them.
+PASS ordinary Continue available
+PASS Garrick hands off to Sylvie
+PASS existing kitchen access remains usable

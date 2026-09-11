@@ -1,0 +1,2 @@
+COORDINATED_RUNTIME_PASSED: feedback-early • 536 checks
+Scripted runtime verification; not a natural first-play timing or pacing review.

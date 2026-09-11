@@ -44,6 +44,8 @@ namespace WoodlandSpine
         public bool Walkable(Hex h) => cells.Contains(h) && !blocked.Contains(h);
         public int Cost(Hex h) => difficult.Contains(h) ? 2 : 1;
         public Dictionary<Hex,int> Reach(Hex start, int budget, Hex occupied, out Dictionary<Hex,Hex> previous)
+            => Reach(start,budget,new HashSet<Hex>{occupied},out previous);
+        public Dictionary<Hex,int> Reach(Hex start, int budget, HashSet<Hex> occupied, out Dictionary<Hex,Hex> previous)
         {
             previous = new Dictionary<Hex,Hex>(); var costs = new Dictionary<Hex,int>{{start,0}}; var queue = new Queue<Hex>(); queue.Enqueue(start);
             while(queue.Count>0)
@@ -52,7 +54,7 @@ namespace WoodlandSpine
                 foreach(Hex d in Hex.Directions)
                 {
                     Hex n=h+d; int cost=costs[h]+Cost(n);
-                    if(!Walkable(n)||n.Equals(occupied)||cost>budget) continue;
+                    if(!Walkable(n)||occupied.Contains(n)||cost>budget) continue;
                     if(costs.TryGetValue(n,out int old)&&old<=cost) continue;
                     costs[n]=cost; previous[n]=h; queue.Enqueue(n);
                 }

@@ -21,7 +21,9 @@ namespace WoodlandSpine
             // Pick up the remaining sample before leaving the table.
             actor.localScale=new Vector3(.7f,.55f,.7f);yield return new WaitForSeconds(.7f);actor.localScale=new Vector3(.7f,.9f,.7f);
             var remains=game.world.Shape("Wrapped sample remains",actor.position+new Vector3(.4f,0,0),new Vector3(.22f,.18f,.22f),new Color(.55f,.52f,.42f),solid:false);remains.transform.SetParent(actor,true);
-            Vector3[] route={new Vector3(-4,.9f,-4.8f),new Vector3(-7,.9f,-4.8f),new Vector3(-7,.9f,-3.5f),new Vector3(-7,-5.1f,5),new Vector3(-4.5f,-5.1f,5.3f),new Vector3(0,-5.1f,3)};
+            Vector3[] route={new Vector3(-6.65f,.9f,1.1f),InnLayout.BasementApproach+Vector3.up*.8f,
+                new Vector3(-7.5f,.9f,3.35f),InnLayout.BasementBottom+Vector3.up*.8f,
+                new Vector3(-6.1f,InnLayout.LabFloor+.9f,7.3f),new Vector3(-6.1f,InnLayout.LabFloor+.9f,5),OpeningWorld.LabPoint(new Vector3(36,.9f,3))};
             for(int i=0;i<route.Length;i++)
             {
                 if(i==3){game.world.OpenBasement();game.notice="Marlow: Come on, then.";}
@@ -32,15 +34,15 @@ namespace WoodlandSpine
         public void Tick(float delta)
         {
             Vector3 p=game.player.transform.position;
-            bool under=p.y<-1&&Mathf.Abs(p.x)<10&&p.z<8&&p.z>-8;
+            bool under=p.y<-1&&Mathf.Abs(p.x)<10&&p.z<8.5f&&p.z>-8;
             if(under!=game.opening.inLab)
             {
                 game.opening.inLab=under;
-                foreach(var r in game.world.innRenderers)if(r!=null&&!r.name.StartsWith("Basement stair "))r.enabled=!under;
+                // Camera layers section the inn without changing any collision or persistent renderer state.
                 if(under){game.intro.EnteredLab();game.notice="";}
             }
             if(under&&arrived&&!S.sawTroll&&game.mode==GameMode.Exploration&&!game.showInventory&&Vector3.Distance(p,OpeningWorld.LabPoint(new Vector3(38.7f,.1f,3.3f)))<1.8f){DrawAttention();Reveal();return;}
-            if(!under||p.y>-5.5f||!arrived||game.mode!=GameMode.Exploration||game.showInventory||S.questAccepted||drewAttention)return;
+            if(!under||p.y>InnLayout.LabFloor+.45f||!arrived||game.mode!=GameMode.Exploration||game.showInventory||S.questAccepted||drewAttention)return;
             explored+=delta;if(explored>=explorationSeconds)DrawAttention();
         }
         public void DrawAttention()
@@ -98,40 +100,28 @@ namespace WoodlandSpine
         void Questions(string answer=null)
         {
             A.labCheckpoint="questions";
-            var choices=new System.Collections.Generic.List<DialogueChoice>();
-            if(!A.symptomsKnown)choices.Add(C("What's wrong with him?",()=>{A.symptomsKnown=true;Questions("I don't know. He stopped eating first. Then the colour began to fade. His regeneration's slowing too.");}));
-            if(!A.rescueKnown)choices.Add(C("What happened to him?",()=>{A.rescueKnown=true;Line("questions","I found him in the floodwater.",()=>Questions("He was drowning."));}));
-            choices.Add(C("You keep a troll down here?",()=>Questions("He was drowning.")));
-            choices.Add(C("Is he dangerous?",()=>Questions("Usually? Potentially.\n\nRight now, I'm more worried about him.")));
-            choices.Add(C("What do you need?",JobSetup));
-            game.Talk("Marlow",answer??"He should be green.",choices.ToArray());
+            game.Talk("Marlow","He should be green.",
+                C("What's wrong with him?",()=>{A.symptomsKnown=true;Line("symptoms","I don't know. He stopped eating first. Then the colour began to fade. His regeneration's slowing too.",JobSetup);}),
+                C("That's a troll. You brought him into the inn?",()=>{A.rescueKnown=true;game.Talk("Marlow","I found him in the river during the floods. He was trapped and couldn't get clear.",C("You pulled a troll out of the river?",()=>Line("drowning","He was drowning.",()=>{A.symptomsKnown=true;Line("symptoms","He stopped eating first. Now his colour is fading, and his regeneration's slowing.",JobSetup);})));}));
         }
         void JobSetup(){Line("setup","I think I can stabilize him.",Material);}
-        void Material()
+        void Material(){Line("material","But what I had left isn't enough. I need fresh material.",Ingredients);}
+        void Ingredients()
         {
-            A.labCheckpoint="material";game.Talk("Marlow","But what I had left isn't enough. I need fresh material.");
-            if(A.woodlandKnown)game.dialogue.choices.Add(C("From the woodland?",Ingredients));
-            game.dialogue.continueAction=Ingredients;
+            A.ingredientsKnown=true;A.woodlandKnown=true;A.labCheckpoint="ingredients";
+            game.Talk("Marlow","Bloodleaf. Silvermoss. Mooncalf Milk.",C("Mooncalf milk?",()=>Line("milk_source","The nursing Mooncow's milk. There's a herd in the woodland. I'll lend you a clean field flask for one serving.",()=>JobGate())));
+            game.dialogue.continueAction=()=>JobGate();
         }
-        void Ingredients(){A.ingredientsKnown=true;A.woodlandKnown=true;Line("ingredients","Bloodleaf, Silvermoss, and Mooncalf Milk.",()=>JobGate());}
         void JobGate(string answer=null)
         {
             beat=LabBeat.Decision;A.labCheckpoint="job";
-            bool refused=A.marlowJob==MarlowJob.Refused;
-            if(!refused)A.marlowJob=MarlowJob.Offered;
-            var choices=new System.Collections.Generic.List<DialogueChoice>{
+            if(A.marlowJob!=MarlowJob.Refused)A.marlowJob=MarlowJob.Offered;
+            game.Talk("Marlow","If you bring them back, I can prepare the treatment.\n\nWill you help me?",
                 C("I'll get them.",()=>{A.marlowJob=MarlowJob.Accepted;S.questAccepted=true;game.jobAccepted=true;A.Accept();beat=LabBeat.Accepted;Line("accepted","Thank you.",Briefing);}),
                 C("No.",()=>{A.marlowJob=MarlowJob.Refused;A.Refuse();Line("refused","All right.",game.CloseDialogue);}),
-                C("Where do I find them?",()=>JobGate("Bloodleaf grows beside the woodland trail. Silvermoss likes damp, shaded stone. The Mooncalf pasture is farther on.")),
-                C("Mooncalf milk?",()=>JobGate("Offer grass, lower your weapon and turn sideways. Let her settle.")),
-                C("What am I supposed to do with them?",()=>JobGate("Bring them back to the laboratory. We'll prepare the treatment here.")),
-                C("And you can't go because of him?",()=>{A.cannotLeaveKnown=true;JobGate("His condition can change quickly. I won't leave him unattended.");})};
-            if(!A.paymentAsked)choices.Add(C("What are you paying?",()=>{A.paymentAsked=true;A.paymentKnown=true;JobGate("There is payment for the work.");}));
-            string prompt=(refused?"If you've reconsidered, I still need those ingredients.\n\n":"")+"If you bring them back, I can prepare the treatment.\n\nWill you help me?";
-            game.Talk("Marlow",answer==null?prompt:answer+"\n\n"+prompt,choices.ToArray());
+                C("I'll think about it.",game.CloseDialogue));
         }
-        void Briefing()=>Line("accepted","Bloodleaf: red veins. Pinch the fresh tips; leave the stem rooted. Silvermoss: pale fronds on damp stone, out of the sun. Leave most of the patch.\n\nFor the Mooncalf, offer grass, lower your weapon and turn sideways. Let her settle. Mossbacks normally leave you alone if you give them space.\n\nAsk Garrick for a weapon before you leave.",game.CloseDialogue);
-        void Ale(int step)
+        void Briefing()=>Line("accepted","Bloodleaf has red veins. Silvermoss grows on damp, shaded stone. The herd grazes near water. Take this clean flask for a serving from the nursing Mooncow.\n\nGarrick can lend you a weapon. The front road leads toward the woodland.",game.CloseDialogue);        void Ale(int step)
         {
             if(step==0)Say("Marlow","Yes.",C("Why?",()=>Ale(1)));
             if(step==1)Say("Marlow","Ale.",C("...Ale?",()=>Ale(2)));

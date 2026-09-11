@@ -6,8 +6,9 @@ namespace WoodlandSpine
     {
         public string title;
         public int hp=10,armor,movement=3,damage=4,chargeDamage=10;
-        public bool mossback,pounce;
+        public bool mossback,pounce,rush;
         public int pounceRange=3;
+        public int rushRange=3;
     }
 }
 

@@ -1,36 +1,42 @@
-# Baseline guide notice — 2026-09-10
+# Coordinated slice manual playtest
 
-This guide describes the existing prototype through gameplay commit `72d6411`, not the newer coordinated design package. Gameplay coding is currently on hold for review. New design acceptance requirements live in the repository authorities and [current review](../docs/reviews/2026-09-10-coordinated-package-review.md).
+Scope: **Marlow → Woodland → Mud in the Moonrice + Ily**, not all three starter routes. Use a fresh Play session for each incompatible branch. Unity: open `Assets/Scenes/Opening.unity`. Windows: launch the generated `Builds/Windows/WoodlandSpine.exe`.
 
-# Current opening playtest
+## Natural first playthrough
 
-Start a fresh Play session in Assets/Scenes/Opening.unity (or launch the Windows player). Choose your coat and enter the inn. Type and confirm your name when Garrick asks for it.
+Record elapsed time from control to the Sylvie handoff without racing or consulting the route below. Note where dialogue implies knowledge/commitment you did not supply, where the next intention is unclear, and where travel feels physically disconnected. Do not enforce an old 20–30 minute target.
 
-## First priority: does the scene now feel right?
+## Successful treatment route
 
-1. Talk to Garrick with E. Read your replies as things the character actually says. Continue advances the exchanges between NPCs; it is not a player response named Listen.
-2. After Garrick acknowledges your name, Continue returns control. The crash happens after a brief pause. Follow the problem setup, choose whether to hear Marlow out, then accept the downstairs invitation if you want to see the situation. This does not accept the woodland job.
-3. Watch Marlow collect the remains and walk to the door beside his former table. Walk behind him down the actual west-side stairs. The lab camera cuts away the floor overhead.
-4. Look around. Inspect fermentation notes for the optional ale/home exchange. Inspect habitats or jars and try opening them to hear the protective reactions.
-5. After a short period of free exploration, a weak sound draws Marlow to the troll. Approach him or the troll and press E. Talking to Marlow first leads to the troll. Ask any optional questions you want, then ask what he needs. Only “I'll get them.” at “Will you help me?” accepts the job.
-6. Try refusing once. Walk away and speak to him again to reconsider. Accept the ingredient trip. Walk up the same staircase.
+1. Walk around the occupied common room. Inspect kitchen, upstairs, basement and board before permission. Talk to Garrick and enter a name only when asked.
+2. Let the interruption finish. Hearing Marlow out and following downstairs must not accept his job. Walk down the actual basement steps. Speaking to Marlow before inspecting the troll must lead into the reveal.
+3. At the two initial lab questions, press Esc. Both choices remain visible. Continue toward the job; choose a refusal/neutral exit in one run and return. Explicitly accept before collecting ingredients.
+4. Choose a loan weapon and use the front-door Regional Map. Cancel before commitment once. Travel to Woodland; nearby inn/farm scenes must not appear around the combat view.
+5. Gather Bloodleaf and Silvermoss, inspect optional discoveries, collect milk peacefully with the lent flask. No Sunberry inventory item, XP gate, counters or destination markers should appear.
+6. Fight wildlife and Mossback. With Bow, compare adjacent, range 2–4, obstructed and out-of-range positions. Hover reasons, attack highlights and accepted clicks should agree. Bait Mossback into the tree; its committed lane must remain fixed.
+7. Return via the trailhead/map. Marlow prioritizes ingredients/treatment. Prepare the potion and treat the troll. Discuss Mossback afterward only if you choose to mention it.
 
-A second fresh run beginning by trying the laboratory door should give the contextual “room you wouldn't let me into” exchange at the later invitation. A fresh run inspecting the board should allow looking before Garrick reacts to taking a posting.
+## Genuine milk failure
 
-## Continue the playable loop
+In a fresh accepted-job run, provoke the juvenile. The nursing adult and protector join one battle. Flee while the nursing source survives: hostility alone must not fail treatment. In a separate run, destroy the nursing source before obtaining milk. The objective must immediately become Return to Marlow. Report the loss: no replacement source/pail, no Potion Making unlock, and Garrick's board remains available. Depart and return to test the later authored absence without a countdown.
 
-- Garrick offers a loaner near the front exit after acceptance; choose Sword, Spear or Bow. Leave through the front doorway and follow the northern trail.
-- Bloodleaf is on the left before the first wildlife site. The creature fight begins farther along the trail. Use the highlighted grid, Primary Action controls and remaining movement.
-- Silvermoss is on damp stone left of the trail beyond that encounter; Mooncalf and a labelled sample pail are on the right. The peaceful route uses grass and space. Frightening/chasing/attacking is permitted; the labelled sample supports continuation after a violent choice.
-- Once the samples are gathered, Mossback becomes the escalation near the pasture. Give it room and observe its pursuit. Move out of the amber charge lane and use trees. Fleeing remains possible but the Marlow route requires defeating it.
-- Physically return to the inn and descend to Marlow. Report what happened. Use the workbench and follow the preparation steps; heat and milk measure matter. Give the first dose to the troll. Tell Garrick it worked.
-- Inspect the board. Choose any one posting; others remain. West fork leads to Toma's paddies, east fork to Mara's coop, farther east to Oren's mill. Each client stands near the southern edge of their site.
-- Inspect four signs, return to the client to interpret them, follow the signs on the east side of the clearing, then act at the habitat or confront the animal. After a lethal Reedback/Brookmaw outcome, harvest at the habitat. Return to the client for payment/provisions and Hunting recognition.
-- Return to Garrick. His referral unlocks the previously private kitchen. Enter it, approach Sylvie, bring up your ingredient and follow her demonstration. Ask her to teach you. The opening releases you after Cooking unlocks; practice is optional.
-- Optional: contribute one portion at the pantry and practise. Rent an affordable room from Garrick. Gather more herbs/moss/milk and return to the lab with an extra Bloodleaf contribution.
+## Mud and Ily
 
-## Checks worth reporting
+1. Check all three board postings. Only Mud is available for this build; other two do not add destinations. Accept Mud and travel to Reedwater Paddies.
+2. Find the actual target early in one run. Inspect any two of the three clues in another. No fixed four-clue checklist or client-supplied inference is required.
+3. Manage: open the crusted feeding patch and reconnect the runnel, even before clues. Stay close enough to witness the Reedback redirect and feed away from the rice. Preparing alone is not completion.
+4. Cull: try Ily Direct in one run and Independent in another. Select who uses each allied slot. Kill the Reedback, then deliberately Harvest it. Killing alone must not unlock Hunting or finish the job.
+5. Receive Toma's route-appropriate provisions/payment once. Invite Ily explicitly, or decline; recruited roster and active traveling companion are distinct. Return to the Inn, speak to Garrick and enter Sylvie's kitchen.
 
-Which player line does not sound like something you would say? Where does a conversation jump ahead of what you know? Can you see Marlow and the troll when the scene needs them? Does the decision feel earned? Does any door, prompt, camera transition or battlefield trap you?
+## Rooms, recovery and combat controls
 
-This remains a blockout. Do not judge final models or lighting yet. Actual reading/exploration time, not the scripted test duration, determines whether the target opening length is working.
+- Before rental, reduce player/present companion HP and use the hearth's free Basic Rest. No coins should be charged. Defeated companions after victory AND Flee should be stable at 1 HP and unable to join another encounter until Rest.
+- Rent once, enter the upper floor, walk through your room's doorway and open the chest. Other rooms are occupied. Store/withdraw stacks and equipment, including equipped gear. Esc cancels an uncommitted quantity before closing; completed transfers persist across travel. No duplicate equipment or phantom carried items.
+- During battle, attack enemies near the bottom and sides. The tray must not conceal valid battlefield targets. Cancel a selection after moving: movement stays spent. Select another enemy while threats are committed: all threats stay shown. Check Defend expires on its owner's next activation.
+- Use Inventory, Equipment, Character, Techniques and Journal; collapse the intention reminder. MP/ammo stays absent when irrelevant. Back door never opens the Regional Map.
+
+## Automated reproduction
+
+`Tools/Build-Prototype.ps1` runs the editor rules and creates the Windows player. Run that executable with `--coordinated-smoke --case CASE -batchmode -nographics -logFile LOG`, where CASE is `success`, `failure`, `manage`, `direct`, `independent` or `stress`. For world-render captures replace headless flags with `-force-d3d11 -screen-width 1280 -screen-height 800 -screen-fullscreen 0`. Optional `--capture-ui` attempts a full framebuffer capture; host capture support varies.
+
+These flags opt into scripted test fixtures and quit afterward. Ordinary launch never runs them. Results go under `Validation/Coordinated/CASE`. The stress case tests 3v6/3v5, not new story content. Earlier smoke flags route to the current runner. Automated pass results do not replace the natural UI/dialogue/timing checks above.

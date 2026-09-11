@@ -1,0 +1,22 @@
+[
+  {
+    "model": "Superhero_Male_FullBody.gltf",
+    "sha256": "e7fcea214ecf8855afbf910b50de6f9c7d1decfb71ca28bad8a4481452dafeb4"
+  },
+  {
+    "model": "Male_Peasant.gltf",
+    "sha256": "8f5a6cf6c1cf96e0a0f8e1a861b4245d42b7f88d44e5076da3d48f3fc52f4e76"
+  },
+  {
+    "model": "Hair_SimpleParted.gltf",
+    "sha256": "fe0f354d7f95d83d38e15c60794dcc063fa4d60550706f3d7ba51491cdc07c56"
+  },
+  {
+    "model": "Hair_Long.gltf",
+    "sha256": "27e2c63e8f98c79fb600268ffcc92b36c621b8653b5a7dcbadb08328f3f887a9"
+  },
+  {
+    "model": "Hair_Beard.gltf",
+    "sha256": "80013b9791ce12c65fbe693cf669b02ef5c38091c653bf13b9415d2d8380e0ce"
+  }
+]

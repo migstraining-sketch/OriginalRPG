@@ -2,20 +2,21 @@
   "projectType": "original-rpg",
   "continuityAuthority": "this-repository",
   "statusReviewedDate": "2026-09-10",
-  "reviewedGithubCommit": "c7a8773",
-  "currentDesignFrontier": "coordinated-opening-package-review-before-implementation",
+  "reviewedGithubCommit": "c2b845c",
+  "currentDesignFrontier": "coordinated-opening-implementation-review-and-human-playtest",
   "workflow": {
     "reviewBeforeGameplayCoding": true,
-    "gameplayImplementationOnHold": true,
-    "nextAction": "Central Brain review; separately authorize implementation after material concerns are resolved",
+    "gameplayImplementationOnHold": false,
+    "nextAction": "Review implementation/coordinated-opening-slice PR and playtest Marlow / Woodland / Mud + Ily; do not merge directly",
     "currentReview": "docs/reviews/2026-09-10-coordinated-package-review.md"
   },
   "implementation": {
     "projectPath": "WoodlandSpine",
-    "latestGameplayCommit": "72d6411",
-    "coordinatedPackageImplemented": false,
+    "latestGameplayCommit": "45a54c6",
+    "coordinatedPackageImplemented": true,
     "validationEvidence": "WoodlandSpine/Validation/STATUS.md",
-    "humanOpeningAcceptance": "not-established"
+    "humanOpeningAcceptance": "not-established",
+    "scope": "Coordinated Opening Development Slice / Marlow → Woodland → Mud in the Moonrice + Ily"
   },
   "openingTargetMinutes": {
     "standard": "27-30",
@@ -23,11 +24,7 @@
     "status": "historical design targets; expanded package not timed or validated"
   },
   "authorityIndex": "docs/START_HERE.md",
-  "pendingReviewDecisions": [
-    "Accessible MVP Rest action for defeated-companion combat eligibility",
-    "Dialogue suspend behavior versus explicit leaving and movement",
-    "Prototype delivery boundary for three equal starter contract choices"
-  ],
+  "pendingReviewDecisions": [],
   "lockedStarterContracts": [
     "Mud in the Moonrice",
     "Three Missing by Morning",

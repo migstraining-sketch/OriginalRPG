@@ -1,0 +1,130 @@
+PASS immediate control and starting equipment
+PASS remote woodland not visible from Inn
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS name entered during Garrick conversation
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS dialogue open for Sure.
+PASS authored choice Sure.
+PASS dialogue open for All right. Show me.
+PASS authored choice All right. Show me.
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS invitation does not accept job
+PASS continuous common-room route to (-7.50, 0.15, 2.65)
+PASS walkable route to (1.50, 0.15, -4.25); reached (1.50, 0.13, -4.40) in Exploration
+PASS walkable route to (1.50, 0.15, 1.00); reached (1.50, 0.13, 0.84) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.00); reached (-3.05, 0.13, 0.99) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.25); reached (-3.13, 0.13, 1.10) in Exploration
+PASS walkable route to (-3.50, 0.15, 1.25); reached (-3.32, 0.13, 1.18) in Exploration
+PASS walkable route to (-3.50, 0.15, 2.75); reached (-3.49, 0.13, 2.58) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.75); reached (-7.30, 0.13, 2.75) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.65); reached (-7.36, 0.13, 2.72) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.65); reached (-7.36, 0.13, 2.72) in Exploration
+PASS walkable route to (-7.50, 0.15, 3.35); reached (-7.46, 0.13, 3.18) in Exploration
+PASS walkable route to (-7.50, -2.52, 7.30); reached (-7.50, -2.53, 7.13) in Exploration
+PASS walkable route to (-6.10, -2.52, 7.30); reached (-6.30, -2.54, 7.28) in Exploration
+PASS walkable route to (-6.10, -2.52, 5.00); reached (-6.12, -2.54, 5.21) in Exploration
+PASS physical basement descent and Marlow relocation
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS small forward troll decision
+PASS Esc preserves visible dialogue
+PASS dialogue open for What's wrong with him?
+PASS authored choice What's wrong with him?
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS dialogue open for I'll get them.
+PASS authored choice I'll get them.
+PASS ordinary Continue available
+PASS ordinary Continue available
+PASS accepted job lends flask and reveals Woodland
+PASS walkable route to (-6.10, -2.52, 5.00); reached (-6.12, -2.54, 5.21) in Exploration
+PASS walkable route to (-6.10, -2.52, 7.30); reached (-6.10, -2.54, 7.09) in Exploration
+PASS walkable route to (-7.50, -2.52, 7.30); reached (-7.29, -2.54, 7.27) in Exploration
+PASS walkable route to (-7.50, 0.15, 3.35); reached (-7.49, 0.08, 3.57) in Exploration
+PASS walkable route to (-7.50, 0.15, 2.65); reached (-7.50, 0.13, 2.83) in Exploration
+PASS continuous common-room route to (1.50, 0.15, -4.40)
+PASS walkable route to (-7.25, 0.15, 2.75); reached (-7.43, 0.13, 2.81) in Exploration
+PASS walkable route to (-3.50, 0.15, 2.75); reached (-3.68, 0.13, 2.75) in Exploration
+PASS walkable route to (-3.50, 0.15, 1.25); reached (-3.52, 0.13, 1.42) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.25); reached (-3.43, 0.13, 1.33) in Exploration
+PASS walkable route to (-3.25, 0.15, 1.00); reached (-3.33, 0.13, 1.16) in Exploration
+PASS walkable route to (1.50, 0.15, 1.00); reached (1.28, 0.13, 1.01) in Exploration
+PASS walkable route to (1.50, 0.15, -4.50); reached (1.49, 0.13, -4.29) in Exploration
+PASS walkable route to (1.50, 0.15, -4.40); reached (1.49, 0.13, -4.29) in Exploration
+PASS map cancel preserves Inn
+PASS commit known destination Woodland
+PASS travel completes to Woodland
+PASS dialogue open for Pinch off the useful leaf tips
+PASS authored choice Pinch off the useful leaf tips
+PASS ordinary Continue available
+PASS deterministic battle reached victory with ordinary HP/actions
+PASS basic creature defeated through combat rules
+PASS dialogue open for Lift a small clean portion
+PASS authored choice Lift a small clean portion
+PASS ordinary Continue available
+PASS dialogue open for Lower my weapon and wait at a distance.
+PASS authored choice Lower my weapon and wait at a distance.
+PASS dialogue open for Collect a small serving in Marlow's flask.
+PASS authored choice Collect a small serving in Marlow's flask.
+PASS ordinary Continue available
+PASS peaceful milk collection from nursing source
+PASS deterministic battle reached victory with ordinary HP/actions
+PASS Mossback combat won
+PASS commit known destination Inn
+PASS travel completes to Inn
+PASS ordinary Continue available
+PASS treatment first without unsolicited anomaly report
+PASS dialogue open for Give the experimental potion
+PASS authored choice Give the experimental potion
+PASS successful treatment unlocks learned recipe
+PASS dialogue open for It worked. He's eating again.
+PASS authored choice It worked. He's eating again.
+PASS normal treatment opens board
+PASS free Basic Rest before rental recovers present companions
+PASS existing rental cost charged once
+PASS no repeat rental charge
+PASS dialogue open for Go upstairs.
+PASS authored choice Go upstairs.
+PASS rented room is upstairs
+PASS walkable route to (0.00, 3.80, -4.45); reached (0.00, 3.73, -4.24) in Exploration
+PASS walkable route to (1.50, 3.80, -4.45); reached (1.32, 3.73, -4.43) in Exploration
+PASS walkable route to (1.50, 3.80, -3.25); reached (1.47, 3.73, -3.44) in Exploration
+PASS walkable route to (2.25, 3.80, -3.25); reached (2.06, 3.73, -3.30) in Exploration
+PASS physical chest opens storage
+PASS store owned weapon
+PASS chest closes
+PASS commit known destination Woodland
+PASS travel completes to Woodland
+PASS commit known destination Inn
+PASS travel completes to Inn
+PASS storage survives regional travel
+PASS dialogue open for Go upstairs.
+PASS authored choice Go upstairs.
+PASS withdraw same weapon

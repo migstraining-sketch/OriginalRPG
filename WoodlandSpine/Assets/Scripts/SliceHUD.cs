@@ -6,8 +6,9 @@ namespace WoodlandSpine
     {
         public SliceGame game;
         GUIStyle body,title,small,button;
-        Vector2 dialogueScroll,inventoryScroll;
+        Vector2 dialogueScroll;
         DialogueSession lastDialogue;
+        readonly PlayerPanel playerPanel=new PlayerPanel(); bool objectiveOpen=true;
         void Init()
         {
             body=new GUIStyle(GUI.skin.label){fontSize=17,wordWrap=true};title=new GUIStyle(body){fontSize=22,fontStyle=FontStyle.Bold};small=new GUIStyle(body){fontSize=14};
@@ -20,21 +21,23 @@ namespace WoodlandSpine
             float scale=Mathf.Min(Screen.width/1280f,Screen.height/800f);GUI.matrix=Matrix4x4.Scale(new Vector3(scale,scale,1));
             float width=Screen.width/scale,height=Screen.height/scale;
             if(game.full.boardVisible){DrawBoard(width,height);return;}
-            if(game.mode==GameMode.Combat||!string.IsNullOrEmpty(game.Objective)||game.showInventory)
+            if(game.coordinated.travel.Blocking){game.coordinated.travel.Draw(width,height);return;}
+            if(game.coordinated.storage.visible){game.coordinated.storage.Draw(game.inventory,width,height);return;}
+            GUI.Box(new Rect(16,12,320,60),"");
+            GUI.Label(new Rect(26,16,300,25),game.playerName+" • HP "+game.hp+"/"+game.rules.playerHP+" • Armor "+game.inventory.Armor,body);
+            Color previous=GUI.color;GUI.color=new Color(.64f,.25f,.2f);GUI.DrawTexture(new Rect(26,47,290*Mathf.Clamp01((float)game.hp/game.rules.playerHP),12),Texture2D.whiteTexture);GUI.color=previous;
+            if(game.mode==GameMode.Exploration||game.mode==GameMode.Combat)playerPanel.Strip(game,width);
+            if(game.mode==GameMode.Exploration&&!game.showInventory&&!string.IsNullOrEmpty(game.Objective))
             {
-            GUILayout.BeginArea(new Rect(16,12,width-32,game.mode==GameMode.Combat?80:140),GUI.skin.box);
-            GUILayout.Label($"{game.playerName}   •   HP {game.hp}/{game.rules.playerHP}   •   Armor {game.inventory.Armor}   •   {game.inventory.weapon?.title??"Unarmed"}",title);
-            if(game.mode!=GameMode.Combat)GUILayout.Label(game.Objective,body);
-            if(game.mode==GameMode.Combat)GUILayout.Label($"{game.combat.phase} Phase   |   Movement {game.combat.movement}   |   Primary Action: {(game.combat.primary?"ready":"spent")}   |   {game.combat.enemy.title} {game.combat.enemyHP} HP",body);
-            else GUILayout.Label("WASD move   •   E interact   •   I inventory   •   Esc close",small);
-            GUILayout.EndArea();
+                if(GUI.Button(new Rect(width-420,52,400,27),objectiveOpen?"Current intention ▾":"Current intention ▸"))objectiveOpen=!objectiveOpen;
+                if(objectiveOpen)GUI.Label(new Rect(width-420,82,400,90),game.Objective,small);
             }
             if(game.mode==GameMode.Brewing){DrawBrewing(width,height);return;}
             if(game.mode==GameMode.Cooking){DrawCooking(width,height);return;}
             if(game.mode==GameMode.Dialogue)
             {
                 if(lastDialogue!=game.dialogue){dialogueScroll=Vector2.zero;lastDialogue=game.dialogue;}
-                float panel=Mathf.Min(height-170,Mathf.Max(230,body.CalcHeight(new GUIContent(game.dialogue.text),width*.7f-40)+game.dialogue.choices.Count*46+115));
+                float panel=Mathf.Min(height*.44f,Mathf.Max(230,body.CalcHeight(new GUIContent(game.dialogue.text),width*.7f-40)+game.dialogue.choices.Count*46+115));
                 GUILayout.BeginArea(new Rect(width*.15f,height-panel-15,width*.7f,panel),GUI.skin.box);
                 dialogueScroll=GUILayout.BeginScrollView(dialogueScroll);
                 GUILayout.Label(game.dialogue.speaker,title);GUILayout.Label(game.dialogue.text,body);GUILayout.Space(12);
@@ -46,77 +49,18 @@ namespace WoodlandSpine
                 var choices=game.dialogue.choices.ToArray();
                 foreach(var choice in choices)if(choice.visible==null||choice.visible())if(Button(choice.label)){choice.choose();break;}
                 if(game.dialogue!=null&&game.dialogue.continueAction!=null)if(Button("Continue  [Space]"))game.dialogue.continueAction();
-                GUILayout.Label("Esc — return to the room. Conversations remember where you stopped.",small);
+                GUILayout.Label("Choose a response. Esc does not make or hide a decision.",small);
                 GUILayout.EndScrollView();GUILayout.EndArea();return;
             }
             if(game.mode==GameMode.Defeated)
             {
                 GUILayout.BeginArea(new Rect(width/2-240,height/2-90,480,180),GUI.skin.box);GUILayout.Label("You fell",title);GUILayout.Label(game.notice,body);if(Button("Retry encounter"))game.Retry();GUILayout.EndArea();return;
             }
-            if(game.showInventory)
-            {
-                GUILayout.BeginArea(new Rect(width/2-260,160,520,height-185),GUI.skin.box);
-                inventoryScroll=GUILayout.BeginScrollView(inventoryScroll);
-                GUILayout.Label("Equipment & inventory",title);GUILayout.Label($"Body: {game.inventory.body.title} • Armor {game.inventory.Armor}",body);
-                foreach(var coat in game.inventory.bodies)
-                {
-                    bool equipped=coat==game.inventory.body;
-                    if(Button((equipped?"Wearing: ":"Wear: ")+coat.title+" • Armor "+coat.armor,!equipped&&game.mode!=GameMode.Combat))game.inventory.body=coat;
-                }
-                if(game.mode==GameMode.Combat)GUILayout.Label("Change body armor outside combat.",small);
-                var p=game.full.progress;
-                GUILayout.Label($"Coins {p.coins}"+(p.wellFed?" • Well Fed":""),body);
-                foreach(var food in p.provisions)if(food.Value>0)if(Button(food.Key+" ×"+food.Value+(p.food==food.Key?" • selected":""),p.food!=food.Key))p.food=food.Key;
-                if(p.huntingLearned)GUILayout.Label("Hunting learned",small);
-                if(p.cookingLearned)GUILayout.Label("Cooking learned • practise in Sylvie's kitchen",small);
-                if(game.opening.state.questAccepted)GUILayout.Label($"Bloodleaf {game.inventory.bloodleaf} • Silvermoss {game.inventory.silvermoss} • Milk {game.inventory.mooncalfMilk}",small);
-                if(game.inventory.experimentalPotion>0)GUILayout.Label("Experimental potion: reserved for the troll",small);
-                if(game.opening.state.potionMakingUnlocked)GUILayout.Label("Potion Making unlocked • Health Potion recipe learned",body);
-                GUILayout.Label(game.mode==GameMode.Combat?"Equipping another weapon spends your Primary Action.":"Carried equipment",small);
-                foreach(var weapon in game.inventory.weapons)
-                {
-                    bool active=weapon==game.inventory.weapon;
-                    if(Button((active?"Equipped: ":"Equip: ")+weapon.Description,!active&&(game.mode!=GameMode.Combat||game.combat.primary&&game.combat.phase==Phase.Player)))
-                    {if(game.mode==GameMode.Combat){game.combat.Equip(weapon);game.selection.Cancel();game.Refresh();}else game.inventory.weapon=weapon;}
-                }
-                if(Button($"Bandage ×{game.inventory.bandages} • heal {game.rules.bandageHeal}",game.inventory.bandages>0&&game.hp<game.rules.playerHP&&(game.mode!=GameMode.Combat||game.combat.primary&&game.combat.phase==Phase.Player)))
-                {if(game.mode==GameMode.Combat)game.UseCombatItem();else game.UseBandage();}
-                if(Button($"Health Potion ×{game.inventory.healthPotions} • heal 12",game.inventory.healthPotions>0&&game.hp<game.rules.playerHP&&(game.mode!=GameMode.Combat||game.combat.primary&&game.combat.phase==Phase.Player)))
-                {if(game.mode==GameMode.Combat)game.UseCombatItem(true);else game.UseHealthPotion();}
-                if(Button("Close"))game.showInventory=false;GUILayout.EndScrollView();GUILayout.EndArea();return;
-            }
-            bool battle=game.mode==GameMode.Combat;
-            GUILayout.BeginArea(new Rect(16,height-(battle?205:76),width-32,battle?190:61),GUI.skin.box);
-            if(game.mode==GameMode.Combat)
-            {
-                var c=game.combat;GUILayout.Label(c.Intent,body);GUILayout.Label(c.log,small);
-                bool turn=c.phase==Phase.Player;
-                GUILayout.BeginHorizontal();
-                if(Button("Move [M]",turn))game.Select(CombatChoice.Move);
-                if(Button("Attack [1]",turn&&c.primary))game.Select(CombatChoice.Attack);
-                if(Button(c.inventory.weapon.SignatureName+" [5]",turn&&c.primary))game.Select(CombatChoice.Signature);
-                if(Button("Defend [2]",turn&&c.primary))game.Select(CombatChoice.Defend);
-                if(Button("Item [3]",turn&&c.primary))game.Select(CombatChoice.Item);
-                if(Button("Dash [4]",turn&&c.primary))game.Select(CombatChoice.Dash);
-                if(Button("Flee",turn&&c.primary&&c.playerCell.Distance(new Hex())==c.grid.radius)){c.Flee();game.CheckResult();}
-                if(Button("End turn [Space]",turn))game.EndTurn();GUILayout.EndHorizontal();
-                if(game.selection.choice==CombatChoice.Item)
-                {
-                    GUILayout.BeginHorizontal();
-                    if(Button($"Use bandage ×{game.inventory.bandages}",turn&&c.primary&&game.inventory.bandages>0&&game.hp<game.rules.playerHP))game.UseCombatItem();
-                    if(Button($"Use Health Potion ×{game.inventory.healthPotions}",turn&&c.primary&&game.inventory.healthPotions>0&&game.hp<game.rules.playerHP))game.UseCombatItem(true);
-                    GUILayout.EndHorizontal();
-                }
-                if(game.selection.choice==CombatChoice.Dash||game.selection.choice==CombatChoice.Defend)
-                    if(Button($"Confirm {game.selection.choice} [Enter] — spends Primary Action",turn&&c.primary))game.ConfirmSelection();
-                if(game.selection.choice==CombatChoice.Signature)
-                    if(Button($"{c.inventory.weapon.SignatureName} {c.enemy.title} [Enter] • {CombatModel.Damage(c.inventory.weapon.signatureDamage,c.enemy.armor)} damage",c.CanTarget(c.enemyCell,true)))game.ConfirmSelection();
-                if(game.selection.choice==CombatChoice.Attack)
-                    if(Button($"Attack {c.enemy.title} [Enter]",c.CanTarget(c.enemyCell)))game.ConfirmSelection();
-                GUILayout.Label(game.selection.choice==CombatChoice.Signature?c.inventory.weapon.SignatureHint:game.selection.choice==CombatChoice.Attack?$"Click enemy in red range • damage {CombatModel.Damage(game.inventory.weapon.damage,c.enemy.armor)}":game.selection.choice==CombatChoice.Move?"Click blue hex • brown costs 2 • amber charge lane":"Choose an action, then confirm it when ready.",small);
-                GUILayout.Label("Esc / right-click: cancel selection • committed movement and actions stay spent",small);
-            }
-            else {GUILayout.Label(Time.time<game.noticeUntil||game.nearby==null?game.notice:"[E] "+game.nearby.caption,body);GUILayout.Label("WASD move   •   E interact   •   I inventory",small);}
+            if(game.showInventory){playerPanel.Draw(game,width,height,title,body);return;}
+            if(game.mode==GameMode.Combat){BattleHUD.Draw(game,width,height,body,small);return;}
+            GUILayout.BeginArea(new Rect(16,height-76,width-32,61),GUI.skin.box);
+            GUILayout.Label(Time.time<game.noticeUntil||game.nearby==null?game.notice:"[E] "+game.nearby.caption,body);
+            GUILayout.Label("WASD move • E interact • I panel • Q/R rotate • Wheel zoom • Shift + middle drag pan • Home reset",small);
             GUILayout.EndArea();
         }
         void DrawBrewing(float width,float height)
@@ -158,7 +102,7 @@ namespace WoodlandSpine
             {
                 var d=game.full.definitions[i];var h=game.full.progress.hunts[i];
                 GUILayout.BeginVertical(GUI.skin.box,GUILayout.Width((width-100)/3));GUILayout.Label(d.title,title);GUILayout.Label(d.client,body);GUILayout.Label(d.location,small);GUILayout.Space(15);GUILayout.Label(d.problem,body);GUILayout.Space(20);GUILayout.Label(game.full.progress.huntReward+" coins + provisions",body);
-                if(Button(h.rewarded?"Resolved":h.accepted?"Current posting":"Take this posting",!h.rewarded))game.full.AcceptHunt(i);
+                if(Button(i>0?"Unavailable in this development slice":h.rewarded?"Resolved":h.accepted?"Current posting":"Take this posting",i==0&&!h.rewarded))game.full.AcceptHunt(i);
                 GUILayout.EndVertical();
             }
             GUILayout.EndHorizontal();GUILayout.Space(20);if(Button("Leave the board [Esc]"))game.full.boardVisible=false;GUILayout.EndArea();

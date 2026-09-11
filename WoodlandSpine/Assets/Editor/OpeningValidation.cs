@@ -16,8 +16,8 @@ namespace WoodlandSpine.Editor
             state.questAccepted=true;
             foreach(Ingredient ingredient in Enum.GetValues(typeof(Ingredient)))
             {Check(state.Gather(ingredient,inventory),"first gathering "+ingredient);Check(!state.Gather(ingredient,inventory),"no duplicate gathering "+ingredient);}
-            Check(state.AllGathered&&!state.ReadyToReport,"ingredients alone do not skip Mossback");
-            state.mossbackSurvived=true;Check(!state.ReadyToReport,"retreat allows retry but does not complete mandatory Mossback");
+            Check(state.AllGathered&&state.ReadyToReport,"ingredients permit immediate treatment before optional report");
+            state.mossbackSurvived=true;Check(state.ReadyToReport,"retreat does not withhold treatment when supplies exist");
             state.mossbackDefeated=true;Check(state.ReadyToReport,"Mossback defeated and supplies gathered");
             Check(!state.FinishPotion(inventory,brew),"no premature potion");state.returnedToMarlow=true;
             Check(!brew.Perform("whole")&&brew.step==BrewStep.Bloodleaf,"supervision blocks wrong preparation");

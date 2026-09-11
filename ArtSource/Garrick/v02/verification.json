@@ -1,0 +1,23 @@
+{
+  "native_reopen": "passed",
+  "blender": "5.2.1 LTS",
+  "visible_height_m": 1.9,
+  "ground_z": 0.0,
+  "visible_triangles": 185649,
+  "images": [
+    {
+      "name": "Garrick-Reference.png",
+      "packed": true
+    },
+    {
+      "name": "Garrick_Face_Albedo.png",
+      "packed": true
+    },
+    {
+      "name": "Opening-Cast-Lineup.png",
+      "packed": true
+    }
+  ],
+  "rigged": false,
+  "status": "Reference-led study; not final character art; no Unity integration"
+}

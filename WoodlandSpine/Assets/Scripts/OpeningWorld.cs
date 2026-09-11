@@ -3,25 +3,25 @@ namespace WoodlandSpine
 {
     public sealed class OpeningWorld
     {
-        public static readonly Vector3 LabEntry=new Vector3(-5,-5.9f,5), InnEntry=new Vector3(-7,.1f,-4);
-        public static Vector3 LabPoint(Vector3 p)=>p+new Vector3(-36,-6,0);
+        public static readonly Vector3 LabEntry=new Vector3(-6.1f,InnLayout.LabFloor+.1f,5), InnEntry=InnLayout.BasementApproach;
+        public static Vector3 LabPoint(Vector3 p)=>p+new Vector3(-36,InnLayout.LabFloor,0);
         public Transform labRoot;
         public Transform troll, mooncalf, trollHead;
         public GameObject labMarlow, food, usefulLeaf;
         public Renderer trollBody, trollFace;
         readonly WorldBuilder world;
-        public OpeningWorld(WorldBuilder world){this.world=world;var previous=world.root;labRoot=new GameObject("Laboratory beneath inn").transform;labRoot.SetParent(previous);world.root=labRoot;BuildLab();world.root=previous;labRoot.position=new Vector3(-36,-6,0);foreach(Transform t in labRoot.GetComponentsInChildren<Transform>(true))t.gameObject.layer=9;BuildGathering();}
+        public OpeningWorld(WorldBuilder world){this.world=world;var previous=world.root;labRoot=new GameObject("Laboratory beneath inn").transform;labRoot.SetParent(previous);world.root=labRoot;BuildLab();world.root=previous;labRoot.position=new Vector3(-36,InnLayout.LabFloor,0);foreach(Transform t in labRoot.GetComponentsInChildren<Transform>(true))t.gameObject.layer=9;BuildGathering();}
         GameObject Box(string name,Vector3 p,Vector3 s,Color c,bool solid=true)=>world.Shape(name,p,s,c,PrimitiveType.Cube,solid);
         public void BuildLab()
         {
             Color timber=new Color(.31f,.25f,.18f),stone=new Color(.38f,.41f,.4f),pale=new Color(.67f,.68f,.53f);
-            Box("Laboratory floor",new Vector3(36,-.2f,0),new Vector3(16,.4f,14),stone);
-            Box("Lab west wall",new Vector3(28,1.4f,0),new Vector3(.3f,2.8f,14),stone);
-            Box("Lab east wall",new Vector3(44,1.4f,0),new Vector3(.3f,2.8f,14),stone);
-            Box("Lab north wall",new Vector3(36,1.4f,7),new Vector3(16,2.8f,.3f),stone);
+            Box("Laboratory floor",new Vector3(36,-.2f,0),new Vector3(16,.4f,16),stone);
+            Box("Lab west wall",new Vector3(28,1.4f,0),new Vector3(.3f,2.4f,16),stone);
+            Box("Lab east wall",new Vector3(44,1.4f,0),new Vector3(.3f,2.4f,16),stone);
+            Box("Lab north wall",new Vector3(36,1.4f,8),new Vector3(16,2.4f,.3f),stone);
             Box("Lab cutaway wall",new Vector3(36,.25f,-7),new Vector3(16,.5f,.3f),stone);
             var stairs=Box("Stair landing",new Vector3(29,.02f,5.5f),new Vector3(2,.04f,1),timber,false);
-            world.Interact(stairs,"lab_exit","Stairs to the inn",new Vector3(30,0,5));
+            world.Interact(stairs,"lab_exit","Stairs to the inn",new Vector3(29.9f,0,6.4f));
             var bench=Box("Alchemy workbench",new Vector3(33,.6f,1),new Vector3(3,1.2f,1.4f),timber);
             world.Interact(bench,"workbench","Use alchemy workbench",new Vector3(33,0,-.2f));world.Label("ALCHEMY WORKBENCH",new Vector3(33,2.1f,1),.14f);
             world.Shape("Mixing vessel",new Vector3(33,1.4f,1),new Vector3(.6f,.3f,.6f),new Color(.45f,.24f,.17f),PrimitiveType.Cylinder,false);
@@ -70,8 +70,6 @@ namespace WoodlandSpine
             world.Shape("Mooncalf curious face",new Vector3(5,1.6f,48.7f),new Vector3(.7f,.8f,.7f),new Color(.75f,.76f,.68f),PrimitiveType.Sphere,false).transform.SetParent(mooncalf,true);
             for(int side=-1;side<=1;side+=2)world.Shape("Mooncalf long ear",new Vector3(5+side*.45f,1.8f,48.7f),new Vector3(.2f,.6f,.18f),new Color(.64f,.67f,.55f),PrimitiveType.Capsule,false).transform.SetParent(mooncalf,true);
             world.Interact(mooncalf.gameObject,"mooncalf","Observe Mooncalf");world.Label("MOONCALF",new Vector3(5,2.7f,49),.15f).SetParent(mooncalf,true);
-            var pail=Box("Covered sample pail beside trail",new Vector3(8,.25f,50),new Vector3(.5f,.5f,.5f),new Color(.46f,.39f,.25f));
-            world.Interact(pail,"milk_cache","Inspect covered field sample");
         }
         public void RecoverTroll(float amount)
         {

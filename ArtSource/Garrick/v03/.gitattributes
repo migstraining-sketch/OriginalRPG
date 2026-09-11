@@ -1,0 +1,2 @@
+# Keep downloaded source asset bytes identical to the verified upstream files.
+Source/** -text

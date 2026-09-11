@@ -32,7 +32,7 @@ namespace WoodlandSpine
             }
             foreach(var weapon in game.rules.weapons)
             {
-                game.inventory.Receive(weapon);game.mode=GameMode.Combat;game.combat.inventory=game.inventory;
+                game.inventory.Receive(weapon);game.mode=GameMode.Combat;game.combat.Hero.inventory=game.inventory;
                 game.combat.BeginPlayer();game.combat.playerCell=new Hex(0,0);game.combat.enemyCell=weapon.geometry==WeaponGeometry.Ranged?new Hex(0,1):new Hex(0,2);game.combat.enemyHP=10;
                 game.Select(CombatChoice.Signature);game.CancelSelection();Check(game.combat.primary&&game.combat.enemyHP==10,"cancel signature preserves action");
                 game.Select(CombatChoice.Signature);game.ConfirmSelection();Check(game.combat.enemyHP==10-weapon.signatureDamage&&!game.combat.primary,"signature UI confirmation commits once");
