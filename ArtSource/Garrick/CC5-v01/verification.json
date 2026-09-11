@@ -1,0 +1,215 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "check": "single CC skeleton; source fitting skeleton removed"
+    },
+    {
+      "pass": true,
+      "check": "all 101 imported bones retained"
+    },
+    {
+      "pass": true,
+      "check": "all 160 facial shapes retained alongside Basis"
+    },
+    {
+      "pass": true,
+      "check": "new beard inherits all facial shapes"
+    },
+    {
+      "pass": true,
+      "check": "all visible character meshes bound to CC skeleton"
+    },
+    {
+      "pass": true,
+      "check": "finite character geometry"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | bib"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | rear strap -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | rear strap 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | shoulder strap -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | shoulder strap 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | skirt"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | stitched side -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | stitched side 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | strap over shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Apron | strap over shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Belt | plain work belt"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Boots | work pair"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: CC_Base_Eye"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: CC_Base_EyeOcclusion"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: CC_Base_TearLine"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: CC_Base_Teeth"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: CC_Base_Tongue"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Garrick bar towel"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Garrick | face-following beard"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Garrick | rugged hair"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key 0"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key 2"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key bow 0"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key bow 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key bow 2"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Inn key ring"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Male_Brow_2"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Shirt | folded collar -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Shirt | folded collar 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Shirt | plain front facing"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Shirt | rolled sleeves and hands"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Shirt | torso and upper sleeves"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Trousers | gathered work pair"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | back"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | left front"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | right front"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | side -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized weights: Vest | side 1"
+    },
+    {
+      "pass": true,
+      "check": "saved blend reloads packed image textures"
+    },
+    {
+      "pass": true,
+      "check": "fitted sleeve deforms in reaching pose"
+    },
+    {
+      "pass": true,
+      "check": "beard expression driver follows body"
+    },
+    {
+      "pass": true,
+      "check": "beard geometry deforms with mouth shape"
+    }
+  ],
+  "bones": 101,
+  "mesh_objects": 42,
+  "triangles": 55557,
+  "facial_shapes": 160,
+  "unity_integrated": false,
+  "visual_approval": false,
+  "validation_scope": "Saved-file structural checks and limited idle/reach/mouth fit tests, not full animation QA."
+}

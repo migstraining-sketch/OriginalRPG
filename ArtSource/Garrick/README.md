@@ -1,5 +1,7 @@
 # Garrick — illustrated trial and historical Blender studies
 
+**Latest fitting pass: [CC5-based Garrick candidate](CC5-v01/README.md).** The owner supplied a Character Creator export and authorized adapting it. Body, workwear and facial controls are integrated in a local Blender candidate with inn and movement previews. Source export and CC-derived binaries remain local; reproducible fitting scripts and validation are tracked. Visual approval and Unity replacement are still pending.
+
 **Current follow-up: [shared workwear foundation](../Characters/Foundation-v01/README.md).** Owner requested reusable foundations after accepting the improved rigged body direction. This Blender proof adds separate clothing layers and a second unnamed assembly sharing meshes, skeleton and animation. It remains a visual/fitting candidate, not accepted final art or Unity integration. The owner has also offered to export a Character Creator 5 base for a subsequent comparison.
 
 **Latest attempt: [rigged 3D candidate](Rigged-v01/README.md).** The owner rejected the cutout's in-world appearance and requested another attempt using an existing character base. The new candidate adapts licensed Quaternius body/outfit/hair geometry, retains a humanoid skeleton, and includes actual Blender renders in isolation and beside the inn bar. It is not yet approved or installed in Unity. The older illustrated artwork remains a style reference; its flat in-game presentation is not an accepted final character solution.
