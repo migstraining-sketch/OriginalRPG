@@ -1,5 +1,7 @@
 # Garrick — illustrated trial and historical Blender studies
 
+**Latest attempt: [rigged 3D candidate](Rigged-v01/README.md).** The owner rejected the cutout's in-world appearance and requested another attempt using an existing character base. The new candidate adapts licensed Quaternius body/outfit/hair geometry, retains a humanoid skeleton, and includes actual Blender renders in isolation and beside the inn bar. It is not yet approved or installed in Unity. The older illustrated artwork remains a style reference; its flat in-game presentation is not an accepted final character solution.
+
 **Owner rejected the v01 through v04 Blender previews on 2026-09-10.** The owner clarified that the target is illustrated/animated fantasy, not photorealism, and allowed a 2D-looking approach. The owner then approved trying the [illustrated direction preview](Illustrated-v01/README.md) inside the inn. The latest work is the [playable illustrated cutout trial](Illustrated-Cutout-v01/README.md). It is a generated 2D image rendered within Unity, not a Blender model or finished animated character. The earlier Blender files below are preserved as rejected studies. Do not install them in Unity as accepted character art.
 
 ## Historical Blender v01 study
