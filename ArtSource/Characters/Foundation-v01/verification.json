@@ -1,0 +1,272 @@
+{
+  "checks": [
+    {
+      "pass": true,
+      "check": "two independently positioned assembled characters"
+    },
+    {
+      "pass": true,
+      "check": "same 65-bone skeleton definition"
+    },
+    {
+      "pass": true,
+      "check": "same action datablock drives both actors"
+    },
+    {
+      "pass": true,
+      "check": "every second-actor mesh reuses first-actor geometry"
+    },
+    {
+      "pass": true,
+      "check": "reuse includes a substantial modular assembly"
+    },
+    {
+      "pass": true,
+      "check": "no missing material slots on either actor"
+    },
+    {
+      "pass": true,
+      "check": "all meshes deform with their own actor: Garrick | shared humanoid rig"
+    },
+    {
+      "pass": true,
+      "check": "finite geometry: Garrick | shared humanoid rig"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | bib"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | bib"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | rear strap -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | rear strap -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | rear strap 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | rear strap 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | shoulder strap -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | shoulder strap -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | shoulder strap 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | shoulder strap 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | skirt"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | skirt"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | stitched side -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | stitched side -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | stitched side 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | stitched side 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | strap over shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | strap over shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Apron | strap over shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Apron | strap over shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Shirt | folded collar -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Shirt | folded collar -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Shirt | folded collar 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Shirt | folded collar 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | back"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | back"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | left front"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | left front"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | right front"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | right front"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | side -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | side -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Vest | side 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Vest | side 1"
+    },
+    {
+      "pass": true,
+      "check": "all meshes deform with their own actor: Fitting test | shared humanoid rig"
+    },
+    {
+      "pass": true,
+      "check": "finite geometry: Fitting test | shared humanoid rig"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | back"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | back"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | left front"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | left front"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | right front"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | right front"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | shoulder -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | shoulder 1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | side -1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | side -1"
+    },
+    {
+      "pass": true,
+      "check": "normalized garment weights: Fit test | Vest | side 1"
+    },
+    {
+      "pass": true,
+      "check": "valid garment bone names: Fit test | Vest | side 1"
+    },
+    {
+      "pass": true,
+      "check": "all image textures packed and readable"
+    },
+    {
+      "pass": true,
+      "check": "clothing vertices actually move in the reaching fit test"
+    }
+  ],
+  "shared_meshes": 19,
+  "first_actor_meshes": 38,
+  "second_actor_meshes": 19,
+  "shared_skeleton_bones": 65,
+  "shared_action": "Shared | breathe 1-60 and reach fit 61-120",
+  "unity_integrated": false,
+  "visual_approval": false,
+  "limits": [
+    "One masculine base and two proportion profiles, not a complete cast library.",
+    "Reaching fit test and idle only; no walking, combat or facial animation acceptance.",
+    "Procedural materials require baking or engine material recreation."
+  ]
+}
